@@ -1,0 +1,2 @@
+# electronics_design_competition
+电子设计大赛_合工大
