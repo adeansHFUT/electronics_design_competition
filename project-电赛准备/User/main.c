@@ -7,6 +7,7 @@ int main(void)
 	NVIC_Configuration(); 	 
 	OLED_Init();			//oled初始化
 	OLED_Clear(); 
+	USART1_Init(9600); 
 	TIM2_Init(10,72000-1);  // 1/(72M/72000)=1ms, 定时器2
 	steerFrequency_Init(1);	 //舵机初始化
 	main_Display();

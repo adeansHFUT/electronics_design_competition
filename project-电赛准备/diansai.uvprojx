@@ -338,7 +338,7 @@
               <MiscControls></MiscControls>
               <Define>USE_STDPERIPH_DRIVER,STM32F10X_HD</Define>
               <Undefine></Undefine>
-              <IncludePath>.\Libraries\STM32F10x_StdPeriph_Driver\inc;.\User;.\Libraries\CMSIS;.\Public;.\Peripheral\led;.\Peripheral\OLED;.\Peripheral\pwm;.\Peripheral\time;.\Peripheral\key;.\App\Display</IncludePath>
+              <IncludePath>.\Libraries\STM32F10x_StdPeriph_Driver\inc;.\User;.\Libraries\CMSIS;.\Public;.\Peripheral\led;.\Peripheral\OLED;.\Peripheral\pwm;.\Peripheral\time;.\Peripheral\key;.\App\Display;.\Peripheral\Uart</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -462,6 +462,11 @@
               <FileType>1</FileType>
               <FilePath>.\Peripheral\key\key.c</FilePath>
             </File>
+            <File>
+              <FileName>usart.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Peripheral\Uart\usart.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -501,6 +506,11 @@
               <FileName>key.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Peripheral\key\key.h</FilePath>
+            </File>
+            <File>
+              <FileName>usart.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Peripheral\Uart\usart.h</FilePath>
             </File>
           </Files>
         </Group>
