@@ -56,7 +56,7 @@
 
 // <c1>thread stack over flow detect
 //  <i> Diable Thread stack over flow detect
-#define RT_USING_OVERFLOW_CHECK
+//#define RT_USING_OVERFLOW_CHECK
 // </c>
 // </h>
 
@@ -74,7 +74,7 @@
 
 // <e>Software timers Configuration
 // <i> Enables user timers
-//#define RT_USING_TIMER_SOFT
+#define RT_USING_TIMER_SOFT
 
 // <o>The priority level of timer thread <0-31>
 //  <i>Default: 4
@@ -86,7 +86,7 @@
 
 // <o>The soft-timer tick per second <0-1000>
 //  <i>Default: 100
-#define RT_TIMER_TICK_PER_SECOND 100
+#define RT_TIMER_TICK_PER_SECOND 1000
 // </e>
 
 // <h>IPC(Inter-process communication) Configuration
@@ -107,7 +107,7 @@
 
 // <c1>Using MailBox
 //  <i>Using MailBox
-//#define RT_USING_MAILBOX
+#define RT_USING_MAILBOX
 // </c>
 
 // <c1>Using Message Queue
@@ -175,13 +175,13 @@
 // <o>the priority of finsh thread <1-7>
 //  <i>the priority of finsh thread
 //  <i>Default: 6
-#define __FINSH_THREAD_PRIORITY     1
+#define __FINSH_THREAD_PRIORITY     5
 #define FINSH_THREAD_PRIORITY       (RT_THREAD_PRIORITY_MAX / 8 * __FINSH_THREAD_PRIORITY + 1)
 
 // <o>the stack of finsh thread <1-4096>
 //  <i>the stack of finsh thread
 //  <i>Default: 4096  (4096Byte)
-#define FINSH_THREAD_STACK_SIZE 4096
+#define FINSH_THREAD_STACK_SIZE 512
 
 // <o>the history lines of finsh thread <1-32>
 //  <i>the history lines of finsh thread
@@ -190,7 +190,7 @@
 
 // <c1>Using symbol table in finsh shell
 //  <i>Using symbol table in finsh shell
-//#define FINSH_USING_SYMTAB
+#define FINSH_USING_SYMTAB
 // </c>
 // </h>
 
