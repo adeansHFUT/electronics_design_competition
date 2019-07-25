@@ -2,7 +2,7 @@
 .\objects\led.o: Peripheral\led\led.h
 .\objects\led.o: .\User\stm32f10x.h
 .\objects\led.o: .\Libraries\CMSIS\core_cm3.h
-.\objects\led.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\led.o: D:\KEIL5\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\led.o: .\Libraries\CMSIS\system_stm32f10x.h
 .\objects\led.o: .\User\stm32f10x_conf.h
 .\objects\led.o: .\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_adc.h

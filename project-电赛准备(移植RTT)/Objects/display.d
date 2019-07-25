@@ -4,7 +4,7 @@
 .\objects\display.o: .\Public\sys.h
 .\objects\display.o: .\User\stm32f10x.h
 .\objects\display.o: .\Libraries\CMSIS\core_cm3.h
-.\objects\display.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\display.o: D:\KEIL5\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\display.o: .\Libraries\CMSIS\system_stm32f10x.h
 .\objects\display.o: .\User\stm32f10x_conf.h
 .\objects\display.o: .\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_adc.h
@@ -32,5 +32,5 @@
 .\objects\display.o: .\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_wwdg.h
 .\objects\display.o: .\Libraries\STM32F10x_StdPeriph_Driver\inc\misc.h
 .\objects\display.o: .\Peripheral\OLED\oled.h
-.\objects\display.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+.\objects\display.o: D:\KEIL5\ARM\ARMCC\Bin\..\include\stdlib.h
 .\objects\display.o: .\Public\SysTick.h

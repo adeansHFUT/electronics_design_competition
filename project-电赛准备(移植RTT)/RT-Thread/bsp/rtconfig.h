@@ -86,7 +86,7 @@
 
 // <o>The soft-timer tick per second <0-1000>
 //  <i>Default: 100
-#define RT_TIMER_TICK_PER_SECOND 1000
+#define RT_TIMER_TICK_PER_SECOND 100
 // </e>
 
 // <h>IPC(Inter-process communication) Configuration
@@ -175,13 +175,13 @@
 // <o>the priority of finsh thread <1-7>
 //  <i>the priority of finsh thread
 //  <i>Default: 6
-#define __FINSH_THREAD_PRIORITY     5
+#define __FINSH_THREAD_PRIORITY     1
 #define FINSH_THREAD_PRIORITY       (RT_THREAD_PRIORITY_MAX / 8 * __FINSH_THREAD_PRIORITY + 1)
 
 // <o>the stack of finsh thread <1-4096>
 //  <i>the stack of finsh thread
 //  <i>Default: 4096  (4096Byte)
-#define FINSH_THREAD_STACK_SIZE 512
+#define FINSH_THREAD_STACK_SIZE 4096
 
 // <o>the history lines of finsh thread <1-32>
 //  <i>the history lines of finsh thread
@@ -190,7 +190,7 @@
 
 // <c1>Using symbol table in finsh shell
 //  <i>Using symbol table in finsh shell
-#define FINSH_USING_SYMTAB
+//#define FINSH_USING_SYMTAB
 // </c>
 // </h>
 

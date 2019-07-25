@@ -3,7 +3,7 @@
 .\objects\pwm.o: .\Public\sys.h
 .\objects\pwm.o: .\User\stm32f10x.h
 .\objects\pwm.o: .\Libraries\CMSIS\core_cm3.h
-.\objects\pwm.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\pwm.o: D:\KEIL5\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\pwm.o: .\Libraries\CMSIS\system_stm32f10x.h
 .\objects\pwm.o: .\User\stm32f10x_conf.h
 .\objects\pwm.o: .\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_adc.h

@@ -3,7 +3,7 @@
 .\objects\time.o: .\Public\sys.h
 .\objects\time.o: .\User\stm32f10x.h
 .\objects\time.o: .\Libraries\CMSIS\core_cm3.h
-.\objects\time.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\time.o: D:\KEIL5\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\time.o: .\Libraries\CMSIS\system_stm32f10x.h
 .\objects\time.o: .\User\stm32f10x_conf.h
 .\objects\time.o: .\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_adc.h
@@ -31,5 +31,5 @@
 .\objects\time.o: .\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_wwdg.h
 .\objects\time.o: .\Libraries\STM32F10x_StdPeriph_Driver\inc\misc.h
 .\objects\time.o: .\Peripheral\OLED\oled.h
-.\objects\time.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+.\objects\time.o: D:\KEIL5\ARM\ARMCC\Bin\..\include\stdlib.h
 .\objects\time.o: .\Peripheral\key\key.h
