@@ -27,8 +27,8 @@
 //Copyright(C) 中景园电子2014/3/16
 //All rights reserved
 //******************************************************************************/
-#ifndef __OLED_H
-#define __OLED_H			  	 
+#ifndef __BSP_OLED_H
+#define __BSP_OLED_H			  	 
 #include "sys.h"
 #include "stdlib.h"	    	
 //OLED模式设置

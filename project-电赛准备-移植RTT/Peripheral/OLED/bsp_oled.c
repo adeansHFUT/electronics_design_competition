@@ -28,7 +28,7 @@
 //All rights reserved
 //******************************************************************************/
 
-#include "oled.h"
+#include "bsp_oled.h"
 #include "stdlib.h"
 #include "oledfont.h"  	 
 #include "string.h"

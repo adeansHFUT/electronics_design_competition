@@ -1,9 +1,10 @@
 #include "display.h"
-#include "key.h"
-#include "oled.h"
+#include "bsp_key.h"
+#include "bsp_oled.h"
 #include "SysTick.h"
+#include "rtthread.h"
 
-extern u8 key_num;
+rt_mailbox_t mb_display = RT_NULL;
 extern show_node pagetable[16]; //用于OLED 屏幕显示字符的节点数字
 /*16字体0模式--->4个节点(8字符,4行1列)*/
 /*12字体0模式--->8个节点(10字符,8行1列)*/

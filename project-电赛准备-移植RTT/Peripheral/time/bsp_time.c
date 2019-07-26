@@ -1,6 +1,6 @@
-#include "time.h"
-#include "oled.h"
-#include "key.h"
+#include "bsp_time.h"
+#include "bsp_oled.h"
+#include "bsp_key.h"
 extern show_node pagetable[16];
 extern u8 key_num;  
 static u8 x_ms = 0;

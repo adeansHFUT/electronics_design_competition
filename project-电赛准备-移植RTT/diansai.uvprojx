@@ -338,7 +338,7 @@
               <MiscControls></MiscControls>
               <Define>USE_STDPERIPH_DRIVER,STM32F10X_HD</Define>
               <Undefine></Undefine>
-              <IncludePath>.\Libraries\STM32F10x_StdPeriph_Driver\inc;.\User;.\Libraries\CMSIS;.\Public;.\Peripheral\led;.\Peripheral\OLED;.\Peripheral\pwm;.\Peripheral\time;.\Peripheral\key;.\App\Display;.\RT-Thread\bsp;.\RT-Thread\libcpu\arm\cortex-m3;.\RT-Thread\components\finsh;.\RT-Thread\include;.\RT-Thread\include\libc;.\Peripheral\uart;.\App\Uart_handle</IncludePath>
+              <IncludePath>.\Libraries\STM32F10x_StdPeriph_Driver\inc;.\User;.\Libraries\CMSIS;.\Public;.\Peripheral\led;.\Peripheral\OLED;.\Peripheral\pwm;.\Peripheral\time;.\Peripheral\key;.\App\Display;.\RT-Thread\bsp;.\RT-Thread\libcpu\arm\cortex-m3;.\RT-Thread\components\finsh;.\RT-Thread\include;.\RT-Thread\include\libc;.\Peripheral\uart;.\App\Uart_handle;.\App\Key_handle</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -432,6 +432,11 @@
               <FileType>1</FileType>
               <FilePath>.\App\Uart_handle\uart_handle.c</FilePath>
             </File>
+            <File>
+              <FileName>key_handle.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\App\Key_handle\key_handle.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -446,6 +451,11 @@
               <FileName>uart_handle.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\App\Uart_handle\uart_handle.h</FilePath>
+            </File>
+            <File>
+              <FileName>key_handle.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\App\Uart_handle\key_handle.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -548,34 +558,34 @@
           <GroupName>Peripherasl</GroupName>
           <Files>
             <File>
-              <FileName>led.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Peripheral\led\led.c</FilePath>
-            </File>
-            <File>
-              <FileName>oled.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Peripheral\OLED\oled.c</FilePath>
-            </File>
-            <File>
-              <FileName>pwm.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Peripheral\pwm\pwm.c</FilePath>
-            </File>
-            <File>
-              <FileName>time.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Peripheral\time\time.c</FilePath>
-            </File>
-            <File>
-              <FileName>key.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Peripheral\key\key.c</FilePath>
-            </File>
-            <File>
               <FileName>bsp_usart.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\Peripheral\uart\bsp_usart.c</FilePath>
+            </File>
+            <File>
+              <FileName>bsp_key.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Peripheral\key\bsp_key.c</FilePath>
+            </File>
+            <File>
+              <FileName>bsp_led.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Peripheral\led\bsp_led.c</FilePath>
+            </File>
+            <File>
+              <FileName>bsp_oled.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Peripheral\OLED\bsp_oled.c</FilePath>
+            </File>
+            <File>
+              <FileName>bsp_pwm.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Peripheral\pwm\bsp_pwm.c</FilePath>
+            </File>
+            <File>
+              <FileName>bsp_time.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Peripheral\time\bsp_time.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -583,19 +593,9 @@
           <GroupName>Peripherasl_h</GroupName>
           <Files>
             <File>
-              <FileName>led.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Peripheral\led\led.h</FilePath>
-            </File>
-            <File>
               <FileName>bmp.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Peripheral\OLED\bmp.h</FilePath>
-            </File>
-            <File>
-              <FileName>oled.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Peripheral\OLED\oled.h</FilePath>
             </File>
             <File>
               <FileName>oledfont.h</FileName>
@@ -603,24 +603,34 @@
               <FilePath>.\Peripheral\OLED\oledfont.h</FilePath>
             </File>
             <File>
-              <FileName>pwm.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Peripheral\pwm\pwm.h</FilePath>
-            </File>
-            <File>
-              <FileName>time.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Peripheral\time\time.h</FilePath>
-            </File>
-            <File>
-              <FileName>key.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Peripheral\key\key.h</FilePath>
-            </File>
-            <File>
               <FileName>bsp_usart.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Peripheral\uart\bsp_usart.h</FilePath>
+            </File>
+            <File>
+              <FileName>bsp_key.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Peripheral\key\bsp_key.h</FilePath>
+            </File>
+            <File>
+              <FileName>bsp_led.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Peripheral\led\bsp_led.h</FilePath>
+            </File>
+            <File>
+              <FileName>bsp_oled.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Peripheral\OLED\bsp_oled.h</FilePath>
+            </File>
+            <File>
+              <FileName>bsp_pwm.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Peripheral\pwm\bsp_pwm.h</FilePath>
+            </File>
+            <File>
+              <FileName>bsp_time.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Peripheral\time\bsp_time.h</FilePath>
             </File>
           </Files>
         </Group>

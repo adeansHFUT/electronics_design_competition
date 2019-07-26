@@ -1,7 +1,9 @@
-#include "key.h"
+#include "bsp_key.h"
 #include "SysTick.h"
-
+#include "rtthread.h"
 u8 key_num = 0;  
+rt_timer_t timer_keyscan = RT_NULL; //按键扫描定时器
+rt_mailbox_t mb_key = RT_NULL;  //传递按键值的邮箱
 /*******************************************************************************
 * 函 数 名         : KEY_Init
 * 函数功能		   : 按键初始化
@@ -36,7 +38,7 @@ u8 KEY_Scan(u8 mode)
 	static u8 key=1;
 	if(key==1&&(K_1==0||K_2==0||K_3==0||K_4==0)) //任意一个按键按下
 	{
-		delay_ms(20);  //消抖(原来是10ms)
+		rt_thread_mdelay(8);  //消抖(原来是10ms)(注意这里会把整个定时器阻塞xms)
 		key=0;
 		if(K_1==0)
 		{
@@ -66,3 +68,13 @@ u8 KEY_Scan(u8 mode)
 	return 0;
 }
 
+void keyscan_callback(void *parameter)
+{
+	if(key_num == 0) //为零说明按键事件已经处理，可以继续扫描按键
+	{
+		key_num = KEY_Scan(0);
+		if(key_num)  // 如果不为0就发送邮件给按键处理线程
+			rt_mb_send(mb_key, key_num);
+	}
+		
+}

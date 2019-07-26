@@ -1,8 +1,9 @@
-#ifndef _key_H
-#define _key_H
+#ifndef _bsp_key_H
+#define _bsp_key_H
 
 
 #include "sys.h"
+#include "rtthread.h"
  
 #define KEY1_Pin    GPIO_Pin_0    //定义K_1管脚
 #define KEY2_Pin    GPIO_Pin_1    //定义K_2管脚
@@ -35,5 +36,8 @@
 
 
 void KEY_Init(void);
-u8 KEY_Scan(u8 mode);
+void keyscan_callback(void *parameter);
+extern u8 key_num;
+extern rt_timer_t timer_keyscan;
+extern rt_mailbox_t mb_key;
 #endif

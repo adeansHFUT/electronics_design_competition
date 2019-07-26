@@ -1,25 +1,8 @@
-/**
-  ******************************************************************************
-  * @file    bsp_usart.c
-  * @author  fire
-  * @version V1.0
-  * @date    2013-xx-xx
-  * @brief   重定向c库printf函数到usart端口
-  ******************************************************************************
-  * @attention
-  *
-  * 实验平台:野火STM32 F103-霸道 开发板  
-  * 论坛    :http://www.firebbs.cn
-  * 淘宝    :https://fire-stm32.taobao.com
-  *
-  ******************************************************************************
-  */ 
-	
 #include "bsp_usart.h"
 #include "rtthread.h"
 
 /* 外部定义信号量控制块 */
-extern rt_sem_t uart_sem;
+extern rt_sem_t sem_uart;
 
  /**
   * @brief  配置嵌套向量中断控制器NVIC
@@ -139,6 +122,7 @@ void USARTx_DMA_Config(void)
 		DMA_Cmd (USART_RX_DMA_CHANNEL,ENABLE);
 }
 
+
 void Uart_DMA_Rx_Data(void)
 {
    // 关闭DMA ，防止干扰
@@ -149,7 +133,7 @@ void Uart_DMA_Rx_Data(void)
    USART_RX_DMA_CHANNEL->CNDTR = USART_RBUFF_SIZE;    
    DMA_Cmd(USART_RX_DMA_CHANNEL, ENABLE);       
    //给出二值信号量 ，发送接收到新数据标志，供前台程序查询
-   rt_sem_release(uart_sem);  
+   rt_sem_release(sem_uart);  
   /* 
     DMA 开启，等待数据。注意，如果中断发送数据帧的速率很快，MCU来不及处理此次接收到的数据，
     中断又发来数据的话，这里不能开启，否则数据会被覆盖。有2种方式解决：
@@ -162,6 +146,17 @@ void Uart_DMA_Rx_Data(void)
   */
 }
 
+// 串口中断服务函数
+void DEBUG_USART_IRQHandler(void)
+{
+	rt_interrupt_enter();
+	if(USART_GetITStatus(DEBUG_USARTx,USART_IT_IDLE)!=RESET)
+	{		
+      Uart_DMA_Rx_Data();       /* 释放一个信号量，表示数据已接收 */
+      USART_ReceiveData(DEBUG_USARTx); /* 清除标志位 */
+	}	 
+	rt_interrupt_leave();
+}
 
 /*****************  发送一个字节 **********************/
 void Usart_SendByte( USART_TypeDef * pUSARTx, uint8_t ch)

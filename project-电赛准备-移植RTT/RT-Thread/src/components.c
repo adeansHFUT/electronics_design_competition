@@ -24,7 +24,7 @@
 #define RT_MAIN_THREAD_STACK_SIZE     2048
 #endif
 #ifndef RT_MAIN_THREAD_PRIORITY
-#define RT_MAIN_THREAD_PRIORITY       (RT_THREAD_PRIORITY_MAX / 3)
+#define RT_MAIN_THREAD_PRIORITY      1  //(RT_THREAD_PRIORITY_MAX / 3)  将其优先级改为一让其执行完
 #endif
 #endif
 

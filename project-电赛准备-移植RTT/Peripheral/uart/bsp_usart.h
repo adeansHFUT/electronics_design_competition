@@ -1,5 +1,5 @@
-#ifndef __USART_H
-#define	__USART_H
+#ifndef __BSP_USART_H
+#define	__BSP_USART_H
 
 
 #include "stm32f10x.h"
@@ -120,5 +120,6 @@ void Usart_SendByte( USART_TypeDef * pUSARTx, uint8_t ch);
 void Usart_SendString( USART_TypeDef * pUSARTx, char *str);
 void Usart_SendHalfWord( USART_TypeDef * pUSARTx, uint16_t ch);
 void Uart_DMA_Rx_Data(void);
+void DEBUG_USART_IRQHandler(void);
 extern char Usart_Rx_Buf[USART_RBUFF_SIZE];
 #endif /* __USART_H */
