@@ -11,6 +11,7 @@
 #include <rthw.h>
 #include <rtthread.h>
 #include "board.h"
+#include "key_handle.h"
 #if 0
 #define _SCB_BASE       (0xE000E010UL)
 #define _SYSTICK_CTRL   (*(rt_uint32_t *)(_SCB_BASE + 0x0))
@@ -70,12 +71,23 @@ void rt_hw_board_init()
 	_SysTick_Config(SystemCoreClock / RT_TICK_PER_SECOND);
 	#endif
 	
-	SysTick_Config(SystemCoreClock / RT_TICK_PER_SECOND);
 	
-	USARTx_DMA_Config();
-	/* 初始化开发板的串口 */
-	USART_Config();
-	
+/*                           用户外设初始化
+*************************************************************************
+*/	
+	SysTick_Init(72); // 先用下SysTick的精确延时，因为硬件初始化可能需要
+	//NVIC_Configuration(); 	 // 配置嵌套向量中断控制器NVIC，uart初始化里面有了，不需要再用sys.h里的
+	KEY_Init();
+	OLED_Init();			//oled初始化
+	OLED_Clear();         // oled清屏
+    OLED_ShowString(0,0, "hello mcu");	 
+	USARTx_DMA_Config();  // 串口dma初始化
+	USART_Config();    // 串口初始化
+	statetable_init();
+/*                           
+*************************************************************************
+*/	
+	SysTick_Config(SystemCoreClock / RT_TICK_PER_SECOND); // SysTick配置成OS心跳
     /* Call components board initial (use INIT_BOARD_EXPORT()) */
 #ifdef RT_USING_COMPONENTS_INIT
     rt_components_board_init();

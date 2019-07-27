@@ -1,18 +1,26 @@
 #include "board.h"
 #include "rtthread.h"
 #include "include.h"
-//	SysTick_Init(72);
-//	//LED_Init(); // PC端口
+
 //	NVIC_Configuration(); 	 
 //	OLED_Init();			//oled初始化
 //	OLED_Clear(); 
-//	TIM2_Init(10,72000-1);  // 1/(72M/72000)=1ms, 定时器2
+//	TIM2_Init(10,72000-1);  // 1/(72M/72000)=1ms, 定时器2 ，无os时的按键
 //	steerFrequency_Init(1);	 //舵机初始化
-//	main_Display();
 int my_ipc_create(void);
 int my_timer_create(void);
 int my_thread_create(void);
 int my_thread_startup(void);
+/*                           线程优先级排序
+*************************************************************************
+1：main函数线程
+2：按键处理keyhandle
+4：软件定时器-按键扫描
+6：uart处理线程
+8：display显示线程
+*************************************************************************
+*/
+
 /*                           main 函数
 *************************************************************************
 */
@@ -41,12 +49,20 @@ int my_ipc_create(void)
     if(sem_uart != RT_NULL)
 		rt_kprintf("uart信号量创建成功！\n\n");
 	
-	/* 创建一个邮箱 */
+	/* 创建一个按键处理邮箱 */
 	mb_key = rt_mb_create("mb_key",/* 名字 */
 							5,     /*邮箱大小 */
 							RT_IPC_FLAG_FIFO); /* 模式 FIFO(0x00)*/
     if(mb_key != RT_NULL)
-		rt_kprintf("按键邮箱创建成功！\n\n");
+		rt_kprintf("按键处理邮箱创建成功！\n\n");
+	
+	/* 创建一个display邮箱 */
+	mb_display = rt_mb_create("mb_display",/* 名字 */
+							5,     /*邮箱大小 */
+							RT_IPC_FLAG_FIFO); /* 模式 FIFO(0x00)*/
+    if(mb_display != RT_NULL)
+		rt_kprintf("oled显示邮箱创建成功！\n\n");
+	
 	return 0;
 }
 /*
@@ -58,7 +74,7 @@ int my_timer_create(void)
 	timer_keyscan = rt_timer_create("timer_keyscan",/* 名字 */
 									keyscan_callback,     /* 超时函数 */
 									0,   /* 入口参数 */
-									50,  /* 50个tick扫描一次*/
+									50,  /* 定时器超时时间*/
 									RT_TIMER_FLAG_PERIODIC | RT_TIMER_FLAG_SOFT_TIMER);   /* 软件定时器，周期*/
     if (timer_keyscan != RT_NULL)
 	{
@@ -74,14 +90,34 @@ int my_timer_create(void)
 int my_thread_create(void)
 {
 	uarthandle_thread =                          /* 线程控制块指针 */
-    rt_thread_create( "usart",              /* 线程名字 */
+    rt_thread_create( "uarthandle",              /* 线程名字 */
                       uarthandle_thread_entry,   /* 线程入口函数 */
                       RT_NULL,             /* 线程入口函数参数 */
                       512,                 /* 线程栈大小 */
-                      12,                   /* 线程的优先级 */
+                      6,                   /* 线程的优先级 */
                       20);                 /* 线程时间片 */
 	if (uarthandle_thread != RT_NULL)
-    rt_kprintf("线程创建成功！\n\n");
+    rt_kprintf("uart处理线程创建成功！\n\n");
+	
+	keyhandle_thread =                          /* 线程控制块指针 */
+    rt_thread_create( "keyhandle",              /* 线程名字 */
+                      keyhandle_thread_entry,   /* 线程入口函数 */
+                      RT_NULL,             /* 线程入口函数参数 */
+                      512,                 /* 线程栈大小 */
+                      3,                   /* 线程的优先级 */
+                      20);                 /* 线程时间片 */
+	if (keyhandle_thread != RT_NULL)
+    rt_kprintf("按键处理线程创建成功！\n\n");
+	
+	display_thread =                          /* 线程控制块指针 */
+    rt_thread_create( "display",              /* 线程名字 */
+                      display_thread_entry,   /* 线程入口函数 */
+                      RT_NULL,             /* 线程入口函数参数 */
+                      512,                 /* 线程栈大小 */
+                      8,                   /* 线程的优先级 */
+                      20);                 /* 线程时间片 */
+	if (keyhandle_thread != RT_NULL)
+    rt_kprintf("显示刷新线程创建成功！\n\n");
 	return 0;
 }
  /*

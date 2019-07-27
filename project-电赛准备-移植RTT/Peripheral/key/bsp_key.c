@@ -1,7 +1,7 @@
 #include "bsp_key.h"
 #include "SysTick.h"
 #include "rtthread.h"
-u8 key_num = 0;  
+rt_uint32_t key_num = 0;  
 rt_timer_t timer_keyscan = RT_NULL; //按键扫描定时器
 rt_mailbox_t mb_key = RT_NULL;  //传递按键值的邮箱
 /*******************************************************************************
@@ -74,7 +74,13 @@ void keyscan_callback(void *parameter)
 	{
 		key_num = KEY_Scan(0);
 		if(key_num)  // 如果不为0就发送邮件给按键处理线程
-			rt_mb_send(mb_key, key_num);
+		{
+			rt_err_t uwRet = rt_mb_send(mb_key, key_num);
+			if(RT_EOK == uwRet)
+				rt_kprintf("按键邮箱发送成功！\n");
+			
+		}
+			
 	}
 		
 }

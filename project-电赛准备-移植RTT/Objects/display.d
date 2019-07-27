@@ -53,3 +53,4 @@
 .\objects\display.o: .\Peripheral\OLED\bsp_oled.h
 .\objects\display.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
 .\objects\display.o: .\Public\SysTick.h
+.\objects\display.o: .\App\Uart_handle\key_handle.h

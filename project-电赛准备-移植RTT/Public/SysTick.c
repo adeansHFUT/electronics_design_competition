@@ -4,7 +4,7 @@ static u8  fac_us=0;							//us延时倍乘数
 static u16 fac_ms=0;							//ms延时倍乘数
 
 
-//初始化延迟函数
+//初始化延迟函数,在os中不能使用
 //SYSTICK的时钟固定为AHB时钟的1/8
 //SYSCLK:系统时钟频率
 void SysTick_Init(u8 SYSCLK)

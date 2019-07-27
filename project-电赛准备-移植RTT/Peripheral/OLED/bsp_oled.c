@@ -33,6 +33,7 @@
 #include "oledfont.h"  	 
 #include "string.h"
 #include "SysTick.h" // 包含delay函数
+#include "rtthread.h"
 //OLED的显存
 //存放格式如下.
 //[0]0 1 2 3 ... 127	

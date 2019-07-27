@@ -3,6 +3,9 @@
 #include "bsp_key.h"
 #include "display.h"
 
+/* 定义按键处理线程控制块 */
+rt_thread_t keyhandle_thread = RT_NULL;
+
 /*******************************定义现在的状态(初始为Mainmeau态)************************************************/
 Statename current_state = Mainmeau; 
 typedef struct {
@@ -67,16 +70,18 @@ void statetable_init(void)
 void keyhandle_thread_entry(void* parameter)
 {
 	rt_err_t uwRet = RT_EOK;	
-	rt_int32_t keynum;
+	rt_uint32_t keynum;
     /* 任务都是一个无限循环，不能返回 */
     while (1)
     {
 		uwRet = rt_mb_recv(mb_key, &keynum, RT_WAITING_FOREVER); 	  /* 等待时间：一直 */
 		if(RT_EOK == uwRet)
 		{
-		    rt_kprintf("收到按键:%d\n",keynum);
+		    rt_kprintf("收到按键:%d\n,开始处理",keynum);
 			state_transfer(current_state, keynum);
 		}
+		else
+			rt_kprintf("按键接收失败！\n");
     }
 }
 /*******************************************************************************
@@ -110,7 +115,9 @@ void state_transfer(uint8_t statenow, uint8_t key_receive)
 			case Task2_to_Mainmeau: rt_mb_send(mb_display, state_transition[statenow][key_receive].action);
 									//这里放对其他任务的操作
 									break;
-			default: break;
+			default:
+					rt_kprintf("状态转移错误，错误action:%d\n", state_transition[statenow][key_receive].action);
+					break;
 		}
 		rt_enter_critical(); // 直接关调度器，好狠
 		current_state = state_transition[statenow][key_receive].state_name; //更新状态

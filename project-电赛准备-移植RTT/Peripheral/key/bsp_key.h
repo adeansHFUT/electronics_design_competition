@@ -37,7 +37,7 @@
 
 void KEY_Init(void);
 void keyscan_callback(void *parameter);
-extern u8 key_num;
+extern rt_uint32_t key_num;
 extern rt_timer_t timer_keyscan;
 extern rt_mailbox_t mb_key;
 #endif
