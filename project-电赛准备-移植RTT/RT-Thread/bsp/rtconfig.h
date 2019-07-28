@@ -52,7 +52,7 @@
 
 // <o>enable components initialization debug configuration<0-1>
 //  <i>Default: 0
-//#define RT_DEBUG_INIT
+#define RT_DEBUG_INIT 0
 
 // <c1>thread stack over flow detect
 //  <i> Diable Thread stack over flow detect
@@ -86,7 +86,7 @@
 
 // <o>The soft-timer tick per second <0-1000>
 //  <i>Default: 100
-#define RT_TIMER_TICK_PER_SECOND 100
+#define RT_TIMER_TICK_PER_SECOND 100          // 在整个工程都没用到过
 // </e>
 
 // <h>IPC(Inter-process communication) Configuration

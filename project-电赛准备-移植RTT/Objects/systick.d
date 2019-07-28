@@ -3,7 +3,7 @@
 .\objects\systick.o: Public\sys.h
 .\objects\systick.o: .\User\stm32f10x.h
 .\objects\systick.o: .\Libraries\CMSIS\core_cm3.h
-.\objects\systick.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\systick.o: D:\KEIL5\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\systick.o: .\Libraries\CMSIS\system_stm32f10x.h
 .\objects\systick.o: .\User\stm32f10x_conf.h
 .\objects\systick.o: .\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_adc.h
