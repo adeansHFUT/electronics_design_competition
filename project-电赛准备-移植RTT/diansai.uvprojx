@@ -338,7 +338,7 @@
               <MiscControls></MiscControls>
               <Define>USE_STDPERIPH_DRIVER,STM32F10X_HD</Define>
               <Undefine></Undefine>
-              <IncludePath>.\Libraries\STM32F10x_StdPeriph_Driver\inc;.\User;.\Libraries\CMSIS;.\Public;.\Peripheral\led;.\Peripheral\OLED;.\Peripheral\pwm;.\Peripheral\time;.\Peripheral\key;.\App\Display;.\RT-Thread\bsp;.\RT-Thread\libcpu\arm\cortex-m3;.\RT-Thread\components\finsh;.\RT-Thread\include;.\RT-Thread\include\libc;.\Peripheral\uart;.\App\Uart_handle;.\App\Key_handle</IncludePath>
+              <IncludePath>.\Libraries\STM32F10x_StdPeriph_Driver\inc;.\User;.\Libraries\CMSIS;.\Public;.\Peripheral\led;.\Peripheral\OLED;.\Peripheral\pwm;.\Peripheral\time;.\Peripheral\key;.\App\Display;.\RT-Thread\bsp;.\RT-Thread\libcpu\arm\cortex-m3;.\RT-Thread\components\finsh;.\RT-Thread\include;.\RT-Thread\include\libc;.\Peripheral\uart;.\App\Uart_handle;.\App\Key_handle;.\Peripheral\24Cxx;.\Peripheral\iic;.\App\Task_tesk</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -437,6 +437,11 @@
               <FileType>1</FileType>
               <FilePath>.\App\Key_handle\key_handle.c</FilePath>
             </File>
+            <File>
+              <FileName>task_readAt24c02.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\App\Task_tesk\task_readAt24c02.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -456,6 +461,11 @@
               <FileName>key_handle.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\App\Uart_handle\key_handle.h</FilePath>
+            </File>
+            <File>
+              <FileName>task_readAT24c02.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\App\Task_tesk\task_readAT24c02.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -587,6 +597,16 @@
               <FileType>1</FileType>
               <FilePath>.\Peripheral\time\bsp_time.c</FilePath>
             </File>
+            <File>
+              <FileName>bsp_iic.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Peripheral\iic\bsp_iic.c</FilePath>
+            </File>
+            <File>
+              <FileName>bsp_24cxx.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Peripheral\24Cxx\bsp_24cxx.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -631,6 +651,16 @@
               <FileName>bsp_time.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Peripheral\time\bsp_time.h</FilePath>
+            </File>
+            <File>
+              <FileName>bsp_iic.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Peripheral\iic\bsp_iic.h</FilePath>
+            </File>
+            <File>
+              <FileName>bsp_24cxx.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Peripheral\24Cxx\bsp_24cxx.h</FilePath>
             </File>
           </Files>
         </Group>

@@ -12,7 +12,10 @@
 #include "bsp_pwm.h"
 #include "bsp_key.h"
 #include "bsp_usart.h"
+#include "bsp_iic.h"
+#include "bsp_24cxx.h"
 /**********º¯ÊýÉùÃ÷************/
 void rt_hw_board_init(void);
 void SysTick_Handler(void);
+void rt_hw_us_delay(rt_uint32_t us);
 #endif

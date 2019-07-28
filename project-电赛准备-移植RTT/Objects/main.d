@@ -59,7 +59,10 @@
 .\objects\main.o: .\RT-Thread\include\rtthread.h
 .\objects\main.o: .\Peripheral\uart\bsp_usart.h
 .\objects\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\main.o: .\Peripheral\iic\bsp_iic.h
+.\objects\main.o: .\Peripheral\24Cxx\bsp_24cxx.h
 .\objects\main.o: User\include.h
 .\objects\main.o: .\App\Display\display.h
 .\objects\main.o: .\App\Uart_handle\uart_handle.h
 .\objects\main.o: .\App\Uart_handle\key_handle.h
+.\objects\main.o: .\App\Task_tesk\task_readAT24c02.h

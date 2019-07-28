@@ -83,6 +83,7 @@ void rt_hw_board_init()
     OLED_ShowString(0,0, "hello mcu");	 
 	USARTx_DMA_Config();  // 串口dma初始化
 	USART_Config();    // 串口初始化
+	AT24CXX_Init();   // AT24c02初始化iic
 	statetable_init();
 /*                           
 *************************************************************************
@@ -145,4 +146,11 @@ void rt_hw_console_output(const char *str)
 	/* 退出临界段 */
     rt_exit_critical();
 }
-
+/*高精度延时实现*/
+void rt_hw_us_delay(rt_uint32_t us)
+{
+	rt_uint32_t delta;
+	us = us * (SysTick->LOAD/(1000000/RT_TICK_PER_SECOND));
+	delta = SysTick->VAL;
+	while(delta - SysTick->VAL< us);
+}

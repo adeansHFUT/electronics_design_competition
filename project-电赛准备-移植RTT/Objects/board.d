@@ -60,4 +60,6 @@
 .\objects\board.o: .\Peripheral\key\bsp_key.h
 .\objects\board.o: .\Peripheral\uart\bsp_usart.h
 .\objects\board.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\board.o: .\Peripheral\iic\bsp_iic.h
+.\objects\board.o: .\Peripheral\24Cxx\bsp_24cxx.h
 .\objects\board.o: .\App\Uart_handle\key_handle.h

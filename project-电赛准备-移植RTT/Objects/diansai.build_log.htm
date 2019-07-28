@@ -22,23 +22,31 @@ Dialog DLL:      TCM.DLL V1.36.2.0
  
 <h2>Project:</h2>
 C:\Users\Administrator\Desktop\电赛\electronics_design_competition\project-电赛准备-移植RTT\diansai.uvprojx
-Project File Date:  07/26/2019
+Project File Date:  07/28/2019
 
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 6 (build 750)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
 Build target 'Target 1'
-compiling display.c...
-App\Display\display.h(10): warning:  #1-D: last line of file ends without a newline
+compiling key_handle.c...
+.\App\Uart_handle\key_handle.h(18): warning:  #1-D: last line of file ends without a newline
   #endif
-.\App\Uart_handle\key_handle.h(15): warning:  #1-D: last line of file ends without a newline
+.\User\board.h(21): warning:  #1-D: last line of file ends without a newline
   #endif
-App\Display\display.c(181): warning:  #1-D: last line of file ends without a newline
+.\App\Display\display.h(9): warning:  #1-D: last line of file ends without a newline
+  #endif
+.\App\Uart_handle\uart_handle.h(8): warning:  #1-D: last line of file ends without a newline
+  #endif
+.\User\include.h(5): warning:  #1-D: last line of file ends without a newline
+  #include "task_readAT24c02.h"
+.\App\Task_tesk\task_readAT24c02.h(10): warning:  #1-D: last line of file ends without a newline
+  #endif
+App\Key_handle\key_handle.c(142): warning:  #1-D: last line of file ends without a newline
   }
-App\Display\display.c: 3 warnings, 0 errors
+App\Key_handle\key_handle.c: 7 warnings, 0 errors
 linking...
-Program Size: Code=14540 RO-data=2716 RW-data=704 ZI-data=7984  
+Program Size: Code=14760 RO-data=2716 RW-data=716 ZI-data=7988  
 FromELF: creating hex file...
-".\Objects\diansai.axf" - 0 Error(s), 3 Warning(s).
+".\Objects\diansai.axf" - 0 Error(s), 7 Warning(s).
 
 <h2>Software Packages used:</h2>
 
