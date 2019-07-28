@@ -35,32 +35,37 @@ void display_thread_entry(void* parameter)
 		if(RT_EOK == uwRet)
 		{
 		    switch(action){
-				case Mainmeau_to_Testmeau: task1_xxx_Display_init(); // 放显示更新函数
-											key_num = 0;            // 处理完成将按键值置零
-											rt_kprintf("task1界面更新成功！\n");
-											break;
-				case Testmeau_to_Mainmeau: main_Display_init();  // 放显示更新函数
-											key_num = 0;         // 处理完成将按键值置零
-											rt_kprintf("回到main界面更新成功！\n");
-											break;
-				case Mainmeau_to_Task1: 						// 放显示更新函数
-										key_num = 0;   
-										break;
-				case Task1_to_Mainmeau:
-										key_num = 0;
-										break;
-				case Mainmeau_to_Task2: 						// 放显示更新函数
-										key_num = 0;   
-										break;
-				case Task2_to_Mainmeau: 						// 放显示更新函数
-										key_num = 0;   
-										break;
-				case NOaction:									// 无动作不更新
-								key_num = 0;
-								break;
-				default: 
-						rt_kprintf("显示更新错误，错误action:%d\n", action);  // 打印失败码
-						break;
+				case Mainmeau_to_Testmeau:{
+					task1_xxx_Display_init(); // 放显示更新函数
+					rt_kprintf("thread_display：task1界面更新成功！\n");
+					break;
+				}											
+				case Testmeau_to_Mainmeau:{
+					main_Display_init();  // 放显示更新函数
+					rt_kprintf("thread_display：回到main界面更新成功！\n");
+					break;
+				}
+				case Mainmeau_to_Task1:{
+					  // 放显示更新函数
+					break;
+				}
+				case Task1_to_Mainmeau:{
+					  // 放显示更新函数
+					break;
+				}
+				case Mainmeau_to_Task2:{
+					  // 放显示更新函数
+					break;
+				}
+				case Task2_to_Mainmeau:{
+					  // 放显示更新函数
+					break;
+				}
+				default:{
+					rt_kprintf("thread_display：显示更新错误，错误action:%d\n", action);  // 打印失败码
+					break;
+				}
+						
 			}
 		}
     }
@@ -109,7 +114,8 @@ void main_Display(void)
 *******************************************************************************/
 void main_Display_init(void)
 {
-	clearpage(pagetable);
+	clearpage(pagetable);  // 清显示数组
+ 	OLED_Clear();  // 清屏
 	updatepage(pagetable, 0,"main",0, 1);
 	updatepage(pagetable, 1,"meau",0, 1);
 	updatepage(pagetable, 2,"tk1",1, 1); 
@@ -127,13 +133,14 @@ void main_Display_init(void)
 void task1_xxx_Display_init(void)
 {
 	clearpage(pagetable);
+	OLED_Clear();
 	updatepage(pagetable, 0,"task",0, 1);
 	updatepage(pagetable, 1,"one",0, 1);
 	updatepage(pagetable, 2,"key_n",0, 1); 
 	updatepage(pagetable, 3,"s2",2, 1);
 	updatepage(pagetable, 4,"s3",3, 1);
 	updatepage(pagetable, 5,"s4",4, 1); // 更新页面数据
-	showpage(pagetable, 1, 16);
+	showpage(pagetable, 1, 12);
 }
 /*******************************************************************************
 * 函 数 名         : task1_xxx

@@ -77,7 +77,7 @@ void keyscan_callback(void *parameter)
 		{
 			rt_err_t uwRet = rt_mb_send(mb_key, key_num);
 			if(RT_EOK == uwRet)
-				rt_kprintf("按键邮箱发送成功！\n");
+				rt_kprintf("timer_keyscan：按键发送成功！\n");
 			
 		}
 			

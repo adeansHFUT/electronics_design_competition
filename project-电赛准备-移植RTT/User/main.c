@@ -66,7 +66,7 @@ int my_ipc_create(void)
 	return 0;
 }
 /*
-*******************创建并启动所有软件定时器********************
+*******************创建所有软件定时器********************
 */
 int my_timer_create(void)
 {
@@ -104,7 +104,7 @@ int my_thread_create(void)
                       keyhandle_thread_entry,   /* 线程入口函数 */
                       RT_NULL,             /* 线程入口函数参数 */
                       512,                 /* 线程栈大小 */
-                      3,                   /* 线程的优先级 */
+                      2,                   /* 线程的优先级 */
                       20);                 /* 线程时间片 */
 	if (keyhandle_thread != RT_NULL)
     rt_kprintf("按键处理线程创建成功！\n\n");
@@ -116,7 +116,7 @@ int my_thread_create(void)
                       512,                 /* 线程栈大小 */
                       8,                   /* 线程的优先级 */
                       20);                 /* 线程时间片 */
-	if (keyhandle_thread != RT_NULL)
+	if (display_thread != RT_NULL)
     rt_kprintf("显示刷新线程创建成功！\n\n");
 	return 0;
 }
@@ -125,13 +125,32 @@ int my_thread_create(void)
 */
 int my_thread_startup(void)
 {
-	 /* 启动线程，开启调度 */
+	 /* 开启调度uart */
    if (uarthandle_thread != RT_NULL)
    {
 		rt_thread_startup(uarthandle_thread); 
-        rt_kprintf("用户线程开始调度！\n\n");
-	    return 0;
+        rt_kprintf("uart线程开始调度！\n\n");
    }	
    else
         return -1;
+   /* 开启调度按键处理线程 */
+   if (keyhandle_thread != RT_NULL)
+   {
+		rt_thread_startup(keyhandle_thread); 
+        rt_kprintf("按键处理线程开始调度！\n\n");
+
+   }	
+   else
+        return -1;
+   /* 开启调度显示线程 */
+    if (display_thread != RT_NULL)
+   {
+		rt_thread_startup(display_thread); 
+        rt_kprintf("显示线程开始调度！\n\n");
+
+   }	
+   else
+        return -1;
+   
+   return 0;
 }

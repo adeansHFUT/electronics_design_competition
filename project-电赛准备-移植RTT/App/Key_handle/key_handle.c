@@ -65,7 +65,7 @@ void statetable_init(void)
 * 函数功能		   : 按键处理线程入口函数
 * 输    入         : 无
 * 输    出         : 无
-* 备    注 		   ：优先级要大于各个任务，保证实时性
+* 备    注 		   ：优先级要大于各个任务，保证按键处理实时性，增加用户体验
 *******************************************************************************/
 void keyhandle_thread_entry(void* parameter)
 {
@@ -77,11 +77,11 @@ void keyhandle_thread_entry(void* parameter)
 		uwRet = rt_mb_recv(mb_key, &keynum, RT_WAITING_FOREVER); 	  /* 等待时间：一直 */
 		if(RT_EOK == uwRet)
 		{
-		    rt_kprintf("收到按键:%d\n,开始处理",keynum);
+		    rt_kprintf("thread_keyhandle：收到按键:%d,开始处理\n",keynum);
 			state_transfer(current_state, keynum);
 		}
 		else
-			rt_kprintf("按键接收失败！\n");
+			rt_kprintf("thread_keyhandle：按键接收失败！\n");
     }
 }
 /*******************************************************************************
@@ -89,39 +89,61 @@ void keyhandle_thread_entry(void* parameter)
 * 函数功能		   : 状态转移函数
 * 输    入         : 无
 * 输    出         : 无
-* 备    注 		   ：优先级要大于各个任务，保证实时性
+* 备    注 		   ：
 *******************************************************************************/
 void state_transfer(uint8_t statenow, uint8_t key_receive)
 {
-	if(statenow == state_transition[statenow][key_receive].state_name)
+	if(statenow == state_transition[statenow][key_receive].state_name)   // 状态不变什么都不做
+	{
+		key_num = 0;  // 允许按键扫描开始扫描
 		return;
+	}		
 	else
 	{
 		switch(state_transition[statenow][key_receive].action){
-			case NOaction: break;
-			case Mainmeau_to_Testmeau: rt_mb_send(mb_display, state_transition[statenow][key_receive].action);
-									   break;
-			case Testmeau_to_Mainmeau: rt_mb_send(mb_display, state_transition[statenow][key_receive].action);
-									   break;
-			case Mainmeau_to_Task1: rt_mb_send(mb_display, state_transition[statenow][key_receive].action);
-									//这里放对其他任务的操作
-									break;
-			case Task1_to_Mainmeau: rt_mb_send(mb_display, state_transition[statenow][key_receive].action);
-									//这里放对其他任务的操作
-									break;
-			case Mainmeau_to_Task2: rt_mb_send(mb_display, state_transition[statenow][key_receive].action);
-									//这里放对其他任务的操作
-									break;
-			case Task2_to_Mainmeau: rt_mb_send(mb_display, state_transition[statenow][key_receive].action);
-									//这里放对其他任务的操作
-									break;
-			default:
-					rt_kprintf("状态转移错误，错误action:%d\n", state_transition[statenow][key_receive].action);
-					break;
+			case NOaction:{
+                // 状态变了但无动作,一般不会这样
+				break;
+			}
+			case Mainmeau_to_Testmeau:{
+				rt_mb_send(mb_display, state_transition[statenow][key_receive].action);
+				break;
+			}
+			case Testmeau_to_Mainmeau:{
+				rt_mb_send(mb_display, state_transition[statenow][key_receive].action);
+				break;
+			}
+			case Mainmeau_to_Task1:{
+				rt_mb_send(mb_display, state_transition[statenow][key_receive].action);
+				/*这里放通知其他任务的操作*/
+				break;
+			}
+			case Task1_to_Mainmeau:{
+				rt_mb_send(mb_display, state_transition[statenow][key_receive].action);
+				/*这里放通知其他任务的操作*/
+				break;
+			}
+			case Mainmeau_to_Task2:{
+				rt_mb_send(mb_display, state_transition[statenow][key_receive].action);
+				/*这里放通知其他任务的操作*/
+				break;
+			}
+			case Task2_to_Mainmeau: {
+				rt_mb_send(mb_display, state_transition[statenow][key_receive].action);
+				/*这里放通知其他任务的操作*/
+				break;
+			}
+			default:{
+				rt_kprintf("状态转移错误,action:%d\n", state_transition[statenow][key_receive].action);
+				break;
+			}
+					
 		}
+		key_num = 0;		
 		rt_enter_critical(); // 直接关调度器，好狠
 		current_state = state_transition[statenow][key_receive].state_name; //更新状态
 		rt_exit_critical();
+		return;
 	}
 		
 }
