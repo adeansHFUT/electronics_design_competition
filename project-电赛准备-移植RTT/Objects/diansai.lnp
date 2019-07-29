@@ -33,6 +33,7 @@
 ".\objects\systick.o"
 ".\objects\bsp_iic.o"
 ".\objects\bsp_pwm.o"
+".\objects\pid.o"
 ".\objects\stm32f10x_exti.o"
 ".\objects\stm32f10x_gpio.o"
 ".\objects\stm32f10x_i2c.o"
