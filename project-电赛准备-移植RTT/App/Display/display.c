@@ -127,6 +127,6 @@ void Task_randw_display_init(void)
 {
 	clearpage(pagetable);
 	OLED_Clear();
-	updatepage(pagetable, 0,"pid",0, 1);
+	updatepage(pagetable, 0, "pid", re_AT24, 1);
 	showpage(pagetable, 1, 12);
 }

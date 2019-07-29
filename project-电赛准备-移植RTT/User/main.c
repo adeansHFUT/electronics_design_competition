@@ -14,11 +14,12 @@ int my_thread_startup(void);
 
 /*                           线程优先级排序
 *************************************************************************
-1：main函数线程
+1：main函数线程(执行一次)
 2：按键处理keyhandle
 4：软件定时器-按键扫描
 6：uart处理线程
-8：display显示线程
+8: task1处理线程
+10：display显示线程
 *************************************************************************
 */
 
@@ -64,6 +65,12 @@ int my_ipc_create(void)
     if(mb_display != RT_NULL)
 		rt_kprintf("oled显示邮箱创建成功！\n\n");
 	
+	/* 创建一个mb_ctrlAt24邮箱 */
+	mb_ctrlAt24 = rt_mb_create("mb_ctrlAt24",/* 名字 */
+							5,     /*邮箱大小 */
+							RT_IPC_FLAG_FIFO); /* 模式 FIFO(0x00)*/
+    if(mb_ctrlAt24 != RT_NULL)
+		rt_kprintf("ctrlAt24邮箱创建成功！\n\n");
 	return 0;
 }
 /*
@@ -110,12 +117,22 @@ int my_thread_create(void)
 	if (keyhandle_thread != RT_NULL)
     rt_kprintf("按键处理线程创建成功！\n\n");
 	
+	taskreadAT24_thread =                          /* 线程控制块指针 */
+    rt_thread_create( "taskreadAT24",              /* 线程名字 */
+                      taskreadAT24_thread_entry,   /* 线程入口函数 */
+                      RT_NULL,             /* 线程入口函数参数 */
+                      512,                 /* 线程栈大小 */
+                      8,                   /* 线程的优先级 */
+                      20);                 /* 线程时间片 */
+	if (taskreadAT24_thread != RT_NULL)
+    rt_kprintf("AT24线程创建成功！\n\n");
+	
 	display_thread =                          /* 线程控制块指针 */
     rt_thread_create( "display",              /* 线程名字 */
                       display_thread_entry,   /* 线程入口函数 */
                       RT_NULL,             /* 线程入口函数参数 */
                       512,                 /* 线程栈大小 */
-                      8,                   /* 线程的优先级 */
+                      10,                   /* 线程的优先级 */
                       20);                 /* 线程时间片 */
 	if (display_thread != RT_NULL)
     rt_kprintf("显示刷新线程创建成功！\n\n");
@@ -148,6 +165,15 @@ int my_thread_startup(void)
    {
 		rt_thread_startup(display_thread); 
         rt_kprintf("显示线程开始调度！\n\n");
+
+   }	
+   else
+        return -1;
+   /* 开启调度显示线程 */
+    if (taskreadAT24_thread != RT_NULL)
+   {
+		rt_thread_startup(taskreadAT24_thread); 
+        rt_kprintf("AT24线程开始调度！\n\n");
 
    }	
    else
