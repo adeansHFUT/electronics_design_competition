@@ -18,7 +18,7 @@ int my_thread_startup(void);
 2：按键处理keyhandle
 4：软件定时器-按键扫描
 6：uart处理线程
-8: task1处理线程
+8: taskreadAT24处理线程
 10：display显示线程
 *************************************************************************
 */
@@ -33,7 +33,6 @@ int main(void)
 	 * 即在component.c文件中的rtthread_startup()函数中完成了。
 	 * 所以在main函数中，只需要创建线程和启动线程即可。
 	 */
-    rt_kprintf("串口发送数据触发中断,任务处理数据!\n");
 	my_ipc_create();
 	my_timer_create();
 	my_thread_create();

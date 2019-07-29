@@ -89,7 +89,7 @@ void keyhandle_thread_entry(void* parameter)
 * 函数功能		   : 状态转移函数
 * 输    入         : 无
 * 输    出         : 无
-* 备    注 		   ：
+* 备    注 		   ：整个系统的按键事件识别中转都在这里
 *******************************************************************************/
 void state_transfer(uint8_t statenow, uint8_t key_receive)
 {
@@ -98,22 +98,14 @@ void state_transfer(uint8_t statenow, uint8_t key_receive)
                // 状态变了但无动作,一般不会这样
 			break;
 		}
+/****************Mainmeau状态出发*********************/
 		case Mainmeau_to_Testmeau:{
-			rt_mb_send(mb_display, state_transition[statenow][key_receive].action);
-			break;
-		}
-		case Testmeau_to_Mainmeau:{
 			rt_mb_send(mb_display, state_transition[statenow][key_receive].action);
 			break;
 		}
 		case Mainmeau_to_Task_randw:{
 			rt_mb_send(mb_display, state_transition[statenow][key_receive].action);
-			rt_mb_send(mb_ctrlAt24, state_transition[statenow][key_receive].action);/*这里放通知其他任务的操作*/
-			break;
-		}
-		case Task_randw_to_Mainmeau:{
-			rt_mb_send(mb_display, state_transition[statenow][key_receive].action);
-			/*这里放通知其他任务的操作*/
+			rt_mb_send(mb_ctrlAt24, state_transition[statenow][key_receive].action);/*通知AT24读pid*/
 			break;
 		}
 		case Mainmeau_to_Task2:{
@@ -121,11 +113,28 @@ void state_transfer(uint8_t statenow, uint8_t key_receive)
 			/*这里放通知其他任务的操作*/
 			break;
 		}
+/****************Testmeau状态出发*********************/
+		case Testmeau_to_Mainmeau:{
+			rt_mb_send(mb_display, state_transition[statenow][key_receive].action);
+			break;
+		}
+/****************Task_randw状态出发*********************/		
+		case Task_randw_to_Mainmeau:{
+			rt_mb_send(mb_display, state_transition[statenow][key_receive].action);
+			break;
+		}
+		case Pidplus:case Pidminus:case Pidwrite:{
+			rt_mb_send(mb_ctrlAt24, state_transition[statenow][key_receive].action);
+			rt_mb_send(mb_display, state_transition[statenow][key_receive].action);
+			break;
+		}
+/****************Task2状态出发*********************/		
 		case Task2_to_Mainmeau: {
 			rt_mb_send(mb_display, state_transition[statenow][key_receive].action);
 			/*这里放通知其他任务的操作*/
 			break;
 		}
+/****************default*********************/	
 		default:{
 			rt_kprintf("状态转移错误,action:%d\n", state_transition[statenow][key_receive].action);
 			break;

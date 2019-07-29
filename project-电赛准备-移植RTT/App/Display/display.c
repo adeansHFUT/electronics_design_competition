@@ -35,30 +35,29 @@ void display_thread_entry(void* parameter)
 		if(RT_EOK == uwRet)
 		{
 		    switch(action){
+/****************Mainmeau状态出发*********************/
 				case Mainmeau_to_Testmeau:{
 					task1_xxx_Display_init(); // 放显示更新函数
 					rt_kprintf("thread_display：task1界面更新成功！\n");
-					break;
-				}											
-				case Testmeau_to_Mainmeau:{
-					main_Display_init();  // 放显示更新函数
-					rt_kprintf("thread_display：回到main界面更新成功！\n");
 					break;
 				}
 				case Mainmeau_to_Task_randw:{
 					Task_randw_display_init();// 放显示更新函数
 					break;
 				}
-				case Task_randw_to_Mainmeau:{
-					main_Display_init();   // 放显示更新函数
-					break;
-				}
 				case Mainmeau_to_Task2:{
 					  // 放显示更新函数
 					break;
 				}
-				case Task2_to_Mainmeau:{
-					  // 放显示更新函数
+/****************Testmeau状态出发*********************/				
+				case Testmeau_to_Mainmeau:{
+					main_Display_init();  // 放显示更新函数
+					rt_kprintf("thread_display：回到main界面更新成功！\n");
+					break;
+				}			
+/****************Task_randw状态出发*********************/					
+				case Task_randw_to_Mainmeau:{
+					main_Display_init();   // 放显示更新函数
 					break;
 				}
 				case Pidplus:case Pidminus:{
@@ -71,6 +70,12 @@ void display_thread_entry(void* parameter)
 					showpage(pagetable, 1, 12);
 					break;
 				}
+/****************Task2状态出发*********************/
+				case Task2_to_Mainmeau:{
+					  // 放显示更新函数
+					break;
+				}
+/****************default*********************/					
 				default:{
 					rt_kprintf("thread_display：显示更新错误，错误action:%d\n", action);  // 打印失败码
 					break;

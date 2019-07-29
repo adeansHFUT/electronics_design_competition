@@ -1,9 +1,9 @@
-.\objects\bsp_pwm.o: Peripheral\pwm\bsp_pwm.c
-.\objects\bsp_pwm.o: Peripheral\pwm\bsp_pwm.h
+.\objects\bsp_pwm.o: Public\pwm\bsp_pwm.c
+.\objects\bsp_pwm.o: Public\pwm\bsp_pwm.h
 .\objects\bsp_pwm.o: .\Public\sys.h
 .\objects\bsp_pwm.o: .\User\stm32f10x.h
 .\objects\bsp_pwm.o: .\Libraries\CMSIS\core_cm3.h
-.\objects\bsp_pwm.o: D:\KEIL5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\bsp_pwm.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\bsp_pwm.o: .\Libraries\CMSIS\system_stm32f10x.h
 .\objects\bsp_pwm.o: .\User\stm32f10x_conf.h
 .\objects\bsp_pwm.o: .\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_adc.h

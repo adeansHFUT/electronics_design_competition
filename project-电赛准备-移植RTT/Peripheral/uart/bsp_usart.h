@@ -39,7 +39,21 @@
 #define  DEBUG_USART_IRQ                USART1_IRQn
 #define  DEBUG_USART_IRQHandler         USART1_IRQHandler
 
+// 像iic重新用面向对象的思想构造uart,之后再说
+typedef struct  
+{
+	USART_TypeDef* uart_module;  //uart模块
+	GPIO_TypeDef* gpio_port;  //gpio端口
+	uint16_t gpio_pin;  // gpio引脚
+	uint16_t irq;  // 哪个模块的irq
+	uint32_t RCC_uart;  //uart哪个RCC时钟
+	uint32_t RCC_gpio;  // gpio哪个RCC时钟
+	uint32_t baudrate;  // 波特率多少
+	DMA_Channel_TypeDef* dma_channel;  // dma通道哪个
+	uint32_t dma_address; // 外设地址
+	uint32_t buffer_size; // 一次发送的数据量
 
+}My_uart;	
 // 串口2-USART2
 //#define  DEBUG_USARTx                   USART2
 //#define  DEBUG_USART_CLK                RCC_APB1Periph_USART2
