@@ -18,9 +18,6 @@
 // 一次发送的数据量
 #define  USART_RBUFF_SIZE            1000 
 
-
-
-  
 // 串口1-USART1
 #define  DEBUG_USARTx                   USART1
 #define  DEBUG_USART_CLK                RCC_APB2Periph_USART1

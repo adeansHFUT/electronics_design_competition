@@ -3,20 +3,7 @@
 
 #include "sys.h"
 
-/*  AT24cxx_IIC_SCL时钟端口、引脚定义 */
-#define AT24cxx_IIC_SCL_PORT 			GPIOB   
-#define AT24cxx_IIC_SCL_PIN 			(GPIO_Pin_6)
-#define AT24cxx_IIC_SCL_PORT_RCC		RCC_APB2Periph_GPIOB
 
-/*  AT24cxx_IIC_SDA时钟端口、引脚定义 */
-#define AT24cxx_IIC_SDA_PORT 			GPIOB  
-#define AT24cxx_IIC_SDA_PIN 			(GPIO_Pin_7)
-#define AT24cxx_IIC_SDA_PORT_RCC		RCC_APB2Periph_GPIOB
-
-//IO操作函数	 
-#define AT24cxx_IIC_SCL    PBout(6) //SCL
-#define AT24cxx_IIC_SDA    PBout(7) //SDA	 
-#define AT24cxx_READ_SDA   PBin(7)  //输入SDA
 
 typedef struct  
 {

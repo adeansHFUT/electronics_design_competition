@@ -14,12 +14,17 @@ void KEY_Init(void)
 {
 	GPIO_InitTypeDef GPIO_InitStructure; //定义结构体变量	
 	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA, ENABLE);
-	
-	
-	GPIO_InitStructure.GPIO_Pin=KEY1_Pin|KEY2_Pin|KEY3_Pin|KEY4_Pin;
+
 	GPIO_InitStructure.GPIO_Mode=GPIO_Mode_IPU;	//上拉输入
 	GPIO_InitStructure.GPIO_Speed=GPIO_Speed_50MHz;
-	GPIO_Init(KEY_Port,&GPIO_InitStructure);
+	GPIO_InitStructure.GPIO_Pin=KEY1_Pin;
+	GPIO_Init(KEY1_Port,&GPIO_InitStructure);
+	GPIO_InitStructure.GPIO_Pin=KEY2_Pin;
+	GPIO_Init(KEY2_Port,&GPIO_InitStructure);
+	GPIO_InitStructure.GPIO_Pin=KEY3_Pin;
+	GPIO_Init(KEY3_Port,&GPIO_InitStructure);
+	GPIO_InitStructure.GPIO_Pin=KEY4_Pin;
+	GPIO_Init(KEY4_Port,&GPIO_InitStructure);
 }
 
 /*******************************************************************************
