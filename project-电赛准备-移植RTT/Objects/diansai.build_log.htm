@@ -17,24 +17,26 @@ Library Manager: ArmAr.exe V5.06 update 6 (build 750)
 Hex Converter:   FromElf.exe V5.06 update 6 (build 750)
 CPU DLL:         SARMCM3.DLL V5.28.0.0
 Dialog DLL:      DCM.DLL V1.17.3.0
-Target DLL:      UL2CM3.DLL V1.162.16.0
+Target DLL:      Segger\JL2CM3.dll V2.99.36.0
 Dialog DLL:      TCM.DLL V1.36.2.0
  
 <h2>Project:</h2>
 C:\Users\Administrator\Desktop\电赛\electronics_design_competition\project-电赛准备-移植RTT\diansai.uvprojx
-Project File Date:  07/30/2019
+Project File Date:  07/31/2019
 
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 6 (build 750)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
 Build target 'Target 1'
-compiling uart_handle.c...
-App\Uart_handle\uart_handle.h(8): warning:  #1-D: last line of file ends without a newline
-  #endif
-App\Uart_handle\uart_handle.c(25): warning:  #1-D: last line of file ends without a newline
-  }
-App\Uart_handle\uart_handle.c: 2 warnings, 0 errors
 compiling display.c...
 App\Display\display.h(9): warning:  #1-D: last line of file ends without a newline
+  #endif
+.\User\PORT_cfg.h(157): warning:  #1-D: last line of file ends without a newline
+  #endif
+.\User\PORT_cfg.h(157): warning:  #1-D: last line of file ends without a newline
+  #endif
+.\User\PORT_cfg.h(157): warning:  #1-D: last line of file ends without a newline
+  #endif
+.\User\PORT_cfg.h(157): warning:  #1-D: last line of file ends without a newline
   #endif
 .\User\board.h(21): warning:  #1-D: last line of file ends without a newline
   #endif
@@ -48,14 +50,30 @@ App\Display\display.h(9): warning:  #1-D: last line of file ends without a newli
   #endif
 App\Display\display.c(137): warning:  #1-D: last line of file ends without a newline
   }
-App\Display\display.c: 7 warnings, 0 errors
+App\Display\display.c: 11 warnings, 0 errors
 compiling board.c...
+.\User\PORT_cfg.h(157): warning:  #1-D: last line of file ends without a newline
+  #endif
+.\User\PORT_cfg.h(157): warning:  #1-D: last line of file ends without a newline
+  #endif
+.\User\PORT_cfg.h(157): warning:  #1-D: last line of file ends without a newline
+  #endif
+.\User\PORT_cfg.h(157): warning:  #1-D: last line of file ends without a newline
+  #endif
 .\User\board.h(21): warning:  #1-D: last line of file ends without a newline
   #endif
 .\App\Uart_handle\key_handle.h(18): warning:  #1-D: last line of file ends without a newline
   #endif
-RT-Thread\bsp\board.c: 2 warnings, 0 errors
+RT-Thread\bsp\board.c: 6 warnings, 0 errors
 compiling main.c...
+.\User\PORT_cfg.h(157): warning:  #1-D: last line of file ends without a newline
+  #endif
+.\User\PORT_cfg.h(157): warning:  #1-D: last line of file ends without a newline
+  #endif
+.\User\PORT_cfg.h(157): warning:  #1-D: last line of file ends without a newline
+  #endif
+.\User\PORT_cfg.h(157): warning:  #1-D: last line of file ends without a newline
+  #endif
 User\board.h(21): warning:  #1-D: last line of file ends without a newline
   #endif
 .\App\Display\display.h(9): warning:  #1-D: last line of file ends without a newline
@@ -70,9 +88,35 @@ User\include.h(5): warning:  #1-D: last line of file ends without a newline
   #endif
 User\main.c(182): warning:  #1-D: last line of file ends without a newline
   }
-User\main.c: 7 warnings, 0 errors
+User\main.c: 11 warnings, 0 errors
+compiling uart_handle.c...
+App\Uart_handle\uart_handle.h(8): warning:  #1-D: last line of file ends without a newline
+  #endif
+.\User\PORT_cfg.h(157): warning:  #1-D: last line of file ends without a newline
+  #endif
+App\Uart_handle\uart_handle.c(25): warning:  #1-D: last line of file ends without a newline
+  }
+App\Uart_handle\uart_handle.c: 3 warnings, 0 errors
+compiling task_readAt24c02.c...
+App\Task_tesk\task_readAT24c02.h(10): warning:  #1-D: last line of file ends without a newline
+  #endif
+.\User\PORT_cfg.h(157): warning:  #1-D: last line of file ends without a newline
+  #endif
+.\App\Uart_handle\key_handle.h(18): warning:  #1-D: last line of file ends without a newline
+  #endif
+App\Task_tesk\task_readAt24c02.c(51): warning:  #1-D: last line of file ends without a newline
+  }
+App\Task_tesk\task_readAt24c02.c: 4 warnings, 0 errors
 compiling key_handle.c...
 .\App\Uart_handle\key_handle.h(18): warning:  #1-D: last line of file ends without a newline
+  #endif
+.\User\PORT_cfg.h(157): warning:  #1-D: last line of file ends without a newline
+  #endif
+.\User\PORT_cfg.h(157): warning:  #1-D: last line of file ends without a newline
+  #endif
+.\User\PORT_cfg.h(157): warning:  #1-D: last line of file ends without a newline
+  #endif
+.\User\PORT_cfg.h(157): warning:  #1-D: last line of file ends without a newline
   #endif
 .\User\board.h(21): warning:  #1-D: last line of file ends without a newline
   #endif
@@ -86,41 +130,56 @@ compiling key_handle.c...
   #endif
 App\Key_handle\key_handle.c(151): warning:  #1-D: last line of file ends without a newline
   }
-App\Key_handle\key_handle.c: 7 warnings, 0 errors
+App\Key_handle\key_handle.c: 11 warnings, 0 errors
 compiling bsp_usart.c...
-compiling task_readAt24c02.c...
-App\Task_tesk\task_readAT24c02.h(10): warning:  #1-D: last line of file ends without a newline
+.\User\PORT_cfg.h(157): warning:  #1-D: last line of file ends without a newline
   #endif
-.\App\Uart_handle\key_handle.h(18): warning:  #1-D: last line of file ends without a newline
-  #endif
-App\Task_tesk\task_readAt24c02.c(51): warning:  #1-D: last line of file ends without a newline
-  }
-App\Task_tesk\task_readAt24c02.c: 3 warnings, 0 errors
+Peripheral\uart\bsp_usart.c: 1 warning, 0 errors
 compiling bsp_key.c...
+.\User\PORT_cfg.h(157): warning:  #1-D: last line of file ends without a newline
+  #endif
+Peripheral\key\bsp_key.c: 1 warning, 0 errors
+compiling bsp_time.c...
+.\User\PORT_cfg.h(157): warning:  #1-D: last line of file ends without a newline
+  #endif
+.\User\PORT_cfg.h(157): warning:  #1-D: last line of file ends without a newline
+  #endif
+Peripheral\time\bsp_time.c(58): warning:  #223-D: function "KEY_Scan" declared implicitly
+  			key_num = KEY_Scan(0);
+Peripheral\time\bsp_time.c: 3 warnings, 0 errors
 compiling bsp_oled.c...
+.\User\PORT_cfg.h(157): warning:  #1-D: last line of file ends without a newline
+  #endif
 Peripheral\OLED\bsp_oled.c(397): warning:  #167-D: argument of type "char *" is incompatible with parameter of type "u8 *"
   				OLED_ShowString(0, (8/row_num)*i, page[i].srt);
 Peripheral\OLED\bsp_oled.c(408): warning:  #167-D: argument of type "char *" is incompatible with parameter of type "u8 *"
   				OLED_ShowString(0, (8/row_num)*i, page[2*i].srt);
 Peripheral\OLED\bsp_oled.c(410): warning:  #167-D: argument of type "char *" is incompatible with parameter of type "u8 *"
   				OLED_ShowString(64, (8/row_num)*i, page[2*i+1].srt);
-Peripheral\OLED\bsp_oled.c: 3 warnings, 0 errors
+Peripheral\OLED\bsp_oled.c: 4 warnings, 0 errors
 compiling bsp_24cxx.c...
-compiling bsp_time.c...
-Peripheral\time\bsp_time.c(58): warning:  #223-D: function "KEY_Scan" declared implicitly
-  			key_num = KEY_Scan(0);
-Peripheral\time\bsp_time.c: 1 warning, 0 errors
+.\User\PORT_cfg.h(157): warning:  #1-D: last line of file ends without a newline
+  #endif
+Peripheral\24Cxx\bsp_24cxx.c: 1 warning, 0 errors
 compiling sys.c...
 compiling SysTick.c...
 compiling bsp_iic.c...
+.\User\PORT_cfg.h(157): warning:  #1-D: last line of file ends without a newline
+  #endif
+.\User\PORT_cfg.h(157): warning:  #1-D: last line of file ends without a newline
+  #endif
+.\User\PORT_cfg.h(157): warning:  #1-D: last line of file ends without a newline
+  #endif
+.\User\PORT_cfg.h(157): warning:  #1-D: last line of file ends without a newline
+  #endif
 .\User\board.h(21): warning:  #1-D: last line of file ends without a newline
   #endif
-Public\iic\bsp_iic.c: 1 warning, 0 errors
+Public\iic\bsp_iic.c: 5 warnings, 0 errors
 compiling bsp_pwm.c...
 linking...
-Program Size: Code=16664 RO-data=2716 RW-data=716 ZI-data=8020  
+Program Size: Code=16688 RO-data=2716 RW-data=716 ZI-data=8020  
 FromELF: creating hex file...
-".\Objects\diansai.axf" - 0 Error(s), 33 Warning(s).
+".\Objects\diansai.axf" - 0 Error(s), 61 Warning(s).
 
 <h2>Software Packages used:</h2>
 

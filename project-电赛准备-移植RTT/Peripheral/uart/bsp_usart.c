@@ -90,7 +90,7 @@ void USARTx_DMA_Config(void)
 		// 开启DMA时钟
 		RCC_AHBPeriphClockCmd(RCC_AHBPeriph_DMA1, ENABLE);
 		// 设置DMA源地址：串口数据寄存器地址*/
-    DMA_InitStructure.DMA_PeripheralBaseAddr = (uint32_t)USART_DR_ADDRESS;
+        DMA_InitStructure.DMA_PeripheralBaseAddr = (uint32_t)USART_DR_ADDRESS;
 		// 内存地址(要传输的变量的指针)
 		DMA_InitStructure.DMA_MemoryBaseAddr = (uint32_t)Usart_Rx_Buf;
 		// 方向：从内存到外设	
@@ -103,7 +103,7 @@ void USARTx_DMA_Config(void)
 		DMA_InitStructure.DMA_MemoryInc = DMA_MemoryInc_Enable;
 		// 外设数据单位	
 		DMA_InitStructure.DMA_PeripheralDataSize = 
-	  DMA_PeripheralDataSize_Byte;
+	    DMA_PeripheralDataSize_Byte;
 		// 内存数据单位
 		DMA_InitStructure.DMA_MemoryDataSize = DMA_MemoryDataSize_Byte;	 
 		// DMA模式，一次或者循环模式

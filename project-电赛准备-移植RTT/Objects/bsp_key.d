@@ -49,4 +49,5 @@
 .\objects\bsp_key.o: .\RT-Thread\include\rtservice.h
 .\objects\bsp_key.o: .\RT-Thread\include\rtm.h
 .\objects\bsp_key.o: .\RT-Thread\include\rtthread.h
+.\objects\bsp_key.o: .\User\PORT_cfg.h
 .\objects\bsp_key.o: .\Public\SysTick.h

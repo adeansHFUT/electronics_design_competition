@@ -33,6 +33,7 @@
 .\objects\main.o: .\Peripheral\OLED\bsp_oled.h
 .\objects\main.o: .\Public\sys.h
 .\objects\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+.\objects\main.o: .\User\PORT_cfg.h
 .\objects\main.o: .\Public\SysTick.h
 .\objects\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 .\objects\main.o: .\Peripheral\time\bsp_time.h
@@ -57,10 +58,13 @@
 .\objects\main.o: .\RT-Thread\include\rtservice.h
 .\objects\main.o: .\RT-Thread\include\rtm.h
 .\objects\main.o: .\RT-Thread\include\rtthread.h
+.\objects\main.o: .\User\PORT_cfg.h
 .\objects\main.o: .\Peripheral\uart\bsp_usart.h
 .\objects\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\main.o: .\User\PORT_cfg.h
 .\objects\main.o: .\Public\iic\bsp_iic.h
 .\objects\main.o: .\Peripheral\24Cxx\bsp_24cxx.h
+.\objects\main.o: .\User\PORT_cfg.h
 .\objects\main.o: User\include.h
 .\objects\main.o: .\App\Display\display.h
 .\objects\main.o: .\App\Uart_handle\uart_handle.h

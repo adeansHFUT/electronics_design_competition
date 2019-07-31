@@ -51,4 +51,5 @@
 .\objects\task_readat24c02.o: .\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_wwdg.h
 .\objects\task_readat24c02.o: .\Libraries\STM32F10x_StdPeriph_Driver\inc\misc.h
 .\objects\task_readat24c02.o: .\Public\iic\bsp_iic.h
+.\objects\task_readat24c02.o: .\User\PORT_cfg.h
 .\objects\task_readat24c02.o: .\App\Uart_handle\key_handle.h

@@ -2,10 +2,7 @@
 #define __SYS_H	
 #include "stm32f10x.h"
 
-// 在这里定义用的哪个开发板
-#define STM32f103ZET6_alien
-//#define STM32f103VET6_small
-//#define STM32f103C8T6_mostsmall
+
 
 //0,不支持ucos
 //1,支持ucos

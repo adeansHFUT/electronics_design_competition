@@ -54,10 +54,14 @@
 .\objects\bsp_iic.o: .\Peripheral\led\bsp_led.h
 .\objects\bsp_iic.o: .\Peripheral\OLED\bsp_oled.h
 .\objects\bsp_iic.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+.\objects\bsp_iic.o: .\User\PORT_cfg.h
 .\objects\bsp_iic.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 .\objects\bsp_iic.o: .\Peripheral\time\bsp_time.h
 .\objects\bsp_iic.o: .\Public\pwm\bsp_pwm.h
 .\objects\bsp_iic.o: .\Peripheral\key\bsp_key.h
+.\objects\bsp_iic.o: .\User\PORT_cfg.h
 .\objects\bsp_iic.o: .\Peripheral\uart\bsp_usart.h
 .\objects\bsp_iic.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\bsp_iic.o: .\User\PORT_cfg.h
 .\objects\bsp_iic.o: .\Peripheral\24Cxx\bsp_24cxx.h
+.\objects\bsp_iic.o: .\User\PORT_cfg.h

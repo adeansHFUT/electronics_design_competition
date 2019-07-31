@@ -30,6 +30,7 @@
 .\objects\bsp_usart.o: .\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_wwdg.h
 .\objects\bsp_usart.o: .\Libraries\STM32F10x_StdPeriph_Driver\inc\misc.h
 .\objects\bsp_usart.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\bsp_usart.o: .\User\PORT_cfg.h
 .\objects\bsp_usart.o: .\RT-Thread\include\rtthread.h
 .\objects\bsp_usart.o: .\RT-Thread\bsp\rtconfig.h
 .\objects\bsp_usart.o: .\RT-Thread\include\rtdebug.h

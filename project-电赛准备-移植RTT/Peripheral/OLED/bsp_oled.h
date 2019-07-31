@@ -31,7 +31,8 @@
 #ifndef __BSP_OLED_H
 #define __BSP_OLED_H			  	 
 #include "sys.h"
-#include "stdlib.h"	    	
+#include "stdlib.h"	 
+#include "PORT_cfg.h"
 //OLED模式设置
 //0:4线串行模式
 //1:并行8080模式
@@ -43,49 +44,7 @@
 #define	Brightness	0xFF 
 #define X_WIDTH 	128
 #define Y_WIDTH 	64	    						  
-//-----------------OLED端口定义----------------  
-#if defined(STM32f103VET6_small)
-#define OLED_CS_PORT  GPIOD
-#define OLED_RCC_CS_PORT  RCC_APB2Periph_GPIOD
-#define OLED_CS_PIN   GPIO_Pin_3
 
-#define OLED_RST_PORT  GPIOD
-#define OLED_RCC_RST_PORT  RCC_APB2Periph_GPIOD
-#define OLED_RST_PIN  GPIO_Pin_4
-
-#define OLED_DC_PORT  GPIOD
-#define OLED_RCC_DC_PORT  RCC_APB2Periph_GPIOD
-#define OLED_DC_PIN   GPIO_Pin_5
-
-#define OLED_SCLK_PORT  GPIOD
-#define OLED_RCC_SCLK_PORT  RCC_APB2Periph_GPIOD
-#define OLED_SCLK_PIN  GPIO_Pin_7
-
-#define OLED_SDIN_PORT  GPIOD
-#define OLED_RCC_SDIN_PORT  RCC_APB2Periph_GPIOD
-#define OLED_SDIN_PIN  GPIO_Pin_8
-#endif
-#if defined(STM32f103ZET6_alien)
-#define OLED_CS_PORT  GPIOD
-#define OLED_RCC_CS_PORT  RCC_APB2Periph_GPIOD
-#define OLED_CS_PIN   GPIO_Pin_3
-
-#define OLED_RST_PORT  GPIOD
-#define OLED_RCC_RST_PORT  RCC_APB2Periph_GPIOD
-#define OLED_RST_PIN  GPIO_Pin_4
-
-#define OLED_DC_PORT  GPIOD
-#define OLED_RCC_DC_PORT  RCC_APB2Periph_GPIOD
-#define OLED_DC_PIN   GPIO_Pin_5
-
-#define OLED_SCLK_PORT  GPIOD
-#define OLED_RCC_SCLK_PORT  RCC_APB2Periph_GPIOD
-#define OLED_SCLK_PIN  GPIO_Pin_7
-
-#define OLED_SDIN_PORT  GPIOD
-#define OLED_RCC_SDIN_PORT  RCC_APB2Periph_GPIOD
-#define OLED_SDIN_PIN  GPIO_Pin_8
-#endif
 //****************OLED模式0使用*************************
 //****************基本指令定义*************************
 #define OLED_CS_Clr()  GPIO_ResetBits(OLED_CS_PORT,OLED_CS_PIN)//CS
@@ -104,7 +63,7 @@
 #define OLED_SDIN_Set() GPIO_SetBits(OLED_SDIN_PORT,OLED_SDIN_PIN)
 
 
-//****************OLED模式1使用*************************
+//****************OLED模式1使用(没用)*************************
 #define OLED_WR_Clr() GPIO_ResetBits(GPIOG,GPIO_Pin_14)
 #define OLED_WR_Set() GPIO_SetBits(GPIOG,GPIO_Pin_14)
 

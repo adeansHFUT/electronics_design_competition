@@ -31,6 +31,7 @@
 .\objects\bsp_24cxx.o: .\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_wwdg.h
 .\objects\bsp_24cxx.o: .\Libraries\STM32F10x_StdPeriph_Driver\inc\misc.h
 .\objects\bsp_24cxx.o: .\Public\iic\bsp_iic.h
+.\objects\bsp_24cxx.o: .\User\PORT_cfg.h
 .\objects\bsp_24cxx.o: .\Public\SysTick.h
 .\objects\bsp_24cxx.o: .\RT-Thread\include\rtthread.h
 .\objects\bsp_24cxx.o: .\RT-Thread\bsp\rtconfig.h

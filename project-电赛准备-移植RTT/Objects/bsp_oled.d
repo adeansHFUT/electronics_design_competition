@@ -31,6 +31,7 @@
 .\objects\bsp_oled.o: .\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_wwdg.h
 .\objects\bsp_oled.o: .\Libraries\STM32F10x_StdPeriph_Driver\inc\misc.h
 .\objects\bsp_oled.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+.\objects\bsp_oled.o: .\User\PORT_cfg.h
 .\objects\bsp_oled.o: Peripheral\OLED\oledfont.h
 .\objects\bsp_oled.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 .\objects\bsp_oled.o: .\Public\SysTick.h

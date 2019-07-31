@@ -53,13 +53,17 @@
 .\objects\board.o: .\Peripheral\OLED\bsp_oled.h
 .\objects\board.o: .\Public\sys.h
 .\objects\board.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+.\objects\board.o: .\User\PORT_cfg.h
 .\objects\board.o: .\Public\SysTick.h
 .\objects\board.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 .\objects\board.o: .\Peripheral\time\bsp_time.h
 .\objects\board.o: .\Public\pwm\bsp_pwm.h
 .\objects\board.o: .\Peripheral\key\bsp_key.h
+.\objects\board.o: .\User\PORT_cfg.h
 .\objects\board.o: .\Peripheral\uart\bsp_usart.h
 .\objects\board.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\board.o: .\User\PORT_cfg.h
 .\objects\board.o: .\Public\iic\bsp_iic.h
 .\objects\board.o: .\Peripheral\24Cxx\bsp_24cxx.h
+.\objects\board.o: .\User\PORT_cfg.h
 .\objects\board.o: .\App\Uart_handle\key_handle.h

@@ -32,6 +32,7 @@
 .\objects\bsp_time.o: .\Libraries\STM32F10x_StdPeriph_Driver\inc\misc.h
 .\objects\bsp_time.o: .\Peripheral\OLED\bsp_oled.h
 .\objects\bsp_time.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+.\objects\bsp_time.o: .\User\PORT_cfg.h
 .\objects\bsp_time.o: .\Peripheral\key\bsp_key.h
 .\objects\bsp_time.o: .\RT-Thread\include\rtthread.h
 .\objects\bsp_time.o: .\RT-Thread\bsp\rtconfig.h
@@ -52,3 +53,4 @@
 .\objects\bsp_time.o: .\RT-Thread\include\rtservice.h
 .\objects\bsp_time.o: .\RT-Thread\include\rtm.h
 .\objects\bsp_time.o: .\RT-Thread\include\rtthread.h
+.\objects\bsp_time.o: .\User\PORT_cfg.h
