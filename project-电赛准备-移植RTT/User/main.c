@@ -43,11 +43,11 @@ int main(void)
 int my_ipc_create(void)
 {
 	 /* 创建一个信号量 */
-	sem_uart = rt_sem_create("sem_uart",/* 名字 */
+	sem_debug_uart = rt_sem_create("sem_debug_uart",/* 名字 */
                      0,     /* 信号量初始值 */
                      RT_IPC_FLAG_FIFO); /* 信号量模式 FIFO(0x00)*/
-    if(sem_uart != RT_NULL)
-		rt_kprintf("uart信号量创建成功！\n\n");
+    if(sem_debug_uart != RT_NULL)
+		rt_kprintf("debug_uart信号量创建成功！\n\n");
 	
 	/* 创建一个按键处理邮箱 */
 	mb_key = rt_mb_create("mb_key",/* 名字 */
@@ -95,14 +95,14 @@ int my_timer_create(void)
 */
 int my_thread_create(void)
 {
-	uarthandle_thread =                          /* 线程控制块指针 */
-    rt_thread_create( "uarthandle",              /* 线程名字 */
-                      uarthandle_thread_entry,   /* 线程入口函数 */
+	debug_uarthandle_thread =                          /* 线程控制块指针 */
+    rt_thread_create( "debug_uarthandle",              /* 线程名字 */
+                      debug_uarthandle_thread_entry,   /* 线程入口函数 */
                       RT_NULL,             /* 线程入口函数参数 */
                       512,                 /* 线程栈大小 */
                       6,                   /* 线程的优先级 */
                       20);                 /* 线程时间片 */
-	if (uarthandle_thread != RT_NULL)
+	if (debug_uarthandle_thread != RT_NULL)
     rt_kprintf("uart处理线程创建成功！\n\n");
 	
 	keyhandle_thread =                          /* 线程控制块指针 */
@@ -141,11 +141,11 @@ int my_thread_create(void)
 */
 int my_thread_startup(void)
 {
-	 /* 开启调度uart */
-   if (uarthandle_thread != RT_NULL)
+	 /* 开启调度debug_uart */
+   if (debug_uarthandle_thread != RT_NULL)
    {
-		rt_thread_startup(uarthandle_thread); 
-        rt_kprintf("uart线程开始调度！\n\n");
+		rt_thread_startup(debug_uarthandle_thread); 
+        rt_kprintf("debug_uart线程开始调度！\n\n");
    }	
    else
         return -1;

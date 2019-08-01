@@ -2,7 +2,7 @@
 #include "rtthread.h"
 
 /* 外部定义信号量控制块 */
-extern rt_sem_t sem_uart;
+extern rt_sem_t sem_debug_uart;
 
  /**
   * @brief  配置嵌套向量中断控制器NVIC
@@ -81,7 +81,7 @@ void USART_Config(void)
 	USART_Cmd(DEBUG_USARTx, ENABLE);	    
 }
 
-char Usart_Rx_Buf[USART_RBUFF_SIZE];
+char Usart_Rx_Buf[DEBUG_USART_RBUFF_SIZE];
 
 void USARTx_DMA_Config(void)
 {
@@ -90,13 +90,13 @@ void USARTx_DMA_Config(void)
 		// 开启DMA时钟
 		RCC_AHBPeriphClockCmd(RCC_AHBPeriph_DMA1, ENABLE);
 		// 设置DMA源地址：串口数据寄存器地址*/
-        DMA_InitStructure.DMA_PeripheralBaseAddr = (uint32_t)USART_DR_ADDRESS;
+        DMA_InitStructure.DMA_PeripheralBaseAddr = (uint32_t)DEBUG_USART_DR_ADDRESS;
 		// 内存地址(要传输的变量的指针)
 		DMA_InitStructure.DMA_MemoryBaseAddr = (uint32_t)Usart_Rx_Buf;
 		// 方向：从内存到外设	
 		DMA_InitStructure.DMA_DIR = DMA_DIR_PeripheralSRC;
 		// 传输大小	
-		DMA_InitStructure.DMA_BufferSize = USART_RBUFF_SIZE;
+		DMA_InitStructure.DMA_BufferSize = DEBUG_USART_RBUFF_SIZE;
 		// 外设地址不增	    
 		DMA_InitStructure.DMA_PeripheralInc = DMA_PeripheralInc_Disable;
 		// 内存地址自增
@@ -114,26 +114,26 @@ void USARTx_DMA_Config(void)
 		// 禁止内存到内存的传输
 		DMA_InitStructure.DMA_M2M = DMA_M2M_Disable;
 		// 配置DMA通道		   
-		DMA_Init(USART_RX_DMA_CHANNEL, &DMA_InitStructure);		
+		DMA_Init(DEBUG_USART_RX_DMA_CHANNEL, &DMA_InitStructure);		
     // 清除DMA所有标志
     DMA_ClearFlag(DMA1_FLAG_GL5);
-    DMA_ITConfig(USART_RX_DMA_CHANNEL, DMA_IT_TE, ENABLE);
+    DMA_ITConfig(DEBUG_USART_RX_DMA_CHANNEL, DMA_IT_TE, ENABLE);
 		// 使能DMA
-		DMA_Cmd (USART_RX_DMA_CHANNEL,ENABLE);
+		DMA_Cmd (DEBUG_USART_RX_DMA_CHANNEL,ENABLE);
 }
 
 
 void Uart_DMA_Rx_Data(void)
 {
    // 关闭DMA ，防止干扰
-   DMA_Cmd(USART_RX_DMA_CHANNEL, DISABLE);      
+   DMA_Cmd(DEBUG_USART_RX_DMA_CHANNEL, DISABLE);      
    // 清DMA标志位
    DMA_ClearFlag( DMA1_FLAG_GL5 );          
    //  重新赋值计数值，必须大于等于最大可能接收到的数据帧数目
-   USART_RX_DMA_CHANNEL->CNDTR = USART_RBUFF_SIZE;    
-   DMA_Cmd(USART_RX_DMA_CHANNEL, ENABLE);       
+   DEBUG_USART_RX_DMA_CHANNEL->CNDTR = DEBUG_USART_RBUFF_SIZE;    
+   DMA_Cmd(DEBUG_USART_RX_DMA_CHANNEL, ENABLE);       
    //给出二值信号量 ，发送接收到新数据标志，供前台程序查询
-   rt_sem_release(sem_uart);  
+   rt_sem_release(sem_debug_uart);  
   /* 
     DMA 开启，等待数据。注意，如果中断发送数据帧的速率很快，MCU来不及处理此次接收到的数据，
     中断又发来数据的话，这里不能开启，否则数据会被覆盖。有2种方式解决：

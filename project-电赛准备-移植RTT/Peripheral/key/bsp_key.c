@@ -13,7 +13,10 @@ rt_mailbox_t mb_key = RT_NULL;  //传递按键值的邮箱
 void KEY_Init(void)
 {
 	GPIO_InitTypeDef GPIO_InitStructure; //定义结构体变量	
-	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA, ENABLE);
+	RCC_APB2PeriphClockCmd(KEY1_port_RCC, ENABLE);
+	RCC_APB2PeriphClockCmd(KEY2_port_RCC, ENABLE);
+	RCC_APB2PeriphClockCmd(KEY3_port_RCC, ENABLE);
+	RCC_APB2PeriphClockCmd(KEY4_port_RCC, ENABLE);
 
 	GPIO_InitStructure.GPIO_Mode=GPIO_Mode_IPU;	//上拉输入
 	GPIO_InitStructure.GPIO_Speed=GPIO_Speed_50MHz;
@@ -47,6 +50,8 @@ u8 KEY_Scan(u8 mode)
 		key=0;
 		if(K_1==0)
 		{
+			uint8_t mmtest=1;
+		    mmtest = GPIO_ReadInputDataBit(GPIOB, GPIO_Pin_3);
 			return KEY_1; 
 		}
 		else if(K_2==0)

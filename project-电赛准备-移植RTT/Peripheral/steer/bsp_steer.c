@@ -23,6 +23,7 @@ void bsp_steer_init(u8 fre)
 	steer2.pwm_pin = steer2_pin;
 	steer2.timx = steer2_timx;
 	steer2.tim_channel = steer2_TIM_channel;
+	//steer1.pwm_arr = 1000;
 	pwm_Frequency_Init(steer1, fre);   // 同一个tim下pwm的频率必须相同
 	pwm_Frequency_Init(steer2, fre);
 }

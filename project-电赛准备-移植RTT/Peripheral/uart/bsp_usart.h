@@ -20,7 +20,8 @@ typedef struct
 	DMA_Channel_TypeDef* dma_channel;  // dma通道哪个
 	uint32_t dma_address; // 外设地址
 	uint32_t buffer_size; // 一次发送的数据量
-
+	uint8_t uart_PrePriority;  // 抢占优先级
+	uint8_t uart_subPriority;  // 子优先级
 }My_uart_device;	
 // 串口2-USART2
 //#define  DEBUG_USARTx                   USART2
@@ -103,5 +104,5 @@ void Usart_SendString( USART_TypeDef * pUSARTx, char *str);
 void Usart_SendHalfWord( USART_TypeDef * pUSARTx, uint16_t ch);
 void Uart_DMA_Rx_Data(void);
 void DEBUG_USART_IRQHandler(void);
-extern char Usart_Rx_Buf[USART_RBUFF_SIZE];
+extern char Usart_Rx_Buf[DEBUG_USART_RBUFF_SIZE];
 #endif /* __USART_H */

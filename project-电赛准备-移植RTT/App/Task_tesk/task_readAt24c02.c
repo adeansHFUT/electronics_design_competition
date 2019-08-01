@@ -24,7 +24,7 @@ void taskreadAT24_thread_entry(void* parameter)
 		uwRet = rt_mb_recv(mb_ctrlAt24, &AT_flag, RT_WAITING_FOREVER);	  /* 等待时间：一直 */
 		if(RT_EOK == uwRet)
 		{
-		    rt_kprintf("taskreadAT24_thread：收到邮箱");
+		    rt_kprintf("taskreadAT24_thread：收到邮箱\n");
 			switch(AT_flag){
 				case Pidread:{
 					re_AT24 = AT24CXX_ReadOneByte(0);
