@@ -20,7 +20,7 @@
 // 外设寄存器地址
 #define  USART_DR_ADDRESS        (&DEBUG_USARTx->DR)
 // 一次发送的数据量
-#define  USART_RBUFF_SIZE            1000 
+#define  USART_RBUFF_SIZE               1000 
 
 // 串口1-USART1
 #define  DEBUG_USARTx                   USART1
@@ -99,10 +99,10 @@
 #define KEY2_Pin    GPIO_Pin_5    //定义K_2管脚
 #define KEY3_Pin    GPIO_Pin_6   //定义K_3管脚
 #define KEY4_Pin    GPIO_Pin_7  //定义K_4管脚
-#define KEY1_Port (GPIOA) //定义端口
-#define KEY2_Port (GPIOA) //定义端口
-#define KEY3_Port (GPIOA) //定义端口
-#define KEY4_Port (GPIOA) //定义端口
+#define KEY1_Port   (GPIOA) //定义端口
+#define KEY2_Port   (GPIOA) //定义端口
+#define KEY3_Port   (GPIOA) //定义端口
+#define KEY4_Port   (GPIOA) //定义端口
 //使用位操作定义
 #define K_1 PAin(4)
 #define K_2 PAin(5)
@@ -114,44 +114,74 @@
 *******************************************************************************/
 //-----------------OLED端口定义----------------  
 #if defined(STM32f103VET6_small)
-#define OLED_CS_PORT  GPIOD
-#define OLED_RCC_CS_PORT  RCC_APB2Periph_GPIOD
-#define OLED_CS_PIN   GPIO_Pin_3
+#define OLED_CS_PORT 	 		 GPIOD
+#define OLED_RCC_CS_PORT  	     RCC_APB2Periph_GPIOD
+#define OLED_CS_PIN  			 GPIO_Pin_3
 
-#define OLED_RST_PORT  GPIOD
-#define OLED_RCC_RST_PORT  RCC_APB2Periph_GPIOD
-#define OLED_RST_PIN  GPIO_Pin_4
+#define OLED_RST_PORT  			 GPIOD
+#define OLED_RCC_RST_PORT        RCC_APB2Periph_GPIOD
+#define OLED_RST_PIN  			 GPIO_Pin_4
 
-#define OLED_DC_PORT  GPIOD
-#define OLED_RCC_DC_PORT  RCC_APB2Periph_GPIOD
-#define OLED_DC_PIN   GPIO_Pin_5
+#define OLED_DC_PORT  			 GPIOD
+#define OLED_RCC_DC_PORT  		 RCC_APB2Periph_GPIOD
+#define OLED_DC_PIN   			 GPIO_Pin_5
 
-#define OLED_SCLK_PORT  GPIOD
-#define OLED_RCC_SCLK_PORT  RCC_APB2Periph_GPIOD
-#define OLED_SCLK_PIN  GPIO_Pin_7
+#define OLED_SCLK_PORT 			 GPIOD
+#define OLED_RCC_SCLK_PORT  	 RCC_APB2Periph_GPIOD
+#define OLED_SCLK_PIN 			 GPIO_Pin_7
 
-#define OLED_SDIN_PORT  GPIOD
-#define OLED_RCC_SDIN_PORT  RCC_APB2Periph_GPIOD
-#define OLED_SDIN_PIN  GPIO_Pin_8
+#define OLED_SDIN_PORT     		 GPIOD
+#define OLED_RCC_SDIN_PORT  	 RCC_APB2Periph_GPIOD
+#define OLED_SDIN_PIN 			 GPIO_Pin_8
 #endif
 #if defined(STM32f103ZET6_alien)
-#define OLED_CS_PORT  GPIOC
-#define OLED_RCC_CS_PORT  RCC_APB2Periph_GPIOC
-#define OLED_CS_PIN   GPIO_Pin_13
+#define OLED_CS_PORT 			 GPIOC
+#define OLED_RCC_CS_PORT  		 RCC_APB2Periph_GPIOC
+#define OLED_CS_PIN   			 GPIO_Pin_13
 
-#define OLED_RST_PORT  GPIOE
-#define OLED_RCC_RST_PORT  RCC_APB2Periph_GPIOE
-#define OLED_RST_PIN  GPIO_Pin_3
+#define OLED_RST_PORT  			 GPIOE
+#define OLED_RCC_RST_PORT 		 RCC_APB2Periph_GPIOE
+#define OLED_RST_PIN  			 GPIO_Pin_3
 
-#define OLED_DC_PORT  GPIOE
-#define OLED_RCC_DC_PORT  RCC_APB2Periph_GPIOE
-#define OLED_DC_PIN   GPIO_Pin_5            
+#define OLED_DC_PORT  			 GPIOE
+#define OLED_RCC_DC_PORT 		 RCC_APB2Periph_GPIOE
+#define OLED_DC_PIN  			 GPIO_Pin_5            
 
-#define OLED_SCLK_PORT  GPIOB                              //SCLK(D0)
-#define OLED_RCC_SCLK_PORT  RCC_APB2Periph_GPIOB
-#define OLED_SCLK_PIN  GPIO_Pin_9
+#define OLED_SCLK_PORT 			 GPIOB                              //SCLK(D0)
+#define OLED_RCC_SCLK_PORT  	 RCC_APB2Periph_GPIOB
+#define OLED_SCLK_PIN  			 GPIO_Pin_9
 
-#define OLED_SDIN_PORT  GPIOE                             //SDIN(D1)
-#define OLED_RCC_SDIN_PORT  RCC_APB2Periph_GPIOE
-#define OLED_SDIN_PIN  GPIO_Pin_1
+#define OLED_SDIN_PORT 			 GPIOE                             //SDIN(D1)
+#define OLED_RCC_SDIN_PORT  	 RCC_APB2Periph_GPIOE
+#define OLED_SDIN_PIN  			 GPIO_Pin_1
 #endif
+/*******************************************************************************
+                              舵机端口宏定义
+*******************************************************************************/
+#if defined(STM32f103VET6_small)
+#define steer1_port 			 GPIOA             // 初始化函数暂不支持重映射
+#define steer1_pin 				 GPIO_Pin_6
+#define steer1_timx 			 TIM3  
+#define steer1_TIM_channel 		 TIM_Channel_1
+
+#define steer2_port 			 GPIOA             // 初始化函数暂不支持重映射
+#define steer2_pin 				 GPIO_Pin_7
+#define steer2_timx 			 TIM3  
+#define steer2_TIM_channel 		 TIM_Channel_2
+#endif
+#if defined(STM32f103ZET6_alien)
+#define steer1_port 			 GPIOA             // 初始化函数暂不支持重映射
+#define steer1_port_RCC 		 RCC_APB2Periph_GPIOA
+#define steer1_pin 				 GPIO_Pin_6
+#define steer1_timx 			 TIM3 
+#define steer1_tim_RCC 			 RCC_APB1Periph_TIM3
+#define steer1_TIM_channel 		 TIM_Channel_1
+
+#define steer2_port 			 GPIOA             // 初始化函数暂不支持重映射
+#define steer2_port_RCC 		 RCC_APB2Periph_GPIOA
+#define steer2_pin 				 GPIO_Pin_7
+#define steer2_timx 			 TIM3  
+#define steer2_tim_RCC 			 RCC_APB1Periph_TIM3
+#define steer2_TIM_channel 		 TIM_Channel_2
+#endif
+

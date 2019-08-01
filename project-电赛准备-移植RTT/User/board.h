@@ -14,6 +14,7 @@
 #include "bsp_usart.h"
 #include "bsp_iic.h"
 #include "bsp_24cxx.h"
+#include "bsp_steer.h"
 /**********º¯ÊıÉùÃ÷************/
 void rt_hw_board_init(void);
 void SysTick_Handler(void);

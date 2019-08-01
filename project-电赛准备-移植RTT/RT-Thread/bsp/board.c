@@ -84,7 +84,8 @@ void rt_hw_board_init()
 	USARTx_DMA_Config();  // 串口dma初始化
 	USART_Config();    // 串口初始化
 	AT24CXX_Init();   // AT24c02初始化iic
-	statetable_init();
+	bsp_steer_init(1);  //初始化舵机，1khz， 舵机转中间
+	statetable_init();  // 状态转移表初始化
 /*                           
 *************************************************************************
 */	
@@ -93,7 +94,7 @@ void rt_hw_board_init()
 #ifdef RT_USING_COMPONENTS_INIT
     rt_components_board_init();
 #endif
-    
+
 #if defined(RT_USING_CONSOLE) && defined(RT_USING_DEVICE)
 	rt_console_set_device(RT_CONSOLE_DEVICE_NAME);
 #endif
