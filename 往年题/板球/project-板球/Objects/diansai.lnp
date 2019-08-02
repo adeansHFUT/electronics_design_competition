@@ -6,6 +6,7 @@
 ".\objects\uart_handle.o"
 ".\objects\key_handle.o"
 ".\objects\task_readat24c02.o"
+".\objects\banqiu_handle.o"
 ".\objects\clock.o"
 ".\objects\components.o"
 ".\objects\device.o"

@@ -67,8 +67,12 @@
 .\objects\main.o: .\Peripheral\24Cxx\bsp_24cxx.h
 .\objects\main.o: .\User\PORT_cfg.h
 .\objects\main.o: .\Peripheral\steer\bsp_steer.h
+.\objects\main.o: .\Public\pid\pos_pid_control.h
+.\objects\main.o: .\Public\pid\auto_control.h
+.\objects\main.o: .\Public\pid\inc_pid_control.h
 .\objects\main.o: User\include.h
 .\objects\main.o: .\App\Display\display.h
 .\objects\main.o: .\App\Uart_handle\uart_handle.h
 .\objects\main.o: .\App\Uart_handle\key_handle.h
 .\objects\main.o: .\App\Task_tesk\task_readAT24c02.h
+.\objects\main.o: .\App\banqiu_handle\banqiu_handle.h

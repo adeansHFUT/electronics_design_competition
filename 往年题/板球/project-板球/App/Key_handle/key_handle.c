@@ -28,10 +28,9 @@ void statetable_init(void)
 	state_transition[Mainmeau][KEY_1].action = Mainmeau_to_Testmeau;
 	state_transition[Mainmeau][KEY_2].state_name = Task_randw;
 	state_transition[Mainmeau][KEY_2].action = Mainmeau_to_Task_randw;
-	state_transition[Mainmeau][KEY_3].state_name = Task2;
-	state_transition[Mainmeau][KEY_3].action = Mainmeau_to_Task2;
-	
-	
+	state_transition[Mainmeau][KEY_3].state_name = Banqiu_Task1;
+	state_transition[Mainmeau][KEY_3].action = Mainmeau_to_Banqiu_Task1;
+
 	state_transition[Testmeau][KEY_4].state_name = Mainmeau;
 	state_transition[Testmeau][KEY_4].action = Testmeau_to_Mainmeau;
 	
@@ -43,10 +42,17 @@ void statetable_init(void)
 	state_transition[Task_randw][KEY_3].action = Pidwrite;
 	state_transition[Task_randw][KEY_4].state_name = Mainmeau;
 	state_transition[Task_randw][KEY_4].action = Task_randw_to_Mainmeau;
+		
 	
-	
-	state_transition[Task2][KEY_4].state_name = Mainmeau;
-	state_transition[Task2][KEY_4].action = Task2_to_Mainmeau;
+	state_transition[Banqiu_Task1][KEY_5].action = Banqiu_P_plus;
+	state_transition[Banqiu_Task1][KEY_6].action = Banqiu_P_minus;
+	state_transition[Banqiu_Task1][KEY_7].action = Banqiu_I_plus;
+	state_transition[Banqiu_Task1][KEY_8].action = Banqiu_I_minus;
+	state_transition[Banqiu_Task1][KEY_1].action = Banqiu_D_plus;
+	state_transition[Banqiu_Task1][KEY_2].action = Banqiu_D_minus;
+	state_transition[Banqiu_Task1][KEY_3].action = Banqiu_pid_write;
+	state_transition[Banqiu_Task1][KEY_4].state_name = Mainmeau;
+	state_transition[Banqiu_Task1][KEY_4].action = Banqiu_Task1_to_Mainmeau;
 }
 /*******************************************************************************
 * 函 数 名         : keyhandle_thread_entry
@@ -88,27 +94,29 @@ void state_transfer(uint8_t statenow, uint8_t key_receive)
 		}
 /****************Mainmeau状态出发*********************/
 		case Mainmeau_to_Testmeau:{
-			rt_mb_send(mb_display, state_transition[statenow][key_receive].action);
+			rt_mb_send(mb_display, Mainmeau_to_Testmeau);
 			break;
 		}
 		case Mainmeau_to_Task_randw:{
-			rt_mb_send(mb_display, state_transition[statenow][key_receive].action);
-			rt_mb_send(mb_ctrlAt24, state_transition[statenow][key_receive].action);/*通知AT24读pid*/
+			rt_mb_send(mb_ctrlAt24, Mainmeau_to_Task_randw);/*通知AT24读pid*/
+			rt_mb_send(mb_display, Mainmeau_to_Task_randw);
 			break;
 		}
-		case Mainmeau_to_Task2:{
-			rt_mb_send(mb_display, state_transition[statenow][key_receive].action);
-			/*这里放通知其他任务的操作*/
+		case Mainmeau_to_Banqiu_Task1:{
+			USART_Cmd(camera_uart_device.uart_module, ENABLE);  // 打开uart接收
+			rt_sem_release(sem_banqiu_task1);  // 启动板球task1线程
+			rt_mb_send(mb_ctrlAt24, Mainmeau_to_Banqiu_Task1); /*通知AT24读pid*/
+			rt_mb_send(mb_display, Mainmeau_to_Banqiu_Task1); // 通知显示刷新	
 			break;
 		}
 /****************Testmeau状态出发*********************/
 		case Testmeau_to_Mainmeau:{
-			rt_mb_send(mb_display, state_transition[statenow][key_receive].action);
+			rt_mb_send(mb_display, Testmeau_to_Mainmeau);
 			break;
 		}
 /****************Task_randw状态出发*********************/		
 		case Task_randw_to_Mainmeau:{
-			rt_mb_send(mb_display, state_transition[statenow][key_receive].action);
+			rt_mb_send(mb_display, Task_randw_to_Mainmeau);
 			break;
 		}
 		case Pidplus:case Pidminus:case Pidwrite:{
@@ -116,10 +124,52 @@ void state_transfer(uint8_t statenow, uint8_t key_receive)
 			rt_mb_send(mb_display, state_transition[statenow][key_receive].action);
 			break;
 		}
-/****************Task2状态出发*********************/		
-		case Task2_to_Mainmeau: {
-			rt_mb_send(mb_display, state_transition[statenow][key_receive].action);
-			/*这里放通知其他任务的操作*/
+/****************Banqiu_Task1状态出发*********************/		
+		case Banqiu_Task1_to_Mainmeau: {
+			USART_Cmd(camera_uart_device.uart_module, DISABLE);  // 关闭uart接收
+			rt_sem_take(sem_banqiu_task1, RT_WAITING_FOREVER); // 将板球任务1暂停下来(尝试)
+			rt_mb_send(mb_display, Banqiu_Task1_to_Mainmeau);  
+			break;
+		}
+		case Banqiu_P_plus:{
+			pos_pid_control_set_kp(pid_steer1, pid_steer1->kp + 0.1);
+			pos_pid_control_set_kp(pid_steer2, pid_steer2->kp + 0.1);
+			rt_mb_send(mb_display, Banqiu_P_plus);
+			break;
+		}
+		case Banqiu_P_minus:{
+			pos_pid_control_set_kp(pid_steer1, pid_steer1->kp - 0.1);
+			pos_pid_control_set_kp(pid_steer2, pid_steer2->kp - 0.1);
+			rt_mb_send(mb_display, Banqiu_P_minus);
+			break;
+		}
+		case Banqiu_I_plus:{
+			pos_pid_control_set_ki(pid_steer1, pid_steer1->ki + 0.1);
+			pos_pid_control_set_ki(pid_steer2, pid_steer2->ki + 0.1);
+			rt_mb_send(mb_display, Banqiu_I_plus);
+			break;
+		}
+		case Banqiu_I_minus:{
+			pos_pid_control_set_ki(pid_steer1, pid_steer1->ki - 0.1);
+			pos_pid_control_set_ki(pid_steer2, pid_steer2->ki - 0.1);
+			rt_mb_send(mb_display, Banqiu_I_minus);
+			break;
+		}
+		case Banqiu_D_plus:{
+			pos_pid_control_set_kd(pid_steer1, pid_steer1->kd + 0.1);
+			pos_pid_control_set_kd(pid_steer2, pid_steer2->kd + 0.1);
+			rt_mb_send(mb_display, Banqiu_D_plus);
+			break;
+		}
+		case Banqiu_D_minus:{
+			pos_pid_control_set_kd(pid_steer1, pid_steer1->kd - 0.1);
+			pos_pid_control_set_kd(pid_steer2, pid_steer2->kd - 0.1);
+			rt_mb_send(mb_display, Banqiu_D_minus);
+			break;
+		}
+		case Banqiu_pid_write:{
+			rt_mb_send(mb_ctrlAt24, Banqiu_pid_write);
+			rt_mb_send(mb_display, Banqiu_pid_write);
 			break;
 		}
 /****************default*********************/	

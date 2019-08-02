@@ -18,6 +18,7 @@ extern show_node pagetable[16]; //用于OLED 屏幕显示字符的节点数字
 void main_Display_init(void);
 void task1_xxx_Display_init(void);
 void Task_randw_display_init(void);
+void banqiu_task1_Display_init(void);
 /*******************************************************************************
 * 函 数 名         : display_thread_entry
 * 函数功能		   : 界面显示线程入口函数
@@ -45,7 +46,7 @@ void display_thread_entry(void* parameter)
 					Task_randw_display_init();// 放显示更新函数
 					break;
 				}
-				case Mainmeau_to_Task2:{
+				case Mainmeau_to_Banqiu_Task1:{
 					  // 放显示更新函数
 					break;
 				}
@@ -70,9 +71,29 @@ void display_thread_entry(void* parameter)
 					showpage(pagetable, 1, 12);
 					break;
 				}
-/****************Task2状态出发*********************/
-				case Task2_to_Mainmeau:{
-					  // 放显示更新函数
+/****************Banqiu_Task1状态出发*********************/
+				case Banqiu_Task1_to_Mainmeau:{
+					banqiu_task1_Display_init(); // 放显示更新函数
+					break;
+				}
+				case Banqiu_P_plus:case Banqiu_P_minus:{
+					updatepage(pagetable, 0,"Kp", (u16)(pid_steer1->kp*10), 0); // 乘10后再显示
+					showpage(pagetable, 1, 16);
+					break;
+				}
+				case Banqiu_I_plus:case Banqiu_I_minus:{
+					updatepage(pagetable, 1,"Ki", (u16)(pid_steer1->ki*10), 0);
+					showpage(pagetable, 1, 16);
+					break;
+				}
+				case Banqiu_D_plus:case Banqiu_D_minus:{
+					updatepage(pagetable, 2,"Kd", (u16)(pid_steer1->kd*10), 0);
+					showpage(pagetable, 1, 16);
+					break;
+				}
+				case Banqiu_pid_write:{
+					updatepage(pagetable, 3,"ok!", 0, 1);
+					showpage(pagetable, 1, 16);
 					break;
 				}
 /****************default*********************/					
@@ -98,11 +119,11 @@ void main_Display_init(void)
  	OLED_Clear();  // 清屏
 	updatepage(pagetable, 0,"main",0, 1);
 	updatepage(pagetable, 1,"meau",0, 1);
-	updatepage(pagetable, 2,"tk1",1, 1); 
-	updatepage(pagetable, 3,"tk2",2, 1);
-	updatepage(pagetable, 4,"tk3",3, 1);
-	updatepage(pagetable, 5,"tk4",4, 1); // 更新页面数据
-	showpage(pagetable, 1, 16);
+	updatepage(pagetable, 2,"tt1",1, 1); 
+	updatepage(pagetable, 3,"tt2",2, 1);
+	updatepage(pagetable, 4,"tk1",3, 1);
+	updatepage(pagetable, 5,"tk2",4, 1); // 更新页面数据
+	showpage(pagetable, 1, 12);
 }
 /*******************************************************************************
 * 函 数 名         : task1_xxx_Display_init
@@ -134,4 +155,19 @@ void Task_randw_display_init(void)
 	OLED_Clear();
 	updatepage(pagetable, 0, "pid", re_AT24, 1);
 	showpage(pagetable, 1, 12);
+}
+/*******************************************************************************
+* 函 数 名         : banqiu_task1_Display_init
+* 函数功能		   : 主界面显示初始化函数
+* 输    入         : 无
+* 输    出         : 无
+*******************************************************************************/
+void banqiu_task1_Display_init(void)
+{
+	clearpage(pagetable);  // 清显示数组
+ 	OLED_Clear();  // 清屏
+	updatepage(pagetable, 0,"Kp",(u16)(pid_steer1->kp*10), 1);
+	updatepage(pagetable, 1,"Ki",(u16)(pid_steer1->ki*10), 1);
+	updatepage(pagetable, 2,"Kd",(u16)(pid_steer1->kd*10), 1); 
+	showpage(pagetable, 1, 16);
 }

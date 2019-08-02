@@ -68,4 +68,7 @@
 .\objects\board.o: .\Peripheral\24Cxx\bsp_24cxx.h
 .\objects\board.o: .\User\PORT_cfg.h
 .\objects\board.o: .\Peripheral\steer\bsp_steer.h
+.\objects\board.o: .\Public\pid\pos_pid_control.h
+.\objects\board.o: .\Public\pid\auto_control.h
+.\objects\board.o: .\Public\pid\inc_pid_control.h
 .\objects\board.o: .\App\Uart_handle\key_handle.h

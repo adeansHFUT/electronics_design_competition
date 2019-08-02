@@ -2,6 +2,8 @@
 #include "bsp_24cxx.h"
 #include "rtthread.h"
 #include "key_handle.h"
+#include "banqiu_handle.h"
+#include "pos_pid_control.h"
 /* 定义task线程控制块 */
 rt_thread_t taskreadAT24_thread = RT_NULL;
 /* 定义task邮箱控制块 */
@@ -26,7 +28,7 @@ void taskreadAT24_thread_entry(void* parameter)
 		{
 		    rt_kprintf("taskreadAT24_thread：收到邮箱\n");
 			switch(AT_flag){
-				case Pidread:{
+				case Mainmeau_to_Task_randw:{
 					re_AT24 = AT24CXX_ReadOneByte(0);
 					break;
 				}
@@ -42,6 +44,27 @@ void taskreadAT24_thread_entry(void* parameter)
 					AT24CXX_WriteOneByte(0, re_AT24);
 					break;
 				}
+    /*********************板球相关***************************/
+				case Mainmeau_to_Banqiu_Task1:{
+					u8 read_p, read_i, read_d;
+					read_p = AT24CXX_ReadOneByte(1);
+					read_i = AT24CXX_ReadOneByte(2);
+					read_d = AT24CXX_ReadOneByte(3);
+				    pos_pid_control_set_kp(pid_steer1, read_p*0.1);
+					pos_pid_control_set_kp(pid_steer2, read_p*0.1);
+					pos_pid_control_set_ki(pid_steer1, read_i*0.1);
+					pos_pid_control_set_ki(pid_steer2, read_i*0.1);
+					pos_pid_control_set_kd(pid_steer1, read_d*0.1);
+					pos_pid_control_set_kd(pid_steer2, read_d*0.1);
+					break;
+				}
+				case Banqiu_pid_write:{
+					AT24CXX_WriteOneByte(1, (u8)(pid_steer1->kp*10));
+					AT24CXX_WriteOneByte(2, (u8)(pid_steer1->ki*10));
+					AT24CXX_WriteOneByte(3, (u8)(pid_steer1->kd*10));
+					break;
+				}
+   /*********************板球相关***************************/
 			}
 			
 		}

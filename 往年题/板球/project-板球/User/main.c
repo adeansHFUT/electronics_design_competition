@@ -18,7 +18,7 @@ int my_ipc_create(void);
 int my_timer_create(void);
 int my_thread_create(void);
 int my_thread_startup(void);
-
+int my_other_create(void);
 /*                           线程优先级排序
 *************************************************************************
 1：main函数线程(执行一次)
@@ -42,6 +42,7 @@ int main(void)
 	my_ipc_create();
 	my_timer_create();
 	my_thread_create();
+    my_other_create();
 	my_thread_startup();             
 }
 
@@ -169,6 +170,26 @@ int my_thread_create(void)
 		rt_kprintf("显示刷新线程创建成功！\n\n");
 	else
 		rt_kprintf("显示刷新线程创建失败！\n\n");
+	
+	return 0;
+}
+
+/*
+*******************创建其他东西********************
+*/
+int my_other_create(void)
+{
+	pid_steer1 = pos_pid_control_create(2.0, 0, 1.0);
+	if(pid_steer1 != RT_NULL)
+		rt_kprintf("创建PID_steer1成功！\n\n");
+	else
+		rt_kprintf("创建PID_steer1失败！\n\n");
+	
+	pid_steer2 = pos_pid_control_create(2.0, 0, 1.0);
+	if(pid_steer2 != RT_NULL)
+		rt_kprintf("创建PID_steer2成功！\n\n");
+	else
+		rt_kprintf("创建PID_steer2失败！\n\n");
 	
 	return 0;
 }

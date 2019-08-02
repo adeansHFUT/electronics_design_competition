@@ -67,3 +67,6 @@
 .\objects\bsp_iic.o: .\Peripheral\24Cxx\bsp_24cxx.h
 .\objects\bsp_iic.o: .\User\PORT_cfg.h
 .\objects\bsp_iic.o: .\Peripheral\steer\bsp_steer.h
+.\objects\bsp_iic.o: .\Public\pid\pos_pid_control.h
+.\objects\bsp_iic.o: .\Public\pid\auto_control.h
+.\objects\bsp_iic.o: .\Public\pid\inc_pid_control.h

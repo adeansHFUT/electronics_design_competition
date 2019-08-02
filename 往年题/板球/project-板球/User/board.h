@@ -15,6 +15,8 @@
 #include "bsp_iic.h"
 #include "bsp_24cxx.h"
 #include "bsp_steer.h"
+#include "pos_pid_control.h"
+#include "inc_pid_control.h"
 /**********º¯ÊýÉùÃ÷************/
 void rt_hw_board_init(void);
 void SysTick_Handler(void);

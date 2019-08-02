@@ -82,8 +82,7 @@ void rt_hw_board_init()
 	OLED_Clear();         // oled清屏
     OLED_ShowString(0,0, "hello mcu");	 
 	uart_device_init();
-//	USARTx_DMA_Config();  // 串口dma初始化
-//	USART_Config();    // 串口初始化
+	USART_Cmd(camera_uart_device.uart_module, DISABLE);	 // 关闭摄像头的uart接收
 	AT24CXX_Init();   // AT24c02初始化iic
 	bsp_steer_init(1);  //初始化舵机，1khz， 舵机转中间
 	statetable_init();  // 状态转移表初始化
