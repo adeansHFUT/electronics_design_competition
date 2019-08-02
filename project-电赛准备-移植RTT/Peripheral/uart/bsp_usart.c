@@ -4,7 +4,8 @@
 /* 外部定义信号量控制块 */
 extern rt_sem_t sem_debug_uart;
 extern rt_sem_t sem_camera_uart;
-char Usart_Rx_Buf[DEBUG_USART_RBUFF_SIZE];  // 原来的函数使用
+char debug_Usart_Rx_Buf[DEBUG_USART_RBUFF_SIZE];  // 定义存储空间
+char camera_Usart_Rx_Buf[Camera_USART_RBUFF_SIZE];  // 这个空间要在外面定义，直接在结构体中定义这个数组，dma就传不进去，不知为啥
 My_uart_device debug_uart_device, camera_uart_device;  // 全局变量
 void my_uart_DMA_Rx_Data(My_uart_device uart_device, rt_sem_t sem_uart);
 void my_uart_DMA_Config(My_uart_device uart_device);
@@ -28,7 +29,9 @@ void uart_device_init(void)
 	debug_uart_device.baudrate = DEBUG_USART_BAUDRATE;
 	debug_uart_device.dma_address = DEBUG_USART_DR_ADDRESS;
 	debug_uart_device.dma_channel = DEBUG_USART_RX_DMA_CHANNEL;
-	debug_uart_device.uart_PrePriority = 1;
+	debug_uart_device.usart_Rx_Buf = debug_Usart_Rx_Buf;
+	debug_uart_device.buff_size = DEBUG_USART_RBUFF_SIZE;
+	debug_uart_device.uart_PrePriority = 1; // 抢占优先级
 	debug_uart_device.uart_subPriority = 1;
 	
 	camera_uart_device.uart_module = Camera_USARTx;
@@ -42,8 +45,11 @@ void uart_device_init(void)
 	camera_uart_device.baudrate = Camera_USART_BAUDRATE;
 	camera_uart_device.dma_address = Camera_USART_DR_ADDRESS;
 	camera_uart_device.dma_channel = Camera_USART_RX_DMA_CHANNEL;
+	camera_uart_device.usart_Rx_Buf = camera_Usart_Rx_Buf;
+	camera_uart_device.buff_size = Camera_USART_RBUFF_SIZE;
 	camera_uart_device.uart_PrePriority = 1;
 	camera_uart_device.uart_subPriority = 0;
+	
 	my_uart_DMA_Config(debug_uart_device);
 	my_uart_DMA_Config(camera_uart_device);
 	my_uart_Config(debug_uart_device);
@@ -231,7 +237,7 @@ void USARTx_DMA_Config(void)
 		// 设置DMA源地址：串口数据寄存器地址*/
         DMA_InitStructure.DMA_PeripheralBaseAddr = (uint32_t)DEBUG_USART_DR_ADDRESS;
 		// 内存地址(要传输的变量的指针)
-		DMA_InitStructure.DMA_MemoryBaseAddr = (uint32_t)Usart_Rx_Buf;
+		DMA_InitStructure.DMA_MemoryBaseAddr = (uint32_t)debug_Usart_Rx_Buf;
 		// 方向：从内存到外设	
 		DMA_InitStructure.DMA_DIR = DMA_DIR_PeripheralSRC;
 		// 传输大小	
@@ -269,11 +275,11 @@ void my_uart_DMA_Config(My_uart_device uart_device)
 		// 设置DMA源地址：串口数据寄存器地址*/
         DMA_InitStructure.DMA_PeripheralBaseAddr = (uint32_t)uart_device.dma_address;
 		// 内存地址(要传输的变量的指针)
-		DMA_InitStructure.DMA_MemoryBaseAddr = (uint32_t)uart_device.Usart_Rx_Buf;
+		DMA_InitStructure.DMA_MemoryBaseAddr = (uint32_t)uart_device.usart_Rx_Buf;
 		// 方向：从外设到内存	
 		DMA_InitStructure.DMA_DIR = DMA_DIR_PeripheralSRC;
 		// 传输大小	
-		DMA_InitStructure.DMA_BufferSize = USART_RBUFF_SIZE;
+		DMA_InitStructure.DMA_BufferSize = uart_device.buff_size;
 		// 外设地址不增	    
 		DMA_InitStructure.DMA_PeripheralInc = DMA_PeripheralInc_Disable;
 		// 内存地址自增
@@ -332,7 +338,7 @@ void my_uart_DMA_Rx_Data(My_uart_device uart_device, rt_sem_t sem_uart)
    // 清DMA标志位
    DMA_ClearFlag( DMA1_FLAG_GL5 );          
    //  重新赋值计数值，必须大于等于最大可能接收到的数据帧数目
-   uart_device.dma_channel->CNDTR = USART_RBUFF_SIZE;    
+   uart_device.dma_channel->CNDTR = uart_device.buff_size;    
    DMA_Cmd(uart_device.dma_channel, ENABLE);       
    //给出二值信号量 ，发送接收到新数据标志，供前台程序查询
    rt_sem_release(sem_uart);  

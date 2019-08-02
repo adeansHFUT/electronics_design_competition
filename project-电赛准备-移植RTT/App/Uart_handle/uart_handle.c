@@ -8,6 +8,7 @@ rt_sem_t sem_debug_uart = RT_NULL;
 rt_sem_t sem_camera_uart = RT_NULL;
 /* 定义线程控制块 */
 rt_thread_t debug_uarthandle_thread = RT_NULL;
+rt_thread_t camera_uarthandle_thread = RT_NULL;
 
 void debug_uarthandle_thread_entry(void* parameter)
 {
@@ -19,8 +20,8 @@ void debug_uarthandle_thread_entry(void* parameter)
                         RT_WAITING_FOREVER); 	  /* 等待时间：一直 */
     if(RT_EOK == uwRet)
     {
-      rt_kprintf("收到数据:%s\n",debug_uart_device.Usart_Rx_Buf);
-      memset(debug_uart_device.Usart_Rx_Buf, 0, USART_RBUFF_SIZE);/* 清零 */
+      rt_kprintf("收到数据:%s\n",debug_uart_device.usart_Rx_Buf);
+      memset(debug_uart_device.usart_Rx_Buf, 0, debug_uart_device.buff_size);/* 清零 */
     }
   }
 }
@@ -35,8 +36,8 @@ void camera_uarthandle_thread_entry(void* parameter)
                         RT_WAITING_FOREVER); 	  /* 等待时间：一直 */
     if(RT_EOK == uwRet)
     {
-      rt_kprintf("收到数据:%s\n",camera_uart_device.Usart_Rx_Buf);
-      memset(camera_uart_device.Usart_Rx_Buf, 0, USART_RBUFF_SIZE);/* 清零 */
+      rt_kprintf("收到数据:%s\n",camera_uart_device.usart_Rx_Buf);
+      memset(camera_uart_device.usart_Rx_Buf, 0, camera_uart_device.buff_size);/* 清零 */
     }
   }
 }

@@ -23,8 +23,9 @@ int my_thread_startup(void);
 *************************************************************************
 1：main函数线程(执行一次)
 2：按键处理keyhandle
+3: camera_uart处理线程
 4：软件定时器-按键扫描
-6：uart处理线程
+6：debug_uart处理线程
 8: taskreadAT24处理线程
 10：display显示线程
 **************************************************************************/
@@ -55,6 +56,13 @@ int my_ipc_create(void)
                      RT_IPC_FLAG_FIFO); /* 信号量模式 FIFO(0x00)*/
     if(sem_debug_uart != RT_NULL)
 		rt_kprintf("debug_uart信号量创建成功！\n\n");
+	
+	 /* 创建一个信号量 */
+	sem_camera_uart = rt_sem_create("sem_camera_uart",/* 名字 */
+                     0,     /* 信号量初始值 */
+                     RT_IPC_FLAG_FIFO); /* 信号量模式 FIFO(0x00)*/
+    if(sem_camera_uart != RT_NULL)
+		rt_kprintf("camera_uart信号量创建成功！\n\n");
 	
 	/* 创建一个按键处理邮箱 */
 	mb_key = rt_mb_create("mb_key",/* 名字 */
@@ -110,7 +118,17 @@ int my_thread_create(void)
                       6,                   /* 线程的优先级 */
                       20);                 /* 线程时间片 */
 	if (debug_uarthandle_thread != RT_NULL)
-    rt_kprintf("uart处理线程创建成功！\n\n");
+    rt_kprintf("debug_uart处理线程创建成功！\n\n");
+	
+	camera_uarthandle_thread =                          /* 线程控制块指针 */
+    rt_thread_create( "camera_uarthandle",              /* 线程名字 */
+                      camera_uarthandle_thread_entry,   /* 线程入口函数 */
+                      RT_NULL,             /* 线程入口函数参数 */
+                      512,                 /* 线程栈大小 */
+                      3,                   /* 线程的优先级 */
+                      20);                 /* 线程时间片 */
+	if (camera_uarthandle_thread != RT_NULL)
+    rt_kprintf("camera_uart处理线程创建成功！\n\n");
 	
 	keyhandle_thread =                          /* 线程控制块指针 */
     rt_thread_create( "keyhandle",              /* 线程名字 */
@@ -156,6 +174,16 @@ int my_thread_startup(void)
    }	
    else
         return -1;
+   
+    /* 开启调度camera_uart */
+   if (camera_uarthandle_thread != RT_NULL)
+   {
+		rt_thread_startup(camera_uarthandle_thread); 
+        rt_kprintf("camera_uart线程开始调度！\n\n");
+   }	
+   else
+        return -1;
+   
    /* 开启调度按键处理线程 */
    if (keyhandle_thread != RT_NULL)
    {

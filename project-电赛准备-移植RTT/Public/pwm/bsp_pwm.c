@@ -154,7 +154,7 @@ void steerFrequency_Init(u8 fre)
 }
 void pwm_Frequency_Init(My_pwm_device pwm_device, u8 fre)
 {
-	pwm_device.pwm_arr = 1000;
+	pwm_device.pwm_arr = 1000/fre;
 	pwm_device.pwm_ccr = pwm_device.pwm_arr/2;   // 初始ccr为arr的一半，%50占空比
 	PWM_Init(pwm_device, 72-1);
 }

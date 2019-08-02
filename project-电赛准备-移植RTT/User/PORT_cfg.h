@@ -34,7 +34,7 @@
 // 外设寄存器地址
 #define  DEBUG_USART_DR_ADDRESS        (&DEBUG_USARTx->DR) // 设备中定义
 // 一次接收的数据量
-#define  DEBUG_USART_RBUFF_SIZE         1000 
+#define  DEBUG_USART_RBUFF_SIZE         1000  // 设备中定义
 
 //*****************串口12-USART2**********************/
 #define  Camera_USARTx                   USART2
@@ -55,7 +55,7 @@
 // 外设寄存器地址
 #define  Camera_USART_DR_ADDRESS        (&Camera_USARTx->DR)
 // 所有串口一次最多接收的数据量
-#define  USART_RBUFF_SIZE         1000  // 设备中不定义
+#define  Camera_USART_RBUFF_SIZE         1000  
 /*******************************************************************************
                               AT24C02端口定义
 *******************************************************************************/
@@ -141,23 +141,24 @@
 #if defined(STM32f103VET6_small)
 #define OLED_CS_PORT 	 		 GPIOD
 #define OLED_RCC_CS_PORT  	     RCC_APB2Periph_GPIOD
-#define OLED_CS_PIN  			 GPIO_Pin_3
-
-#define OLED_RST_PORT  			 GPIOD
-#define OLED_RCC_RST_PORT        RCC_APB2Periph_GPIOD
-#define OLED_RST_PIN  			 GPIO_Pin_4
+#define OLED_CS_PIN  			 GPIO_Pin_0
 
 #define OLED_DC_PORT  			 GPIOD
 #define OLED_RCC_DC_PORT  		 RCC_APB2Periph_GPIOD
-#define OLED_DC_PIN   			 GPIO_Pin_5
+#define OLED_DC_PIN   			 GPIO_Pin_1
+
+#define OLED_RST_PORT  			 GPIOD
+#define OLED_RCC_RST_PORT        RCC_APB2Periph_GPIOD
+#define OLED_RST_PIN  			 GPIO_Pin_2
+
+#define OLED_SDIN_PORT     		 GPIOD                          //SDIN(D1
+#define OLED_RCC_SDIN_PORT  	 RCC_APB2Periph_GPIOD
+#define OLED_SDIN_PIN 			 GPIO_Pin_3
 
 #define OLED_SCLK_PORT 			 GPIOD
-#define OLED_RCC_SCLK_PORT  	 RCC_APB2Periph_GPIOD
-#define OLED_SCLK_PIN 			 GPIO_Pin_7
+#define OLED_RCC_SCLK_PORT  	 RCC_APB2Periph_GPIOD            //SCLK(D0)
+#define OLED_SCLK_PIN 			 GPIO_Pin_4
 
-#define OLED_SDIN_PORT     		 GPIOD
-#define OLED_RCC_SDIN_PORT  	 RCC_APB2Periph_GPIOD
-#define OLED_SDIN_PIN 			 GPIO_Pin_8
 #endif
 #if defined(STM32f103ZET6_alien)
 #define OLED_CS_PORT 			 GPIOC

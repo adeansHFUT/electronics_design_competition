@@ -138,11 +138,15 @@ void rt_hw_console_output(const char *str)
         if (*str=='\n')
 		{
 			USART_SendData(DEBUG_USARTx, '\r'); 
+			//USART_SendData(Camera_USARTx, '\r'); 
 			while (USART_GetFlagStatus(DEBUG_USARTx, USART_FLAG_TXE) == RESET);
+			//while (USART_GetFlagStatus(Camera_USARTx, USART_FLAG_TXE) == RESET);
 		}
 
-		USART_SendData(DEBUG_USARTx, *str++); 				
+		USART_SendData(DEBUG_USARTx, *str++); 	
+		//USART_SendData(Camera_USARTx, *str++); 
 		while (USART_GetFlagStatus(DEBUG_USARTx, USART_FLAG_TXE) == RESET);	
+		//while (USART_GetFlagStatus(Camera_USARTx, USART_FLAG_TXE) == RESET);
 	}	
 
 	/* ÍË³öÁÙ½ç¶Î */

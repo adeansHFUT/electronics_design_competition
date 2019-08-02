@@ -21,7 +21,8 @@ typedef struct
 	uint32_t baudrate;  // 波特率多少
 	DMA_Channel_TypeDef* dma_channel;  // dma通道哪个
 	__IO uint16_t* dma_address; // 外设地址
-	char Usart_Rx_Buf[USART_RBUFF_SIZE];  // 定义接收的位置
+	char* usart_Rx_Buf;  // 定义接收的位置
+	uint16_t buff_size;
 	uint8_t uart_PrePriority;  // 抢占优先级
 	uint8_t uart_subPriority;  // 子优先级
 }My_uart_device;	
