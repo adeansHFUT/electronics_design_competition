@@ -7,6 +7,13 @@
 //	OLED_Clear(); 
 //	TIM2_Init(10,72000-1);  // 1/(72M/72000)=1ms, 定时器2 ，无os时的按键
 //	steerFrequency_Init(1);	 //舵机初始化
+/*Program Size解释: Code：代码的大小
+					RO：常量所占空间
+					RW：程序中已经初始化的变量所占空间
+					ZI：未初始化的static和全局变量以及堆栈所占的空间
+					Flash占用大小=Code+RO+RW
+					SRAM占用大小=RW+ZI
+*/
 int my_ipc_create(void);
 int my_timer_create(void);
 int my_thread_create(void);

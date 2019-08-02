@@ -81,8 +81,9 @@ void rt_hw_board_init()
 	OLED_Init();			//oled初始化
 	OLED_Clear();         // oled清屏
     OLED_ShowString(0,0, "hello mcu");	 
-	USARTx_DMA_Config();  // 串口dma初始化
-	USART_Config();    // 串口初始化
+	uart_device_init();
+//	USARTx_DMA_Config();  // 串口dma初始化
+//	USART_Config();    // 串口初始化
 	AT24CXX_Init();   // AT24c02初始化iic
 	bsp_steer_init(1);  //初始化舵机，1khz， 舵机转中间
 	statetable_init();  // 状态转移表初始化

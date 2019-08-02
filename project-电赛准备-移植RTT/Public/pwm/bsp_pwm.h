@@ -15,6 +15,7 @@ typedef struct{
 	uint16_t pwm_arr;  // 保存自动重装寄存器的值
 }My_pwm_device;  
 
+
 void TIM3_CH12_steer_PWM_Init(u16 per,u16 psc);
 void PWM_Init(My_pwm_device pwm_device, u16 psc); //改良版
 void steerFrequency_Init(u8 fre);

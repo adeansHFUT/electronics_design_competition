@@ -3,7 +3,7 @@
 *******************************************************************************/
 // 在这里定义用的哪个开发板
 //#define STM32f103ZET6_alien
-#define STM32f103VET6_small
+#define STM32f103VET6_small   // 512k flash 64k Ram
 //#define STM32f103C8T6_mostsmall
 
 /*******************************************************************************
@@ -16,46 +16,46 @@
   */
 	
 //*****************串口1-USART1**********************/
-#define  DEBUG_USARTx                   USART1
-#define  DEBUG_USART_CLK                RCC_APB2Periph_USART1
-#define  DEBUG_USART_APBxClkCmd         RCC_APB2PeriphClockCmd
-#define  DEBUG_USART_BAUDRATE           115200
+#define  DEBUG_USARTx                   USART1   // 设备中定义(支持uart1~3,4要改dma)
+#define  DEBUG_USART_CLK                RCC_APB2Periph_USART1 // 设备中定义
+#define  DEBUG_USART_APBxClkCmd         RCC_APB2PeriphClockCmd 
+#define  DEBUG_USART_BAUDRATE           115200 // 设备中定义
 // USART GPIO 引脚宏定义
-#define  DEBUG_USART_GPIO_CLK           (RCC_APB2Periph_GPIOA)
+#define  DEBUG_USART_GPIO_CLK           (RCC_APB2Periph_GPIOA) // 设备中定义
 #define  DEBUG_USART_GPIO_APBxClkCmd    RCC_APB2PeriphClockCmd
-#define  DEBUG_USART_TX_GPIO_PORT       GPIOA   
-#define  DEBUG_USART_TX_GPIO_PIN        GPIO_Pin_9
-#define  DEBUG_USART_RX_GPIO_PORT       GPIOA
-#define  DEBUG_USART_RX_GPIO_PIN        GPIO_Pin_10
-#define  DEBUG_USART_IRQ                USART1_IRQn
+#define  DEBUG_USART_TX_GPIO_PORT       GPIOA   // 设备中定义
+#define  DEBUG_USART_TX_GPIO_PIN        GPIO_Pin_9 // 设备中定义
+#define  DEBUG_USART_RX_GPIO_PORT       GPIOA	// 设备中定义
+#define  DEBUG_USART_RX_GPIO_PIN        GPIO_Pin_10	// 设备中定义
+#define  DEBUG_USART_IRQ                USART1_IRQn	// 设备中定义
 #define  DEBUG_USART_IRQHandler         USART1_IRQHandler
 // 串口对应的DMA请求通道
-#define  DEBUG_USART_RX_DMA_CHANNEL     DMA1_Channel5
+#define  DEBUG_USART_RX_DMA_CHANNEL     DMA1_Channel5 // 设备中定义
 // 外设寄存器地址
-#define  DEBUG_USART_DR_ADDRESS        (&DEBUG_USARTx->DR)
+#define  DEBUG_USART_DR_ADDRESS        (&DEBUG_USARTx->DR) // 设备中定义
 // 一次接收的数据量
 #define  DEBUG_USART_RBUFF_SIZE         1000 
 
 //*****************串口12-USART2**********************/
 #define  Camera_USARTx                   USART2
 #define  Camera_USART_CLK                RCC_APB1Periph_USART2
-#define  Camera_USART_APBxClkCmd         RCC_APB1PeriphClockCmd
+#define  Camera_USART_APBxClkCmd         RCC_APB1PeriphClockCmd // 设备中不定义
 #define  Camera_USART_BAUDRATE           115200
 // USART GPIO 引脚宏定义
 #define  Camera_USART_GPIO_CLK           (RCC_APB2Periph_GPIOA)
-#define  Camera_USART_GPIO_APBxClkCmd    RCC_APB2PeriphClockCmd
+#define  Camera_USART_GPIO_APBxClkCmd    RCC_APB2PeriphClockCmd // 设备中不定义
 #define  Camera_USART_TX_GPIO_PORT       GPIOA   
 #define  Camera_USART_TX_GPIO_PIN        GPIO_Pin_2
 #define  Camera_USART_RX_GPIO_PORT       GPIOA
 #define  Camera_USART_RX_GPIO_PIN        GPIO_Pin_3
 #define  Camera_USART_IRQ                USART2_IRQn
-#define  Camera_USART_IRQHandler         USART2_IRQHandler
+#define  Camera_USART_IRQHandler         USART2_IRQHandler // 设备中不定义
 // 串口对应的DMA请求通道
 #define  Camera_USART_RX_DMA_CHANNEL     DMA1_Channel6
 // 外设寄存器地址
 #define  Camera_USART_DR_ADDRESS        (&Camera_USARTx->DR)
-// 一次接收的数据量
-#define  Camera_USART_RBUFF_SIZE         1000 
+// 所有串口一次最多接收的数据量
+#define  USART_RBUFF_SIZE         1000  // 设备中不定义
 /*******************************************************************************
                               AT24C02端口定义
 *******************************************************************************/
@@ -188,12 +188,14 @@
 #define steer1_port_RCC 		 RCC_APB2Periph_GPIOA
 #define steer1_pin 				 GPIO_Pin_6
 #define steer1_timx 			 TIM3  
+#define steer1_timx_RCC		     RCC_APB1Periph_TIM3
 #define steer1_TIM_channel 		 TIM_Channel_1
 
 #define steer2_port 			 GPIOA             // 初始化函数暂不支持重映射
 #define steer2_port_RCC 		 RCC_APB2Periph_GPIOA
 #define steer2_pin 				 GPIO_Pin_7
 #define steer2_timx 			 TIM3  
+#define steer2_timx_RCC		     RCC_APB1Periph_TIM3
 #define steer2_TIM_channel 		 TIM_Channel_2
 #endif
 #if defined(STM32f103ZET6_alien)
