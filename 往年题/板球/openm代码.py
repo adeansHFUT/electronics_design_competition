@@ -51,8 +51,8 @@ while(True):
         max_blob=find_max(blobs)
         if max_blob!=0:
             img.draw_rectangle(max_blob.rect(), color = (255,0,0))#画方框
-            x_ban=max_blob.cx()#求色块中心相对于板子的坐标
-            y_ban=max_blob.cy()#求色块中心相对于板子的坐标
+            x_ban=max_blob.cx()-x1[0]#求色块中心相对于板子的坐标
+            y_ban=max_blob.cy()-x1[1]#求色块中心相对于板子的坐标
             if x_ban<0:
                 x_ban=0
             if x_ban>200:
@@ -65,6 +65,7 @@ while(True):
             checkout=(x_ban+y_ban)#校验位,为x坐标+y坐标 的低八位
             data = bytearray([0xAA,0x55,x_ban,y_ban,checkout,0x54])#转成16进制
             #如果识别的坐标大于255，建议除以2之后再发，因为一个字节范围只有0-255
+            print("发送坐标:"+str(x_ban)+ ","+str(y_ban))
             uart.write(data)#通过串口发送出去数据
     else:
         print('not found!')

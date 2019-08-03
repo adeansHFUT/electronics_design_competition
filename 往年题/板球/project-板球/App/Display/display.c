@@ -18,7 +18,9 @@ extern show_node pagetable[16]; //用于OLED 屏幕显示字符的节点数字
 void main_Display_init(void);
 void task1_xxx_Display_init(void);
 void Task_randw_display_init(void);
-void banqiu_task1_Display_init(void);
+void Banqiu_set_pid_Display_init(void);
+void Banqiu_setB_Display_init(void);
+void Banqiu_setA_Display_init(void);
 /*******************************************************************************
 * 函 数 名         : display_thread_entry
 * 函数功能		   : 界面显示线程入口函数
@@ -46,8 +48,8 @@ void display_thread_entry(void* parameter)
 					Task_randw_display_init();// 放显示更新函数
 					break;
 				}
-				case Mainmeau_to_Banqiu_Task1:{
-					  // 放显示更新函数
+				case Mainmeau_to_Banqiu_setA:{
+					Banqiu_setA_Display_init();// 放显示更新函数
 					break;
 				}
 /****************Testmeau状态出发*********************/				
@@ -71,9 +73,45 @@ void display_thread_entry(void* parameter)
 					showpage(pagetable, 1, 12);
 					break;
 				}
-/****************Banqiu_Task1状态出发*********************/
-				case Banqiu_Task1_to_Mainmeau:{
-					banqiu_task1_Display_init(); // 放显示更新函数
+/****************Banqiu_setA状态出发*********************/		
+				case Banqiu_setA_plus:case Banqiu_setA_minus:{
+					updatepage(pagetable, 0,"setA",targetA, 0);
+					showpage(pagetable, 1, 16);
+					break;
+				}
+				case Banqiu_setA_to_Banqiu_setB:{
+					Banqiu_setB_Display_init();
+					break;
+				}
+				case Banqiu_setA_to_Banqiu_set_pid:{
+					Banqiu_set_pid_Display_init();
+					break;
+				}
+				case Banqiu_setA_to_Mainmeau:{
+					main_Display_init();
+					break;
+				}
+/****************Banqiu_setB状态出发*********************/		
+				case Banqiu_setB_plus:case Banqiu_setB_minus:{
+					updatepage(pagetable, 0,"setB",targetB, 0);
+					showpage(pagetable, 1, 16);
+					break;
+				}
+
+				case Banqiu_setB_to_Banqiu_set_pid:{
+					Banqiu_set_pid_Display_init();
+					break;
+				}
+				case Banqiu_setB_to_Mainmeau:{
+					main_Display_init();
+					break;
+				}
+/****************Banqiu_set_pid状态出发*********************/
+				case Banqiu_set_pid_to_Mainmeau:{
+					updatepage(pagetable, 3,"ok!", 0, 1);
+					showpage(pagetable, 1, 16);
+					rt_thread_mdelay(1000);
+					main_Display_init(); // 放显示更新函数
 					break;
 				}
 				case Banqiu_P_plus:case Banqiu_P_minus:{
@@ -91,8 +129,8 @@ void display_thread_entry(void* parameter)
 					showpage(pagetable, 1, 16);
 					break;
 				}
-				case Banqiu_pid_write:{
-					updatepage(pagetable, 3,"ok!", 0, 1);
+				case Banqiu_next:{
+					updatepage(pagetable, 4,"nowt", target_now, 0); 
 					showpage(pagetable, 1, 16);
 					break;
 				}
@@ -157,17 +195,44 @@ void Task_randw_display_init(void)
 	showpage(pagetable, 1, 12);
 }
 /*******************************************************************************
-* 函 数 名         : banqiu_task1_Display_init
+* 函 数 名         : Banqiu_set_pid_Display_init
 * 函数功能		   : 主界面显示初始化函数
 * 输    入         : 无
 * 输    出         : 无
 *******************************************************************************/
-void banqiu_task1_Display_init(void)
+void Banqiu_setA_Display_init(void)
+{
+	clearpage(pagetable);  // 清显示数组
+ 	OLED_Clear();  // 清屏
+	updatepage(pagetable, 0,"setA", targetA, 1);
+	updatepage(pagetable, 4,"next",0, 1); 
+	updatepage(pagetable, 5,"exit",0, 1); 
+	showpage(pagetable, 1, 16);
+}
+
+void Banqiu_setB_Display_init(void)
+{
+	clearpage(pagetable);  // 清显示数组
+ 	OLED_Clear();  // 清屏
+	updatepage(pagetable, 0,"setB", targetB, 1);
+	updatepage(pagetable, 4,"next",0, 1); 
+	updatepage(pagetable, 5,"exit",0, 1); 
+	showpage(pagetable, 1, 16);
+}
+/*******************************************************************************
+* 函 数 名         : Banqiu_set_pid_Display_init
+* 函数功能		   : 主界面显示初始化函数
+* 输    入         : 无
+* 输    出         : 无
+*******************************************************************************/
+void Banqiu_set_pid_Display_init(void)
 {
 	clearpage(pagetable);  // 清显示数组
  	OLED_Clear();  // 清屏
 	updatepage(pagetable, 0,"Kp",(u16)(pid_steer1->kp*10), 1);
 	updatepage(pagetable, 1,"Ki",(u16)(pid_steer1->ki*10), 1);
 	updatepage(pagetable, 2,"Kd",(u16)(pid_steer1->kd*10), 1); 
+	updatepage(pagetable, 4,"nowt",0, 1); 
+	updatepage(pagetable, 5,"exit",0, 1); 
 	showpage(pagetable, 1, 16);
 }

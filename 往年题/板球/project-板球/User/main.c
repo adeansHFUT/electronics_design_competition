@@ -14,6 +14,7 @@
 					Flash占用大小=Code+RO+RW
 					SRAM占用大小=RW+ZI
 */
+
 int my_ipc_create(void);
 int my_timer_create(void);
 int my_thread_create(void);
@@ -26,6 +27,7 @@ int my_other_create(void);
 3: camera_uart处理线程
 4：软件定时器-按键扫描
 6：debug_uart处理线程
+7：Banqiu_thread线程
 8: taskreadAT24处理线程
 10：display显示线程
 **************************************************************************/
@@ -64,6 +66,13 @@ int my_ipc_create(void)
                      RT_IPC_FLAG_FIFO); /* 信号量模式 FIFO(0x00)*/
     if(sem_camera_uart != RT_NULL)
 		rt_kprintf("camera_uart信号量创建成功！\n\n");
+	
+	/* 创建一个信号量 */
+	sem_Banqiu_task = rt_sem_create("sem_Banqiu_task",/* 名字 */
+                     0,     /* 信号量初始值 */
+                     RT_IPC_FLAG_FIFO); /* 信号量模式 FIFO(0x00)*/
+    if(sem_Banqiu_task != RT_NULL)
+		rt_kprintf("sem_Banqiu_task信号量创建成功！\n\n");
 	
 	/* 创建一个按键处理邮箱 */
 	mb_key = rt_mb_create("mb_key",/* 名字 */
@@ -171,6 +180,18 @@ int my_thread_create(void)
 	else
 		rt_kprintf("显示刷新线程创建失败！\n\n");
 	
+	Banqiu_thread =                          /* 线程控制块指针 */
+    rt_thread_create( "Banqiu_thread",              /* 线程名字 */
+                      Banqiu_set_pid_thread_entry,   /* 线程入口函数 */
+                      RT_NULL,             /* 线程入口函数参数 */
+                      512,                 /* 线程栈大小 */
+                      7,                   /* 线程的优先级 */
+                      20);                 /* 线程时间片 */
+	if (Banqiu_thread != RT_NULL)
+		rt_kprintf("Banqiu_thread线程创建成功！\n\n");
+	else
+		rt_kprintf("Banqiu_thread线程创建失败！\n\n");
+	
 	return 0;
 }
 
@@ -190,7 +211,15 @@ int my_other_create(void)
 		rt_kprintf("创建PID_steer2成功！\n\n");
 	else
 		rt_kprintf("创建PID_steer2失败！\n\n");
-	
+	/*初始设置一波*/
+	pid_steer1->maximum = +500;   // 输出的极值
+    pid_steer1->minimum = -500;
+    pid_steer1->anti_windup_value = 100.0f;  // 积分抗饱和值
+	pid_steer1->control.sample_time = 10;   // 10 ms
+	pid_steer2->maximum = +500;   // 输出的极值
+    pid_steer2->minimum = -500;
+    pid_steer2->anti_windup_value = 100.0f;  // 积分抗饱和值
+	pid_steer2->control.sample_time = 10;   // 10 ms
 	return 0;
 }
  /*
@@ -234,11 +263,20 @@ int my_thread_startup(void)
    }	
    else
         return -1;
-   /* 开启调度显示线程 */
+   /* 开启调度AT24线程 */
     if (taskreadAT24_thread != RT_NULL)
    {
 		rt_thread_startup(taskreadAT24_thread); 
         rt_kprintf("AT24线程开始调度！\n\n");
+
+   }	
+   else
+        return -1;
+    /* 开启调度板球线程 */
+   if (Banqiu_thread != RT_NULL)
+   {
+		rt_thread_startup(Banqiu_thread); 
+        rt_kprintf("板球线程开始调度！\n\n");
 
    }	
    else

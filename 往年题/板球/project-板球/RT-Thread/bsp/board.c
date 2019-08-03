@@ -45,7 +45,12 @@ static uint32_t _SysTick_Config(rt_uint32_t ticks)
 }
 #endif
 #if defined(RT_USING_USER_MAIN) && defined(RT_USING_HEAP)
+#if defined(STM32f103VET6_small)
 #define RT_HEAP_SIZE 1024*10   // 分40k给heap
+#endif
+#if defined(STM32f103C8T6_mostsmall)
+#define RT_HEAP_SIZE 1024*3   // 分12k给heap
+#endif
 static uint32_t rt_heap[RT_HEAP_SIZE];	// heap default size: 6K(1536 * 4)
 RT_WEAK void *rt_heap_begin_get(void)
 {
@@ -85,6 +90,8 @@ void rt_hw_board_init()
 	USART_Cmd(camera_uart_device.uart_module, DISABLE);	 // 关闭摄像头的uart接收
 	AT24CXX_Init();   // AT24c02初始化iic
 	bsp_steer_init(1);  //初始化舵机，1khz， 舵机转中间
+	pwm_set_Duty(steer1, Steer1_S3010_mid);
+	pwm_set_Duty(steer2, Steer2_S3010_mid);
 	statetable_init();  // 状态转移表初始化
 /*                           
 *************************************************************************

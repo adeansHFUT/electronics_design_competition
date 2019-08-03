@@ -22,6 +22,7 @@ typedef struct
 	DMA_Channel_TypeDef* dma_channel;  // dma通道哪个
 	__IO uint16_t* dma_address; // 外设地址
 	char* usart_Rx_Buf;  // 定义接收的位置
+	uint8_t* usart_Rx_8_buf; // 为接受8位数字定义
 	uint16_t buff_size;
 	uint8_t uart_PrePriority;  // 抢占优先级
 	uint8_t uart_subPriority;  // 子优先级

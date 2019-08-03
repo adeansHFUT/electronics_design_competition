@@ -5,7 +5,7 @@
 extern rt_sem_t sem_debug_uart;
 extern rt_sem_t sem_camera_uart;
 char debug_Usart_Rx_Buf[DEBUG_USART_RBUFF_SIZE];  // 定义存储空间
-char camera_Usart_Rx_Buf[Camera_USART_RBUFF_SIZE];  // 这个空间要在外面定义，直接在结构体中定义这个数组，dma就传不进去，不知为啥
+uint8_t camera_Usart_Rx_Buf[Camera_USART_RBUFF_SIZE];  // 这个空间要在外面定义，直接在结构体中定义这个数组，dma就传不进去，不知为啥
 My_uart_device debug_uart_device, camera_uart_device;  // 全局变量
 void my_uart_DMA_Rx_Data(My_uart_device uart_device, rt_sem_t sem_uart);
 void my_uart_DMA_Config(My_uart_device uart_device);
@@ -45,7 +45,7 @@ void uart_device_init(void)
 	camera_uart_device.baudrate = Camera_USART_BAUDRATE;
 	camera_uart_device.dma_address = Camera_USART_DR_ADDRESS;
 	camera_uart_device.dma_channel = Camera_USART_RX_DMA_CHANNEL;
-	camera_uart_device.usart_Rx_Buf = camera_Usart_Rx_Buf;
+	camera_uart_device.usart_Rx_8_buf = camera_Usart_Rx_Buf;   // 用8位无符号接受
 	camera_uart_device.buff_size = Camera_USART_RBUFF_SIZE;
 	camera_uart_device.uart_PrePriority = 1;
 	camera_uart_device.uart_subPriority = 0;
@@ -175,7 +175,10 @@ void my_uart_DMA_Config(My_uart_device uart_device)
 		// 设置DMA源地址：串口数据寄存器地址*/
         DMA_InitStructure.DMA_PeripheralBaseAddr = (uint32_t)uart_device.dma_address;
 		// 内存地址(要传输的变量的指针)
-		DMA_InitStructure.DMA_MemoryBaseAddr = (uint32_t)uart_device.usart_Rx_Buf;
+		if(uart_device.uart_module == Camera_USARTx)
+			DMA_InitStructure.DMA_MemoryBaseAddr = (uint32_t)uart_device.usart_Rx_8_buf;
+		else
+			DMA_InitStructure.DMA_MemoryBaseAddr = (uint32_t)uart_device.usart_Rx_Buf;
 		// 方向：从外设到内存	
 		DMA_InitStructure.DMA_DIR = DMA_DIR_PeripheralSRC;
 		// 传输大小	
@@ -184,10 +187,10 @@ void my_uart_DMA_Config(My_uart_device uart_device)
 		DMA_InitStructure.DMA_PeripheralInc = DMA_PeripheralInc_Disable;
 		// 内存地址自增
 		DMA_InitStructure.DMA_MemoryInc = DMA_MemoryInc_Enable;
-		// 外设数据单位	
+		// 外设数据单位是字节
 		DMA_InitStructure.DMA_PeripheralDataSize = 
 	    DMA_PeripheralDataSize_Byte;
-		// 内存数据单位
+		// 内存数据单位是字节
 		DMA_InitStructure.DMA_MemoryDataSize = DMA_MemoryDataSize_Byte;	 
 		// DMA模式，一次或者循环模式
 		//DMA_InitStructure.DMA_Mode = DMA_Mode_Normal ;

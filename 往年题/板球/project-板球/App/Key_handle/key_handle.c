@@ -13,7 +13,7 @@ typedef struct {
 	Action action;
 }state;
 /*******************************定义状态转移表************************************************/
-state state_transition[10][10] = {0}; 
+state state_transition[20][10] = {0}; 
 /*******************************函数声明************************************************/
 void state_transfer(uint8_t statenow, uint8_t key_receive);
 /*******************************************************************************
@@ -28,8 +28,8 @@ void statetable_init(void)
 	state_transition[Mainmeau][KEY_1].action = Mainmeau_to_Testmeau;
 	state_transition[Mainmeau][KEY_2].state_name = Task_randw;
 	state_transition[Mainmeau][KEY_2].action = Mainmeau_to_Task_randw;
-	state_transition[Mainmeau][KEY_3].state_name = Banqiu_Task1;
-	state_transition[Mainmeau][KEY_3].action = Mainmeau_to_Banqiu_Task1;
+	state_transition[Mainmeau][KEY_5].state_name = Banqiu_setA;
+	state_transition[Mainmeau][KEY_5].action = Mainmeau_to_Banqiu_setA;
 
 	state_transition[Testmeau][KEY_4].state_name = Mainmeau;
 	state_transition[Testmeau][KEY_4].action = Testmeau_to_Mainmeau;
@@ -43,16 +43,31 @@ void statetable_init(void)
 	state_transition[Task_randw][KEY_4].state_name = Mainmeau;
 	state_transition[Task_randw][KEY_4].action = Task_randw_to_Mainmeau;
 		
+	state_transition[Banqiu_setA][KEY_6].state_name = Banqiu_setB;
+	state_transition[Banqiu_setA][KEY_6].action = Banqiu_setA_to_Banqiu_setB;
+	state_transition[Banqiu_setA][KEY_1].action = Banqiu_setA_plus;
+	state_transition[Banqiu_setA][KEY_2].action = Banqiu_setA_minus;
+	state_transition[Banqiu_setA][KEY_3].state_name= Banqiu_set_pid;
+	state_transition[Banqiu_setA][KEY_3].action = Banqiu_setA_to_Banqiu_set_pid;
+	state_transition[Banqiu_setA][KEY_4].state_name = Mainmeau;
+	state_transition[Banqiu_setA][KEY_4].action = Banqiu_setA_to_Mainmeau;
 	
-	state_transition[Banqiu_Task1][KEY_5].action = Banqiu_P_plus;
-	state_transition[Banqiu_Task1][KEY_6].action = Banqiu_P_minus;
-	state_transition[Banqiu_Task1][KEY_7].action = Banqiu_I_plus;
-	state_transition[Banqiu_Task1][KEY_8].action = Banqiu_I_minus;
-	state_transition[Banqiu_Task1][KEY_1].action = Banqiu_D_plus;
-	state_transition[Banqiu_Task1][KEY_2].action = Banqiu_D_minus;
-	state_transition[Banqiu_Task1][KEY_3].action = Banqiu_pid_write;
-	state_transition[Banqiu_Task1][KEY_4].state_name = Mainmeau;
-	state_transition[Banqiu_Task1][KEY_4].action = Banqiu_Task1_to_Mainmeau;
+	state_transition[Banqiu_setB][KEY_1].action = Banqiu_setB_plus;
+	state_transition[Banqiu_setB][KEY_2].action = Banqiu_setB_minus;
+	state_transition[Banqiu_setB][KEY_3].state_name= Banqiu_set_pid;
+	state_transition[Banqiu_setB][KEY_3].action = Banqiu_setB_to_Banqiu_set_pid;
+	state_transition[Banqiu_setB][KEY_4].state_name = Mainmeau;
+	state_transition[Banqiu_setB][KEY_4].action = Banqiu_setB_to_Mainmeau;
+	
+	state_transition[Banqiu_set_pid][KEY_5].action = Banqiu_P_plus;
+	state_transition[Banqiu_set_pid][KEY_6].action = Banqiu_P_minus;
+	state_transition[Banqiu_set_pid][KEY_7].action = Banqiu_I_plus;
+	state_transition[Banqiu_set_pid][KEY_8].action = Banqiu_I_minus;
+	state_transition[Banqiu_set_pid][KEY_1].action = Banqiu_D_plus;
+	state_transition[Banqiu_set_pid][KEY_2].action = Banqiu_D_minus;
+	state_transition[Banqiu_set_pid][KEY_3].action = Banqiu_next;
+	state_transition[Banqiu_set_pid][KEY_4].state_name = Mainmeau;
+	state_transition[Banqiu_set_pid][KEY_4].action = Banqiu_set_pid_to_Mainmeau;
 }
 /*******************************************************************************
 * 函 数 名         : keyhandle_thread_entry
@@ -102,11 +117,8 @@ void state_transfer(uint8_t statenow, uint8_t key_receive)
 			rt_mb_send(mb_display, Mainmeau_to_Task_randw);
 			break;
 		}
-		case Mainmeau_to_Banqiu_Task1:{
-			USART_Cmd(camera_uart_device.uart_module, ENABLE);  // 打开uart接收
-			rt_sem_release(sem_banqiu_task1);  // 启动板球task1线程
-			rt_mb_send(mb_ctrlAt24, Mainmeau_to_Banqiu_Task1); /*通知AT24读pid*/
-			rt_mb_send(mb_display, Mainmeau_to_Banqiu_Task1); // 通知显示刷新	
+		case Mainmeau_to_Banqiu_setA:{
+			rt_mb_send(mb_display, Mainmeau_to_Banqiu_setA);
 			break;
 		}
 /****************Testmeau状态出发*********************/
@@ -124,11 +136,48 @@ void state_transfer(uint8_t statenow, uint8_t key_receive)
 			rt_mb_send(mb_display, state_transition[statenow][key_receive].action);
 			break;
 		}
-/****************Banqiu_Task1状态出发*********************/		
-		case Banqiu_Task1_to_Mainmeau: {
+/****************Banqiu_setX状态出发*********************/	
+		case Banqiu_setA_to_Banqiu_set_pid:caseBanqiu_setB_to_Banqiu_set_pid:{
+			USART_Cmd(camera_uart_device.uart_module, ENABLE);  // 打开uart接收
+			rt_sem_release(sem_Banqiu_task);  // 启动板球task1线程
+			rt_mb_send(mb_ctrlAt24, state_transition[statenow][key_receive].action); /*通知AT24读pid*/
+			rt_mb_send(mb_display, state_transition[statenow][key_receive].action); // 通知显示刷新	
+			break;
+		}
+		case Banqiu_setA_to_Banqiu_setB:case Banqiu_setA_to_Mainmeau:case Banqiu_setB_to_Mainmeau:{
+			rt_mb_send(mb_display, state_transition[statenow][key_receive].action); // 通知显示刷新	
+			break;
+		}
+		case Banqiu_setA_plus:{
+			targetA++;
+			target_point[0] = standing_point[targetA];
+			rt_mb_send(mb_display, state_transition[statenow][key_receive].action);
+			break;
+		}
+		case Banqiu_setA_minus:{
+			targetA--;
+			target_point[0] = standing_point[targetA];
+			rt_mb_send(mb_display, state_transition[statenow][key_receive].action);
+			break;
+		}
+		case Banqiu_setB_plus:{
+			targetB++;
+			target_point[1] = standing_point[targetB];
+			rt_mb_send(mb_display, state_transition[statenow][key_receive].action);
+			break;
+		}
+		case Banqiu_setB_minus:{
+			targetB--;
+			target_point[1] = standing_point[targetB];
+			rt_mb_send(mb_display, state_transition[statenow][key_receive].action);
+			break;
+		}
+/****************Banqiu_set_pid状态出发*********************/		
+		case Banqiu_set_pid_to_Mainmeau: {
 			USART_Cmd(camera_uart_device.uart_module, DISABLE);  // 关闭uart接收
-			rt_sem_take(sem_banqiu_task1, RT_WAITING_FOREVER); // 将板球任务1暂停下来(尝试)
-			rt_mb_send(mb_display, Banqiu_Task1_to_Mainmeau);  
+			rt_sem_take(sem_Banqiu_task, RT_WAITING_FOREVER); // 将板球任务1暂停下来(尝试)
+			rt_mb_send(mb_ctrlAt24, Banqiu_set_pid_to_Mainmeau);  // 退出保存pid
+			rt_mb_send(mb_display, Banqiu_set_pid_to_Mainmeau);
 			break;
 		}
 		case Banqiu_P_plus:{
@@ -167,10 +216,11 @@ void state_transfer(uint8_t statenow, uint8_t key_receive)
 			rt_mb_send(mb_display, Banqiu_D_minus);
 			break;
 		}
-		case Banqiu_pid_write:{
-			rt_mb_send(mb_ctrlAt24, Banqiu_pid_write);
-			rt_mb_send(mb_display, Banqiu_pid_write);
-			break;
+		case Banqiu_next:{
+			if(target_point[target_now+1].x != 0&&target_point[target_now+1].y!= 0)
+				target_now++;
+			rt_mb_send(mb_display, Banqiu_next);	
+			break;			
 		}
 /****************default*********************/	
 		default:{
@@ -185,8 +235,6 @@ void state_transfer(uint8_t statenow, uint8_t key_receive)
 		current_state = state_transition[statenow][key_receive].state_name; //更新状态
 		rt_exit_critical();
 	}		
-	key_num = 0;
+	key_num = 0;  // 任务通知完毕后可以重新读取按键
 	return;
-	
-		
 }

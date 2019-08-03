@@ -21,5 +21,5 @@ void PWM_Init(My_pwm_device pwm_device, u16 psc); //¸ÄÁ¼°æ
 void steerFrequency_Init(u8 fre);
 void pwm_Frequency_Init(My_pwm_device pwm_device, u8 fre);
 void set_steerDuty(u8 index, u16 duty);
-
+void pwm_set_Duty(My_pwm_device pwm_device, uint16_t duty);
 #endif

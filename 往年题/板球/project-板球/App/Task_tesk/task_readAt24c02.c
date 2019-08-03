@@ -45,7 +45,7 @@ void taskreadAT24_thread_entry(void* parameter)
 					break;
 				}
     /*********************°åÇòÏà¹Ø***************************/
-				case Mainmeau_to_Banqiu_Task1:{
+				case Banqiu_setA_to_Banqiu_set_pid:case Banqiu_setB_to_Banqiu_set_pid:{
 					u8 read_p, read_i, read_d;
 					read_p = AT24CXX_ReadOneByte(1);
 					read_i = AT24CXX_ReadOneByte(2);
@@ -58,7 +58,7 @@ void taskreadAT24_thread_entry(void* parameter)
 					pos_pid_control_set_kd(pid_steer2, read_d*0.1);
 					break;
 				}
-				case Banqiu_pid_write:{
+				case Banqiu_set_pid_to_Mainmeau:{
 					AT24CXX_WriteOneByte(1, (u8)(pid_steer1->kp*10));
 					AT24CXX_WriteOneByte(2, (u8)(pid_steer1->ki*10));
 					AT24CXX_WriteOneByte(3, (u8)(pid_steer1->kd*10));

@@ -3,7 +3,7 @@
 .\objects\bsp_steer.o: .\Public\sys.h
 .\objects\bsp_steer.o: .\User\stm32f10x.h
 .\objects\bsp_steer.o: .\Libraries\CMSIS\core_cm3.h
-.\objects\bsp_steer.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\bsp_steer.o: D:\KEIL5\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\bsp_steer.o: .\Libraries\CMSIS\system_stm32f10x.h
 .\objects\bsp_steer.o: .\User\stm32f10x_conf.h
 .\objects\bsp_steer.o: .\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_adc.h
