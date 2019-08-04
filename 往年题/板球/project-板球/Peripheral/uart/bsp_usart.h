@@ -27,6 +27,7 @@ typedef struct
 	uint8_t uart_PrePriority;  // 抢占优先级
 	uint8_t uart_subPriority;  // 子优先级
 }My_uart_device;	
+typedef My_uart_device* My_uart_device_t; 
 
 extern My_uart_device debug_uart_device, camera_uart_device;
 // 串口2-USART2

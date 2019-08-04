@@ -7,6 +7,7 @@
 typedef struct{
 	int16_t x;
 	int16_t y;
+	uint8_t number;  // ±êºÅ
 }Banqiu_point;
 
 extern rt_sem_t sem_Banqiu_task;
@@ -19,4 +20,5 @@ extern u8 target_now;
 extern rt_thread_t Banqiu_thread;
 
 void Banqiu_set_pid_thread_entry(void* parameter);
+void standing_point_init(void);
 #endif

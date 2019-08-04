@@ -119,20 +119,17 @@
       <TargetDriverDllRegistry>
         <SetRegEntry>
           <Number>0</Number>
+          <Key>DLGUARM</Key>
+        </SetRegEntry>
+        <SetRegEntry>
+          <Number>0</Number>
           <Key>JL2CM3</Key>
-          <Name>-U59406527 -O206 -S2 -ZTIFSpeedSel5000 -A0 -C0 -JU1 -JI127.0.0.1 -JP0 -RST0 -N00("ARM CoreSight SW-DP") -D00(1BA01477) -L00(0) -TO65554 -TC10000000 -TP21 -TDS8007 -TDT0 -TDC1F -TIEFFFFFFFF -TIP8 -TB1 -TFE0 -FO7 -FD20000000 -FC1000 -FN1 -FF0STM32F10x_512.FLM -FS08000000 -FL080000 -FP0($$Device:STM32F103VE$Flash\STM32F10x_512.FLM)</Name>
+          <Name>-U59406527 -O206 -S2 -ZTIFSpeedSel5000 -A0 -C0 -JU1 -JI127.0.0.1 -JP0 -RST0 -N00("ARM CoreSight SW-DP") -D00(1BA01477) -L00(0) -TO65554 -TC10000000 -TP21 -TDS8001 -TDT0 -TDC1F -TIEFFFFFFFF -TIP8 -TB1 -TFE0 -FO15 -FD20000000 -FC1000 -FN1 -FF0STM32F10x_512.FLM -FS08000000 -FL080000 -FP0($$Device:STM32F103VE$Flash\STM32F10x_512.FLM)</Name>
         </SetRegEntry>
         <SetRegEntry>
           <Number>0</Number>
           <Key>UL2CM3</Key>
           <Name>-U -O206 -S0 -C0 -P00 -TO65554 -TC10000000 -TT10000000 -TP21 -TDS8007 -TDT0 -TDC1F -TIEFFFFFFFF -TIP8 -FO7 -FD20000000 -FC1000 -FN1 -FF0STM32F10x_512.FLM -FS08000000 -FL080000 -FP0($$Device:STM32F103VE$Flash\STM32F10x_512.FLM)</Name>
-        </SetRegEntry>
-        <SetRegEntry>
-          <Number>0</Number>
-          <Key>DLGUARM</Key>
-          <Name>猬瓀苓9
-苓9
-/l</Name>
         </SetRegEntry>
         <SetRegEntry>
           <Number>0</Number>
@@ -154,98 +151,50 @@
         <Bp>
           <Number>0</Number>
           <Type>0</Type>
-          <LineNumber>49</LineNumber>
+          <LineNumber>154</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>134220454</Address>
+          <Address>134240230</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
           <SizeOfObject>0</SizeOfObject>
           <BreakByAccess>0</BreakByAccess>
           <BreakIfRCount>1</BreakIfRCount>
-          <Filename>C:\Users\Administrator\Desktop\鐢佃禌\electronics_design_competition\project-鐢佃禌鍑嗗-绉绘RTT\Peripheral\key\bsp_key.c</Filename>
+          <Filename>C:\Users\Administrator\Desktop\鐢佃禌\electronics_design_competition\寰€骞撮\鏉跨悆\project-鏉跨悆\App\Key_handle\key_handle.c</Filename>
           <ExecCommand></ExecCommand>
-          <Expression>\\diansai\Peripheral/key/bsp_key.c\49</Expression>
+          <Expression>\\diansai\App/Key_handle/key_handle.c\154</Expression>
         </Bp>
         <Bp>
           <Number>1</Number>
           <Type>0</Type>
-          <LineNumber>53</LineNumber>
+          <LineNumber>105</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>134220472</Address>
+          <Address>134232430</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
           <SizeOfObject>0</SizeOfObject>
           <BreakByAccess>0</BreakByAccess>
           <BreakIfRCount>1</BreakIfRCount>
-          <Filename>C:\Users\Administrator\Desktop\鐢佃禌\electronics_design_competition\project-鐢佃禌鍑嗗-绉绘RTT\Peripheral\key\bsp_key.c</Filename>
+          <Filename>C:\Users\Administrator\Desktop\鐢佃禌\electronics_design_competition\寰€骞撮\鏉跨悆\project-鏉跨悆\Public\pwm\bsp_pwm.c</Filename>
           <ExecCommand></ExecCommand>
-          <Expression>\\diansai\Peripheral/key/bsp_key.c\53</Expression>
+          <Expression>\\diansai\Public/pwm/bsp_pwm.c\105</Expression>
         </Bp>
         <Bp>
           <Number>2</Number>
           <Type>0</Type>
-          <LineNumber>54</LineNumber>
+          <LineNumber>90</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>134220474</Address>
+          <Address>134241752</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
           <SizeOfObject>0</SizeOfObject>
           <BreakByAccess>0</BreakByAccess>
           <BreakIfRCount>1</BreakIfRCount>
-          <Filename>C:\Users\Administrator\Desktop\鐢佃禌\electronics_design_competition\project-鐢佃禌鍑嗗-绉绘RTT\Peripheral\key\bsp_key.c</Filename>
+          <Filename>C:\Users\Administrator\Desktop\鐢佃禌\electronics_design_competition\寰€骞撮\鏉跨悆\project-鏉跨悆\Public\pwm\bsp_pwm.c</Filename>
           <ExecCommand></ExecCommand>
-          <Expression>\\diansai\Peripheral/key/bsp_key.c\54</Expression>
-        </Bp>
-        <Bp>
-          <Number>3</Number>
-          <Type>0</Type>
-          <LineNumber>55</LineNumber>
-          <EnabledFlag>1</EnabledFlag>
-          <Address>134220484</Address>
-          <ByteObject>0</ByteObject>
-          <HtxType>0</HtxType>
-          <ManyObjects>0</ManyObjects>
-          <SizeOfObject>0</SizeOfObject>
-          <BreakByAccess>0</BreakByAccess>
-          <BreakIfRCount>1</BreakIfRCount>
-          <Filename>C:\Users\Administrator\Desktop\鐢佃禌\electronics_design_competition\project-鐢佃禌鍑嗗-绉绘RTT\Peripheral\key\bsp_key.c</Filename>
-          <ExecCommand></ExecCommand>
-          <Expression>\\diansai\Peripheral/key/bsp_key.c\55</Expression>
-        </Bp>
-        <Bp>
-          <Number>4</Number>
-          <Type>0</Type>
-          <LineNumber>20</LineNumber>
-          <EnabledFlag>1</EnabledFlag>
-          <Address>134225154</Address>
-          <ByteObject>0</ByteObject>
-          <HtxType>0</HtxType>
-          <ManyObjects>0</ManyObjects>
-          <SizeOfObject>0</SizeOfObject>
-          <BreakByAccess>0</BreakByAccess>
-          <BreakIfRCount>1</BreakIfRCount>
-          <Filename>C:\Users\Administrator\Desktop\鐢佃禌\electronics_design_competition\project-鐢佃禌鍑嗗-绉绘RTT\App\Uart_handle\uart_handle.c</Filename>
-          <ExecCommand></ExecCommand>
-          <Expression>\\diansai\App/Uart_handle/uart_handle.c\20</Expression>
-        </Bp>
-        <Bp>
-          <Number>5</Number>
-          <Type>0</Type>
-          <LineNumber>336</LineNumber>
-          <EnabledFlag>1</EnabledFlag>
-          <Address>134227296</Address>
-          <ByteObject>0</ByteObject>
-          <HtxType>0</HtxType>
-          <ManyObjects>0</ManyObjects>
-          <SizeOfObject>0</SizeOfObject>
-          <BreakByAccess>0</BreakByAccess>
-          <BreakIfRCount>1</BreakIfRCount>
-          <Filename>C:\Users\Administrator\Desktop\鐢佃禌\electronics_design_competition\project-鐢佃禌鍑嗗-绉绘RTT\Peripheral\uart\bsp_usart.c</Filename>
-          <ExecCommand></ExecCommand>
-          <Expression>\\diansai\Peripheral/uart/bsp_usart.c\336</Expression>
+          <Expression>\\diansai\Public/pwm/bsp_pwm.c\90</Expression>
         </Bp>
       </Breakpoint>
       <WatchWindow1>
@@ -277,17 +226,47 @@
         <Ww>
           <count>5</count>
           <WinNumber>1</WinNumber>
-          <ItemText>steer2.pwm_ccr</ItemText>
+          <ItemText>debug_uart_device</ItemText>
         </Ww>
         <Ww>
           <count>6</count>
           <WinNumber>1</WinNumber>
-          <ItemText>steer2.pwm_arr</ItemText>
+          <ItemText>target_point[0]</ItemText>
         </Ww>
         <Ww>
           <count>7</count>
           <WinNumber>1</WinNumber>
-          <ItemText>debug_uart_device</ItemText>
+          <ItemText>targetA</ItemText>
+        </Ww>
+        <Ww>
+          <count>8</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>standing_point[targetA]</ItemText>
+        </Ww>
+        <Ww>
+          <count>9</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>TIM_TimeBaseInitStructure.TIM_Period</ItemText>
+        </Ww>
+        <Ww>
+          <count>10</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>TIM3-&gt;CCR1</ItemText>
+        </Ww>
+        <Ww>
+          <count>11</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>TIM3-&gt;CCR2</ItemText>
+        </Ww>
+        <Ww>
+          <count>12</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>TIM3-&gt;ARR</ItemText>
+        </Ww>
+        <Ww>
+          <count>13</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>pwm_device.pwm_arr</ItemText>
         </Ww>
       </WatchWindow1>
       <Tracepoint>
@@ -334,6 +313,7 @@
       <pMultCmdsp></pMultCmdsp>
       <DebugDescription>
         <Enable>1</Enable>
+        <EnableFlashSeq>0</EnableFlashSeq>
         <EnableLog>0</EnableLog>
         <Protocol>2</Protocol>
         <DbgClock>10000000</DbgClock>
@@ -1195,7 +1175,7 @@
 
   <Group>
     <GroupName>Driver</GroupName>
-    <tvExp>1</tvExp>
+    <tvExp>0</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>

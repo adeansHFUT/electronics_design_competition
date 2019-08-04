@@ -6,6 +6,7 @@ extern rt_sem_t sem_debug_uart;
 extern rt_sem_t sem_camera_uart;
 char debug_Usart_Rx_Buf[DEBUG_USART_RBUFF_SIZE];  // 定义存储空间
 uint8_t camera_Usart_Rx_Buf[Camera_USART_RBUFF_SIZE];  // 这个空间要在外面定义，直接在结构体中定义这个数组，dma就传不进去，不知为啥
+														//(问题知道了，是实参和形参的问题,函数参数不能用结构体直接定义，要用结构体指针)
 My_uart_device debug_uart_device, camera_uart_device;  // 全局变量
 void my_uart_DMA_Rx_Data(My_uart_device uart_device, rt_sem_t sem_uart);
 void my_uart_DMA_Config(My_uart_device uart_device);

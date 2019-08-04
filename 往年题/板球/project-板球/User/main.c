@@ -27,9 +27,9 @@ int my_other_create(void);
 3: camera_uart处理线程
 4：软件定时器-按键扫描
 6：debug_uart处理线程
-7：Banqiu_thread线程
 8: taskreadAT24处理线程
-10：display显示线程
+10：display显示线程(放在所有非死循环线程后面)
+12：Banqiu_thread线程
 **************************************************************************/
 
 /*                           main 函数
@@ -185,7 +185,7 @@ int my_thread_create(void)
                       Banqiu_set_pid_thread_entry,   /* 线程入口函数 */
                       RT_NULL,             /* 线程入口函数参数 */
                       512,                 /* 线程栈大小 */
-                      7,                   /* 线程的优先级 */
+                      12,                   /* 线程的优先级 */
                       20);                 /* 线程时间片 */
 	if (Banqiu_thread != RT_NULL)
 		rt_kprintf("Banqiu_thread线程创建成功！\n\n");
@@ -212,8 +212,8 @@ int my_other_create(void)
 	else
 		rt_kprintf("创建PID_steer2失败！\n\n");
 	/*初始设置一波*/
-	pid_steer1->maximum = +500;   // 输出的极值
-    pid_steer1->minimum = -500;
+	pid_steer1->maximum = +20;   // 输出的极值
+    pid_steer1->minimum = -20;
     pid_steer1->anti_windup_value = 100.0f;  // 积分抗饱和值
 	pid_steer1->control.sample_time = 10;   // 10 ms
 	pid_steer2->maximum = +500;   // 输出的极值

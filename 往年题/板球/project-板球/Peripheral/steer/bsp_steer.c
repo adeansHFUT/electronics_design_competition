@@ -8,10 +8,10 @@ My_pwm_device steer1, steer2;
 /*******************************************************************************
 * 函 数 名         : bsp_steer_init
 * 函数功能		   : 所有舵机设备初始化
-* 输    入         : 频率.1-10（单位是kMz）
+* 输    入         : 频率.1-1000（单位是Mz）
 * 输    出         : 无
 *******************************************************************************/
-void bsp_steer_init(u8 fre)
+void bsp_steer_init(uint16_t fre)
 {
 	/********舵机1参数**********/
 	steer1.pwm_port = steer1_port;
@@ -27,6 +27,6 @@ void bsp_steer_init(u8 fre)
 	steer2.timx = steer2_timx;
 	steer2.timx_RCC = steer2_timx_RCC;
 	steer2.tim_channel = steer2_TIM_channel;
-	pwm_Frequency_Init(steer1, fre);   // 同一个tim下pwm的频率必须相同
-	pwm_Frequency_Init(steer2, fre);
+	steer_pwm_Frequency_Init(&steer1, fre);   // 同一个tim下pwm的频率必须相同
+	steer_pwm_Frequency_Init(&steer2, fre);
 }

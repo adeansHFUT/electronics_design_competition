@@ -5,7 +5,7 @@
 
 /* 定义按键处理线程控制块 */
 rt_thread_t keyhandle_thread = RT_NULL;
-
+uint16_t test_duty = 80;
 /*******************************定义现在的状态(初始为Mainmeau态)************************************************/
 Statename current_state = Mainmeau;  
 typedef struct {
@@ -30,6 +30,8 @@ void statetable_init(void)
 	state_transition[Mainmeau][KEY_2].action = Mainmeau_to_Task_randw;
 	state_transition[Mainmeau][KEY_5].state_name = Banqiu_setA;
 	state_transition[Mainmeau][KEY_5].action = Mainmeau_to_Banqiu_setA;
+	state_transition[Mainmeau][KEY_3].state_name = Steer_test;
+	state_transition[Mainmeau][KEY_3].action = Mainmeau_to_Steer_test;
 
 	state_transition[Testmeau][KEY_4].state_name = Mainmeau;
 	state_transition[Testmeau][KEY_4].action = Testmeau_to_Mainmeau;
@@ -68,6 +70,11 @@ void statetable_init(void)
 	state_transition[Banqiu_set_pid][KEY_3].action = Banqiu_next;
 	state_transition[Banqiu_set_pid][KEY_4].state_name = Mainmeau;
 	state_transition[Banqiu_set_pid][KEY_4].action = Banqiu_set_pid_to_Mainmeau;
+	
+	state_transition[Steer_test][KEY_1].action = Steer_plus;
+	state_transition[Steer_test][KEY_2].action = Steer_minus;
+	state_transition[Steer_test][KEY_4].state_name = Mainmeau;
+	state_transition[Steer_test][KEY_4].action = Steer_test_to_Mainmeau;
 }
 /*******************************************************************************
 * 函 数 名         : keyhandle_thread_entry
@@ -121,6 +128,10 @@ void state_transfer(uint8_t statenow, uint8_t key_receive)
 			rt_mb_send(mb_display, Mainmeau_to_Banqiu_setA);
 			break;
 		}
+		case Mainmeau_to_Steer_test:{
+			rt_mb_send(mb_display, Mainmeau_to_Steer_test);
+			break;
+		}
 /****************Testmeau状态出发*********************/
 		case Testmeau_to_Mainmeau:{
 			rt_mb_send(mb_display, Testmeau_to_Mainmeau);
@@ -137,7 +148,7 @@ void state_transfer(uint8_t statenow, uint8_t key_receive)
 			break;
 		}
 /****************Banqiu_setX状态出发*********************/	
-		case Banqiu_setA_to_Banqiu_set_pid:caseBanqiu_setB_to_Banqiu_set_pid:{
+		case Banqiu_setA_to_Banqiu_set_pid:case Banqiu_setB_to_Banqiu_set_pid:{
 			USART_Cmd(camera_uart_device.uart_module, ENABLE);  // 打开uart接收
 			rt_sem_release(sem_Banqiu_task);  // 启动板球task1线程
 			rt_mb_send(mb_ctrlAt24, state_transition[statenow][key_receive].action); /*通知AT24读pid*/
@@ -217,10 +228,27 @@ void state_transfer(uint8_t statenow, uint8_t key_receive)
 			break;
 		}
 		case Banqiu_next:{
-			if(target_point[target_now+1].x != 0&&target_point[target_now+1].y!= 0)
+			if(target_point[target_now+1].number!= 0)
 				target_now++;
 			rt_mb_send(mb_display, Banqiu_next);	
 			break;			
+		}
+/****************steer_test*********************/	
+		case Steer_test_to_Mainmeau:{
+			rt_mb_send(mb_display, Steer_test_to_Mainmeau);
+			break;
+		}
+		case Steer_plus:{
+			test_duty++;
+			pwm_set_Duty(&steer1, test_duty);
+			rt_mb_send(mb_display, Steer_plus);
+			break;
+		}
+		case Steer_minus:{
+			test_duty--;
+			pwm_set_Duty(&steer1, test_duty);
+			rt_mb_send(mb_display, Steer_minus);
+			break;
 		}
 /****************default*********************/	
 		default:{

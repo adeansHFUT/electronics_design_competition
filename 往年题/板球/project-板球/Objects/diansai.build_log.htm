@@ -3,32 +3,36 @@
 <pre>
 <h1>礦ision Build Log</h1>
 <h2>Tool Versions:</h2>
-IDE-Version: μVision V5.25.2.0
-Copyright (C) 2018 ARM Ltd and ARM Germany GmbH. All rights reserved.
-License Information: ASF A, FAF, LIC=EXJUH-W2R99-30HNC-7JTU5-WVZYN-JT1A6
+IDE-Version: μVision V5.28.0.0
+Copyright (C) 2019 ARM Ltd and ARM Germany GmbH. All rights reserved.
+License Information: fjq Microsoft, Microsoft, LIC=BUUPC-7R4IF-CWE2K-Z6I6E-YPS1K-PMZB7
  
 Tool Versions:
-Toolchain:       MDK-ARM Plus  Version: 5.25.2.0
-Toolchain Path:  D:\KEIL5\ARM\ARMCC\Bin
+Toolchain:       MDK-ARM Plus  Version: 5.28.0.0
+Toolchain Path:  C:\Keil_v5\ARM\ARMCC\Bin
 C Compiler:      Armcc.exe V5.06 update 6 (build 750)
 Assembler:       Armasm.exe V5.06 update 6 (build 750)
 Linker/Locator:  ArmLink.exe V5.06 update 6 (build 750)
 Library Manager: ArmAr.exe V5.06 update 6 (build 750)
 Hex Converter:   FromElf.exe V5.06 update 6 (build 750)
-CPU DLL:         SARMCM3.DLL V5.25.2.0
-Dialog DLL:      DCM.DLL V1.17.1.0
-Target DLL:      Segger\JL2CM3.dll V2.99.29.0
-Dialog DLL:      TCM.DLL V1.35.1.0
+CPU DLL:         SARMCM3.DLL V5.28.0.0
+Dialog DLL:      DCM.DLL V1.17.3.0
+Target DLL:      Segger\JL2CM3.dll V2.99.36.0
+Dialog DLL:      TCM.DLL V1.36.2.0
  
 <h2>Project:</h2>
-E:\A比赛\2019电赛\electronics_design_competition\往年题\板球\project-板球\diansai.uvprojx
+C:\Users\Administrator\Desktop\电赛\electronics_design_competition\往年题\板球\project-板球\diansai.uvprojx
 Project File Date:  08/03/2019
 
 <h2>Output:</h2>
-*** Using Compiler 'V5.06 update 6 (build 750)', folder: 'D:\KEIL5\ARM\ARMCC\Bin'
+*** Using Compiler 'V5.06 update 6 (build 750)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
 Build target 'Target 1'
+compiling bsp_pwm.c...
+Public\pwm\bsp_pwm.c(3): warning:  #177-D: variable "t_arr"  was declared but never referenced
+  static u16 t_arr = 0; //一个tim的arr寄存器的值
+Public\pwm\bsp_pwm.c: 1 warning, 0 errors
 compiling board.c...
-.\Peripheral\steer\bsp_steer.h(14): warning:  #1-D: last line of file ends without a newline
+.\Peripheral\steer\bsp_steer.h(9): warning:  #1-D: last line of file ends without a newline
   #endif
 .\Public\pid\auto_control.h(29): warning:  #1-D: last line of file ends without a newline
   #endif // __auto_control_H__
@@ -38,24 +42,34 @@ compiling board.c...
   #endif
 .\User\board.h(24): warning:  #1-D: last line of file ends without a newline
   #endif
-.\App\Uart_handle\key_handle.h(27): warning:  #1-D: last line of file ends without a newline
+.\App\Display\display.h(9): warning:  #1-D: last line of file ends without a newline
   #endif
-RT-Thread\bsp\board.c: 6 warnings, 0 errors
+.\App\Uart_handle\uart_handle.h(10): warning:  #1-D: last line of file ends without a newline
+  #endif
+.\App\Uart_handle\key_handle.h(31): warning:  #1-D: last line of file ends without a newline
+  #endif
+.\App\Task_tesk\task_readAT24c02.h(10): warning:  #1-D: last line of file ends without a newline
+  #endif
+.\User\include.h(6): warning:  #1-D: last line of file ends without a newline
+  #include "banqiu_handle.h"
+.\App\banqiu_handle\banqiu_handle.h(24): warning:  #1-D: last line of file ends without a newline
+  #endif
+RT-Thread\bsp\board.c: 11 warnings, 0 errors
 linking...
-Program Size: Code=24464 RO-data=2716 RW-data=748 ZI-data=46308  
+Program Size: Code=24980 RO-data=2716 RW-data=752 ZI-data=46336  
 FromELF: creating hex file...
-".\Objects\diansai.axf" - 0 Error(s), 6 Warning(s).
+".\Objects\diansai.axf" - 0 Error(s), 12 Warning(s).
 
 <h2>Software Packages used:</h2>
 
 Package Vendor: Keil
-                http://www.keil.com/pack/Keil.STM32F1xx_DFP.2.3.0.pack
-                Keil.STM32F1xx_DFP.2.3.0
+                http://www.keil.com/pack/Keil.STM32F1xx_DFP.1.0.5.pack
+                Keil.STM32F1xx_DFP.1.0.5
                 STMicroelectronics STM32F1 Series Device Support, Drivers and Examples
 
 <h2>Collection of Component include folders:</h2>
   .\RTE\_Target_1
-  D:\KEIL5\ARM\PACK\Keil\STM32F1xx_DFP\2.3.0\Device\Include
+  C:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\1.0.5\Device\Include
 
 <h2>Collection of Component Files used:</h2>
 Build Time Elapsed:  00:00:02

@@ -21,6 +21,7 @@ void Task_randw_display_init(void);
 void Banqiu_set_pid_Display_init(void);
 void Banqiu_setB_Display_init(void);
 void Banqiu_setA_Display_init(void);
+void steer_test_init(void);
 /*******************************************************************************
 * 函 数 名         : display_thread_entry
 * 函数功能		   : 界面显示线程入口函数
@@ -50,6 +51,10 @@ void display_thread_entry(void* parameter)
 				}
 				case Mainmeau_to_Banqiu_setA:{
 					Banqiu_setA_Display_init();// 放显示更新函数
+					break;
+				}
+				case Mainmeau_to_Steer_test:{
+					steer_test_init();
 					break;
 				}
 /****************Testmeau状态出发*********************/				
@@ -130,8 +135,18 @@ void display_thread_entry(void* parameter)
 					break;
 				}
 				case Banqiu_next:{
-					updatepage(pagetable, 4,"nowt", target_now, 0); 
+					updatepage(pagetable, 4,"nowt", target_point[target_now].number, 0); 
 					showpage(pagetable, 1, 16);
+					break;
+				}
+/****************Steer_test状态出发*********************/
+				case Steer_plus:case Steer_minus:{
+					updatepage(pagetable, 0,"Pwm", test_duty, 0); 
+					showpage(pagetable, 1, 16);
+					break;
+				}
+				case Steer_test_to_Mainmeau:{
+					main_Display_init();
 					break;
 				}
 /****************default*********************/					
@@ -232,7 +247,22 @@ void Banqiu_set_pid_Display_init(void)
 	updatepage(pagetable, 0,"Kp",(u16)(pid_steer1->kp*10), 1);
 	updatepage(pagetable, 1,"Ki",(u16)(pid_steer1->ki*10), 1);
 	updatepage(pagetable, 2,"Kd",(u16)(pid_steer1->kd*10), 1); 
-	updatepage(pagetable, 4,"nowt",0, 1); 
+	updatepage(pagetable, 4,"nowt",target_point[target_now].number, 1); 
+	updatepage(pagetable, 5,"exit",0, 1); 
+	showpage(pagetable, 1, 16);
+}
+
+/*******************************************************************************
+* 函 数 名         : steer_test_init
+* 函数功能		   : 舵机测试初始化函数
+* 输    入         : 无
+* 输    出         : 无
+*******************************************************************************/
+void steer_test_init(void)
+{
+	clearpage(pagetable);  // 清显示数组
+ 	OLED_Clear();  // 清屏
+	updatepage(pagetable, 0,"Pwm", test_duty, 1);
 	updatepage(pagetable, 5,"exit",0, 1); 
 	showpage(pagetable, 1, 16);
 }

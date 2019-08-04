@@ -155,25 +155,25 @@
 *******************************************************************************/
 //-----------------OLED端口定义----------------  
 #if defined(STM32f103VET6_small)
-#define OLED_CS_PORT 	 		 GPIOD
-#define OLED_RCC_CS_PORT  	     RCC_APB2Periph_GPIOD
-#define OLED_CS_PIN  			 GPIO_Pin_0
+#define OLED_CS_PORT 	 		 GPIOB
+#define OLED_RCC_CS_PORT  	     RCC_APB2Periph_GPIOB
+#define OLED_CS_PIN  			 GPIO_Pin_10
 
-#define OLED_DC_PORT  			 GPIOD
-#define OLED_RCC_DC_PORT  		 RCC_APB2Periph_GPIOD
-#define OLED_DC_PIN   			 GPIO_Pin_1
+#define OLED_DC_PORT  			 GPIOB
+#define OLED_RCC_DC_PORT  		 RCC_APB2Periph_GPIOB
+#define OLED_DC_PIN   			 GPIO_Pin_11
 
-#define OLED_RST_PORT  			 GPIOD
-#define OLED_RCC_RST_PORT        RCC_APB2Periph_GPIOD
-#define OLED_RST_PIN  			 GPIO_Pin_2
+#define OLED_RST_PORT  			 GPIOB
+#define OLED_RCC_RST_PORT        RCC_APB2Periph_GPIOB
+#define OLED_RST_PIN  			 GPIO_Pin_12
 
-#define OLED_SDIN_PORT     		 GPIOD                          //SDIN(D1
-#define OLED_RCC_SDIN_PORT  	 RCC_APB2Periph_GPIOD
-#define OLED_SDIN_PIN 			 GPIO_Pin_3
+#define OLED_SDIN_PORT     		 GPIOB                          //SDIN(D1
+#define OLED_RCC_SDIN_PORT  	 RCC_APB2Periph_GPIOB
+#define OLED_SDIN_PIN 			 GPIO_Pin_13
 
-#define OLED_SCLK_PORT 			 GPIOD
-#define OLED_RCC_SCLK_PORT  	 RCC_APB2Periph_GPIOD            //SCLK(D0)
-#define OLED_SCLK_PIN 			 GPIO_Pin_4
+#define OLED_SCLK_PORT 			 GPIOB
+#define OLED_RCC_SCLK_PORT  	 RCC_APB2Periph_GPIOB            //SCLK(D0)
+#define OLED_SCLK_PIN 			 GPIO_Pin_14
 
 #endif
 #if defined(STM32f103ZET6_alien)
@@ -200,6 +200,12 @@
 /*******************************************************************************
                               舵机端口宏定义
 *******************************************************************************/
+#define Steer1_S3010_mid  42        // 百分之50占空比
+#define Steer1_S3010_max  62   
+#define Steer1_S3010_min  22
+#define Steer2_S3010_mid  74
+#define Steer2_S3010_max  94
+#define Steer2_S3010_min  44
 #if defined(STM32f103VET6_small)
 #define steer1_port 			 GPIOA             // 初始化函数暂不支持重映射
 #define steer1_port_RCC 		 RCC_APB2Periph_GPIOA
