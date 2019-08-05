@@ -120,11 +120,12 @@
         <SetRegEntry>
           <Number>0</Number>
           <Key>DLGUARM</Key>
+          <Name>猬PwD?D?/鴗d</Name>
         </SetRegEntry>
         <SetRegEntry>
           <Number>0</Number>
           <Key>JL2CM3</Key>
-          <Name>-U59406527 -O206 -S2 -ZTIFSpeedSel5000 -A0 -C0 -JU1 -JI127.0.0.1 -JP0 -RST0 -N00("ARM CoreSight SW-DP") -D00(1BA01477) -L00(0) -TO65554 -TC10000000 -TP21 -TDS8001 -TDT0 -TDC1F -TIEFFFFFFFF -TIP8 -TB1 -TFE0 -FO15 -FD20000000 -FC1000 -FN1 -FF0STM32F10x_512.FLM -FS08000000 -FL080000 -FP0($$Device:STM32F103VE$Flash\STM32F10x_512.FLM)</Name>
+          <Name>-U59406527 -O206 -S6 -ZTIFSpeedSel500 -A0 -C0 -JU1 -JI127.0.0.1 -JP0 -RST0 -N00("ARM CoreSight SW-DP") -D00(1BA01477) -L00(0) -TO65554 -TC10000000 -TP21 -TDS8001 -TDT0 -TDC1F -TIEFFFFFFFF -TIP8 -TB1 -TFE0 -FO15 -FD20000000 -FC1000 -FN1 -FF0STM32F10x_512.FLM -FS08000000 -FL080000 -FP0($$Device:STM32F103VE$Flash\STM32F10x_512.FLM)</Name>
         </SetRegEntry>
         <SetRegEntry>
           <Number>0</Number>
@@ -153,7 +154,7 @@
           <Type>0</Type>
           <LineNumber>154</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>134240230</Address>
+          <Address>134240246</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -167,34 +168,50 @@
         <Bp>
           <Number>1</Number>
           <Type>0</Type>
-          <LineNumber>105</LineNumber>
+          <LineNumber>37</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>134232430</Address>
+          <Address>134242156</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
           <SizeOfObject>0</SizeOfObject>
           <BreakByAccess>0</BreakByAccess>
           <BreakIfRCount>1</BreakIfRCount>
-          <Filename>C:\Users\Administrator\Desktop\鐢佃禌\electronics_design_competition\寰€骞撮\鏉跨悆\project-鏉跨悆\Public\pwm\bsp_pwm.c</Filename>
+          <Filename>C:\Users\Administrator\Desktop\鐢佃禌\electronics_design_competition\寰€骞撮\鏉跨悆\project-鏉跨悆\App\Task_tesk\task_readAt24c02.c</Filename>
           <ExecCommand></ExecCommand>
-          <Expression>\\diansai\Public/pwm/bsp_pwm.c\105</Expression>
+          <Expression>\\diansai\App/Task_tesk/task_readAt24c02.c\37</Expression>
         </Bp>
         <Bp>
           <Number>2</Number>
           <Type>0</Type>
-          <LineNumber>90</LineNumber>
+          <LineNumber>33</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>134241752</Address>
+          <Address>134242144</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
           <SizeOfObject>0</SizeOfObject>
           <BreakByAccess>0</BreakByAccess>
           <BreakIfRCount>1</BreakIfRCount>
-          <Filename>C:\Users\Administrator\Desktop\鐢佃禌\electronics_design_competition\寰€骞撮\鏉跨悆\project-鏉跨悆\Public\pwm\bsp_pwm.c</Filename>
+          <Filename>C:\Users\Administrator\Desktop\鐢佃禌\electronics_design_competition\寰€骞撮\鏉跨悆\project-鏉跨悆\App\Task_tesk\task_readAt24c02.c</Filename>
           <ExecCommand></ExecCommand>
-          <Expression>\\diansai\Public/pwm/bsp_pwm.c\90</Expression>
+          <Expression>\\diansai\App/Task_tesk/task_readAt24c02.c\33</Expression>
+        </Bp>
+        <Bp>
+          <Number>3</Number>
+          <Type>0</Type>
+          <LineNumber>33</LineNumber>
+          <EnabledFlag>1</EnabledFlag>
+          <Address>134242504</Address>
+          <ByteObject>0</ByteObject>
+          <HtxType>0</HtxType>
+          <ManyObjects>0</ManyObjects>
+          <SizeOfObject>0</SizeOfObject>
+          <BreakByAccess>0</BreakByAccess>
+          <BreakIfRCount>1</BreakIfRCount>
+          <Filename>C:\Users\Administrator\Desktop\鐢佃禌\electronics_design_competition\寰€骞撮\鏉跨悆\project-鏉跨悆\App\Task_tesk\task_readAt24c02.c</Filename>
+          <ExecCommand></ExecCommand>
+          <Expression>\\diansai\App/Task_tesk/task_readAt24c02.c\33</Expression>
         </Bp>
       </Breakpoint>
       <WatchWindow1>
@@ -269,6 +286,13 @@
           <ItemText>pwm_device.pwm_arr</ItemText>
         </Ww>
       </WatchWindow1>
+      <WatchWindow2>
+        <Ww>
+          <count>0</count>
+          <WinNumber>2</WinNumber>
+          <ItemText>re_AT24</ItemText>
+        </Ww>
+      </WatchWindow2>
       <Tracepoint>
         <THDelay>0</THDelay>
       </Tracepoint>

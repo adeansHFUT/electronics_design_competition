@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\Objects\diansai.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Objects\diansai.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Sun Aug 04 21:58:31 2019
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Mon Aug 05 20:17:00 2019
 <BR><P>
 <H3>Maximum Stack Usage =        300 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -442,9 +442,8 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_float_round
 <LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_float_epilogue
 </UL>
-<BR>[Called By]<UL><LI><a href="#[50]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Banqiu_set_pid_thread_entry
+<BR>[Called By]<UL><LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fsub
 <LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pos_pid_control_update
-<LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fsub
 <LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_frsub
 </UL>
 
@@ -453,7 +452,8 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fadd
 </UL>
-<BR>[Called By]<UL><LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pos_pid_control_update
+<BR>[Called By]<UL><LI><a href="#[50]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Banqiu_set_pid_thread_entry
+<LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pos_pid_control_update
 </UL>
 
 <P><STRONG><a name="[66]"></a>__aeabi_frsub</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, fadd.o(.text), UNUSED)
@@ -584,8 +584,8 @@ Global Symbols
 <P><STRONG><a name="[152]"></a>__I$use$fp</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, iusefp.o(.text), UNUSED)
 
 <P><STRONG><a name="[64]"></a>_float_round</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, fepilogue.o(.text))
-<BR><BR>[Called By]<UL><LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fadd
-<LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_d2f
+<BR><BR>[Called By]<UL><LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_d2f
+<LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fadd
 </UL>
 
 <P><STRONG><a name="[63]"></a>_float_epilogue</STRONG> (Thumb, 92 bytes, Stack size 4 bytes, fepilogue.o(.text))
@@ -699,7 +699,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[4f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;display_thread_entry
 </UL>
 
-<P><STRONG><a name="[88]"></a>Banqiu_set_pid_Display_init</STRONG> (Thumb, 178 bytes, Stack size 16 bytes, display.o(i.Banqiu_set_pid_Display_init))
+<P><STRONG><a name="[88]"></a>Banqiu_set_pid_Display_init</STRONG> (Thumb, 234 bytes, Stack size 16 bytes, display.o(i.Banqiu_set_pid_Display_init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 160<LI>Call Chain = Banqiu_set_pid_Display_init &rArr; showpage &rArr; OLED_ShowNum &rArr; OLED_ShowChar &rArr; OLED_Set_Pos &rArr; OLED_WR_Byte
 </UL>
 <BR>[Calls]<UL><LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;updatepage
@@ -712,12 +712,12 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[4f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;display_thread_entry
 </UL>
 
-<P><STRONG><a name="[50]"></a>Banqiu_set_pid_thread_entry</STRONG> (Thumb, 322 bytes, Stack size 0 bytes, banqiu_handle.o(i.Banqiu_set_pid_thread_entry))
+<P><STRONG><a name="[50]"></a>Banqiu_set_pid_thread_entry</STRONG> (Thumb, 318 bytes, Stack size 0 bytes, banqiu_handle.o(i.Banqiu_set_pid_thread_entry))
 <BR><BR>[Stack]<UL><LI>Max Depth = 136<LI>Call Chain = Banqiu_set_pid_thread_entry &rArr; pwm_set_Duty &rArr; __aeabi_dmul &rArr; _double_epilogue &rArr; _double_round
 </UL>
 <BR>[Calls]<UL><LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;auto_control_set_target
 <LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_i2f
-<LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fadd
+<LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fsub
 <LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cfrcmple
 <LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cfcmple
 <LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_sem_release
@@ -1304,7 +1304,7 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OLED_Init
 </UL>
 
-<P><STRONG><a name="[4f]"></a>display_thread_entry</STRONG> (Thumb, 558 bytes, Stack size 16 bytes, display.o(i.display_thread_entry))
+<P><STRONG><a name="[4f]"></a>display_thread_entry</STRONG> (Thumb, 620 bytes, Stack size 16 bytes, display.o(i.display_thread_entry))
 <BR><BR>[Stack]<UL><LI>Max Depth = 196<LI>Call Chain = display_thread_entry &rArr; rt_kprintf &rArr; rt_vsnprintf &rArr; print_number
 </UL>
 <BR>[Calls]<UL><LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;updatepage
@@ -2610,16 +2610,16 @@ Local Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> pos_pid_control.o(i.pos_pid_control_create)
 </UL>
-<P><STRONG><a name="[54]"></a>pos_pid_control_update</STRONG> (Thumb, 196 bytes, Stack size 24 bytes, pos_pid_control.o(i.pos_pid_control_update))
-<BR><BR>[Stack]<UL><LI>Max Depth = 44<LI>Call Chain = pos_pid_control_update &rArr; __aeabi_fadd &rArr; _float_epilogue
+<P><STRONG><a name="[54]"></a>pos_pid_control_update</STRONG> (Thumb, 200 bytes, Stack size 24 bytes, pos_pid_control.o(i.pos_pid_control_update))
+<BR><BR>[Stack]<UL><LI>Max Depth = 44<LI>Call Chain = pos_pid_control_update &rArr; __aeabi_fsub &rArr; __aeabi_fadd &rArr; _float_epilogue
 </UL>
 <BR>[Calls]<UL><LI><a href="#[ed]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_tick_get
 <LI><a href="#[ee]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_tick_from_millisecond
-<LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fadd
+<LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fsub
 <LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cfrcmple
 <LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cfcmple
 <LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fmul
-<LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fsub
+<LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fadd
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> pos_pid_control.o(i.pos_pid_control_create)
 </UL>

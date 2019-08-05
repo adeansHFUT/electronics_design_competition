@@ -27,6 +27,7 @@ struct pos_pid_control
     float     error_l;
 
     float     last_out;
+	float     test_out;
     rt_tick_t last_time;
 };
 

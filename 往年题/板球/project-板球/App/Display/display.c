@@ -121,6 +121,8 @@ void display_thread_entry(void* parameter)
 				}
 				case Banqiu_P_plus:case Banqiu_P_minus:{
 					updatepage(pagetable, 0,"Kp", (u16)(pid_steer1->kp*10), 0); // ³Ë10ºóÔÙÏÔÊ¾
+					updatepage(pagetable, 6,"duo1",pid_steer1->test_out, 0);
+					updatepage(pagetable, 7,"duo2",pid_steer2->test_out, 0);
 					showpage(pagetable, 1, 16);
 					break;
 				}
@@ -247,8 +249,10 @@ void Banqiu_set_pid_Display_init(void)
 	updatepage(pagetable, 0,"Kp",(u16)(pid_steer1->kp*10), 1);
 	updatepage(pagetable, 1,"Ki",(u16)(pid_steer1->ki*10), 1);
 	updatepage(pagetable, 2,"Kd",(u16)(pid_steer1->kd*10), 1); 
-	updatepage(pagetable, 4,"nowt",target_point[target_now].number, 1); 
+	updatepage(pagetable, 4,"nowt",target_point[target_now].number, 1);  
 	updatepage(pagetable, 5,"exit",0, 1); 
+	updatepage(pagetable, 6,"duo1",pid_steer1->test_out, 1);
+	updatepage(pagetable, 7,"duo2",pid_steer2->test_out, 1);
 	showpage(pagetable, 1, 16);
 }
 

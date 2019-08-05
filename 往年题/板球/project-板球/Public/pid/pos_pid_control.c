@@ -44,6 +44,7 @@ static rt_err_t pos_pid_control_update(void *pid, float current_point)
     pos_pid->d_error = pos_pid->kd * (pos_pid->error - pos_pid->error_l);
 
     pos_pid->last_out = pos_pid->p_error + pos_pid->i_error + pos_pid->d_error;
+	pos_pid->test_out = pos_pid->last_out;
     if (pos_pid->last_out > pos_pid->maximum)
     {
         pos_pid->last_out = pos_pid->maximum;

@@ -67,7 +67,7 @@
 #define AT24cxx_IIC_SCL_PORT_RCC		RCC_APB2Periph_GPIOE
 
 /*  AT24cxx_IIC_SDA时钟端口、引脚定义 */
-#define AT24cxx_IIC_SDA_PORT 			GPIOE  
+#define AT24cxx_IIC_SDA_PORT 			GPIOE
 #define AT24cxx_IIC_SDA_PIN 			(GPIO_Pin_5)
 #define AT24cxx_IIC_SDA_PORT_RCC		RCC_APB2Periph_GPIOE
 
@@ -200,10 +200,10 @@
 /*******************************************************************************
                               舵机端口宏定义
 *******************************************************************************/
-#define Steer1_S3010_mid  42        // 百分之50占空比
-#define Steer1_S3010_max  62   
-#define Steer1_S3010_min  22
-#define Steer2_S3010_mid  74
+#define Steer1_S3010_mid  28        // 百分之50占空比
+#define Steer1_S3010_max  54   
+#define Steer1_S3010_min  15
+#define Steer2_S3010_mid  76
 #define Steer2_S3010_max  94
 #define Steer2_S3010_min  44
 #if defined(STM32f103VET6_small)

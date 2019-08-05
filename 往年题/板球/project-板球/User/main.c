@@ -212,14 +212,14 @@ int my_other_create(void)
 	else
 		rt_kprintf("创建PID_steer2失败！\n\n");
 	/*初始设置一波*/
-	pid_steer1->maximum = +20;   // 输出的极值
-    pid_steer1->minimum = -20;
-    pid_steer1->anti_windup_value = 100.0f;  // 积分抗饱和值
-	pid_steer1->control.sample_time = 10;   // 10 ms
-	pid_steer2->maximum = +500;   // 输出的极值
-    pid_steer2->minimum = -500;
-    pid_steer2->anti_windup_value = 100.0f;  // 积分抗饱和值
-	pid_steer2->control.sample_time = 10;   // 10 ms
+	pid_steer1->maximum = +30;   // 输出的极值
+    pid_steer1->minimum = -30;
+    pid_steer1->anti_windup_value = 50.0f;  // 积分抗饱和值
+	pid_steer1->control.sample_time = 1;   // 10 ms
+	pid_steer2->maximum = +30;   // 输出的极值
+    pid_steer2->minimum = -30;
+    pid_steer2->anti_windup_value = 50.0f;  // 积分抗饱和值
+	pid_steer2->control.sample_time = 1;   // 10 ms
 	return 0;
 }
  /*

@@ -17,10 +17,10 @@ clock = time.clock() # Tracks FPS.
 
 uart = UART(3, 115200)#串口配置
 def find_max(blobs):#寻找最大色块的函数
-    min_size=30 #把小于50面积的色块滤掉,如果小球面积本身就很小,则需要把这个值调小一点
-    max_size=400 #最大像素
+    min_size=2 #把小于50面积的色块滤掉,如果小球面积本身就很小,则需要把这个值调小一点
+    max_size=100 #最大像素
     max_w = 35  # 色块最大宽度
-    min_w = 6
+    min_w = 2
     max_blob = 0
     for blob in blobs:
         if ((blob.pixels() < max_size)and(blob.pixels() > min_size)and(blob.w()<max_w)and(blob.h()<max_w)and(blob.w()>min_w)and(blob.h()>min_w)):
@@ -36,10 +36,11 @@ def find_max(blobs):#寻找最大色块的函数
     return max_blob
 
 
-white=(240, 255)#银色小球和蓝底 阈值
-x1 = (52, 27)  # 左上角
-board_width = 190
-left_roi = [x1[0], x1[1], x1[0]+board_width, x1[1]+board_width]#板子区域 摄像头高度33cm
+white=(225, 255)#银色小球和蓝底 阈值
+x1 = (45, 42)  # 左上角
+board_width = 187
+board_high = 177
+left_roi = [x1[0], x1[1], board_width, board_high]#板子区域 摄像头高度33cm
 while(True):
     clock.tick()
     img = sensor.snapshot() # Take a picture and return the image.
