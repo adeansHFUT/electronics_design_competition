@@ -27,6 +27,7 @@ void bsp_steer_init(uint16_t fre)
 	steer2.timx = steer2_timx;
 	steer2.timx_RCC = steer2_timx_RCC;
 	steer2.tim_channel = steer2_TIM_channel;
-	steer_pwm_Frequency_Init(&steer1, fre);   // 同一个tim下pwm的频率必须相同
-	steer_pwm_Frequency_Init(&steer2, fre);
+	//steer_pwm_Frequency_Init(&steer1, fre);   // 同一个tim下pwm的频率必须相同
+	motor_pwm_Frequency_Init(&steer1, fre);
+	//steer_pwm_Frequency_Init(&steer2, fre);
 }

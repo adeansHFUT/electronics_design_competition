@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\Objects\diansai.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Objects\diansai.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Mon Aug 05 20:17:00 2019
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Tue Aug 06 22:29:14 2019
 <BR><P>
 <H3>Maximum Stack Usage =        300 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -988,7 +988,7 @@ Global Symbols
 <LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB1PeriphClockCmd
 <LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Init
 </UL>
-<BR>[Called By]<UL><LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;steer_pwm_Frequency_Init
+<BR>[Called By]<UL><LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;motor_pwm_Frequency_Init
 </UL>
 
 <P><STRONG><a name="[e7]"></a>RCC_AHBPeriphClockCmd</STRONG> (Thumb, 26 bytes, Stack size 0 bytes, stm32f10x_rcc.o(i.RCC_AHBPeriphClockCmd))
@@ -1264,10 +1264,10 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[50]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Banqiu_set_pid_thread_entry
 </UL>
 
-<P><STRONG><a name="[c9]"></a>bsp_steer_init</STRONG> (Thumb, 74 bytes, Stack size 8 bytes, bsp_steer.o(i.bsp_steer_init))
-<BR><BR>[Stack]<UL><LI>Max Depth = 120<LI>Call Chain = bsp_steer_init &rArr; steer_pwm_Frequency_Init &rArr; PWM_Init &rArr; GPIO_Init
+<P><STRONG><a name="[c9]"></a>bsp_steer_init</STRONG> (Thumb, 66 bytes, Stack size 8 bytes, bsp_steer.o(i.bsp_steer_init))
+<BR><BR>[Stack]<UL><LI>Max Depth = 120<LI>Call Chain = bsp_steer_init &rArr; motor_pwm_Frequency_Init &rArr; PWM_Init &rArr; GPIO_Init
 </UL>
-<BR>[Calls]<UL><LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;steer_pwm_Frequency_Init
+<BR>[Calls]<UL><LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;motor_pwm_Frequency_Init
 </UL>
 <BR>[Called By]<UL><LI><a href="#[f9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_hw_board_init
 </UL>
@@ -1373,6 +1373,14 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> components.o(i.rt_application_init)
 </UL>
+<P><STRONG><a name="[ca]"></a>motor_pwm_Frequency_Init</STRONG> (Thumb, 44 bytes, Stack size 32 bytes, bsp_pwm.o(i.motor_pwm_Frequency_Init))
+<BR><BR>[Stack]<UL><LI>Max Depth = 112<LI>Call Chain = motor_pwm_Frequency_Init &rArr; PWM_Init &rArr; GPIO_Init
+</UL>
+<BR>[Calls]<UL><LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PWM_Init
+</UL>
+<BR>[Called By]<UL><LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bsp_steer_init
+</UL>
+
 <P><STRONG><a name="[d4]"></a>my_ipc_create</STRONG> (Thumb, 162 bytes, Stack size 8 bytes, main.o(i.my_ipc_create))
 <BR><BR>[Stack]<UL><LI>Max Depth = 244<LI>Call Chain = my_ipc_create &rArr; rt_mb_create &rArr; rt_object_delete &rArr; rt_free &rArr; rt_kprintf &rArr; rt_vsnprintf &rArr; print_number
 </UL>
@@ -2332,14 +2340,6 @@ Global Symbols
 
 <P><STRONG><a name="[fb]"></a>statetable_init</STRONG> (Thumb, 256 bytes, Stack size 0 bytes, key_handle.o(i.statetable_init))
 <BR><BR>[Called By]<UL><LI><a href="#[f9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_hw_board_init
-</UL>
-
-<P><STRONG><a name="[ca]"></a>steer_pwm_Frequency_Init</STRONG> (Thumb, 46 bytes, Stack size 32 bytes, bsp_pwm.o(i.steer_pwm_Frequency_Init))
-<BR><BR>[Stack]<UL><LI>Max Depth = 112<LI>Call Chain = steer_pwm_Frequency_Init &rArr; PWM_Init &rArr; GPIO_Init
-</UL>
-<BR>[Calls]<UL><LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PWM_Init
-</UL>
-<BR>[Called By]<UL><LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bsp_steer_init
 </UL>
 
 <P><STRONG><a name="[cf]"></a>steer_test_init</STRONG> (Thumb, 58 bytes, Stack size 8 bytes, display.o(i.steer_test_init))

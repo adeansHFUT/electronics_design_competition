@@ -14,7 +14,10 @@
 					Flash占用大小=Code+RO+RW
 					SRAM占用大小=RW+ZI
 */
+/*改代码的注意：
+steer1临时变为“motor”
 
+*/
 int my_ipc_create(void);
 int my_timer_create(void);
 int my_thread_create(void);

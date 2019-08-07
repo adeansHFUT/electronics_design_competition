@@ -91,6 +91,19 @@ void steer_pwm_Frequency_Init(My_pwm_device_t pwm_device_t, uint16_t fre)
 	PWM_Init(*pwm_device_t, 1200-1);
 }
 /*
+函数名：steer_pwm_Frequency_Init
+函数作用：初始化电机频率
+参数：频率.1-1000（单位是百Mz）一般10
+返回：无
+*/
+
+void motor_pwm_Frequency_Init(My_pwm_device_t pwm_device_t, uint16_t fre)
+{
+	pwm_device_t->pwm_arr = 10000/fre;                // arr越大，pwm精度就越高（最高也就千分之一，下面的函数限制了）
+	pwm_device_t->pwm_ccr = pwm_device_t->pwm_arr*0;  // 保证60000*1200 = 70M就可以了
+	PWM_Init(*pwm_device_t, 72-1);
+}
+/*
 函数名：set_steerDuty
 函数作用：设置舵机占空比
 参数：0-1000（单位是千分之）

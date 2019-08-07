@@ -90,7 +90,8 @@ void rt_hw_board_init()
 	uart_device_init();
 	USART_Cmd(camera_uart_device.uart_module, DISABLE);	 // 关闭摄像头的uart接收
 	AT24CXX_Init();   // AT24c02初始化iic
-	bsp_steer_init(60);  //初始化舵机，60hz
+	bsp_steer_init(10);  //初始化舵机，60hz
+	
 	pwm_set_Duty(&steer1, Steer1_S3010_mid);
 	pwm_set_Duty(&steer2, Steer2_S3010_mid);
 	statetable_init();  // 状态转移表初始化
