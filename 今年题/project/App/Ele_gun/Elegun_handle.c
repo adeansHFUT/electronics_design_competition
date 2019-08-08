@@ -1,6 +1,9 @@
 #include "Elegun_handle.h"
 #include "bsp_pwm.h"
 #include "bsp_steer.h"
+#include "bsp_sr04.h"
+#include "display.h"
+#include "key_handle.h"
 #include <stdlib.h>
 rt_thread_t Elegun_thread = RT_NULL;
 rt_thread_t Elegun_autofire_thread = RT_NULL;
@@ -89,7 +92,7 @@ void Elegun_autofire_thread_entry(void* parameter)
 		{
 			rt_thread_mdelay(500); // 延迟一秒等数据稳定
 			offset_x = ((float)receive_x/Img_width - 0.5) * 2;
-			while(offset_x != 0)
+			while(offset_x != 0) // 调控舵机2
 			{
 				offset_x = ((float)receive_x/Img_width - 0.5) * 2;
 				ele_angle = btm_servo_control(); // 比例控制
@@ -100,7 +103,14 @@ void Elegun_autofire_thread_entry(void* parameter)
 					pwm_set_Duty(&steer2, Steer2_S3010_mid -
 					(float)((Steer2_S3010_mid - Steer2_S3010_min)/90.0) * (ele_angle) ) ;   // 右转
 				rt_thread_mdelay(35);  // 让舵机动到位
-			}		
+			}
+			ele_distance = (uint16_t)(Hcsr04GetLength()+Hcsr04GetLength())*0.5; // 获取10次
+			rt_mb_send(mb_display, Wave_update); // 通知显示
+			if(ele_distance >= 300) // 角度限幅
+				ele_distance = 300;
+			pwm_set_Duty(&steer1, Steer1_S3010_mid + 
+			(float)((Steer1_S3010_max-Steer1_S3010_mid)/90.0) * ele_distance*0.1 );   // 距离转角度， 上转
+			// 发射弹丸
 		}
 	}
 }

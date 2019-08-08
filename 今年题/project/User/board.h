@@ -15,6 +15,7 @@
 #include "bsp_iic.h"
 #include "bsp_24cxx.h"
 #include "bsp_steer.h"
+#include "bsp_sr04.h"
 #include "pos_pid_control.h"
 #include "inc_pid_control.h"
 /**********º¯ÊıÉùÃ÷************/

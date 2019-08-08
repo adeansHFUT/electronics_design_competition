@@ -206,6 +206,7 @@
 #define Steer2_S3010_mid  744   
 #define Steer2_S3010_max  1218   // 最左边
 #define Steer2_S3010_min  270
+
 #if defined(STM32f103VET6_small)
 #define steer1_port 			 GPIOA             // 初始化函数暂不支持重映射
 #define steer1_port_RCC 		 RCC_APB2Periph_GPIOA
@@ -236,4 +237,15 @@
 #define steer2_tim_RCC 			 RCC_APB1Periph_TIM3
 #define steer2_TIM_channel 		 TIM_Channel_2
 #endif
+/*******************************************************************************
+                              超声波端口宏定义
+*******************************************************************************/
+#if defined(STM32f103VET6_small)
+#define HCSR04_PORT     GPIOD
+#define HCSR04_CLK      RCC_APB2Periph_GPIOD
+#define HCSR04_TRIG     GPIO_Pin_5
+#define HCSR04_ECHO     GPIO_Pin_6
 
+#define TRIG_Send  PDout(5) 
+#define ECHO_Reci  PDin(6)
+#endif

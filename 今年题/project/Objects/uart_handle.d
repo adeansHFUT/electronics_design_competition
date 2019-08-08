@@ -73,6 +73,7 @@
 .\objects\uart_handle.o: .\Peripheral\24Cxx\bsp_24cxx.h
 .\objects\uart_handle.o: .\User\PORT_cfg.h
 .\objects\uart_handle.o: .\Peripheral\steer\bsp_steer.h
+.\objects\uart_handle.o: .\Peripheral\sr04\bsp_sr04.h
 .\objects\uart_handle.o: .\Public\pid\pos_pid_control.h
 .\objects\uart_handle.o: .\Public\pid\auto_control.h
 .\objects\uart_handle.o: .\Public\pid\inc_pid_control.h

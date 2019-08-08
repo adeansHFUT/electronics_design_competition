@@ -30,13 +30,17 @@ Build target 'Target 1'
 compiling board.c...
 .\Peripheral\steer\bsp_steer.h(9): warning:  #1-D: last line of file ends without a newline
   #endif
+.\Peripheral\sr04\bsp_sr04.h(4): warning:  #1295-D: Deprecated declaration Hcsr04Init - give arg types
+  void Hcsr04Init();
+.\Peripheral\sr04\bsp_sr04.h(7): warning:  #1-D: last line of file ends without a newline
+  #endif
 .\Public\pid\auto_control.h(29): warning:  #1-D: last line of file ends without a newline
   #endif // __auto_control_H__
 .\Public\pid\pos_pid_control.h(39): warning:  #1-D: last line of file ends without a newline
   #endif
 .\Public\pid\inc_pid_control.h(37): warning:  #1-D: last line of file ends without a newline
   #endif
-.\User\board.h(24): warning:  #1-D: last line of file ends without a newline
+.\User\board.h(25): warning:  #1-D: last line of file ends without a newline
   #endif
 .\App\Display\display.h(9): warning:  #1-D: last line of file ends without a newline
   #endif
@@ -52,11 +56,43 @@ compiling board.c...
   #include "Elegun_handle.h"
 .\App\Ele_gun\Elegun_handle.h(17): warning:  #1-D: last line of file ends without a newline
   #endif
-RT-Thread\bsp\board.c: 12 warnings, 0 errors
+RT-Thread\bsp\board.c: 14 warnings, 0 errors
+compiling main.c...
+.\Peripheral\steer\bsp_steer.h(9): warning:  #1-D: last line of file ends without a newline
+  #endif
+.\Peripheral\sr04\bsp_sr04.h(4): warning:  #1295-D: Deprecated declaration Hcsr04Init - give arg types
+  void Hcsr04Init();
+.\Peripheral\sr04\bsp_sr04.h(7): warning:  #1-D: last line of file ends without a newline
+  #endif
+.\Public\pid\auto_control.h(29): warning:  #1-D: last line of file ends without a newline
+  #endif // __auto_control_H__
+.\Public\pid\pos_pid_control.h(39): warning:  #1-D: last line of file ends without a newline
+  #endif
+.\Public\pid\inc_pid_control.h(37): warning:  #1-D: last line of file ends without a newline
+  #endif
+User\board.h(25): warning:  #1-D: last line of file ends without a newline
+  #endif
+.\App\Display\display.h(9): warning:  #1-D: last line of file ends without a newline
+  #endif
+.\App\Uart_handle\uart_handle.h(10): warning:  #1-D: last line of file ends without a newline
+  #endif
+.\App\Uart_handle\key_handle.h(36): warning:  #1-D: last line of file ends without a newline
+  #endif
+.\App\Task_tesk\task_readAT24c02.h(10): warning:  #1-D: last line of file ends without a newline
+  #endif
+.\App\banqiu_handle\banqiu_handle.h(24): warning:  #1-D: last line of file ends without a newline
+  #endif
+User\include.h(7): warning:  #1-D: last line of file ends without a newline
+  #include "Elegun_handle.h"
+.\App\Ele_gun\Elegun_handle.h(17): warning:  #1-D: last line of file ends without a newline
+  #endif
+User\main.c(354): warning:  #1-D: last line of file ends without a newline
+  }
+User\main.c: 15 warnings, 0 errors
 linking...
-Program Size: Code=27084 RO-data=2716 RW-data=788 ZI-data=46332  
+Program Size: Code=26428 RO-data=2716 RW-data=792 ZI-data=46304  
 FromELF: creating hex file...
-".\Objects\diansai.axf" - 0 Error(s), 12 Warning(s).
+".\Objects\diansai.axf" - 0 Error(s), 29 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -70,7 +106,7 @@ Package Vendor: Keil
   D:\KEIL5\ARM\PACK\Keil\STM32F1xx_DFP\2.3.0\Device\Include
 
 <h2>Collection of Component Files used:</h2>
-Build Time Elapsed:  00:00:02
+Build Time Elapsed:  00:00:03
 </pre>
 </body>
 </html>

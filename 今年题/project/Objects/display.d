@@ -68,6 +68,7 @@
 .\objects\display.o: .\Peripheral\24Cxx\bsp_24cxx.h
 .\objects\display.o: .\User\PORT_cfg.h
 .\objects\display.o: .\Peripheral\steer\bsp_steer.h
+.\objects\display.o: .\Peripheral\sr04\bsp_sr04.h
 .\objects\display.o: .\Public\pid\pos_pid_control.h
 .\objects\display.o: .\Public\pid\auto_control.h
 .\objects\display.o: .\Public\pid\inc_pid_control.h

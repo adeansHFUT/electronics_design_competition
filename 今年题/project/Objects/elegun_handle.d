@@ -52,4 +52,7 @@
 .\objects\elegun_handle.o: .\Libraries\STM32F10x_StdPeriph_Driver\inc\misc.h
 .\objects\elegun_handle.o: .\User\PORT_cfg.h
 .\objects\elegun_handle.o: .\Peripheral\steer\bsp_steer.h
+.\objects\elegun_handle.o: .\Peripheral\sr04\bsp_sr04.h
+.\objects\elegun_handle.o: .\App\Display\display.h
+.\objects\elegun_handle.o: .\App\Uart_handle\key_handle.h
 .\objects\elegun_handle.o: D:\KEIL5\ARM\ARMCC\Bin\..\include\stdlib.h

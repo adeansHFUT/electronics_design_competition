@@ -201,7 +201,12 @@ void display_thread_entry(void* parameter)
 				}
 				case Rec_update:{
 					updatepage(pagetable, 3,"rec", receive_x, 1);
-					showpage(pagetable, 0, 16);
+					showpage(pagetable, 1, 16);
+					break;
+				}
+				case Wave_update:{
+					updatepage(pagetable, 4,"wave", ele_distance, 1);
+					showpage(pagetable, 1, 16);
 					break;
 				}
 /****************default*********************/					
@@ -367,8 +372,8 @@ void Elegun_autofire_init(void)
 {
 	clearpage(pagetable);  // 清显示数组
  	OLED_Clear();  // 清屏
-	updatepage(pagetable, 0,"autofire", 0, 1);
+	updatepage(pagetable, 0,"auto", 0, 1);
 	updatepage(pagetable, 1,"Kp", btm_kp, 1);
 	updatepage(pagetable, 2,"exit", 4, 1);
-	showpage(pagetable, 0, 16);
+	showpage(pagetable, 1, 16);
 }

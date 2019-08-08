@@ -70,6 +70,7 @@
 .\objects\task_readat24c02.o: D:\KEIL5\ARM\ARMCC\Bin\..\include\stdio.h
 .\objects\task_readat24c02.o: .\User\PORT_cfg.h
 .\objects\task_readat24c02.o: .\Peripheral\steer\bsp_steer.h
+.\objects\task_readat24c02.o: .\Peripheral\sr04\bsp_sr04.h
 .\objects\task_readat24c02.o: .\Public\pid\pos_pid_control.h
 .\objects\task_readat24c02.o: .\Public\pid\auto_control.h
 .\objects\task_readat24c02.o: .\Public\pid\inc_pid_control.h

@@ -84,14 +84,15 @@ void rt_hw_board_init()
 	SysTick_Init(72); // 先用下SysTick的精确延时，因为硬件初始化可能需要
 	//NVIC_Configuration(); 	 // 配置嵌套向量中断控制器NVIC，uart初始化里面有了，不需要再用sys.h里的
 	LED_Init();
-	LED_Turn0();
+	//LED_Turn0();
 	KEY_Init();
 	OLED_Init();			//oled初始化
 	OLED_Clear();         // oled清屏
     OLED_ShowString(0,0, "hello mcu");	 
 	uart_device_init();
 	USART_Cmd(camera_uart_device.uart_module, DISABLE);	 // 关闭摄像头的uart接收
-	AT24CXX_Init();   // AT24c02初始化iic
+	Hcsr04Init();  // 初始化超声波
+	//AT24CXX_Init();   // AT24c02初始化iic
 	bsp_steer_init(50);  //初始化舵机
 	pwm_set_Duty(&steer1, Steer1_S3010_mid);
 	pwm_set_Duty(&steer2, Steer2_S3010_mid);

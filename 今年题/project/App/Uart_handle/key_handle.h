@@ -25,7 +25,7 @@ Mainmeau_to_Steer_test, Steer_plus, Steer_minus, Steer_test_to_Mainmeau,
 Mainmeau_to_Pos_input, Distance_plus, Distance_plus_ten, Distance_minus, Angle_plus, Angle_minus, Pos_input_to_Mainmeau,
 Pos_input_to_Steer_move_fire, Steer_move_fire_to_Pos_input,  	
 /**************************电磁炮任务(发挥部分1)***************************/		
-Mainmeau_to_Elegun_autofire, Elegun_autofire_to_Mainmeau, Main_Kp_plus, Main_Kp_minus, Rec_update, 
+Mainmeau_to_Elegun_autofire, Elegun_autofire_to_Mainmeau, Main_Kp_plus, Main_Kp_minus, Rec_update, Wave_update, 
 }Action;
 extern Statename current_state; 
 void keyhandle_thread_entry(void* parameter);

@@ -32,6 +32,7 @@
 ".\objects\bsp_time.o"
 ".\objects\bsp_24cxx.o"
 ".\objects\bsp_steer.o"
+".\objects\bsp_sr04.o"
 ".\objects\sys.o"
 ".\objects\systick.o"
 ".\objects\bsp_iic.o"
