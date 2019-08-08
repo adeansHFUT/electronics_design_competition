@@ -333,6 +333,9 @@ void state_transfer(uint8_t statenow, uint8_t key_receive)
 /****************Elegun_autofire状态出发*********************/	
 		case Elegun_autofire_to_Mainmeau:{
 			USART_Cmd(camera_uart_device.uart_module, DISABLE);  // 关uart接收
+			pwm_set_Duty(&steer1, Steer1_S3010_mid); // 两个舵机回正
+			pwm_set_Duty(&steer2, Steer2_S3010_mid);
+			last_btm_degree = 0;  // 回正后将上次输出角度置零
 			rt_mb_send(mb_display, Elegun_autofire_to_Mainmeau);
 			break;
 		}

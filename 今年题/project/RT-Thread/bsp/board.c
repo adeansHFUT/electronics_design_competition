@@ -83,6 +83,8 @@ void rt_hw_board_init()
 */	
 	SysTick_Init(72); // 先用下SysTick的精确延时，因为硬件初始化可能需要
 	//NVIC_Configuration(); 	 // 配置嵌套向量中断控制器NVIC，uart初始化里面有了，不需要再用sys.h里的
+	LED_Init();
+	LED_Turn0();
 	KEY_Init();
 	OLED_Init();			//oled初始化
 	OLED_Clear();         // oled清屏

@@ -15,7 +15,7 @@
 					SRAM占用大小=RW+ZI
 */
 /*改代码的注意：
-
+发挥部分1测试可用：舵机反应延时30ms，Kp 12（可用）， 35ms Kp 15（更好点）
 
 */
 int my_ipc_create(void);

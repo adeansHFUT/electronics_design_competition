@@ -11,8 +11,8 @@ int8_t  ele_angle = 0;  // 设定角度
 uint8_t receive_x = 0; // 接受到的X值
 
 float offset_x = 0;
-float offset_dead_block = 0.1; // 偏移量死区大小
-float  btm_kp = 5;  // 控制舵机旋转的比例系数
+float offset_dead_block = 0.02; // 偏移量死区大小(0.02差不多)
+float  btm_kp = 15;  // 控制舵机旋转的比例系数(初始15差不多)
 int8_t  last_btm_degree = 0; // 上一次底部舵机的角度
 /*******************************************************************************
 * 函 数 名         : Elegun_fire_thread_entry
@@ -87,7 +87,7 @@ void Elegun_autofire_thread_entry(void* parameter)
 		uwRet = rt_sem_take(sem_elegun_autofire, RT_WAITING_FOREVER); 	  /* 等待时间：一直 */
 		if(RT_EOK == uwRet)
 		{
-			rt_thread_mdelay(1000); // 延迟一秒等数据稳定
+			rt_thread_mdelay(500); // 延迟一秒等数据稳定
 			offset_x = ((float)receive_x/Img_width - 0.5) * 2;
 			while(offset_x != 0)
 			{
@@ -99,6 +99,7 @@ void Elegun_autofire_thread_entry(void* parameter)
 				else
 					pwm_set_Duty(&steer2, Steer2_S3010_mid -
 					(float)((Steer2_S3010_mid - Steer2_S3010_min)/90.0) * (ele_angle) ) ;   // 右转
+				rt_thread_mdelay(35);  // 让舵机动到位
 			}		
 		}
 	}
