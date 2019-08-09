@@ -13,5 +13,6 @@ void LED_Init(void);
 void LED_Turn0(void);
 void LED_Turn1(void);
 void Fire_Init();
+void Charge_Init();
 	
 #endif

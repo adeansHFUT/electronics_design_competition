@@ -85,6 +85,7 @@ void rt_hw_board_init()
 	//NVIC_Configuration(); 	 // 配置嵌套向量中断控制器NVIC，uart初始化里面有了，不需要再用sys.h里的
 	//LED_Init();
 	Fire_Init(); // fire端口初始化
+	Charge_Init(); // charge端口初始化
 	//LED_Turn0();
 	KEY_Init();
 	OLED_Init();			//oled初始化

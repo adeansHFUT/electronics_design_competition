@@ -66,5 +66,5 @@ void Charge_Init()
 	GPIO_InitStructure.GPIO_Speed=GPIO_Speed_50MHz;	  //设置传输速率
 	GPIO_Init(Charge_port,&GPIO_InitStructure); 	   /* 初始化GPIO */
 	
-	GPIO_SetBits(Charge_port,Charge_pin);   //将Charge端口拉高充电
+	GPIO_ResetBits(Charge_port,Charge_pin);   //将Charge端口拉底充电
 }
