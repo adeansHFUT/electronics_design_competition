@@ -249,3 +249,17 @@
 #define TRIG_Send  PDout(5) 
 #define ECHO_Reci  PDin(6)
 #endif
+/*******************************************************************************
+                              开火和充电端口宏定义
+*******************************************************************************/
+#if defined(STM32f103VET6_small)
+#define Fire_port GPIOC
+#define Fire_port_RCC		RCC_APB2Periph_GPIOC
+#define Fire_pin     GPIO_Pin_8
+#define Fire     PCout(8) 
+
+#define Charge_port GPIOC                // 低电平触发继电器
+#define Charge_port_RCC		RCC_APB2Periph_GPIOC
+#define Charge_pin     GPIO_Pin_9
+#define Charge     PCout(9) 
+#endif

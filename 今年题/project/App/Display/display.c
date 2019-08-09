@@ -25,6 +25,7 @@ void steer_test_init(void);
 void Pos_input_init(void);
 void Steer_move_fire_init(void);
 void Elegun_autofire_init(void);
+void Fire_ok_display(void);
 /*******************************************************************************
 * 函 数 名         : display_thread_entry
 * 函数功能		   : 界面显示线程入口函数
@@ -170,7 +171,12 @@ void display_thread_entry(void* parameter)
 /****************Pos_input状态出发*********************/
 				case Distance_plus:case Distance_minus:case Distance_plus_ten:{
 					updatepage(pagetable, 0,"dis", ele_distance, 0);
-					showpage(pagetable, 0, 16);
+					showpage(pagetable, 1, 16);
+					break;
+				}
+				case Distance_rate_plus: case Distance_rate_minus:{
+					updatepage(pagetable, 4,"rate", (uint16_t)dis_rate, 0);
+					showpage(pagetable, 1, 16);
 					break;
 				}
 				case Angle_plus:case Angle_minus:{
@@ -178,7 +184,7 @@ void display_thread_entry(void* parameter)
 						updatepage(pagetable, 1,"+ang", ele_angle, 1); 
 					else
 						updatepage(pagetable, 1,"-ang", -ele_angle, 1); 
-					showpage(pagetable, 0, 16);
+					showpage(pagetable, 1, 16);
 					break;
 				}
 				case Pos_input_to_Mainmeau:{
@@ -194,13 +200,17 @@ void display_thread_entry(void* parameter)
 					Pos_input_init();
 					break;
 				}
+				case TO_fire_ok:{
+					Fire_ok_display();
+					break;		
+				}
 /****************Elegun_autofire状态出发*********************/
 				case Elegun_autofire_to_Mainmeau:{
 					main_Display_init();
 					break;
 				}
 				case Rec_update:{
-					updatepage(pagetable, 3,"rec", receive_x, 1);
+					updatepage(pagetable, 3,"recx", receive_x, 1);
 					showpage(pagetable, 1, 16);
 					break;
 				}
@@ -346,11 +356,12 @@ void Pos_input_init(void)
 		updatepage(pagetable, 1,"-ang", -ele_angle, 1); 
 	updatepage(pagetable, 2,"fire", 3, 1);
 	updatepage(pagetable, 3,"exit", 4, 1);
-	showpage(pagetable, 0, 16);
+	updatepage(pagetable, 4,"rate", (uint16_t)dis_rate, 1);
+	showpage(pagetable, 1, 16);
 }
 /*******************************************************************************
 * 函 数 名         : Steer_move_fire_init
-* 函数功能		   : 位置输入初始化函数
+* 函数功能		   : 基础开火初始化函数
 * 输    入         : 无
 * 输    出         : 无
 *******************************************************************************/
@@ -358,13 +369,29 @@ void Steer_move_fire_init(void)
 {
 	clearpage(pagetable);  // 清显示数组
  	OLED_Clear();  // 清屏
+	updatepage(pagetable, 0,"distance", (uint16_t)ele_distance, 1);
+	updatepage(pagetable, 2,"to fire!", 0, 1);
+	updatepage(pagetable, 3,"exit", 4, 1);
+	showpage(pagetable, 0, 16);
+}
+/*******************************************************************************
+* 函 数 名         : Fire_ok_display
+* 函数功能		   : 开火结束显示函数（显示本次开火参数：开炮竖直角度）
+* 输    入         : 无
+* 输    出         : 无
+*******************************************************************************/
+void Fire_ok_display(void)
+{
+	clearpage(pagetable);  // 清显示数组
+ 	OLED_Clear();  // 清屏
+	updatepage(pagetable, 0,"dis ang", (uint16_t)dis_angle, 1);
 	updatepage(pagetable, 2,"fire ok!", 0, 1);
 	updatepage(pagetable, 3,"exit", 4, 1);
 	showpage(pagetable, 0, 16);
 }
 /*******************************************************************************
 * 函 数 名         : Elegun_autofire_init
-* 函数功能		   : 位置输入初始化函数
+* 函数功能		   : 自动瞄准初始化函数(显示Kp，rate，receivex，wave)
 * 输    入         : 无
 * 输    出         : 无
 *******************************************************************************/
@@ -373,7 +400,9 @@ void Elegun_autofire_init(void)
 	clearpage(pagetable);  // 清显示数组
  	OLED_Clear();  // 清屏
 	updatepage(pagetable, 0,"auto", 0, 1);
-	updatepage(pagetable, 1,"Kp", btm_kp, 1);
-	updatepage(pagetable, 2,"exit", 4, 1);
+	updatepage(pagetable, 1,"fire", 0, 1);
+	updatepage(pagetable, 2,"Kp", btm_kp, 1);
+	updatepage(pagetable, 5,"rate", (uint16_t)dis_rate, 1);
+	updatepage(pagetable, 7,"exit", 4, 1);
 	showpage(pagetable, 1, 16);
 }

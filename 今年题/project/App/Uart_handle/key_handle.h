@@ -23,7 +23,7 @@ Banqiu_D_plus, Banqiu_D_minus, Banqiu_next,
 Mainmeau_to_Steer_test, Steer_plus, Steer_minus, Steer_test_to_Mainmeau, 
 /**************************电磁炮任务(基础部分)***************************/		
 Mainmeau_to_Pos_input, Distance_plus, Distance_plus_ten, Distance_minus, Angle_plus, Angle_minus, Pos_input_to_Mainmeau,
-Pos_input_to_Steer_move_fire, Steer_move_fire_to_Pos_input,  	
+Pos_input_to_Steer_move_fire, Steer_move_fire_to_Pos_input, Distance_rate_plus, Distance_rate_minus, TO_fire_ok,	
 /**************************电磁炮任务(发挥部分1)***************************/		
 Mainmeau_to_Elegun_autofire, Elegun_autofire_to_Mainmeau, Main_Kp_plus, Main_Kp_minus, Rec_update, Wave_update, 
 }Action;

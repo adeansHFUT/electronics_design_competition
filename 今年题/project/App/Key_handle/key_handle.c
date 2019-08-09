@@ -80,8 +80,9 @@ void statetable_init(void)
 	state_transition[Steer_test][KEY_4].state_name = Mainmeau;
 	state_transition[Steer_test][KEY_4].action = Steer_test_to_Mainmeau;
 	
+	state_transition[Pos_input][KEY_1].action = Distance_rate_plus;
+	state_transition[Pos_input][KEY_2].action = Distance_rate_minus;
 	state_transition[Pos_input][KEY_5].action = Distance_plus;
-	state_transition[Pos_input][KEY_1].action = Distance_plus_ten;
 	state_transition[Pos_input][KEY_6].action = Distance_minus;
 	state_transition[Pos_input][KEY_7].action = Angle_plus;
 	state_transition[Pos_input][KEY_8].action = Angle_minus;
@@ -300,6 +301,16 @@ void state_transfer(uint8_t statenow, uint8_t key_receive)
 			rt_mb_send(mb_display, Pos_input_to_Steer_move_fire);
 			break;
 		}
+		case Distance_rate_plus:{
+			dis_rate++;
+			rt_mb_send(mb_display, Distance_rate_plus);
+			break;
+		}
+		case Distance_rate_minus:{
+			dis_rate--;
+			rt_mb_send(mb_display, Distance_rate_minus);
+			break;
+		}
 		case Distance_plus:{
 			ele_distance++;
 			rt_mb_send(mb_display, Distance_plus);
@@ -327,6 +338,8 @@ void state_transfer(uint8_t statenow, uint8_t key_receive)
 		}
 /****************Steer_move_fire状态出发*********************/	
 		case Steer_move_fire_to_Pos_input:{
+			pwm_set_Duty(&steer1, Steer1_S3010_mid); // 两个舵机回正
+			pwm_set_Duty(&steer2, Steer2_S3010_mid);
 			rt_mb_send(mb_display, Steer_move_fire_to_Pos_input);
 			break;
 		}
