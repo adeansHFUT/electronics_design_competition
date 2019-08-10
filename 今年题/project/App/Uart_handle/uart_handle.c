@@ -35,7 +35,7 @@ void openmv_receive(uint8_t* data)
 		receive_x = data[2];			
 		rt_mb_send(mb_display, Rec_update);
 		// 从右摇到左，提前shake_advance_amount发射
-		if(elegun_shakefire_rotation == 2 && (160-shake_advance_amount) == receive_x)  
+		if(elegun_shakefire_rotation == 2 && (160-shake_advance_amount) <= receive_x)  
 		{
 			USART_Cmd(camera_uart_device.uart_module, DISABLE);  // 关uart接收
 			Fire = 1;// 发射弹丸

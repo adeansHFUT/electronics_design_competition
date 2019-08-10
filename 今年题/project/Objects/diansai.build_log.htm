@@ -27,18 +27,16 @@ Project File Date:  08/08/2019
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 6 (build 750)', folder: 'D:\KEIL5\ARM\ARMCC\Bin'
 Build target 'Target 1'
-compiling Elegun_handle.c...
-App\Ele_gun\Elegun_handle.h(29): warning:  #1-D: last line of file ends without a newline
+compiling uart_handle.c...
+App\Uart_handle\uart_handle.h(10): warning:  #1-D: last line of file ends without a newline
   #endif
 .\User\PORT_cfg.h(265): warning:  #1-D: last line of file ends without a newline
   #endif
-.\Peripheral\steer\bsp_steer.h(9): warning:  #1-D: last line of file ends without a newline
-  #endif
-.\Peripheral\sr04\bsp_sr04.h(4): warning:  #1295-D: Deprecated declaration Hcsr04Init - give arg types
-  void Hcsr04Init();
-.\Peripheral\sr04\bsp_sr04.h(7): warning:  #1-D: last line of file ends without a newline
-  #endif
 .\App\Display\display.h(9): warning:  #1-D: last line of file ends without a newline
+  #endif
+.\App\Uart_handle\key_handle.h(46): warning:  #1-D: last line of file ends without a newline
+  #endif
+.\App\Task_tesk\task_readAT24c02.h(11): warning:  #1-D: last line of file ends without a newline
   #endif
 .\Peripheral\led\bsp_led.h(15): warning:  #1295-D: Deprecated declaration Fire_Init - give arg types
   void Fire_Init();
@@ -52,6 +50,12 @@ App\Ele_gun\Elegun_handle.h(29): warning:  #1-D: last line of file ends without 
   #endif
 .\User\PORT_cfg.h(265): warning:  #1-D: last line of file ends without a newline
   #endif
+.\Peripheral\steer\bsp_steer.h(9): warning:  #1-D: last line of file ends without a newline
+  #endif
+.\Peripheral\sr04\bsp_sr04.h(4): warning:  #1295-D: Deprecated declaration Hcsr04Init - give arg types
+  void Hcsr04Init();
+.\Peripheral\sr04\bsp_sr04.h(7): warning:  #1-D: last line of file ends without a newline
+  #endif
 .\Public\pid\auto_control.h(29): warning:  #1-D: last line of file ends without a newline
   #endif // __auto_control_H__
 .\Public\pid\pos_pid_control.h(39): warning:  #1-D: last line of file ends without a newline
@@ -60,15 +64,19 @@ App\Ele_gun\Elegun_handle.h(29): warning:  #1-D: last line of file ends without 
   #endif
 .\User\board.h(25): warning:  #1-D: last line of file ends without a newline
   #endif
-.\App\Uart_handle\key_handle.h(46): warning:  #1-D: last line of file ends without a newline
+.\App\banqiu_handle\banqiu_handle.h(24): warning:  #1-D: last line of file ends without a newline
   #endif
-App\Ele_gun\Elegun_handle.c(90): warning:  #177-D: variable "integral"  was declared but never referenced
-  	static float integral = 0;
-App\Ele_gun\Elegun_handle.c: 18 warnings, 0 errors
+.\User\include.h(7): warning:  #1-D: last line of file ends without a newline
+  #include "Elegun_handle.h"
+.\App\Ele_gun\Elegun_handle.h(29): warning:  #1-D: last line of file ends without a newline
+  #endif
+App\Uart_handle\uart_handle.c(64): warning:  #1-D: last line of file ends without a newline
+  }
+App\Uart_handle\uart_handle.c: 22 warnings, 0 errors
 linking...
 Program Size: Code=33796 RO-data=2796 RW-data=852 ZI-data=46332  
 FromELF: creating hex file...
-".\Objects\diansai.axf" - 0 Error(s), 18 Warning(s).
+".\Objects\diansai.axf" - 0 Error(s), 22 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -82,7 +90,7 @@ Package Vendor: Keil
   D:\KEIL5\ARM\PACK\Keil\STM32F1xx_DFP\2.3.0\Device\Include
 
 <h2>Collection of Component Files used:</h2>
-Build Time Elapsed:  00:00:04
+Build Time Elapsed:  00:00:05
 </pre>
 </body>
 </html>
