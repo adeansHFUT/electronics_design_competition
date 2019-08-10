@@ -24,18 +24,20 @@ void state_transfer(uint8_t statenow, uint8_t key_receive);
 *******************************************************************************/
 void statetable_init(void)
 {
-	state_transition[Mainmeau][KEY_1].state_name = Testmeau;
+
 	state_transition[Mainmeau][KEY_1].action = Mainmeau_to_Testmeau;
-	state_transition[Mainmeau][KEY_2].state_name = Task_randw;  // 测试读写
+	state_transition[Mainmeau][KEY_1].state_name= Testmeau;
 	state_transition[Mainmeau][KEY_2].action = Mainmeau_to_Task_randw;
+	state_transition[Mainmeau][KEY_2].state_name = Task_randw;
 	state_transition[Mainmeau][KEY_3].state_name = Pos_input; // 基础任务
 	state_transition[Mainmeau][KEY_3].action = Mainmeau_to_Pos_input;
 	state_transition[Mainmeau][KEY_4].state_name = Steer_test;  //舵机测试
 	state_transition[Mainmeau][KEY_4].action = Mainmeau_to_Steer_test;
-	state_transition[Mainmeau][KEY_5].state_name = Elegun_autofire; // 发挥一
-	state_transition[Mainmeau][KEY_5].action = Mainmeau_to_Elegun_autofire;
-	state_transition[Mainmeau][KEY_7].action = Main_Kp_plus;  // 发挥一的Kp加减
-	state_transition[Mainmeau][KEY_8].action = Main_Kp_minus;
+	state_transition[Mainmeau][KEY_5].state_name = Elegun_autofire_set; // 发挥一
+	state_transition[Mainmeau][KEY_5].action = Mainmeau_to_Elegun_autofire_set;
+	state_transition[Mainmeau][KEY_6].state_name = Elegun_shakefire_set; // 发挥二
+	state_transition[Mainmeau][KEY_6].action = Mainmeau_to_Elegun_shakefire_set;
+
 	
 	state_transition[Testmeau][KEY_4].state_name = Mainmeau;
 	state_transition[Testmeau][KEY_4].action = Testmeau_to_Mainmeau;
@@ -94,8 +96,29 @@ void statetable_init(void)
 	state_transition[Steer_move_fire][KEY_4].state_name = Pos_input;
 	state_transition[Steer_move_fire][KEY_4].action = Steer_move_fire_to_Pos_input;
 	
-	state_transition[Elegun_autofire][KEY_4].state_name = Mainmeau;
-	state_transition[Elegun_autofire][KEY_4].action = Elegun_autofire_to_Mainmeau;
+	state_transition[Elegun_autofire_set][KEY_4].state_name = Mainmeau;
+	state_transition[Elegun_autofire_set][KEY_4].action = Elegun_autofire_set_to_Mainmeau;
+	state_transition[Elegun_autofire_set][KEY_1].action = Autofire_Kp_plus;
+	state_transition[Elegun_autofire_set][KEY_2].action = Autofire_Kp_minus;
+	state_transition[Elegun_autofire_set][KEY_5].action = Autofire_Ki_plus;
+	state_transition[Elegun_autofire_set][KEY_6].action = Autofire_Ki_minus;
+	state_transition[Elegun_autofire_set][KEY_7].action = Dead_block_plus;
+	state_transition[Elegun_autofire_set][KEY_8].action = Dead_block_minus;
+	state_transition[Elegun_autofire_set][KEY_3].state_name = Elegun_autofire;
+	state_transition[Elegun_autofire_set][KEY_3].action = Elegun_autofire_set_to_Elegun_autofire;
+	
+	state_transition[Elegun_shakefire_set][KEY_1].action = Advance_amount_plus;
+	state_transition[Elegun_shakefire_set][KEY_2].action = Advance_amount_minus;
+	state_transition[Elegun_shakefire_set][KEY_4].state_name = Mainmeau;
+	state_transition[Elegun_shakefire_set][KEY_4].action = Elegun_shakefire_set_to_Mainmeau;
+	state_transition[Elegun_shakefire_set][KEY_3].state_name = Elegun_shakefire;
+	state_transition[Elegun_shakefire_set][KEY_3].action = Elegun_shakefire_set_to_Elegun_shakefire;
+	
+	state_transition[Elegun_autofire][KEY_4].state_name = Elegun_autofire_set;
+	state_transition[Elegun_autofire][KEY_4].action = Elegun_autofire_to_Elegun_autofire_set;
+	
+	state_transition[Elegun_shakefire][KEY_4].state_name = Elegun_shakefire_set;
+	state_transition[Elegun_shakefire][KEY_4].action = Elegun_shakefire_to_Elegun_shakefire_set;
 }
 /*******************************************************************************
 * 函 数 名         : keyhandle_thread_entry
@@ -157,20 +180,12 @@ void state_transfer(uint8_t statenow, uint8_t key_receive)
 			rt_mb_send(mb_display, Mainmeau_to_Pos_input);
 			break;
 		}
-		case Mainmeau_to_Elegun_autofire:{
-			USART_Cmd(camera_uart_device.uart_module, ENABLE);  // 开uart接收
-			rt_sem_release(sem_elegun_autofire);
-			rt_mb_send(mb_display, Mainmeau_to_Elegun_autofire);
+		case Mainmeau_to_Elegun_autofire_set:{
+			rt_mb_send(mb_display, Mainmeau_to_Elegun_autofire_set);
 			break;
 		}
-		case Main_Kp_plus:{
-			btm_kp++;
-			rt_mb_send(mb_display, Main_Kp_plus);		
-			break;
-		}
-		case Main_Kp_minus:{
-			btm_kp--;
-			rt_mb_send(mb_display, Main_Kp_minus);
+		case Mainmeau_to_Elegun_shakefire_set:{
+			rt_mb_send(mb_display, Mainmeau_to_Elegun_shakefire_set);
 			break;
 		}
 /****************Testmeau状态出发*********************/
@@ -343,13 +358,86 @@ void state_transfer(uint8_t statenow, uint8_t key_receive)
 			rt_mb_send(mb_display, Steer_move_fire_to_Pos_input);
 			break;
 		}
+		
+/****************Elegun_autofire_set状态出发*********************/	
+		case Elegun_autofire_set_to_Elegun_autofire:{
+			USART_Cmd(camera_uart_device.uart_module, ENABLE);  // 开摄像头uart接收
+			rt_sem_release(sem_elegun_autofire);
+			rt_mb_send(mb_display, Elegun_autofire_set_to_Elegun_autofire);
+			break;
+		}
+		case Elegun_autofire_set_to_Mainmeau:{
+			rt_mb_send(mb_display, Elegun_autofire_set_to_Mainmeau);
+			break;
+		}
+		case Autofire_Kp_plus:{
+			btm_kp++;
+			rt_mb_send(mb_display, Autofire_Kp_plus);
+			break;
+		}
+		case Autofire_Kp_minus:{
+			btm_kp--;
+			rt_mb_send(mb_display, Autofire_Kp_minus);
+			break;
+		}
+		case Autofire_Ki_plus:{
+			btm_ki++;
+			rt_mb_send(mb_display, Autofire_Ki_plus);
+			break;
+		}
+		case Autofire_Ki_minus:{
+			btm_ki--;
+			rt_mb_send(mb_display, Autofire_Ki_minus);
+			break;
+		}
+		case Dead_block_plus:{
+			offset_dead_block += 0.001; // 偏移量死区大小(0.02差不多)
+			rt_mb_send(mb_display, Dead_block_plus);
+			break;
+		}
+		case Dead_block_minus:{
+			offset_dead_block -= 0.001; // 偏移量死区大小(0.02差不多)
+			rt_mb_send(mb_display, Dead_block_minus);
+			break;
+		}
 /****************Elegun_autofire状态出发*********************/	
-		case Elegun_autofire_to_Mainmeau:{
+		case Elegun_autofire_to_Elegun_autofire_set:{
 			USART_Cmd(camera_uart_device.uart_module, DISABLE);  // 关uart接收
 			pwm_set_Duty(&steer1, Steer1_S3010_mid); // 两个舵机回正
 			pwm_set_Duty(&steer2, Steer2_S3010_mid);
 			last_btm_degree = 0;  // 回正后将上次输出角度置零
-			rt_mb_send(mb_display, Elegun_autofire_to_Mainmeau);
+			rt_mb_send(mb_display, Elegun_autofire_to_Elegun_autofire_set);
+			break;
+		}
+		
+/****************Elegun_shakefire_set状态出发*********************/	
+		case Elegun_shakefire_set_to_Elegun_shakefire:{
+			USART_Cmd(camera_uart_device.uart_module, ENABLE);  // 开摄像头uart接收
+			rt_sem_release(sem_elegun_shakefire);
+			rt_mb_send(mb_display, Elegun_shakefire_set_to_Elegun_shakefire);
+			break;
+		}
+		case Elegun_shakefire_set_to_Mainmeau:{
+			rt_mb_send(mb_display, Elegun_shakefire_set_to_Mainmeau);
+			break;
+		}
+		case Advance_amount_plus:{
+			shake_advance_amount++;
+			rt_mb_send(mb_display, Advance_amount_plus);
+			break;	
+		}
+		case Advance_amount_minus:{
+			shake_advance_amount--;
+			rt_mb_send(mb_display, Advance_amount_minus);
+			break;	
+		}
+/****************Elegun_shakefire状态出发*********************/	
+		case Elegun_shakefire_to_Elegun_shakefire_set:{
+			USART_Cmd(camera_uart_device.uart_module, DISABLE);  // 关uart接收
+			pwm_set_Duty(&steer1, Steer1_S3010_mid); // 两个舵机回正
+			pwm_set_Duty(&steer2, Steer2_S3010_mid);
+			last_btm_degree = 0;  // 回正后将上次输出角度置零
+			rt_mb_send(mb_display, Elegun_shakefire_to_Elegun_shakefire_set);
 			break;
 		}
 /****************default*********************/	

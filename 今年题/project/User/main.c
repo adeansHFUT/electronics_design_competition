@@ -39,6 +39,7 @@ int my_other_create(void);
 8: taskreadAT24处理线程
 9：发射线程(基础)
 10：display显示线程(放在所有非死循环线程后面)
+11：Elegun_shakefire线程
 12：Elegun_autofire线程
 **************************************************************************/
 
@@ -97,6 +98,13 @@ int my_ipc_create(void)
                      RT_IPC_FLAG_FIFO); /* 信号量模式 FIFO(0x00)*/
     if(sem_elegun_autofire != RT_NULL)
 		rt_kprintf("sem_elegun_autofire信号量创建成功！\n\n");
+	
+	/* 创建一个信号量 */
+	sem_elegun_shakefire= rt_sem_create("sem_elegun_shakefire",/* 名字 */
+                     0,     /* 信号量初始值 */
+                     RT_IPC_FLAG_FIFO); /* 信号量模式 FIFO(0x00)*/
+    if(sem_elegun_shakefire != RT_NULL)
+		rt_kprintf("sem_elegun_shakefire信号量创建成功！\n\n");
 	
 	/* 创建一个按键处理邮箱 */
 	mb_key = rt_mb_create("mb_key",/* 名字 */
@@ -235,10 +243,22 @@ int my_thread_create(void)
                       512,                 /* 线程栈大小 */
                       12,                   /* 线程的优先级 */
                       20);                 /* 线程时间片 */
-	if (Elegun_thread != RT_NULL)
-		rt_kprintf("Elegun_thread线程创建成功！\n\n");
+	if (Elegun_autofire_thread != RT_NULL)
+		rt_kprintf("Elegun_autofire_thread线程创建成功！\n\n");
 	else
-		rt_kprintf("Elegun_thread线程创建失败！\n\n");
+		rt_kprintf("Elegun_autofire_thread线程创建失败！\n\n");
+	
+	Elegun_shakefire_thread =                          /* 线程控制块指针 */
+    rt_thread_create( "Elegun_shakefire_thread",              /* 线程名字 */
+                      Elegun_shakefire_thread_entry,   /* 线程入口函数 */
+                      RT_NULL,             /* 线程入口函数参数 */
+                      512,                 /* 线程栈大小 */
+                      11,                   /* 线程的优先级 */
+                      20);                 /* 线程时间片 */
+	if (Elegun_shakefire_thread != RT_NULL)
+		rt_kprintf("Elegun_shakefire_thread线程创建成功！\n\n");
+	else
+		rt_kprintf("Elegun_shakefire_thread线程创建失败！\n\n");
 	
 	return 0;
 }
@@ -345,6 +365,15 @@ int my_thread_startup(void)
    {
 		rt_thread_startup(Elegun_autofire_thread); 
         rt_kprintf("电磁炮发挥部分1线程开始调度！\n\n");
+
+   }	
+   else
+        return -1;
+   
+   if (Elegun_shakefire_thread != RT_NULL)
+   {
+		rt_thread_startup(Elegun_shakefire_thread); 
+        rt_kprintf("电磁炮发挥部分2线程开始调度！\n\n");
 
    }	
    else

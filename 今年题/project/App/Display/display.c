@@ -25,6 +25,9 @@ void steer_test_init(void);
 void Pos_input_init(void);
 void Steer_move_fire_init(void);
 void Elegun_autofire_init(void);
+void Elegun_autofire_set_init(void);
+void Elegun_shakefire_set_init(void);
+void Elegun_shakefire_init(void);
 void Fire_ok_display(void);
 /*******************************************************************************
 * 函 数 名         : display_thread_entry
@@ -65,13 +68,12 @@ void display_thread_entry(void* parameter)
 					Pos_input_init();
 					break;
 				}
-				case Mainmeau_to_Elegun_autofire:{
-					Elegun_autofire_init();
+				case Mainmeau_to_Elegun_autofire_set:{
+					Elegun_autofire_set_init();
 					break;
 				}
-				case Main_Kp_plus:case Main_Kp_minus:{
-					updatepage(pagetable, 6,"Kp", btm_kp, 0);
-					showpage(pagetable, 1, 16);
+				case Mainmeau_to_Elegun_shakefire_set:{
+					Elegun_shakefire_set_init();
 					break;
 				}
 /****************Testmeau状态出发*********************/				
@@ -204,19 +206,62 @@ void display_thread_entry(void* parameter)
 					Fire_ok_display();
 					break;		
 				}
-/****************Elegun_autofire状态出发*********************/
-				case Elegun_autofire_to_Mainmeau:{
+/****************Elegun_autofire_set状态出发*********************/
+				case Elegun_autofire_set_to_Mainmeau:{
 					main_Display_init();
 					break;
 				}
-				case Rec_update:{
-					updatepage(pagetable, 3,"recx", receive_x, 1);
+				case Autofire_Ki_plus:case Autofire_Ki_minus:{
+					updatepage(pagetable, 3,"Ki", btm_ki, 0);
+					showpage(pagetable, 1, 16);
+					break;
+				}
+				case Autofire_Kp_plus: case Autofire_Kp_minus:{
+					updatepage(pagetable, 2,"Kp", btm_kp, 0);
+					showpage(pagetable, 1, 16);
+					break;
+				}
+				case Elegun_autofire_set_to_Elegun_autofire:{
+					Elegun_autofire_init();
+					break;
+				}
+				case Dead_block_plus:case Dead_block_minus:{
+					updatepage(pagetable, 4,"dead", offset_dead_block*1000, 0);
+					showpage(pagetable, 1, 16);
+					break;
+				}
+/****************Elegun_autofire状态出发*********************/
+				case Elegun_autofire_to_Elegun_autofire_set:{
+					Elegun_autofire_set_init();
+					break;
+				}
+				case Rec_update:{  // shake fire 也可调用
+					updatepage(pagetable, 3,"recx", receive_x, 0);
 					showpage(pagetable, 1, 16);
 					break;
 				}
 				case Wave_update:{
-					updatepage(pagetable, 4,"wave", ele_distance, 1);
+					updatepage(pagetable, 4,"wave", ele_distance, 0);
 					showpage(pagetable, 1, 16);
+					break;
+				}
+/****************Elegun_shakefire_set状态出发*********************/
+				case Elegun_shakefire_set_to_Elegun_shakefire:{
+					Elegun_shakefire_init();
+					break;
+				}
+				case Advance_amount_plus:case Advance_amount_minus:{
+					updatepage(pagetable, 2,"advance", shake_advance_amount, 0);
+					showpage(pagetable, 0, 16);
+					break;
+				}
+				case Elegun_shakefire_set_to_Mainmeau:{
+					main_Display_init();
+					break;
+				}
+/****************Elegun_shakefire状态出发*********************/
+				case Elegun_shakefire_to_Elegun_shakefire_set:{
+					Elegun_shakefire_set_init();
 					break;
 				}
 /****************default*********************/					
@@ -390,6 +435,25 @@ void Fire_ok_display(void)
 	showpage(pagetable, 0, 16);
 }
 /*******************************************************************************
+* 函 数 名         : Elegun_autofire_set_init
+* 函数功能		   : 自动瞄准设置初始化函数(显示Kp，rate，receivex，wave)
+* 输    入         : 无
+* 输    出         : 无
+*******************************************************************************/
+void Elegun_autofire_set_init(void)
+{
+	clearpage(pagetable);  // 清显示数组
+ 	OLED_Clear();  // 清屏
+	updatepage(pagetable, 0,"auto", 0, 1);
+	updatepage(pagetable, 1,"fire", 0, 1);
+	updatepage(pagetable, 2,"Kp", btm_kp, 1);
+	updatepage(pagetable, 3,"Ki", btm_ki, 1);
+	updatepage(pagetable, 4,"dead", offset_dead_block*1000, 1);
+	updatepage(pagetable, 5,"rate", (uint16_t)dis_rate, 1);
+	updatepage(pagetable, 7,"exit", 4, 1);
+	showpage(pagetable, 1, 16);
+}
+/*******************************************************************************
 * 函 数 名         : Elegun_autofire_init
 * 函数功能		   : 自动瞄准初始化函数(显示Kp，rate，receivex，wave)
 * 输    入         : 无
@@ -401,8 +465,41 @@ void Elegun_autofire_init(void)
  	OLED_Clear();  // 清屏
 	updatepage(pagetable, 0,"auto", 0, 1);
 	updatepage(pagetable, 1,"fire", 0, 1);
-	updatepage(pagetable, 2,"Kp", btm_kp, 1);
+	updatepage(pagetable, 3,"recx", receive_x, 1);
+	updatepage(pagetable, 4,"wave", ele_distance, 1);
 	updatepage(pagetable, 5,"rate", (uint16_t)dis_rate, 1);
 	updatepage(pagetable, 7,"exit", 4, 1);
+	showpage(pagetable, 1, 16);
+}
+/*******************************************************************************
+* 函 数 名         : Elegun_autofire_set_init
+* 函数功能		   : 自动瞄准设置初始化函数(显示Kp，rate，receivex，wave)
+* 输    入         : 无
+* 输    出         : 无
+*******************************************************************************/
+void Elegun_shakefire_set_init(void)
+{
+	clearpage(pagetable);  // 清显示数组
+ 	OLED_Clear();  // 清屏
+	updatepage(pagetable, 0,"ready", 0, 1);
+	updatepage(pagetable, 1,"shake", 0, 1);
+	updatepage(pagetable, 2,"advance", shake_advance_amount, 1);
+	updatepage(pagetable, 3,"exit" ,0, 1);
+	showpage(pagetable, 0, 16);
+}
+/*******************************************************************************
+* 函 数 名         : Elegun_autofire_init
+* 函数功能		   : 自动瞄准初始化函数(显示Kp，rate，receivex，wave)
+* 输    入         : 无
+* 输    出         : 无
+*******************************************************************************/
+void Elegun_shakefire_init(void)
+{
+	clearpage(pagetable);  // 清显示数组
+ 	OLED_Clear();  // 清屏
+	updatepage(pagetable, 0,"to", 0, 1);
+	updatepage(pagetable, 1,"fire", 0, 1);
+	updatepage(pagetable, 3,"rec ", receive_x, 1);
+	updatepage(pagetable, 5,"exit", 4, 1);
 	showpage(pagetable, 1, 16);
 }

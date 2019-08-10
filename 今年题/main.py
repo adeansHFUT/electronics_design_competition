@@ -53,7 +53,7 @@ x1 = (11, 54)  # 左上角
 board_width = 230
 board_high = 165
 left_roi = [x1[0], x1[1], board_width, board_high]#感兴趣区
-amend = 33
+amend = 31
 
 
 

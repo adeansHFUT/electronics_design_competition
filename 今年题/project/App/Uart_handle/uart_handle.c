@@ -32,8 +32,19 @@ void openmv_receive(uint8_t* data)
 /*其中checkout=(data1+data2)低八位  比如 data1=0xe1,data2=0xf3,data1+data2=0x1d4,则checkout=0xd4*/
 	if(data[0] == 0xAA && data[1] == 0x55 && data[3] == 0x54)
 	{
-		receive_x = data[2];
+		receive_x = data[2];			
 		rt_mb_send(mb_display, Rec_update);
+		// 从右摇到左，提前shake_advance_amount发射
+		if(elegun_shakefire_rotation == 2 && (160-shake_advance_amount) == receive_x)  
+		{
+			USART_Cmd(camera_uart_device.uart_module, DISABLE);  // 关uart接收
+			Fire = 1;// 发射弹丸
+			Charge = 1; // 关闭充电
+			rt_thread_mdelay(800); // 延时800ms
+			Fire = 0;
+			Charge = 0; // 开启充电
+			rt_mb_send(mb_display, TO_fire_ok); // 通知显示刷新
+		}
 	}
 }
 void camera_uarthandle_thread_entry(void* parameter)
