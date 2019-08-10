@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\Objects\diansai.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Objects\diansai.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Sun Aug 11 01:37:21 2019
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Sun Aug 11 04:21:20 2019
 <BR><P>
 <H3>Maximum Stack Usage =        300 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -496,6 +496,8 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_float_round
 </UL>
 <BR>[Called By]<UL><LI><a href="#[4e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;taskreadAT24_thread_entry
+<LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Elegun_shakefire_thread_entry
+<LI><a href="#[50]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Elegun_fire_thread_entry
 <LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Elegun_autofire_thread_entry
 </UL>
 
@@ -514,7 +516,7 @@ Global Symbols
 <LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Elegun_autofire_thread_entry
 <LI><a href="#[e2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__kernel_poly
 <LI><a href="#[70]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_drsub
-<LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;asin
+<LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;asin
 </UL>
 
 <P><STRONG><a name="[6f]"></a>__aeabi_dsub</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, dadd.o(.text))
@@ -523,9 +525,8 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dadd
 </UL>
 <BR>[Called By]<UL><LI><a href="#[fd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;state_transfer
-<LI><a href="#[50]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Elegun_fire_thread_entry
 <LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Elegun_autofire_thread_entry
-<LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;asin
+<LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;asin
 </UL>
 
 <P><STRONG><a name="[70]"></a>__aeabi_drsub</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, dadd.o(.text))
@@ -533,7 +534,7 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dadd
 </UL>
-<BR>[Called By]<UL><LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;asin
+<BR>[Called By]<UL><LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;asin
 </UL>
 
 <P><STRONG><a name="[71]"></a>__aeabi_dmul</STRONG> (Thumb, 228 bytes, Stack size 48 bytes, dmul.o(.text))
@@ -546,7 +547,7 @@ Global Symbols
 <LI><a href="#[50]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Elegun_fire_thread_entry
 <LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Elegun_autofire_thread_entry
 <LI><a href="#[e2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__kernel_poly
-<LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;asin
+<LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;asin
 </UL>
 
 <P><STRONG><a name="[72]"></a>__aeabi_ddiv</STRONG> (Thumb, 222 bytes, Stack size 32 bytes, ddiv.o(.text))
@@ -559,7 +560,7 @@ Global Symbols
 <LI><a href="#[50]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Elegun_fire_thread_entry
 <LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Elegun_autofire_thread_entry
 <LI><a href="#[e5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__mathlib_dbl_invalid
-<LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;asin
+<LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;asin
 </UL>
 
 <P><STRONG><a name="[73]"></a>__aeabi_i2f</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, fflti.o(.text))
@@ -567,7 +568,9 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_float_epilogue
 </UL>
-<BR>[Called By]<UL><LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Elegun_autofire_thread_entry
+<BR>[Called By]<UL><LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Elegun_shakefire_thread_entry
+<LI><a href="#[50]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Elegun_fire_thread_entry
+<LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Elegun_autofire_thread_entry
 </UL>
 
 <P><STRONG><a name="[74]"></a>__aeabi_ui2f</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, ffltui.o(.text))
@@ -586,7 +589,6 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[6d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_double_epilogue
 </UL>
 <BR>[Called By]<UL><LI><a href="#[4e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;taskreadAT24_thread_entry
-<LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Elegun_shakefire_thread_entry
 <LI><a href="#[50]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Elegun_fire_thread_entry
 <LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Elegun_autofire_thread_entry
 </UL>
@@ -597,6 +599,8 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[6d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_double_epilogue
 </UL>
 <BR>[Called By]<UL><LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pwm_set_Duty
+<LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Elegun_shakefire_thread_entry
+<LI><a href="#[50]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Elegun_fire_thread_entry
 <LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Elegun_autofire_thread_entry
 </UL>
 
@@ -622,7 +626,7 @@ Global Symbols
 </UL>
 <BR>[Called By]<UL><LI><a href="#[fd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;state_transfer
 <LI><a href="#[ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Pos_input_init
-<LI><a href="#[a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Elegun_shakefire_set_init
+<LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Elegun_shakefire_set_init
 <LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Elegun_autofire_set_init
 <LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Elegun_autofire_init
 <LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pwm_set_Duty
@@ -665,13 +669,11 @@ Global Symbols
 <LI><a href="#[56]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pos_pid_control_update
 </UL>
 
-<P><STRONG><a name="[a3]"></a>__aeabi_cfrcmple</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, cfrcmple.o(.text))
+<P><STRONG><a name="[a6]"></a>__aeabi_cfrcmple</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, cfrcmple.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;btm_servo_control
 <LI><a href="#[ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Pos_input_init
 <LI><a href="#[4f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;display_thread_entry
 <LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Elegun_shakefire_thread_entry
-<LI><a href="#[50]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Elegun_fire_thread_entry
-<LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Elegun_autofire_thread_entry
 <LI><a href="#[56]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pos_pid_control_update
 </UL>
 
@@ -739,7 +741,7 @@ Global Symbols
 </UL>
 <BR>[Called By]<UL><LI><a href="#[e6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__mathlib_dbl_underflow
 <LI><a href="#[e3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__mathlib_dbl_infnan
-<LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;asin
+<LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;asin
 </UL>
 
 <P><STRONG><a name="[177]"></a>scalbn</STRONG> (Thumb, 0 bytes, Stack size 16 bytes, dscalb.o(.text), UNUSED)
@@ -914,7 +916,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[4f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;display_thread_entry
 </UL>
 
-<P><STRONG><a name="[51]"></a>Elegun_autofire_thread_entry</STRONG> (Thumb, 964 bytes, Stack size 32 bytes, elegun_handle.o(i.Elegun_autofire_thread_entry))
+<P><STRONG><a name="[51]"></a>Elegun_autofire_thread_entry</STRONG> (Thumb, 856 bytes, Stack size 32 bytes, elegun_handle.o(i.Elegun_autofire_thread_entry))
 <BR><BR>[Stack]<UL><LI>Max Depth = 200<LI>Call Chain = Elegun_autofire_thread_entry &rArr; asin &rArr; __kernel_poly &rArr; __aeabi_dmul &rArr; _double_epilogue &rArr; _double_round
 </UL>
 <BR>[Calls]<UL><LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ui2d
@@ -941,25 +943,26 @@ Global Symbols
 <LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fmul
 <LI><a href="#[91]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_f2uiz
 <LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_d2uiz
-<LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cfrcmple
 <LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pwm_set_Duty
 <LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_Cmd
-<LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;asin
+<LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;asin
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> main.o(i.my_thread_create)
 </UL>
-<P><STRONG><a name="[50]"></a>Elegun_fire_thread_entry</STRONG> (Thumb, 678 bytes, Stack size 32 bytes, elegun_handle.o(i.Elegun_fire_thread_entry))
+<P><STRONG><a name="[50]"></a>Elegun_fire_thread_entry</STRONG> (Thumb, 570 bytes, Stack size 32 bytes, elegun_handle.o(i.Elegun_fire_thread_entry))
 <BR><BR>[Stack]<UL><LI>Max Depth = 200<LI>Call Chain = Elegun_fire_thread_entry &rArr; asin &rArr; __kernel_poly &rArr; __aeabi_dmul &rArr; _double_epilogue &rArr; _double_round
 </UL>
-<BR>[Calls]<UL><LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_frsub
+<BR>[Calls]<UL><LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ui2d
+<LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_frsub
 <LI><a href="#[71]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dmul
 <LI><a href="#[72]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ddiv
+<LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_i2f
 <LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cfcmple
 <LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_i2d
+<LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fdiv
 <LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fsub
 <LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fadd
 <LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_f2d
-<LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dsub
 <LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dadd
 <LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_d2f
 <LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_sem_take
@@ -967,13 +970,12 @@ Global Symbols
 <LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_thread_mdelay
 <LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fmul
 <LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_d2uiz
-<LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cfrcmple
 <LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pwm_set_Duty
-<LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;asin
+<LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;asin
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> main.o(i.my_thread_create)
 </UL>
-<P><STRONG><a name="[a5]"></a>Elegun_shakefire_init</STRONG> (Thumb, 90 bytes, Stack size 8 bytes, display.o(i.Elegun_shakefire_init))
+<P><STRONG><a name="[a4]"></a>Elegun_shakefire_init</STRONG> (Thumb, 90 bytes, Stack size 8 bytes, display.o(i.Elegun_shakefire_init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 152<LI>Call Chain = Elegun_shakefire_init &rArr; showpage &rArr; OLED_ShowNum &rArr; OLED_ShowChar &rArr; OLED_Set_Pos &rArr; OLED_WR_Byte
 </UL>
 <BR>[Calls]<UL><LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;updatepage
@@ -984,7 +986,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[4f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;display_thread_entry
 </UL>
 
-<P><STRONG><a name="[a6]"></a>Elegun_shakefire_set_init</STRONG> (Thumb, 134 bytes, Stack size 16 bytes, display.o(i.Elegun_shakefire_set_init))
+<P><STRONG><a name="[a5]"></a>Elegun_shakefire_set_init</STRONG> (Thumb, 134 bytes, Stack size 16 bytes, display.o(i.Elegun_shakefire_set_init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 160<LI>Call Chain = Elegun_shakefire_set_init &rArr; showpage &rArr; OLED_ShowNum &rArr; OLED_ShowChar &rArr; OLED_Set_Pos &rArr; OLED_WR_Byte
 </UL>
 <BR>[Calls]<UL><LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;updatepage
@@ -996,14 +998,16 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[4f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;display_thread_entry
 </UL>
 
-<P><STRONG><a name="[52]"></a>Elegun_shakefire_thread_entry</STRONG> (Thumb, 470 bytes, Stack size 24 bytes, elegun_handle.o(i.Elegun_shakefire_thread_entry))
-<BR><BR>[Stack]<UL><LI>Max Depth = 192<LI>Call Chain = Elegun_shakefire_thread_entry &rArr; asin &rArr; __kernel_poly &rArr; __aeabi_dmul &rArr; _double_epilogue &rArr; _double_round
+<P><STRONG><a name="[52]"></a>Elegun_shakefire_thread_entry</STRONG> (Thumb, 572 bytes, Stack size 40 bytes, elegun_handle.o(i.Elegun_shakefire_thread_entry))
+<BR><BR>[Stack]<UL><LI>Max Depth = 208<LI>Call Chain = Elegun_shakefire_thread_entry &rArr; asin &rArr; __kernel_poly &rArr; __aeabi_dmul &rArr; _double_epilogue &rArr; _double_round
 </UL>
-<BR>[Calls]<UL><LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_frsub
+<BR>[Calls]<UL><LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ui2d
+<LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_frsub
 <LI><a href="#[71]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dmul
 <LI><a href="#[72]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ddiv
+<LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_i2f
 <LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cfcmple
-<LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_i2d
+<LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fdiv
 <LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fsub
 <LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fadd
 <LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_f2d
@@ -1013,9 +1017,9 @@ Global Symbols
 <LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_thread_mdelay
 <LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fmul
 <LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_d2uiz
-<LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cfrcmple
+<LI><a href="#[a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cfrcmple
 <LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pwm_set_Duty
-<LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;asin
+<LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;asin
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> main.o(i.my_thread_create)
 </UL>
@@ -1239,8 +1243,8 @@ Global Symbols
 <LI><a href="#[d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Steer_move_fire_init
 <LI><a href="#[ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Pos_input_init
 <LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Fire_ok_display
-<LI><a href="#[a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Elegun_shakefire_set_init
-<LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Elegun_shakefire_init
+<LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Elegun_shakefire_set_init
+<LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Elegun_shakefire_init
 <LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Elegun_autofire_set_init
 <LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Elegun_autofire_init
 <LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Banqiu_set_pid_Display_init
@@ -1344,7 +1348,7 @@ Global Symbols
 <LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;clearpage
 <LI><a href="#[91]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_f2uiz
 <LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_d2uiz
-<LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cfrcmple
+<LI><a href="#[a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cfrcmple
 <LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OLED_Clear
 </UL>
 <BR>[Called By]<UL><LI><a href="#[4f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;display_thread_entry
@@ -1661,7 +1665,7 @@ Global Symbols
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f10x_hd.o(RESET)
 </UL>
 <P><STRONG><a name="[ee]"></a>__ARM_fpclassify</STRONG> (Thumb, 40 bytes, Stack size 0 bytes, fpclassify.o(i.__ARM_fpclassify))
-<BR><BR>[Called By]<UL><LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;asin
+<BR><BR>[Called By]<UL><LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;asin
 </UL>
 
 <P><STRONG><a name="[e2]"></a>__kernel_poly</STRONG> (Thumb, 170 bytes, Stack size 24 bytes, poly.o(i.__kernel_poly))
@@ -1670,7 +1674,7 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[71]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dmul
 <LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dadd
 </UL>
-<BR>[Called By]<UL><LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;asin
+<BR>[Called By]<UL><LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;asin
 </UL>
 
 <P><STRONG><a name="[e3]"></a>__mathlib_dbl_infnan</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, dunder.o(i.__mathlib_dbl_infnan))
@@ -1678,7 +1682,7 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[e4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__ARM_scalbn
 </UL>
-<BR>[Called By]<UL><LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;asin
+<BR>[Called By]<UL><LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;asin
 </UL>
 
 <P><STRONG><a name="[e5]"></a>__mathlib_dbl_invalid</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, dunder.o(i.__mathlib_dbl_invalid))
@@ -1686,7 +1690,7 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[72]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ddiv
 </UL>
-<BR>[Called By]<UL><LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;asin
+<BR>[Called By]<UL><LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;asin
 </UL>
 
 <P><STRONG><a name="[e6]"></a>__mathlib_dbl_underflow</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, dunder.o(i.__mathlib_dbl_underflow))
@@ -1694,7 +1698,7 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[e4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__ARM_scalbn
 </UL>
-<BR>[Called By]<UL><LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;asin
+<BR>[Called By]<UL><LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;asin
 </UL>
 
 <P><STRONG><a name="[143]"></a>__rt_ffs</STRONG> (Thumb, 70 bytes, Stack size 0 bytes, kservice.o(i.__rt_ffs))
@@ -1710,10 +1714,10 @@ Global Symbols
 
 <P><STRONG><a name="[ed]"></a>__set_errno</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, errno.o(i.__set_errno))
 <BR><BR>[Called By]<UL><LI><a href="#[ef]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sqrt
-<LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;asin
+<LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;asin
 </UL>
 
-<P><STRONG><a name="[a4]"></a>asin</STRONG> (Thumb, 572 bytes, Stack size 56 bytes, asin.o(i.asin))
+<P><STRONG><a name="[a3]"></a>asin</STRONG> (Thumb, 572 bytes, Stack size 56 bytes, asin.o(i.asin))
 <BR><BR>[Stack]<UL><LI>Max Depth = 168<LI>Call Chain = asin &rArr; __kernel_poly &rArr; __aeabi_dmul &rArr; _double_epilogue &rArr; _double_round
 </UL>
 <BR>[Calls]<UL><LI><a href="#[71]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dmul
@@ -1759,7 +1763,7 @@ Global Symbols
 <LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fsub
 <LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fadd
 <LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fmul
-<LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cfrcmple
+<LI><a href="#[a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cfrcmple
 </UL>
 <BR>[Called By]<UL><LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Elegun_autofire_thread_entry
 </UL>
@@ -1781,8 +1785,8 @@ Global Symbols
 <LI><a href="#[d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Steer_move_fire_init
 <LI><a href="#[ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Pos_input_init
 <LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Fire_ok_display
-<LI><a href="#[a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Elegun_shakefire_set_init
-<LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Elegun_shakefire_init
+<LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Elegun_shakefire_set_init
+<LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Elegun_shakefire_init
 <LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Elegun_autofire_set_init
 <LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Elegun_autofire_init
 <LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Banqiu_set_pid_Display_init
@@ -1813,7 +1817,7 @@ Global Symbols
 <LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fmul
 <LI><a href="#[91]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_f2uiz
 <LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_d2uiz
-<LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cfrcmple
+<LI><a href="#[a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cfrcmple
 <LI><a href="#[f8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;task1_xxx_Display_init
 <LI><a href="#[f9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;steer_test_init
 <LI><a href="#[fa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main_Display_init
@@ -1821,8 +1825,8 @@ Global Symbols
 <LI><a href="#[d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Steer_move_fire_init
 <LI><a href="#[ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Pos_input_init
 <LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Fire_ok_display
-<LI><a href="#[a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Elegun_shakefire_set_init
-<LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Elegun_shakefire_init
+<LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Elegun_shakefire_set_init
+<LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Elegun_shakefire_init
 <LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Elegun_autofire_set_init
 <LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Elegun_autofire_init
 <LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Banqiu_set_pid_Display_init
@@ -2822,8 +2826,8 @@ Global Symbols
 <LI><a href="#[d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Steer_move_fire_init
 <LI><a href="#[ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Pos_input_init
 <LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Fire_ok_display
-<LI><a href="#[a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Elegun_shakefire_set_init
-<LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Elegun_shakefire_init
+<LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Elegun_shakefire_set_init
+<LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Elegun_shakefire_init
 <LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Elegun_autofire_set_init
 <LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Elegun_autofire_init
 <LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Banqiu_set_pid_Display_init
@@ -2839,7 +2843,7 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[ed]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__set_errno
 <LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_dsqrt
 </UL>
-<BR>[Called By]<UL><LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;asin
+<BR>[Called By]<UL><LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;asin
 </UL>
 
 <P><STRONG><a name="[127]"></a>standing_point_init</STRONG> (Thumb, 158 bytes, Stack size 0 bytes, banqiu_handle.o(i.standing_point_init))
@@ -2944,8 +2948,8 @@ Global Symbols
 <LI><a href="#[d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Steer_move_fire_init
 <LI><a href="#[ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Pos_input_init
 <LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Fire_ok_display
-<LI><a href="#[a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Elegun_shakefire_set_init
-<LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Elegun_shakefire_init
+<LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Elegun_shakefire_set_init
+<LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Elegun_shakefire_init
 <LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Elegun_autofire_set_init
 <LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Elegun_autofire_init
 <LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Banqiu_set_pid_Display_init
@@ -3179,7 +3183,7 @@ Local Symbols
 <LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fsub
 <LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fadd
 <LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fmul
-<LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cfrcmple
+<LI><a href="#[a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cfrcmple
 <LI><a href="#[118]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_tick_get
 <LI><a href="#[119]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_tick_from_millisecond
 </UL>

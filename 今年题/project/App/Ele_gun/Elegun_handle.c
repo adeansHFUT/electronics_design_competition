@@ -18,7 +18,7 @@ uint16_t ele_distance = 200; //设定射击距离
 float  ele_angle = 0;  // 设定角度(左右)
 uint8_t receive_x = 0; // 接受到摄像头的X值
 double dis_rate_big = 1140;  // 距离转角度比例(最小600，不然无法计算反三角) 923 FOR 小炮  1140(一二题的大角度)
-double dis_rate_small = 828; // 第三题小角度
+double dis_rate_small = 842; // 第三题小角度
 float dis_angle = 0; // 舵机一转动的角度(俯仰)
 float offset_x = 0;  // 红色引导和摄像头中心的x偏差
 float offset_dead_block = 0.018; // 偏移量死区大小(0.02差不多)
@@ -28,7 +28,7 @@ float  last_btm_degree = 0; // 上一次底部舵机的角度
 uint8_t elegun_shakefire_rotation = 0; // 当前向哪个方向摇
 uint8_t shake_advance_amount = 5; // 发射提前量（和摇的速度有关）
 uint8_t pi_sample_time = 35;  // 舵机pi取样时间
-uint8_t using_big_angle = 1; // 第一二题是否使用大角度射击(默认大)
+uint8_t using_big_angle = 0; // 第一二题是否使用大角度射击(默认大)
 /*******************************************************************************
 * 函 数 名         : Elegun_fire_thread_entry
 * 函数功能		   : 基础部分入口函数
@@ -47,21 +47,14 @@ void Elegun_fire_thread_entry(void* parameter)  // 基础部分
 /////////////////上下转////////////////////////////					
 			if(using_big_angle == 1)
 			{
-				//大角度用模糊rate(rate值1170左右)
-				if(dis_angle > 250)
-					dis_angle = asin(2*ele_distance/(dis_rate_big-30))/2 * 180.0/3.1416;  // 反三角计算
-				else
-					dis_angle = asin(2*ele_distance/(dis_rate_big))/2 * 180.0/3.1416;  // 反三角计算
+				dis_angle = asin(2*ele_distance/(dis_rate_big))/2 * 180.0/3.1416;  // 反三角计算
 				pwm_set_Duty(&steer1, Steer1_S3010_mid + 
 				(float)((Steer1_S3010_max-Steer1_S3010_mid)/90.0) * (90-dis_angle) + 0.5 );   // 距离转角度， 上转
 			}
 			else if(using_big_angle == 0)
 			{	
-				//小角度用模糊rate(rate值828左右)
-				if(dis_angle > 250)
-					dis_angle = asin(2*ele_distance/(dis_rate_small-20))/2 * 180.0/3.1416;  // 反三角计算
-				else
-					dis_angle = asin(2*ele_distance/(dis_rate_small))/2 * 180.0/3.1416;  // 反三角计算
+				float fuzzy_rate = -0.0036*ele_distance*ele_distance + 0.5590*ele_distance + dis_rate_small;  //拟合结果
+				dis_angle = asin(2*ele_distance/(fuzzy_rate))/2 * 180.0/3.1416;  // 反三角计算
 				pwm_set_Duty(&steer1, Steer1_S3010_mid + 
 				(float)((Steer1_S3010_max-Steer1_S3010_mid)/90.0) * (dis_angle) + 0.5 );   // 距离转角度， 上转
 			}
@@ -169,21 +162,14 @@ void Elegun_autofire_thread_entry(void* parameter)
 			////////////////上下转///////////////////////
 			if(using_big_angle == 1)
 			{
-				//大角度用模糊rate(rate值1170左右)
-				if(dis_angle > 250)
-					dis_angle = asin(2*ele_distance/(dis_rate_big-30))/2 * 180.0/3.1416;  // 反三角计算
-				else
-					dis_angle = asin(2*ele_distance/(dis_rate_big))/2 * 180.0/3.1416;  // 反三角计算
+				dis_angle = asin(2*ele_distance/(dis_rate_big))/2 * 180.0/3.1416;  // 反三角计算
 				pwm_set_Duty(&steer1, Steer1_S3010_mid + 
 				(float)((Steer1_S3010_max-Steer1_S3010_mid)/90.0) * (90-dis_angle) + 0.5 );   // 距离转角度， 上转
 			}
 			else if(using_big_angle == 0)
 			{
-				//小角度用模糊rate(rate值828左右)
-				if(dis_angle > 250)
-					dis_angle = asin(2*ele_distance/(dis_rate_small-20))/2 * 180.0/3.1416;  // 反三角计算
-				else
-					dis_angle = asin(2*ele_distance/(dis_rate_small))/2 * 180.0/3.1416;  // 反三角计算
+				float fuzzy_rate = -0.0036*ele_distance*ele_distance + 0.5590*ele_distance + dis_rate_small;  //拟合结果
+				dis_angle = asin(2*ele_distance/(fuzzy_rate))/2 * 180.0/3.1416;  // 反三角计算
 				pwm_set_Duty(&steer1, Steer1_S3010_mid + 
 				(float)((Steer1_S3010_max-Steer1_S3010_mid)/90.0) * (dis_angle) + 0.5 );   // 距离转角度， 上转
 			}
@@ -216,9 +202,12 @@ void Elegun_shakefire_thread_entry(void* parameter)
 		if(RT_EOK == uwRet)
 		{
 			float steer2_tempangle = -30;
+			float fuzzy_rate = 0;
 			ele_distance = 250; // 直接更新要打得距离为250cm
 			////////////上下转，第三题不管如何都用小角度/////////////////
-			dis_angle = asin(2*ele_distance/dis_rate_small)/2 * 180.0/3.1416;  // 反三角计算
+			fuzzy_rate = -0.0036*ele_distance*ele_distance + 0.5590*ele_distance + dis_rate_small;  //拟合结果
+			dis_angle = asin(2*ele_distance/(fuzzy_rate))/2 * 180.0/3.1416;  // 反三角计算
+//			dis_angle = asin(2*ele_distance/dis_rate_small)/2 * 180.0/3.1416;  // 反三角计算
 			pwm_set_Duty(&steer1, Steer1_S3010_mid + 
 			(float)((Steer1_S3010_max-Steer1_S3010_mid)/90.0) * dis_angle + 0.5 );   // 先转动俯仰
 			
