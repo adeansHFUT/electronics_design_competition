@@ -74,3 +74,7 @@
 .\objects\task_readat24c02.o: .\Public\pid\pos_pid_control.h
 .\objects\task_readat24c02.o: .\Public\pid\auto_control.h
 .\objects\task_readat24c02.o: .\Public\pid\inc_pid_control.h
+.\objects\task_readat24c02.o: .\User\include.h
+.\objects\task_readat24c02.o: .\App\Display\display.h
+.\objects\task_readat24c02.o: .\App\Uart_handle\uart_handle.h
+.\objects\task_readat24c02.o: .\App\Ele_gun\Elegun_handle.h

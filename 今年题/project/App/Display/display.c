@@ -76,6 +76,11 @@ void display_thread_entry(void* parameter)
 					Elegun_shakefire_set_init();
 					break;
 				}
+				case UsingAT24_switch:{
+					updatepage(pagetable, 6,"swic", using_at24, 0);
+					showpage(pagetable, 1, 16);
+					break;
+				}
 /****************Testmeau状态出发*********************/				
 				case Testmeau_to_Mainmeau:{
 					main_Display_init();  // 放显示更新函数
@@ -251,12 +256,17 @@ void display_thread_entry(void* parameter)
 					break;
 				}
 				case Advance_amount_plus:case Advance_amount_minus:{
-					updatepage(pagetable, 2,"advance", shake_advance_amount, 0);
-					showpage(pagetable, 0, 16);
+					updatepage(pagetable, 2,"adva", shake_advance_amount, 0);
+					showpage(pagetable, 1, 16);
 					break;
 				}
 				case Elegun_shakefire_set_to_Mainmeau:{
 					main_Display_init();
+					break;
+				}
+				case Pi_sample_plus:case Pi_sample_minus:{
+					updatepage(pagetable, 4,"time", pi_sample_time, 0);
+					showpage(pagetable, 1, 16);
 					break;
 				}
 /****************Elegun_shakefire状态出发*********************/
@@ -285,13 +295,14 @@ void main_Display_init(void)
 {
 	clearpage(pagetable);  // 清显示数组
  	OLED_Clear();  // 清屏
-	updatepage(pagetable, 0,"main",0, 1);
-	updatepage(pagetable, 1,"test",1, 1); 
-	updatepage(pagetable, 2,"test",2, 1);
-	updatepage(pagetable, 3,"gun1",3, 1);
-	updatepage(pagetable, 4,"pwm",4, 1); // 更新页面数据
-	updatepage(pagetable, 5,"gun2",5, 1);
-	updatepage(pagetable, 6,"Kp", (uint16_t)btm_kp, 1);
+	updatepage(pagetable, 0,"main",1, 1);
+	updatepage(pagetable, 1,"test",2, 1); 
+	updatepage(pagetable, 2,"gun1",3, 1);
+	updatepage(pagetable, 3,"pwm",4, 1);
+	updatepage(pagetable, 4,"gun2",5, 1); // 更新页面数据
+	updatepage(pagetable, 5,"gun3",6, 1);
+	updatepage(pagetable, 6,"swic", using_at24, 1);
+	updatepage(pagetable, 7,"covr", 8, 1);
 	showpage(pagetable, 1, 16);
 }
 /*******************************************************************************
@@ -450,6 +461,7 @@ void Elegun_autofire_set_init(void)
 	updatepage(pagetable, 3,"Ki", btm_ki, 1);
 	updatepage(pagetable, 4,"dead", offset_dead_block*1000, 1);
 	updatepage(pagetable, 5,"rate", (uint16_t)dis_rate, 1);
+	updatepage(pagetable, 6,"time", pi_sample_time, 1);
 	updatepage(pagetable, 7,"exit", 4, 1);
 	showpage(pagetable, 1, 16);
 }
@@ -481,11 +493,12 @@ void Elegun_shakefire_set_init(void)
 {
 	clearpage(pagetable);  // 清显示数组
  	OLED_Clear();  // 清屏
-	updatepage(pagetable, 0,"ready", 0, 1);
-	updatepage(pagetable, 1,"shake", 0, 1);
-	updatepage(pagetable, 2,"advance", shake_advance_amount, 1);
+	updatepage(pagetable, 0,"redy", 0, 1);
+	updatepage(pagetable, 1,"shak", 0, 1);
+	updatepage(pagetable, 2,"adva", shake_advance_amount, 1);
+	updatepage(pagetable, 4,"time", pi_sample_time, 1);
 	updatepage(pagetable, 3,"exit" ,0, 1);
-	showpage(pagetable, 0, 16);
+	showpage(pagetable, 1, 16);
 }
 /*******************************************************************************
 * 函 数 名         : Elegun_autofire_init

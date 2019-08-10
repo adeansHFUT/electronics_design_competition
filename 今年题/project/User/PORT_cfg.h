@@ -255,8 +255,8 @@
 #if defined(STM32f103VET6_small)
 #define Fire_port GPIOC
 #define Fire_port_RCC		RCC_APB2Periph_GPIOC
-#define Fire_pin     GPIO_Pin_8
-#define Fire     PCout(8) 
+#define Fire_pin     GPIO_Pin_7
+#define Fire     PCout(7) 
 
 #define Charge_port GPIOC                // 低电平触发继电器
 #define Charge_port_RCC		RCC_APB2Periph_GPIOC

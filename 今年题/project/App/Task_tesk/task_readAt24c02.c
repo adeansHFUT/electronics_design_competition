@@ -4,11 +4,14 @@
 #include "key_handle.h"
 #include "banqiu_handle.h"
 #include "pos_pid_control.h"
+#include "board.h"
+#include "include.h"
 /* 定义task线程控制块 */
 rt_thread_t taskreadAT24_thread = RT_NULL;
 /* 定义task邮箱控制块 */
 rt_mailbox_t mb_ctrlAt24 = RT_NULL;  // 控制AT24
 uint8_t re_AT24;  // 定义AT24返回值（全局变量）
+uint8_t using_at24 = 1;
 
 void taskreadAT24_thread_entry(void* parameter)
 {
@@ -24,7 +27,7 @@ void taskreadAT24_thread_entry(void* parameter)
     while (1)
     {
 		uwRet = rt_mb_recv(mb_ctrlAt24, &AT_flag, RT_WAITING_FOREVER);	  /* 等待时间：一直 */
-		if(RT_EOK == uwRet)
+		if(RT_EOK == uwRet && using_at24 == 1)
 		{
 		    rt_kprintf("taskreadAT24_thread：收到邮箱\n");
 			switch(AT_flag){
@@ -64,7 +67,40 @@ void taskreadAT24_thread_entry(void* parameter)
 					AT24CXX_WriteOneByte(3, (u8)(pid_steer1->kd*10));
 					break;
 				}
-   /*********************板球相关***************************/
+   /*********************电磁炮相关***************************/
+				case Mainmeau_to_Pos_input:{
+					dis_rate = AT24CXX_ReadOneByte(10)*100 + AT24CXX_ReadOneByte(11); // 存百位数和十位数
+					break;
+				}
+				case Pos_input_to_Mainmeau:{
+					AT24CXX_WriteOneByte(10, (uint16_t)(dis_rate)/100);
+					AT24CXX_WriteOneByte(11, (uint16_t)(dis_rate)%100);
+					break;
+				}
+				case Mainmeau_to_Elegun_autofire_set:{
+					dis_rate = AT24CXX_ReadOneByte(10)*100 + AT24CXX_ReadOneByte(11); // 存百位数和十位数
+					btm_kp = (float)AT24CXX_ReadOneByte(12);
+					btm_ki = (float)AT24CXX_ReadOneByte(13);
+					offset_dead_block = (float)AT24CXX_ReadOneByte(14)/1000;
+					pi_sample_time = AT24CXX_ReadOneByte(16);
+					break;
+				}
+				case Elegun_autofire_set_to_Mainmeau:{
+					AT24CXX_WriteOneByte(12, (uint8_t)btm_kp);
+					AT24CXX_WriteOneByte(13, (uint8_t)btm_ki);
+					AT24CXX_WriteOneByte(14, (uint8_t)(offset_dead_block*1000));
+					break;
+				}
+				case Mainmeau_to_Elegun_shakefire_set:{
+					shake_advance_amount = AT24CXX_ReadOneByte(15);
+					pi_sample_time = AT24CXX_ReadOneByte(16);
+					break;
+				}
+				case Elegun_shakefire_set_to_Mainmeau:{
+					AT24CXX_WriteOneByte(15, (uint8_t)shake_advance_amount);
+					AT24CXX_WriteOneByte(16, (uint8_t)pi_sample_time);
+					break;
+				}
 			}
 			
 		}

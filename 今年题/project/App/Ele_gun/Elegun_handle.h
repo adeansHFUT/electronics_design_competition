@@ -20,6 +20,7 @@ extern float dis_angle; // 舵机一转动的角度
 extern uint8_t elegun_shakefire_rotation; // 当前向哪个方向摇
 extern uint8_t shake_advance_amount; // 提前量
 extern float offset_dead_block; // 偏移量死区大小(0.02差不多)
+extern uint8_t pi_sample_time;  // 舵机pi取样时间
 void Elegun_fire_thread_entry(void* parameter);
 void Elegun_autofire_thread_entry(void* parameter);  
 void Elegun_shakefire_thread_entry(void* parameter);  

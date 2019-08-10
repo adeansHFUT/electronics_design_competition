@@ -94,7 +94,7 @@ void rt_hw_board_init()
 	uart_device_init();
 	USART_Cmd(camera_uart_device.uart_module, DISABLE);	 // 关闭摄像头的uart接收
 	Hcsr04Init();  // 初始化超声波
-	//AT24CXX_Init();   // AT24c02初始化iic
+	AT24CXX_Init();   // AT24c02初始化iic
 	bsp_steer_init(50);  //初始化舵机
 	pwm_set_Duty(&steer1, Steer1_S3010_mid);
 	pwm_set_Duty(&steer2, Steer2_S3010_mid);

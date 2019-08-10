@@ -21,11 +21,12 @@ double dis_rate = 930;  // ¾àÀë×ª½Ç¶È±ÈÀı(×îĞ¡600£¬²»È»ÎŞ·¨¼ÆËã·´Èı½Ç) 923 FOR Ğ
 float dis_angle = 0; // ¶æ»úÒ»×ª¶¯µÄ½Ç¶È(¸©Ñö)
 float offset_x = 0;  // ºìÉ«Òıµ¼ºÍÉãÏñÍ·ÖĞĞÄµÄxÆ«²î
 float offset_dead_block = 0.018; // Æ«ÒÆÁ¿ËÀÇø´óĞ¡(0.02²î²»¶à)
-float  btm_kp = 25;  // ¿ØÖÆ¶æ»úĞı×ªµÄ±ÈÀıÏµÊı(³õÊ¼15²î²»¶à)
-float  btm_ki = 25;  // ¿ØÖÆ¶æ»úĞı×ªµÄ±ÈÀıÏµÊı(³õÊ¼15²î²»¶à)
+float  btm_kp = 17;  // ¿ØÖÆ¶æ»úĞı×ªµÄ±ÈÀıÏµÊı(³õÊ¼15²î²»¶à)
+float  btm_ki = 24;  // ¿ØÖÆ¶æ»úĞı×ªµÄ»ı·ÖÏµÊı()
 int8_t  last_btm_degree = 0; // ÉÏÒ»´Îµ×²¿¶æ»úµÄ½Ç¶È
 uint8_t elegun_shakefire_rotation = 0; // µ±Ç°ÏòÄÄ¸ö·½ÏòÒ¡
 uint8_t shake_advance_amount = 5; // ·¢ÉäÌáÇ°Á¿£¨ºÍÒ¡µÄËÙ¶ÈÓĞ¹Ø£©
+uint8_t pi_sample_time = 35;  // ¶æ»úpiÈ¡ÑùÊ±¼ä
 /*******************************************************************************
 * º¯ Êı Ãû         : Elegun_fire_thread_entry
 * º¯Êı¹¦ÄÜ		   : »ù´¡²¿·ÖÈë¿Úº¯Êı
@@ -52,7 +53,7 @@ void Elegun_fire_thread_entry(void* parameter)  // »ù´¡²¿·Ö
 				pwm_set_Duty(&steer2, Steer2_S3010_mid -
 				(float)((Steer2_S3010_mid - Steer2_S3010_min)/90.0) * (ele_angle) ) ;   // ÓÒ×ª
 			/***·¢Éä²¿·Ö***/
-			rt_thread_mdelay(1800); // ÑÓÊ±1.2S·¢Éä	£¨ÈÃÅÚ¹ÜÀïµÄÅÚÎÈ¶¨ÏÂÀ´£©		
+			rt_thread_mdelay(2200); // ÑÓÊ±1.2S·¢Éä	£¨ÈÃÅÚ¹ÜÀïµÄÅÚÎÈ¶¨ÏÂÀ´£©		
 			Fire = 1;// ·¢Éäµ¯Íè
 			Charge = 1; // ¹Ø±Õ³äµç
 			rt_thread_mdelay(800); // ÑÓÊ±800ms(ÈÃµçÁ÷Á÷Íê£¬¿É¿Ø¹è½ØÖÁ)
@@ -131,11 +132,12 @@ void Elegun_autofire_thread_entry(void* parameter)
 				else
 					pwm_set_Duty(&steer2, Steer2_S3010_mid -
 					(float)((Steer2_S3010_mid - Steer2_S3010_min)/90.0) * (ele_angle) ) ;   // ÓÒ×ª
-				rt_thread_mdelay(35);  // ÈÃ¶æ»ú¶¯µ½Î»
+				rt_thread_mdelay(pi_sample_time);  // ÈÃ¶æ»ú¶¯µ½Î»
 				if(offset_x)
 					offset_x = ((float)receive_x/Img_width - 0.5) * 2;
 			}
 			USART_Cmd(camera_uart_device.uart_module, DISABLE);  // ²»Ê¹ÓÃÉãÏñÍ·ÁË¹Øuart½ÓÊÕ
+			rt_thread_mdelay(1500); //ÑÓ³Ù1.5sÈÃ³¬Éù²¨ÎÈ¶¨ÏÂÀ´ÔÙ²â¾à
 			ele_distance = (uint16_t)(Hcsr04GetLength()+Hcsr04GetLength())*0.5; // »ñÈ¡10´Î
 			ele_distance = ele_distance - 30;  // Òıµ¼ºÍ°ĞĞÄÎ»ÖÃÊÇ30cm
 			rt_mb_send(mb_display, Wave_update); // Í¨ÖªÏÔÊ¾Ô­Ê¼µÃ³öµÄ¾àÀë
@@ -147,7 +149,7 @@ void Elegun_autofire_thread_entry(void* parameter)
 			pwm_set_Duty(&steer1, Steer1_S3010_mid + 
 			(float)((Steer1_S3010_max-Steer1_S3010_mid)/90.0) * dis_angle );   // ¾àÀë×ª½Ç¶È£¬ ÉÏ×ª
 			/***·¢Éä²¿·Ö***/
-			rt_thread_mdelay(1800); // ÑÓÊ±·¢Éä£¨ÈÃÅÚ¹ÜÀïµÄÅÚÎÈ¶¨ÏÂÀ´£©
+			rt_thread_mdelay(2200); // ÑÓÊ±·¢Éä£¨ÈÃÅÚ¹ÜÀïµÄÅÚÎÈ¶¨ÏÂÀ´£©
 			Fire = 1;// ·¢Éäµ¯Íè
 			Charge = 1; // ¹Ø±Õ³äµç
 			rt_thread_mdelay(800); // ÑÓÊ±800ms

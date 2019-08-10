@@ -188,17 +188,17 @@ int my_thread_create(void)
 	else
 		rt_kprintf("按键处理线程创建失败！\n\n");
 	
-//	taskreadAT24_thread =                          /* 线程控制块指针 */
-//    rt_thread_create( "taskreadAT24",              /* 线程名字 */
-//                      taskreadAT24_thread_entry,   /* 线程入口函数 */
-//                      RT_NULL,             /* 线程入口函数参数 */
-//                      512,                 /* 线程栈大小 */
-//                      8,                   /* 线程的优先级 */
-//                      20);                 /* 线程时间片 */
-//	if (taskreadAT24_thread != RT_NULL)
-//		rt_kprintf("AT24线程创建成功！\n\n");
-//	else
-//		rt_kprintf("AT24线程创建失败！\n\n");
+	taskreadAT24_thread =                          /* 线程控制块指针 */
+    rt_thread_create( "taskreadAT24",              /* 线程名字 */
+                      taskreadAT24_thread_entry,   /* 线程入口函数 */
+                      RT_NULL,             /* 线程入口函数参数 */
+                      512,                 /* 线程栈大小 */
+                      8,                   /* 线程的优先级 */
+                      20);                 /* 线程时间片 */
+	if (taskreadAT24_thread != RT_NULL)
+		rt_kprintf("AT24线程创建成功！\n\n");
+	else
+		rt_kprintf("AT24线程创建失败！\n\n");
 	
 	display_thread =                          /* 线程控制块指针 */
     rt_thread_create( "display",              /* 线程名字 */
@@ -332,15 +332,15 @@ int my_thread_startup(void)
    }	
    else
         return -1;
-//   /* 开启调度AT24线程 */
-//    if (taskreadAT24_thread != RT_NULL)
-//   {
-//		rt_thread_startup(taskreadAT24_thread); 
-//        rt_kprintf("AT24线程开始调度！\n\n");
+   /* 开启调度AT24线程 */
+    if (taskreadAT24_thread != RT_NULL)
+   {
+		rt_thread_startup(taskreadAT24_thread); 
+        rt_kprintf("AT24线程开始调度！\n\n");
 
-//   }	
-//   else
-//        return -1;
+   }	
+   else
+        return -1;
 //    /* 开启调度板球线程 */
 //   if (Banqiu_thread != RT_NULL)
 //   {

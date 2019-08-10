@@ -37,7 +37,9 @@ void statetable_init(void)
 	state_transition[Mainmeau][KEY_5].action = Mainmeau_to_Elegun_autofire_set;
 	state_transition[Mainmeau][KEY_6].state_name = Elegun_shakefire_set; // 发挥二
 	state_transition[Mainmeau][KEY_6].action = Mainmeau_to_Elegun_shakefire_set;
-
+	state_transition[Mainmeau][KEY_7].action = UsingAT24_switch;  // 切换是否使用AT24默认使用
+	state_transition[Mainmeau][KEY_8].action = AT24_cover;  // AT24存储覆盖
+	
 	
 	state_transition[Testmeau][KEY_4].state_name = Mainmeau;
 	state_transition[Testmeau][KEY_4].action = Testmeau_to_Mainmeau;
@@ -113,6 +115,8 @@ void statetable_init(void)
 	state_transition[Elegun_shakefire_set][KEY_4].action = Elegun_shakefire_set_to_Mainmeau;
 	state_transition[Elegun_shakefire_set][KEY_3].state_name = Elegun_shakefire;
 	state_transition[Elegun_shakefire_set][KEY_3].action = Elegun_shakefire_set_to_Elegun_shakefire;
+	state_transition[Elegun_shakefire_set][KEY_5].action = Pi_sample_plus;
+	state_transition[Elegun_shakefire_set][KEY_6].action = Pi_sample_minus;
 	
 	state_transition[Elegun_autofire][KEY_4].state_name = Elegun_autofire_set;
 	state_transition[Elegun_autofire][KEY_4].action = Elegun_autofire_to_Elegun_autofire_set;
@@ -178,14 +182,32 @@ void state_transfer(uint8_t statenow, uint8_t key_receive)
 		}
 		case Mainmeau_to_Pos_input:{
 			rt_mb_send(mb_display, Mainmeau_to_Pos_input);
+			rt_mb_send(mb_ctrlAt24, Mainmeau_to_Pos_input);
 			break;
 		}
 		case Mainmeau_to_Elegun_autofire_set:{
 			rt_mb_send(mb_display, Mainmeau_to_Elegun_autofire_set);
+			rt_mb_send(mb_ctrlAt24, Mainmeau_to_Elegun_autofire_set);
 			break;
 		}
 		case Mainmeau_to_Elegun_shakefire_set:{
 			rt_mb_send(mb_display, Mainmeau_to_Elegun_shakefire_set);
+			rt_mb_send(mb_ctrlAt24, Mainmeau_to_Elegun_shakefire_set);
+			break;
+		}
+		case UsingAT24_switch:{ 									// 以防AT24坏了，程序阻塞在读AT24上
+			using_at24 = ~using_at24;
+			rt_mb_send(mb_display, UsingAT24_switch);
+			break;
+		}
+		case AT24_cover:{  											// 以防AT24里的参数丢失变为零或其它
+			AT24CXX_WriteOneByte(10, (uint16_t)(dis_rate)/100);
+			AT24CXX_WriteOneByte(11, (uint16_t)(dis_rate)%100);
+			AT24CXX_WriteOneByte(12, (uint8_t)btm_kp);
+			AT24CXX_WriteOneByte(13, (uint8_t)btm_ki);
+			AT24CXX_WriteOneByte(14, (uint8_t)(offset_dead_block*1000));
+			AT24CXX_WriteOneByte(15, (uint8_t)shake_advance_amount);
+			AT24CXX_WriteOneByte(16, (uint8_t)pi_sample_time);
 			break;
 		}
 /****************Testmeau状态出发*********************/
@@ -309,6 +331,7 @@ void state_transfer(uint8_t statenow, uint8_t key_receive)
 /****************Pos_input状态出发*********************/	
 		case Pos_input_to_Mainmeau:{
 			rt_mb_send(mb_display, Pos_input_to_Mainmeau);
+			rt_mb_send(mb_ctrlAt24, Pos_input_to_Mainmeau);
 			break;
 		}
 		case Pos_input_to_Steer_move_fire:{
@@ -368,6 +391,7 @@ void state_transfer(uint8_t statenow, uint8_t key_receive)
 		}
 		case Elegun_autofire_set_to_Mainmeau:{
 			rt_mb_send(mb_display, Elegun_autofire_set_to_Mainmeau);
+			rt_mb_send(mb_ctrlAt24, Elegun_autofire_set_to_Mainmeau);
 			break;
 		}
 		case Autofire_Kp_plus:{
@@ -419,6 +443,7 @@ void state_transfer(uint8_t statenow, uint8_t key_receive)
 		}
 		case Elegun_shakefire_set_to_Mainmeau:{
 			rt_mb_send(mb_display, Elegun_shakefire_set_to_Mainmeau);
+			rt_mb_send(mb_ctrlAt24, Elegun_shakefire_set_to_Mainmeau);
 			break;
 		}
 		case Advance_amount_plus:{
@@ -430,6 +455,16 @@ void state_transfer(uint8_t statenow, uint8_t key_receive)
 			shake_advance_amount--;
 			rt_mb_send(mb_display, Advance_amount_minus);
 			break;	
+		}
+		case Pi_sample_plus:{
+			pi_sample_time++;
+			rt_mb_send(mb_display, Pi_sample_plus);
+			break;
+		}
+		case Pi_sample_minus:{
+			pi_sample_time--;
+			rt_mb_send(mb_display, Pi_sample_minus);
+			break;
 		}
 /****************Elegun_shakefire状态出发*********************/	
 		case Elegun_shakefire_to_Elegun_shakefire_set:{
