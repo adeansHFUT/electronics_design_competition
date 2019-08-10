@@ -77,7 +77,12 @@ void display_thread_entry(void* parameter)
 					break;
 				}
 				case UsingAT24_switch:{
-					updatepage(pagetable, 6,"swic", using_at24, 0);
+					updatepage(pagetable, 6,"ATsw", using_at24, 0);
+					showpage(pagetable, 1, 16);
+					break;
+				}
+				case  Using_big_angle_switch:{
+					updatepage(pagetable, 7,"RAsw", using_big_angle, 0);
 					showpage(pagetable, 1, 16);
 					break;
 				}
@@ -182,7 +187,10 @@ void display_thread_entry(void* parameter)
 					break;
 				}
 				case Distance_rate_plus: case Distance_rate_minus:{
-					updatepage(pagetable, 4,"rate", (uint16_t)dis_rate, 0);
+					if(using_big_angle == 1)
+						updatepage(pagetable, 4,"b_ra", (uint16_t)dis_rate_big, 0);
+					else
+						updatepage(pagetable, 4,"s_ra", (uint16_t)dis_rate_small, 0);
 					showpage(pagetable, 1, 16);
 					break;
 				}
@@ -301,8 +309,8 @@ void main_Display_init(void)
 	updatepage(pagetable, 3,"pwm",4, 1);
 	updatepage(pagetable, 4,"gun2",5, 1); // 更新页面数据
 	updatepage(pagetable, 5,"gun3",6, 1);
-	updatepage(pagetable, 6,"swic", using_at24, 1);
-	updatepage(pagetable, 7,"covr", 8, 1);
+	updatepage(pagetable, 6,"ATsw", using_at24, 1);
+	updatepage(pagetable, 7,"RAsw", using_big_angle, 1);
 	showpage(pagetable, 1, 16);
 }
 /*******************************************************************************
@@ -412,7 +420,10 @@ void Pos_input_init(void)
 		updatepage(pagetable, 1,"-ang", -ele_angle, 1); 
 	updatepage(pagetable, 2,"fire", 3, 1);
 	updatepage(pagetable, 3,"exit", 4, 1);
-	updatepage(pagetable, 4,"rate", (uint16_t)dis_rate, 1);
+	if(using_big_angle == 1)
+		updatepage(pagetable, 4,"b_ra", (uint16_t)dis_rate_big, 1);
+	else 
+		updatepage(pagetable, 4,"s_ra", (uint16_t)dis_rate_small, 1);
 	showpage(pagetable, 1, 16);
 }
 /*******************************************************************************
@@ -460,7 +471,10 @@ void Elegun_autofire_set_init(void)
 	updatepage(pagetable, 2,"Kp", btm_kp, 1);
 	updatepage(pagetable, 3,"Ki", btm_ki, 1);
 	updatepage(pagetable, 4,"dead", offset_dead_block*1000, 1);
-	updatepage(pagetable, 5,"rate", (uint16_t)dis_rate, 1);
+	if(using_big_angle == 1)
+		updatepage(pagetable, 5,"b_ra", (uint16_t)dis_rate_big, 1);
+	else
+		updatepage(pagetable, 5,"s_ra", (uint16_t)dis_rate_small, 1);
 	updatepage(pagetable, 6,"time", pi_sample_time, 1);
 	updatepage(pagetable, 7,"exit", 4, 1);
 	showpage(pagetable, 1, 16);
@@ -479,7 +493,10 @@ void Elegun_autofire_init(void)
 	updatepage(pagetable, 1,"fire", 0, 1);
 	updatepage(pagetable, 3,"recx", receive_x, 1);
 	updatepage(pagetable, 4,"wave", ele_distance, 1);
-	updatepage(pagetable, 5,"rate", (uint16_t)dis_rate, 1);
+	if(using_big_angle == 1)
+		updatepage(pagetable, 5,"b_ra", (uint16_t)dis_rate_big, 1);
+	else
+		updatepage(pagetable, 5,"s_ra", (uint16_t)dis_rate_small, 1);
 	updatepage(pagetable, 7,"exit", 4, 1);
 	showpage(pagetable, 1, 16);
 }
@@ -497,6 +514,7 @@ void Elegun_shakefire_set_init(void)
 	updatepage(pagetable, 1,"shak", 0, 1);
 	updatepage(pagetable, 2,"adva", shake_advance_amount, 1);
 	updatepage(pagetable, 4,"time", pi_sample_time, 1);
+	updatepage(pagetable, 5,"s_ra", (uint16_t)dis_rate_small, 1);
 	updatepage(pagetable, 3,"exit" ,0, 1);
 	showpage(pagetable, 1, 16);
 }

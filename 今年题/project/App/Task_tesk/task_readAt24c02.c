@@ -24,6 +24,16 @@ void taskreadAT24_thread_entry(void* parameter)
 	}
 	rt_kprintf("AT24C02检测正常!\n");
     /* 任务都是一个无限循环，不能返回 */
+//	AT24CXX_WriteOneByte(8, (uint16_t)(dis_rate_small)/100);
+//	AT24CXX_WriteOneByte(9, (uint16_t)(dis_rate_small)%100);
+//	AT24CXX_WriteOneByte(10, (uint16_t)(dis_rate_big)/100);
+//	AT24CXX_WriteOneByte(11, (uint16_t)(dis_rate_big)%100);
+//	AT24CXX_WriteOneByte(12, (uint8_t)btm_kp);
+//	AT24CXX_WriteOneByte(13, (uint8_t)btm_ki);
+//	AT24CXX_WriteOneByte(14, (uint8_t)(offset_dead_block*1000));
+//	AT24CXX_WriteOneByte(15, (uint8_t)shake_advance_amount);
+//	AT24CXX_WriteOneByte(16, (uint8_t)pi_sample_time);
+	
     while (1)
     {
 		uwRet = rt_mb_recv(mb_ctrlAt24, &AT_flag, RT_WAITING_FOREVER);	  /* 等待时间：一直 */
@@ -48,37 +58,41 @@ void taskreadAT24_thread_entry(void* parameter)
 					break;
 				}
     /*********************板球相关***************************/
-				case Banqiu_setA_to_Banqiu_set_pid:case Banqiu_setB_to_Banqiu_set_pid:{
-					u8 read_p, read_i, read_d;
-					read_p = AT24CXX_ReadOneByte(1);
-					read_i = AT24CXX_ReadOneByte(2);
-					read_d = AT24CXX_ReadOneByte(3);
-				    pos_pid_control_set_kp(pid_steer1, read_p*0.1);
-					pos_pid_control_set_kp(pid_steer2, read_p*0.1);
-					pos_pid_control_set_ki(pid_steer1, read_i*0.1);
-					pos_pid_control_set_ki(pid_steer2, read_i*0.1);
-					pos_pid_control_set_kd(pid_steer1, read_d*0.1);
-					pos_pid_control_set_kd(pid_steer2, read_d*0.1);
-					break;
-				}
-				case Banqiu_set_pid_to_Mainmeau:{
-					AT24CXX_WriteOneByte(1, (u8)(pid_steer1->kp*10));
-					AT24CXX_WriteOneByte(2, (u8)(pid_steer1->ki*10));
-					AT24CXX_WriteOneByte(3, (u8)(pid_steer1->kd*10));
-					break;
-				}
+//				case Banqiu_setA_to_Banqiu_set_pid:case Banqiu_setB_to_Banqiu_set_pid:{
+//					u8 read_p, read_i, read_d;
+//					read_p = AT24CXX_ReadOneByte(1);
+//					read_i = AT24CXX_ReadOneByte(2);
+//					read_d = AT24CXX_ReadOneByte(3);
+//				    pos_pid_control_set_kp(pid_steer1, read_p*0.1);
+//					pos_pid_control_set_kp(pid_steer2, read_p*0.1);
+//					pos_pid_control_set_ki(pid_steer1, read_i*0.1);
+//					pos_pid_control_set_ki(pid_steer2, read_i*0.1);
+//					pos_pid_control_set_kd(pid_steer1, read_d*0.1);
+//					pos_pid_control_set_kd(pid_steer2, read_d*0.1);
+//					break;
+//				}
+//				case Banqiu_set_pid_to_Mainmeau:{
+//					AT24CXX_WriteOneByte(1, (u8)(pid_steer1->kp*10));
+//					AT24CXX_WriteOneByte(2, (u8)(pid_steer1->ki*10));
+//					AT24CXX_WriteOneByte(3, (u8)(pid_steer1->kd*10));
+//					break;
+//				}
    /*********************电磁炮相关***************************/
 				case Mainmeau_to_Pos_input:{
-					dis_rate = AT24CXX_ReadOneByte(10)*100 + AT24CXX_ReadOneByte(11); // 存百位数和十位数
+					dis_rate_big = AT24CXX_ReadOneByte(10)*100 + AT24CXX_ReadOneByte(11); // 存百位数和十位数
+					dis_rate_small = AT24CXX_ReadOneByte(8)*100 + AT24CXX_ReadOneByte(9); // 存百位数和十位数
 					break;
 				}
 				case Pos_input_to_Mainmeau:{
-					AT24CXX_WriteOneByte(10, (uint16_t)(dis_rate)/100);
-					AT24CXX_WriteOneByte(11, (uint16_t)(dis_rate)%100);
+					AT24CXX_WriteOneByte(10, (uint16_t)(dis_rate_big)/100);
+					AT24CXX_WriteOneByte(11, (uint16_t)(dis_rate_big)%100);
+					AT24CXX_WriteOneByte(8, (uint16_t)(dis_rate_small)/100);
+					AT24CXX_WriteOneByte(9, (uint16_t)(dis_rate_small)%100);
 					break;
 				}
 				case Mainmeau_to_Elegun_autofire_set:{
-					dis_rate = AT24CXX_ReadOneByte(10)*100 + AT24CXX_ReadOneByte(11); // 存百位数和十位数
+					dis_rate_big = AT24CXX_ReadOneByte(10)*100 + AT24CXX_ReadOneByte(11); // 存百位数和十位数
+					dis_rate_small = AT24CXX_ReadOneByte(8)*100 + AT24CXX_ReadOneByte(9); // 存百位数和十位数
 					btm_kp = (float)AT24CXX_ReadOneByte(12);
 					btm_ki = (float)AT24CXX_ReadOneByte(13);
 					offset_dead_block = (float)AT24CXX_ReadOneByte(14)/1000;
@@ -92,6 +106,7 @@ void taskreadAT24_thread_entry(void* parameter)
 					break;
 				}
 				case Mainmeau_to_Elegun_shakefire_set:{
+					dis_rate_small = AT24CXX_ReadOneByte(8)*100 + AT24CXX_ReadOneByte(9); // 存百位数和十位数
 					shake_advance_amount = AT24CXX_ReadOneByte(15);
 					pi_sample_time = AT24CXX_ReadOneByte(16);
 					break;

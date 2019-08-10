@@ -106,7 +106,7 @@ void motor_pwm_Frequency_Init(My_pwm_device_t pwm_device_t, uint16_t fre)
 /*
 函数名：set_steerDuty
 函数作用：设置舵机占空比
-参数：0-2000（单位是2千分之）
+参数：0-2000（单位是万分之）
 返回：无
 */
 

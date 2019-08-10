@@ -38,7 +38,7 @@ void statetable_init(void)
 	state_transition[Mainmeau][KEY_6].state_name = Elegun_shakefire_set; // 发挥二
 	state_transition[Mainmeau][KEY_6].action = Mainmeau_to_Elegun_shakefire_set;
 	state_transition[Mainmeau][KEY_7].action = UsingAT24_switch;  // 切换是否使用AT24默认使用
-	state_transition[Mainmeau][KEY_8].action = AT24_cover;  // AT24存储覆盖
+	state_transition[Mainmeau][KEY_8].action = Using_big_angle_switch;  // 使用大角度切换
 	
 	
 	state_transition[Testmeau][KEY_4].state_name = Mainmeau;
@@ -117,6 +117,7 @@ void statetable_init(void)
 	state_transition[Elegun_shakefire_set][KEY_3].action = Elegun_shakefire_set_to_Elegun_shakefire;
 	state_transition[Elegun_shakefire_set][KEY_5].action = Pi_sample_plus;
 	state_transition[Elegun_shakefire_set][KEY_6].action = Pi_sample_minus;
+
 	
 	state_transition[Elegun_autofire][KEY_4].state_name = Elegun_autofire_set;
 	state_transition[Elegun_autofire][KEY_4].action = Elegun_autofire_to_Elegun_autofire_set;
@@ -196,18 +197,23 @@ void state_transfer(uint8_t statenow, uint8_t key_receive)
 			break;
 		}
 		case UsingAT24_switch:{ 									// 以防AT24坏了，程序阻塞在读AT24上
-			using_at24 = ~using_at24;
+			using_at24 = !using_at24;
 			rt_mb_send(mb_display, UsingAT24_switch);
 			break;
 		}
 		case AT24_cover:{  											// 以防AT24里的参数丢失变为零或其它
-			AT24CXX_WriteOneByte(10, (uint16_t)(dis_rate)/100);
-			AT24CXX_WriteOneByte(11, (uint16_t)(dis_rate)%100);
+			AT24CXX_WriteOneByte(10, (uint16_t)(dis_rate_big)/100);
+			AT24CXX_WriteOneByte(11, (uint16_t)(dis_rate_big)%100);
 			AT24CXX_WriteOneByte(12, (uint8_t)btm_kp);
 			AT24CXX_WriteOneByte(13, (uint8_t)btm_ki);
 			AT24CXX_WriteOneByte(14, (uint8_t)(offset_dead_block*1000));
 			AT24CXX_WriteOneByte(15, (uint8_t)shake_advance_amount);
 			AT24CXX_WriteOneByte(16, (uint8_t)pi_sample_time);
+			break;
+		}
+		case Using_big_angle_switch:{
+			using_big_angle = !using_big_angle;
+			rt_mb_send(mb_display, Using_big_angle_switch);
 			break;
 		}
 /****************Testmeau状态出发*********************/
@@ -226,91 +232,91 @@ void state_transfer(uint8_t statenow, uint8_t key_receive)
 			break;
 		}
 /****************Banqiu_setX状态出发*********************/	
-		case Banqiu_setA_to_Banqiu_set_pid:case Banqiu_setB_to_Banqiu_set_pid:{
-			USART_Cmd(camera_uart_device.uart_module, ENABLE);  // 打开uart接收
-			rt_sem_release(sem_Banqiu_task);  // 启动板球task1线程
-			rt_mb_send(mb_ctrlAt24, state_transition[statenow][key_receive].action); /*通知AT24读pid*/
-			rt_mb_send(mb_display, state_transition[statenow][key_receive].action); // 通知显示刷新	
-			break;
-		}
-		case Banqiu_setA_to_Banqiu_setB:case Banqiu_setA_to_Mainmeau:case Banqiu_setB_to_Mainmeau:{
-			rt_mb_send(mb_display, state_transition[statenow][key_receive].action); // 通知显示刷新	
-			break;
-		}
-		case Banqiu_setA_plus:{
-			targetA++;
-			target_point[0] = standing_point[targetA];
-			rt_mb_send(mb_display, state_transition[statenow][key_receive].action);
-			break;
-		}
-		case Banqiu_setA_minus:{
-			targetA--;
-			target_point[0] = standing_point[targetA];
-			rt_mb_send(mb_display, state_transition[statenow][key_receive].action);
-			break;
-		}
-		case Banqiu_setB_plus:{
-			targetB++;
-			target_point[1] = standing_point[targetB];
-			rt_mb_send(mb_display, state_transition[statenow][key_receive].action);
-			break;
-		}
-		case Banqiu_setB_minus:{
-			targetB--;
-			target_point[1] = standing_point[targetB];
-			rt_mb_send(mb_display, state_transition[statenow][key_receive].action);
-			break;
-		}
+//		case Banqiu_setA_to_Banqiu_set_pid:case Banqiu_setB_to_Banqiu_set_pid:{
+//			USART_Cmd(camera_uart_device.uart_module, ENABLE);  // 打开uart接收
+//			rt_sem_release(sem_Banqiu_task);  // 启动板球task1线程
+//			rt_mb_send(mb_ctrlAt24, state_transition[statenow][key_receive].action); /*通知AT24读pid*/
+//			rt_mb_send(mb_display, state_transition[statenow][key_receive].action); // 通知显示刷新	
+//			break;
+//		}
+//		case Banqiu_setA_to_Banqiu_setB:case Banqiu_setA_to_Mainmeau:case Banqiu_setB_to_Mainmeau:{
+//			rt_mb_send(mb_display, state_transition[statenow][key_receive].action); // 通知显示刷新	
+//			break;
+//		}
+//		case Banqiu_setA_plus:{
+//			targetA++;
+//			target_point[0] = standing_point[targetA];
+//			rt_mb_send(mb_display, state_transition[statenow][key_receive].action);
+//			break;
+//		}
+//		case Banqiu_setA_minus:{
+//			targetA--;
+//			target_point[0] = standing_point[targetA];
+//			rt_mb_send(mb_display, state_transition[statenow][key_receive].action);
+//			break;
+//		}
+//		case Banqiu_setB_plus:{
+//			targetB++;
+//			target_point[1] = standing_point[targetB];
+//			rt_mb_send(mb_display, state_transition[statenow][key_receive].action);
+//			break;
+//		}
+//		case Banqiu_setB_minus:{
+//			targetB--;
+//			target_point[1] = standing_point[targetB];
+//			rt_mb_send(mb_display, state_transition[statenow][key_receive].action);
+//			break;
+//		}
 /****************Banqiu_set_pid状态出发*********************/		
-		case Banqiu_set_pid_to_Mainmeau: {
-			USART_Cmd(camera_uart_device.uart_module, DISABLE);  // 关闭uart接收
-			rt_sem_take(sem_Banqiu_task, RT_WAITING_FOREVER); // 将板球任务1暂停下来(尝试)
-			rt_mb_send(mb_ctrlAt24, Banqiu_set_pid_to_Mainmeau);  // 退出保存pid
-			rt_mb_send(mb_display, Banqiu_set_pid_to_Mainmeau);
-			break;
-		}
-		case Banqiu_P_plus:{
-			pos_pid_control_set_kp(pid_steer1, pid_steer1->kp + 0.1);
-			pos_pid_control_set_kp(pid_steer2, pid_steer2->kp + 0.1);
-			rt_mb_send(mb_display, Banqiu_P_plus);
-			break;
-		}
-		case Banqiu_P_minus:{
-			pos_pid_control_set_kp(pid_steer1, pid_steer1->kp - 0.1);
-			pos_pid_control_set_kp(pid_steer2, pid_steer2->kp - 0.1);
-			rt_mb_send(mb_display, Banqiu_P_minus);
-			break;
-		}
-		case Banqiu_I_plus:{
-			pos_pid_control_set_ki(pid_steer1, pid_steer1->ki + 0.1);
-			pos_pid_control_set_ki(pid_steer2, pid_steer2->ki + 0.1);
-			rt_mb_send(mb_display, Banqiu_I_plus);
-			break;
-		}
-		case Banqiu_I_minus:{
-			pos_pid_control_set_ki(pid_steer1, pid_steer1->ki - 0.1);
-			pos_pid_control_set_ki(pid_steer2, pid_steer2->ki - 0.1);
-			rt_mb_send(mb_display, Banqiu_I_minus);
-			break;
-		}
-		case Banqiu_D_plus:{
-			pos_pid_control_set_kd(pid_steer1, pid_steer1->kd + 0.1);
-			pos_pid_control_set_kd(pid_steer2, pid_steer2->kd + 0.1);
-			rt_mb_send(mb_display, Banqiu_D_plus);
-			break;
-		}
-		case Banqiu_D_minus:{
-			pos_pid_control_set_kd(pid_steer1, pid_steer1->kd - 0.1);
-			pos_pid_control_set_kd(pid_steer2, pid_steer2->kd - 0.1);
-			rt_mb_send(mb_display, Banqiu_D_minus);
-			break;
-		}
-		case Banqiu_next:{
-			if(target_point[target_now+1].number!= 0)
-				target_now++;
-			rt_mb_send(mb_display, Banqiu_next);	
-			break;			
-		}
+//		case Banqiu_set_pid_to_Mainmeau: {
+//			USART_Cmd(camera_uart_device.uart_module, DISABLE);  // 关闭uart接收
+//			rt_sem_take(sem_Banqiu_task, RT_WAITING_FOREVER); // 将板球任务1暂停下来(尝试)
+//			rt_mb_send(mb_ctrlAt24, Banqiu_set_pid_to_Mainmeau);  // 退出保存pid
+//			rt_mb_send(mb_display, Banqiu_set_pid_to_Mainmeau);
+//			break;
+//		}
+//		case Banqiu_P_plus:{
+//			pos_pid_control_set_kp(pid_steer1, pid_steer1->kp + 0.1);
+//			pos_pid_control_set_kp(pid_steer2, pid_steer2->kp + 0.1);
+//			rt_mb_send(mb_display, Banqiu_P_plus);
+//			break;
+//		}
+//		case Banqiu_P_minus:{
+//			pos_pid_control_set_kp(pid_steer1, pid_steer1->kp - 0.1);
+//			pos_pid_control_set_kp(pid_steer2, pid_steer2->kp - 0.1);
+//			rt_mb_send(mb_display, Banqiu_P_minus);
+//			break;
+//		}
+//		case Banqiu_I_plus:{
+//			pos_pid_control_set_ki(pid_steer1, pid_steer1->ki + 0.1);
+//			pos_pid_control_set_ki(pid_steer2, pid_steer2->ki + 0.1);
+//			rt_mb_send(mb_display, Banqiu_I_plus);
+//			break;
+//		}
+//		case Banqiu_I_minus:{
+//			pos_pid_control_set_ki(pid_steer1, pid_steer1->ki - 0.1);
+//			pos_pid_control_set_ki(pid_steer2, pid_steer2->ki - 0.1);
+//			rt_mb_send(mb_display, Banqiu_I_minus);
+//			break;
+//		}
+//		case Banqiu_D_plus:{
+//			pos_pid_control_set_kd(pid_steer1, pid_steer1->kd + 0.1);
+//			pos_pid_control_set_kd(pid_steer2, pid_steer2->kd + 0.1);
+//			rt_mb_send(mb_display, Banqiu_D_plus);
+//			break;
+//		}
+//		case Banqiu_D_minus:{
+//			pos_pid_control_set_kd(pid_steer1, pid_steer1->kd - 0.1);
+//			pos_pid_control_set_kd(pid_steer2, pid_steer2->kd - 0.1);
+//			rt_mb_send(mb_display, Banqiu_D_minus);
+//			break;
+//		}
+//		case Banqiu_next:{
+//			if(target_point[target_now+1].number!= 0)
+//				target_now++;
+//			rt_mb_send(mb_display, Banqiu_next);	
+//			break;			
+//		}
 /****************steer_test*********************/	
 		case Steer_test_to_Mainmeau:{
 			rt_mb_send(mb_display, Steer_test_to_Mainmeau);
@@ -339,13 +345,19 @@ void state_transfer(uint8_t statenow, uint8_t key_receive)
 			rt_mb_send(mb_display, Pos_input_to_Steer_move_fire);
 			break;
 		}
-		case Distance_rate_plus:{
-			dis_rate++;
+		case Distance_rate_plus:{   
+			if(using_big_angle == 1) // 
+				dis_rate_big++;
+			else if(using_big_angle == 0)
+				dis_rate_small++;
 			rt_mb_send(mb_display, Distance_rate_plus);
 			break;
 		}
 		case Distance_rate_minus:{
-			dis_rate--;
+			if(using_big_angle == 1)
+				dis_rate_big--;
+			else if(using_big_angle == 0)
+				dis_rate_small--;
 			rt_mb_send(mb_display, Distance_rate_minus);
 			break;
 		}

@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\Objects\diansai.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Objects\diansai.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Sat Aug 10 14:25:39 2019
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Sun Aug 11 01:37:21 2019
 <BR><P>
 <H3>Maximum Stack Usage =        300 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -119,7 +119,7 @@ Global Symbols
 <P><STRONG><a name="[48]"></a>__main</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry.o(.ARM.Collect$$$$00000000))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f10x_hd.o(.text)
 </UL>
-<P><STRONG><a name="[169]"></a>_main_stk</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry2.o(.ARM.Collect$$$$00000001))
+<P><STRONG><a name="[166]"></a>_main_stk</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry2.o(.ARM.Collect$$$$00000001))
 
 <P><STRONG><a name="[5e]"></a>_main_scatterload</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry5.o(.ARM.Collect$$$$00000004))
 <BR><BR>[Calls]<UL><LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__scatterload
@@ -129,15 +129,15 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__scatterload
 </UL>
 
-<P><STRONG><a name="[16a]"></a>_main_clock</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry7b.o(.ARM.Collect$$$$00000008))
+<P><STRONG><a name="[167]"></a>_main_clock</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry7b.o(.ARM.Collect$$$$00000008))
 
-<P><STRONG><a name="[16b]"></a>_main_cpp_init</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry8b.o(.ARM.Collect$$$$0000000A))
+<P><STRONG><a name="[168]"></a>_main_cpp_init</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry8b.o(.ARM.Collect$$$$0000000A))
 
-<P><STRONG><a name="[16c]"></a>_main_init</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry9a.o(.ARM.Collect$$$$0000000B))
+<P><STRONG><a name="[169]"></a>_main_init</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry9a.o(.ARM.Collect$$$$0000000B))
 
-<P><STRONG><a name="[16d]"></a>__rt_final_cpp</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry10a.o(.ARM.Collect$$$$0000000D))
+<P><STRONG><a name="[16a]"></a>__rt_final_cpp</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry10a.o(.ARM.Collect$$$$0000000D))
 
-<P><STRONG><a name="[16e]"></a>__rt_final_exit</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry11a.o(.ARM.Collect$$$$0000000F))
+<P><STRONG><a name="[16b]"></a>__rt_final_exit</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry11a.o(.ARM.Collect$$$$0000000F))
 
 <P><STRONG><a name="[7c]"></a>rt_hw_interrupt_disable</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, context_rvds.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[116]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_sem_release
@@ -212,7 +212,7 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[14e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_system_scheduler_start
 </UL>
 
-<P><STRONG><a name="[16f]"></a>rt_hw_interrupt_thread_switch</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, context_rvds.o(.text), UNUSED)
+<P><STRONG><a name="[16c]"></a>rt_hw_interrupt_thread_switch</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, context_rvds.o(.text), UNUSED)
 
 <P><STRONG><a name="[2]"></a>HardFault_Handler</STRONG> (Thumb, 52 bytes, Stack size 0 bytes, context_rvds.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 196<LI>Call Chain = HardFault_Handler &rArr; rt_hw_hard_fault_exception &rArr; rt_kprintf &rArr; rt_vsnprintf &rArr; print_number
@@ -396,7 +396,7 @@ Global Symbols
 <P><STRONG><a name="[a]"></a>WWDG_IRQHandler</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, startup_stm32f10x_hd.o(.text))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f10x_hd.o(RESET)
 </UL>
-<P><STRONG><a name="[170]"></a>__aeabi_memcpy</STRONG> (Thumb, 36 bytes, Stack size 0 bytes, memcpya.o(.text), UNUSED)
+<P><STRONG><a name="[16d]"></a>__aeabi_memcpy</STRONG> (Thumb, 36 bytes, Stack size 0 bytes, memcpya.o(.text), UNUSED)
 
 <P><STRONG><a name="[dd]"></a>__aeabi_memcpy4</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, memcpya.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[125]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;uart_device_init
@@ -405,16 +405,16 @@ Global Symbols
 <LI><a href="#[2f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART1_IRQHandler
 </UL>
 
-<P><STRONG><a name="[171]"></a>__aeabi_memcpy8</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, memcpya.o(.text), UNUSED)
+<P><STRONG><a name="[16e]"></a>__aeabi_memcpy8</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, memcpya.o(.text), UNUSED)
 
 <P><STRONG><a name="[62]"></a>__aeabi_memset</STRONG> (Thumb, 14 bytes, Stack size 0 bytes, memseta.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_memset$wrapper
 <LI><a href="#[61]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memclr
 </UL>
 
-<P><STRONG><a name="[172]"></a>__aeabi_memset4</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, memseta.o(.text), UNUSED)
+<P><STRONG><a name="[16f]"></a>__aeabi_memset4</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, memseta.o(.text), UNUSED)
 
-<P><STRONG><a name="[173]"></a>__aeabi_memset8</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, memseta.o(.text), UNUSED)
+<P><STRONG><a name="[170]"></a>__aeabi_memset8</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, memseta.o(.text), UNUSED)
 
 <P><STRONG><a name="[61]"></a>__aeabi_memclr</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, memseta.o(.text))
 <BR><BR>[Calls]<UL><LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memset
@@ -423,15 +423,15 @@ Global Symbols
 <LI><a href="#[4c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;camera_uarthandle_thread_entry
 </UL>
 
-<P><STRONG><a name="[174]"></a>__aeabi_memclr4</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, memseta.o(.text), UNUSED)
+<P><STRONG><a name="[171]"></a>__aeabi_memclr4</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, memseta.o(.text), UNUSED)
 
-<P><STRONG><a name="[175]"></a>__aeabi_memclr8</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, memseta.o(.text), UNUSED)
+<P><STRONG><a name="[172]"></a>__aeabi_memclr8</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, memseta.o(.text), UNUSED)
 
 <P><STRONG><a name="[63]"></a>_memset$wrapper</STRONG> (Thumb, 18 bytes, Stack size 8 bytes, memseta.o(.text), UNUSED)
 <BR><BR>[Calls]<UL><LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memset
 </UL>
 
-<P><STRONG><a name="[168]"></a>strcpy</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, strcpy.o(.text))
+<P><STRONG><a name="[165]"></a>strcpy</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, strcpy.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;updatepage
 </UL>
 
@@ -442,7 +442,7 @@ Global Symbols
 <LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_float_epilogue
 </UL>
 <BR>[Called By]<UL><LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_frsub
-<LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Hcsr04GetLength
+<LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Hcsr04GetLength
 <LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;btm_servo_control
 <LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fsub
 <LI><a href="#[fd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;state_transfer
@@ -460,6 +460,8 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;btm_servo_control
 <LI><a href="#[fd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;state_transfer
 <LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Elegun_shakefire_thread_entry
+<LI><a href="#[50]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Elegun_fire_thread_entry
+<LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Elegun_autofire_thread_entry
 <LI><a href="#[56]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pos_pid_control_update
 </UL>
 
@@ -507,9 +509,12 @@ Global Symbols
 </UL>
 <BR>[Called By]<UL><LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dsub
 <LI><a href="#[fd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;state_transfer
+<LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Elegun_shakefire_thread_entry
+<LI><a href="#[50]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Elegun_fire_thread_entry
+<LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Elegun_autofire_thread_entry
 <LI><a href="#[e2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__kernel_poly
 <LI><a href="#[70]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_drsub
-<LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;asin
+<LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;asin
 </UL>
 
 <P><STRONG><a name="[6f]"></a>__aeabi_dsub</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, dadd.o(.text))
@@ -518,8 +523,9 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dadd
 </UL>
 <BR>[Called By]<UL><LI><a href="#[fd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;state_transfer
+<LI><a href="#[50]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Elegun_fire_thread_entry
 <LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Elegun_autofire_thread_entry
-<LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;asin
+<LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;asin
 </UL>
 
 <P><STRONG><a name="[70]"></a>__aeabi_drsub</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, dadd.o(.text))
@@ -527,7 +533,7 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dadd
 </UL>
-<BR>[Called By]<UL><LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;asin
+<BR>[Called By]<UL><LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;asin
 </UL>
 
 <P><STRONG><a name="[71]"></a>__aeabi_dmul</STRONG> (Thumb, 228 bytes, Stack size 48 bytes, dmul.o(.text))
@@ -535,13 +541,12 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[6d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_double_epilogue
 </UL>
-<BR>[Called By]<UL><LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pwm_set_Duty
-<LI><a href="#[4e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;taskreadAT24_thread_entry
+<BR>[Called By]<UL><LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pwm_set_Duty
 <LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Elegun_shakefire_thread_entry
 <LI><a href="#[50]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Elegun_fire_thread_entry
 <LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Elegun_autofire_thread_entry
 <LI><a href="#[e2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__kernel_poly
-<LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;asin
+<LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;asin
 </UL>
 
 <P><STRONG><a name="[72]"></a>__aeabi_ddiv</STRONG> (Thumb, 222 bytes, Stack size 32 bytes, ddiv.o(.text))
@@ -549,12 +554,12 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[6e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_double_round
 </UL>
-<BR>[Called By]<UL><LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Hcsr04GetLength
+<BR>[Called By]<UL><LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Hcsr04GetLength
 <LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Elegun_shakefire_thread_entry
 <LI><a href="#[50]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Elegun_fire_thread_entry
 <LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Elegun_autofire_thread_entry
 <LI><a href="#[e5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__mathlib_dbl_invalid
-<LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;asin
+<LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;asin
 </UL>
 
 <P><STRONG><a name="[73]"></a>__aeabi_i2f</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, fflti.o(.text))
@@ -562,8 +567,7 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_float_epilogue
 </UL>
-<BR>[Called By]<UL><LI><a href="#[50]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Elegun_fire_thread_entry
-<LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Elegun_autofire_thread_entry
+<BR>[Called By]<UL><LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Elegun_autofire_thread_entry
 </UL>
 
 <P><STRONG><a name="[74]"></a>__aeabi_ui2f</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, ffltui.o(.text))
@@ -571,7 +575,7 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_float_epilogue
 </UL>
-<BR>[Called By]<UL><LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Hcsr04GetLength
+<BR>[Called By]<UL><LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Hcsr04GetLength
 <LI><a href="#[4e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;taskreadAT24_thread_entry
 <LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Elegun_autofire_thread_entry
 </UL>
@@ -592,8 +596,7 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[6d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_double_epilogue
 </UL>
-<BR>[Called By]<UL><LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pwm_set_Duty
-<LI><a href="#[4e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;taskreadAT24_thread_entry
+<BR>[Called By]<UL><LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pwm_set_Duty
 <LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Elegun_autofire_thread_entry
 </UL>
 
@@ -603,13 +606,12 @@ Global Symbols
 
 <P><STRONG><a name="[91]"></a>__aeabi_f2uiz</STRONG> (Thumb, 40 bytes, Stack size 0 bytes, ffixui.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[fd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;state_transfer
+<LI><a href="#[ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Pos_input_init
 <LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Fire_ok_display
 <LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Elegun_autofire_set_init
 <LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Banqiu_set_pid_Display_init
 <LI><a href="#[4e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;taskreadAT24_thread_entry
 <LI><a href="#[4f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;display_thread_entry
-<LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Elegun_shakefire_thread_entry
-<LI><a href="#[50]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Elegun_fire_thread_entry
 <LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Elegun_autofire_thread_entry
 </UL>
 
@@ -620,17 +622,22 @@ Global Symbols
 </UL>
 <BR>[Called By]<UL><LI><a href="#[fd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;state_transfer
 <LI><a href="#[ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Pos_input_init
+<LI><a href="#[a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Elegun_shakefire_set_init
 <LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Elegun_autofire_set_init
 <LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Elegun_autofire_init
-<LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pwm_set_Duty
+<LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pwm_set_Duty
 <LI><a href="#[4e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;taskreadAT24_thread_entry
 <LI><a href="#[4f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;display_thread_entry
+<LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Elegun_shakefire_thread_entry
+<LI><a href="#[50]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Elegun_fire_thread_entry
 <LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Elegun_autofire_thread_entry
 </UL>
 
 <P><STRONG><a name="[9b]"></a>__aeabi_f2d</STRONG> (Thumb, 38 bytes, Stack size 0 bytes, f2d.o(.text))
-<BR><BR>[Called By]<UL><LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Hcsr04GetLength
+<BR><BR>[Called By]<UL><LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Hcsr04GetLength
 <LI><a href="#[fd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;state_transfer
+<LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Elegun_shakefire_thread_entry
+<LI><a href="#[50]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Elegun_fire_thread_entry
 <LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Elegun_autofire_thread_entry
 </UL>
 
@@ -639,27 +646,32 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_float_round
 </UL>
-<BR>[Called By]<UL><LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Hcsr04GetLength
+<BR>[Called By]<UL><LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Hcsr04GetLength
 <LI><a href="#[fd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;state_transfer
-<LI><a href="#[4e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;taskreadAT24_thread_entry
 <LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Elegun_shakefire_thread_entry
 <LI><a href="#[50]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Elegun_fire_thread_entry
 <LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Elegun_autofire_thread_entry
 </UL>
 
-<P><STRONG><a name="[9e]"></a>__aeabi_cfcmpeq</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, cfcmple.o(.text))
+<P><STRONG><a name="[9f]"></a>__aeabi_cfcmpeq</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, cfcmple.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Elegun_autofire_thread_entry
 </UL>
 
-<P><STRONG><a name="[a5]"></a>__aeabi_cfcmple</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, cfcmple.o(.text))
+<P><STRONG><a name="[9d]"></a>__aeabi_cfcmple</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, cfcmple.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;btm_servo_control
 <LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Elegun_shakefire_thread_entry
+<LI><a href="#[50]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Elegun_fire_thread_entry
+<LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Elegun_autofire_thread_entry
 <LI><a href="#[56]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pos_pid_control_update
 </UL>
 
-<P><STRONG><a name="[a6]"></a>__aeabi_cfrcmple</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, cfrcmple.o(.text))
+<P><STRONG><a name="[a3]"></a>__aeabi_cfrcmple</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, cfrcmple.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;btm_servo_control
+<LI><a href="#[ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Pos_input_init
+<LI><a href="#[4f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;display_thread_entry
 <LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Elegun_shakefire_thread_entry
+<LI><a href="#[50]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Elegun_fire_thread_entry
+<LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Elegun_autofire_thread_entry
 <LI><a href="#[56]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pos_pid_control_update
 </UL>
 
@@ -668,7 +680,7 @@ Global Symbols
 <LI><a href="#[6d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_double_epilogue
 </UL>
 
-<P><STRONG><a name="[176]"></a>_ll_shift_l</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, llshl.o(.text), UNUSED)
+<P><STRONG><a name="[173]"></a>_ll_shift_l</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, llshl.o(.text), UNUSED)
 
 <P><STRONG><a name="[78]"></a>__aeabi_llsr</STRONG> (Thumb, 32 bytes, Stack size 0 bytes, llushr.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_d2uiz
@@ -676,15 +688,15 @@ Global Symbols
 <LI><a href="#[6d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_double_epilogue
 </UL>
 
-<P><STRONG><a name="[177]"></a>_ll_ushift_r</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, llushr.o(.text), UNUSED)
+<P><STRONG><a name="[174]"></a>_ll_ushift_r</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, llushr.o(.text), UNUSED)
 
 <P><STRONG><a name="[6c]"></a>__aeabi_lasr</STRONG> (Thumb, 36 bytes, Stack size 0 bytes, llsshr.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dadd
 </UL>
 
-<P><STRONG><a name="[178]"></a>_ll_sshift_r</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, llsshr.o(.text), UNUSED)
+<P><STRONG><a name="[175]"></a>_ll_sshift_r</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, llsshr.o(.text), UNUSED)
 
-<P><STRONG><a name="[179]"></a>__I$use$fp</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, iusefp.o(.text), UNUSED)
+<P><STRONG><a name="[176]"></a>__I$use$fp</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, iusefp.o(.text), UNUSED)
 
 <P><STRONG><a name="[66]"></a>_float_round</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, fepilogue.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fdiv
@@ -717,8 +729,8 @@ Global Symbols
 <LI><a href="#[6e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_double_round
 </UL>
 <BR>[Called By]<UL><LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ui2d
-<LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_i2d
 <LI><a href="#[71]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dmul
+<LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_i2d
 <LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dadd
 </UL>
 
@@ -727,10 +739,10 @@ Global Symbols
 </UL>
 <BR>[Called By]<UL><LI><a href="#[e6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__mathlib_dbl_underflow
 <LI><a href="#[e3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__mathlib_dbl_infnan
-<LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;asin
+<LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;asin
 </UL>
 
-<P><STRONG><a name="[17a]"></a>scalbn</STRONG> (Thumb, 0 bytes, Stack size 16 bytes, dscalb.o(.text), UNUSED)
+<P><STRONG><a name="[177]"></a>scalbn</STRONG> (Thumb, 0 bytes, Stack size 16 bytes, dscalb.o(.text), UNUSED)
 
 <P><STRONG><a name="[5f]"></a>__scatterload</STRONG> (Thumb, 28 bytes, Stack size 0 bytes, init.o(.text))
 <BR><BR>[Calls]<UL><LI><a href="#[7a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__main_after_scatterload
@@ -738,7 +750,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_main_scatterload
 </UL>
 
-<P><STRONG><a name="[17b]"></a>__scatterload_rt2</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, init.o(.text), UNUSED)
+<P><STRONG><a name="[178]"></a>__scatterload_rt2</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, init.o(.text), UNUSED)
 
 <P><STRONG><a name="[7b]"></a>_dsqrt</STRONG> (Thumb, 162 bytes, Stack size 32 bytes, dsqrt.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = _dsqrt &rArr; _double_round
@@ -749,9 +761,9 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[ef]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sqrt
 </UL>
 
-<P><STRONG><a name="[17c]"></a>__decompress</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __dczerorl2.o(.text), UNUSED)
+<P><STRONG><a name="[179]"></a>__decompress</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __dczerorl2.o(.text), UNUSED)
 
-<P><STRONG><a name="[17d]"></a>__decompress1</STRONG> (Thumb, 86 bytes, Stack size unknown bytes, __dczerorl2.o(.text), UNUSED)
+<P><STRONG><a name="[17a]"></a>__decompress1</STRONG> (Thumb, 86 bytes, Stack size unknown bytes, __dczerorl2.o(.text), UNUSED)
 
 <P><STRONG><a name="[46]"></a>main</STRONG> (Thumb, 14 bytes, Stack size 8 bytes, components.o(i.$Sub$$main))
 <BR><BR>[Stack]<UL><LI>Max Depth = 300<LI>Call Chain = main &rArr; rtthread_startup &rArr; rt_application_init &rArr; rt_thread_create &rArr; rt_object_delete &rArr; rt_free &rArr; rt_kprintf &rArr; rt_vsnprintf &rArr; print_number
@@ -876,7 +888,7 @@ Global Symbols
 <P><STRONG><a name="[7]"></a>DebugMon_Handler</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, stm32f10x_it.o(i.DebugMon_Handler))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f10x_hd.o(RESET)
 </UL>
-<P><STRONG><a name="[98]"></a>Elegun_autofire_init</STRONG> (Thumb, 134 bytes, Stack size 16 bytes, display.o(i.Elegun_autofire_init))
+<P><STRONG><a name="[98]"></a>Elegun_autofire_init</STRONG> (Thumb, 170 bytes, Stack size 16 bytes, display.o(i.Elegun_autofire_init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 160<LI>Call Chain = Elegun_autofire_init &rArr; showpage &rArr; OLED_ShowNum &rArr; OLED_ShowChar &rArr; OLED_Set_Pos &rArr; OLED_WR_Byte
 </UL>
 <BR>[Calls]<UL><LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;updatepage
@@ -888,7 +900,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[4f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;display_thread_entry
 </UL>
 
-<P><STRONG><a name="[99]"></a>Elegun_autofire_set_init</STRONG> (Thumb, 202 bytes, Stack size 16 bytes, display.o(i.Elegun_autofire_set_init))
+<P><STRONG><a name="[99]"></a>Elegun_autofire_set_init</STRONG> (Thumb, 238 bytes, Stack size 16 bytes, display.o(i.Elegun_autofire_set_init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 160<LI>Call Chain = Elegun_autofire_set_init &rArr; showpage &rArr; OLED_ShowNum &rArr; OLED_ShowChar &rArr; OLED_Set_Pos &rArr; OLED_WR_Byte
 </UL>
 <BR>[Calls]<UL><LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;updatepage
@@ -902,57 +914,66 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[4f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;display_thread_entry
 </UL>
 
-<P><STRONG><a name="[51]"></a>Elegun_autofire_thread_entry</STRONG> (Thumb, 564 bytes, Stack size 24 bytes, elegun_handle.o(i.Elegun_autofire_thread_entry))
-<BR><BR>[Stack]<UL><LI>Max Depth = 192<LI>Call Chain = Elegun_autofire_thread_entry &rArr; asin &rArr; __kernel_poly &rArr; __aeabi_dmul &rArr; _double_epilogue &rArr; _double_round
+<P><STRONG><a name="[51]"></a>Elegun_autofire_thread_entry</STRONG> (Thumb, 964 bytes, Stack size 32 bytes, elegun_handle.o(i.Elegun_autofire_thread_entry))
+<BR><BR>[Stack]<UL><LI>Max Depth = 200<LI>Call Chain = Elegun_autofire_thread_entry &rArr; asin &rArr; __kernel_poly &rArr; __aeabi_dmul &rArr; _double_epilogue &rArr; _double_round
 </UL>
-<BR>[Calls]<UL><LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_frsub
+<BR>[Calls]<UL><LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ui2d
+<LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_frsub
+<LI><a href="#[71]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dmul
 <LI><a href="#[72]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ddiv
-<LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cfcmpeq
-<LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Hcsr04GetLength
+<LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cfcmpeq
+<LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Hcsr04GetLength
 <LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;btm_servo_control
 <LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_i2f
+<LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cfcmple
 <LI><a href="#[74]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ui2f
-<LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ui2d
 <LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_i2d
 <LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fdiv
-<LI><a href="#[71]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dmul
+<LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fsub
 <LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fadd
 <LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_f2d
 <LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dsub
+<LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dadd
 <LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_d2f
 <LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_sem_take
-<LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_mb_send
+<LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_mb_send
 <LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_thread_mdelay
 <LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fmul
 <LI><a href="#[91]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_f2uiz
 <LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_d2uiz
-<LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pwm_set_Duty
-<LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_Cmd
-<LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;asin
+<LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cfrcmple
+<LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pwm_set_Duty
+<LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_Cmd
+<LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;asin
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> main.o(i.my_thread_create)
 </UL>
-<P><STRONG><a name="[50]"></a>Elegun_fire_thread_entry</STRONG> (Thumb, 284 bytes, Stack size 24 bytes, elegun_handle.o(i.Elegun_fire_thread_entry))
-<BR><BR>[Stack]<UL><LI>Max Depth = 192<LI>Call Chain = Elegun_fire_thread_entry &rArr; asin &rArr; __kernel_poly &rArr; __aeabi_dmul &rArr; _double_epilogue &rArr; _double_round
+<P><STRONG><a name="[50]"></a>Elegun_fire_thread_entry</STRONG> (Thumb, 678 bytes, Stack size 32 bytes, elegun_handle.o(i.Elegun_fire_thread_entry))
+<BR><BR>[Stack]<UL><LI>Max Depth = 200<LI>Call Chain = Elegun_fire_thread_entry &rArr; asin &rArr; __kernel_poly &rArr; __aeabi_dmul &rArr; _double_epilogue &rArr; _double_round
 </UL>
 <BR>[Calls]<UL><LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_frsub
-<LI><a href="#[72]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ddiv
-<LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_i2f
-<LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_i2d
 <LI><a href="#[71]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dmul
+<LI><a href="#[72]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ddiv
+<LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cfcmple
+<LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_i2d
+<LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fsub
 <LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fadd
+<LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_f2d
+<LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dsub
+<LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dadd
 <LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_d2f
 <LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_sem_take
-<LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_mb_send
+<LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_mb_send
 <LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_thread_mdelay
 <LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fmul
-<LI><a href="#[91]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_f2uiz
-<LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pwm_set_Duty
-<LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;asin
+<LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_d2uiz
+<LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cfrcmple
+<LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pwm_set_Duty
+<LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;asin
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> main.o(i.my_thread_create)
 </UL>
-<P><STRONG><a name="[a3]"></a>Elegun_shakefire_init</STRONG> (Thumb, 90 bytes, Stack size 8 bytes, display.o(i.Elegun_shakefire_init))
+<P><STRONG><a name="[a5]"></a>Elegun_shakefire_init</STRONG> (Thumb, 90 bytes, Stack size 8 bytes, display.o(i.Elegun_shakefire_init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 152<LI>Call Chain = Elegun_shakefire_init &rArr; showpage &rArr; OLED_ShowNum &rArr; OLED_ShowChar &rArr; OLED_Set_Pos &rArr; OLED_WR_Byte
 </UL>
 <BR>[Calls]<UL><LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;updatepage
@@ -963,35 +984,38 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[4f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;display_thread_entry
 </UL>
 
-<P><STRONG><a name="[a4]"></a>Elegun_shakefire_set_init</STRONG> (Thumb, 108 bytes, Stack size 8 bytes, display.o(i.Elegun_shakefire_set_init))
-<BR><BR>[Stack]<UL><LI>Max Depth = 152<LI>Call Chain = Elegun_shakefire_set_init &rArr; showpage &rArr; OLED_ShowNum &rArr; OLED_ShowChar &rArr; OLED_Set_Pos &rArr; OLED_WR_Byte
+<P><STRONG><a name="[a6]"></a>Elegun_shakefire_set_init</STRONG> (Thumb, 134 bytes, Stack size 16 bytes, display.o(i.Elegun_shakefire_set_init))
+<BR><BR>[Stack]<UL><LI>Max Depth = 160<LI>Call Chain = Elegun_shakefire_set_init &rArr; showpage &rArr; OLED_ShowNum &rArr; OLED_ShowChar &rArr; OLED_Set_Pos &rArr; OLED_WR_Byte
 </UL>
 <BR>[Calls]<UL><LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;updatepage
 <LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;showpage
 <LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;clearpage
+<LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_d2uiz
 <LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OLED_Clear
 </UL>
 <BR>[Called By]<UL><LI><a href="#[4f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;display_thread_entry
 </UL>
 
-<P><STRONG><a name="[52]"></a>Elegun_shakefire_thread_entry</STRONG> (Thumb, 380 bytes, Stack size 24 bytes, elegun_handle.o(i.Elegun_shakefire_thread_entry))
+<P><STRONG><a name="[52]"></a>Elegun_shakefire_thread_entry</STRONG> (Thumb, 470 bytes, Stack size 24 bytes, elegun_handle.o(i.Elegun_shakefire_thread_entry))
 <BR><BR>[Stack]<UL><LI>Max Depth = 192<LI>Call Chain = Elegun_shakefire_thread_entry &rArr; asin &rArr; __kernel_poly &rArr; __aeabi_dmul &rArr; _double_epilogue &rArr; _double_round
 </UL>
 <BR>[Calls]<UL><LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_frsub
-<LI><a href="#[72]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ddiv
-<LI><a href="#[a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cfrcmple
-<LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cfcmple
-<LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_i2d
 <LI><a href="#[71]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dmul
+<LI><a href="#[72]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ddiv
+<LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cfcmple
+<LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_i2d
 <LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fsub
 <LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fadd
+<LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_f2d
+<LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dadd
 <LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_d2f
 <LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_sem_take
 <LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_thread_mdelay
 <LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fmul
-<LI><a href="#[91]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_f2uiz
-<LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pwm_set_Duty
-<LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;asin
+<LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_d2uiz
+<LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cfrcmple
+<LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pwm_set_Duty
+<LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;asin
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> main.o(i.my_thread_create)
 </UL>
@@ -1051,10 +1075,10 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_thread_mdelay
 <LI><a href="#[aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_GetCounter
 </UL>
-<BR>[Called By]<UL><LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Hcsr04GetLength
+<BR>[Called By]<UL><LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Hcsr04GetLength
 </UL>
 
-<P><STRONG><a name="[a0]"></a>Hcsr04GetLength</STRONG> (Thumb, 150 bytes, Stack size 40 bytes, bsp_sr04.o(i.Hcsr04GetLength))
+<P><STRONG><a name="[a1]"></a>Hcsr04GetLength</STRONG> (Thumb, 150 bytes, Stack size 40 bytes, bsp_sr04.o(i.Hcsr04GetLength))
 <BR><BR>[Stack]<UL><LI>Max Depth = 152<LI>Call Chain = Hcsr04GetLength &rArr; GetEchoTimer &rArr; rt_thread_mdelay &rArr; rt_thread_sleep &rArr; rt_timer_start &rArr; rt_thread_resume &rArr; rt_timer_stop &rArr; _rt_timer_remove
 </UL>
 <BR>[Calls]<UL><LI><a href="#[72]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ddiv
@@ -1215,8 +1239,8 @@ Global Symbols
 <LI><a href="#[d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Steer_move_fire_init
 <LI><a href="#[ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Pos_input_init
 <LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Fire_ok_display
-<LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Elegun_shakefire_set_init
-<LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Elegun_shakefire_init
+<LI><a href="#[a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Elegun_shakefire_set_init
+<LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Elegun_shakefire_init
 <LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Elegun_autofire_set_init
 <LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Elegun_autofire_init
 <LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Banqiu_set_pid_Display_init
@@ -1294,7 +1318,8 @@ Global Symbols
 <P><STRONG><a name="[c4]"></a>PWM_Init</STRONG> (Thumb, 260 bytes, Stack size 56 bytes, bsp_pwm.o(i.PWM_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 80<LI>Call Chain = PWM_Init &rArr; GPIO_Init
 </UL>
-<BR>[Calls]<UL><LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_OC4Init
+<BR>[Calls]<UL><LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_OC4PreloadConfig
+<LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_OC4Init
 <LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_OC3PreloadConfig
 <LI><a href="#[c7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_OC3Init
 <LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_OC2PreloadConfig
@@ -1307,18 +1332,19 @@ Global Symbols
 <LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB2PeriphClockCmd
 <LI><a href="#[ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB1PeriphClockCmd
 <LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Init
-<LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_OC4PreloadConfig
 </UL>
 <BR>[Called By]<UL><LI><a href="#[f3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;steer_pwm_Frequency_Init
 </UL>
 
-<P><STRONG><a name="[ce]"></a>Pos_input_init</STRONG> (Thumb, 158 bytes, Stack size 16 bytes, display.o(i.Pos_input_init))
+<P><STRONG><a name="[ce]"></a>Pos_input_init</STRONG> (Thumb, 208 bytes, Stack size 16 bytes, display.o(i.Pos_input_init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 160<LI>Call Chain = Pos_input_init &rArr; showpage &rArr; OLED_ShowNum &rArr; OLED_ShowChar &rArr; OLED_Set_Pos &rArr; OLED_WR_Byte
 </UL>
 <BR>[Calls]<UL><LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;updatepage
 <LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;showpage
 <LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;clearpage
+<LI><a href="#[91]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_f2uiz
 <LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_d2uiz
+<LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cfrcmple
 <LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OLED_Clear
 </UL>
 <BR>[Called By]<UL><LI><a href="#[4f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;display_thread_entry
@@ -1526,19 +1552,19 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[11a]"></a>TIM_SetCompare1</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, stm32f10x_tim.o(i.TIM_SetCompare1))
-<BR><BR>[Called By]<UL><LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pwm_set_Duty
+<BR><BR>[Called By]<UL><LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pwm_set_Duty
 </UL>
 
 <P><STRONG><a name="[11b]"></a>TIM_SetCompare2</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, stm32f10x_tim.o(i.TIM_SetCompare2))
-<BR><BR>[Called By]<UL><LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pwm_set_Duty
+<BR><BR>[Called By]<UL><LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pwm_set_Duty
 </UL>
 
 <P><STRONG><a name="[11c]"></a>TIM_SetCompare3</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, stm32f10x_tim.o(i.TIM_SetCompare3))
-<BR><BR>[Called By]<UL><LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pwm_set_Duty
+<BR><BR>[Called By]<UL><LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pwm_set_Duty
 </UL>
 
 <P><STRONG><a name="[11d]"></a>TIM_SetCompare4</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, stm32f10x_tim.o(i.TIM_SetCompare4))
-<BR><BR>[Called By]<UL><LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pwm_set_Duty
+<BR><BR>[Called By]<UL><LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pwm_set_Duty
 </UL>
 
 <P><STRONG><a name="[c3]"></a>TIM_SetCounter</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, stm32f10x_tim.o(i.TIM_SetCounter))
@@ -1585,7 +1611,7 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f10x_hd.o(RESET)
 </UL>
-<P><STRONG><a name="[9f]"></a>USART_Cmd</STRONG> (Thumb, 24 bytes, Stack size 0 bytes, stm32f10x_usart.o(i.USART_Cmd))
+<P><STRONG><a name="[a0]"></a>USART_Cmd</STRONG> (Thumb, 24 bytes, Stack size 0 bytes, stm32f10x_usart.o(i.USART_Cmd))
 <BR><BR>[Called By]<UL><LI><a href="#[fd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;state_transfer
 <LI><a href="#[f5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;openmv_receive
 <LI><a href="#[124]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_hw_board_init
@@ -1635,7 +1661,7 @@ Global Symbols
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f10x_hd.o(RESET)
 </UL>
 <P><STRONG><a name="[ee]"></a>__ARM_fpclassify</STRONG> (Thumb, 40 bytes, Stack size 0 bytes, fpclassify.o(i.__ARM_fpclassify))
-<BR><BR>[Called By]<UL><LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;asin
+<BR><BR>[Called By]<UL><LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;asin
 </UL>
 
 <P><STRONG><a name="[e2]"></a>__kernel_poly</STRONG> (Thumb, 170 bytes, Stack size 24 bytes, poly.o(i.__kernel_poly))
@@ -1644,7 +1670,7 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[71]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dmul
 <LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dadd
 </UL>
-<BR>[Called By]<UL><LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;asin
+<BR>[Called By]<UL><LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;asin
 </UL>
 
 <P><STRONG><a name="[e3]"></a>__mathlib_dbl_infnan</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, dunder.o(i.__mathlib_dbl_infnan))
@@ -1652,7 +1678,7 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[e4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__ARM_scalbn
 </UL>
-<BR>[Called By]<UL><LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;asin
+<BR>[Called By]<UL><LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;asin
 </UL>
 
 <P><STRONG><a name="[e5]"></a>__mathlib_dbl_invalid</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, dunder.o(i.__mathlib_dbl_invalid))
@@ -1660,7 +1686,7 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[72]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ddiv
 </UL>
-<BR>[Called By]<UL><LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;asin
+<BR>[Called By]<UL><LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;asin
 </UL>
 
 <P><STRONG><a name="[e6]"></a>__mathlib_dbl_underflow</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, dunder.o(i.__mathlib_dbl_underflow))
@@ -1668,7 +1694,7 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[e4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__ARM_scalbn
 </UL>
-<BR>[Called By]<UL><LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;asin
+<BR>[Called By]<UL><LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;asin
 </UL>
 
 <P><STRONG><a name="[143]"></a>__rt_ffs</STRONG> (Thumb, 70 bytes, Stack size 0 bytes, kservice.o(i.__rt_ffs))
@@ -1676,22 +1702,22 @@ Global Symbols
 <LI><a href="#[14e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_system_scheduler_start
 </UL>
 
-<P><STRONG><a name="[17e]"></a>__scatterload_copy</STRONG> (Thumb, 14 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_copy), UNUSED)
+<P><STRONG><a name="[17b]"></a>__scatterload_copy</STRONG> (Thumb, 14 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_copy), UNUSED)
 
-<P><STRONG><a name="[17f]"></a>__scatterload_null</STRONG> (Thumb, 2 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_null), UNUSED)
+<P><STRONG><a name="[17c]"></a>__scatterload_null</STRONG> (Thumb, 2 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_null), UNUSED)
 
-<P><STRONG><a name="[180]"></a>__scatterload_zeroinit</STRONG> (Thumb, 14 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_zeroinit), UNUSED)
+<P><STRONG><a name="[17d]"></a>__scatterload_zeroinit</STRONG> (Thumb, 14 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_zeroinit), UNUSED)
 
 <P><STRONG><a name="[ed]"></a>__set_errno</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, errno.o(i.__set_errno))
 <BR><BR>[Called By]<UL><LI><a href="#[ef]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sqrt
-<LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;asin
+<LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;asin
 </UL>
 
-<P><STRONG><a name="[a2]"></a>asin</STRONG> (Thumb, 572 bytes, Stack size 56 bytes, asin.o(i.asin))
+<P><STRONG><a name="[a4]"></a>asin</STRONG> (Thumb, 572 bytes, Stack size 56 bytes, asin.o(i.asin))
 <BR><BR>[Stack]<UL><LI>Max Depth = 168<LI>Call Chain = asin &rArr; __kernel_poly &rArr; __aeabi_dmul &rArr; _double_epilogue &rArr; _double_round
 </UL>
-<BR>[Calls]<UL><LI><a href="#[72]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ddiv
-<LI><a href="#[71]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dmul
+<BR>[Calls]<UL><LI><a href="#[71]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dmul
+<LI><a href="#[72]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ddiv
 <LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dsub
 <LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dadd
 <LI><a href="#[ed]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__set_errno
@@ -1725,15 +1751,15 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[124]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_hw_board_init
 </UL>
 
-<P><STRONG><a name="[9c]"></a>btm_servo_control</STRONG> (Thumb, 192 bytes, Stack size 32 bytes, elegun_handle.o(i.btm_servo_control))
-<BR><BR>[Stack]<UL><LI>Max Depth = 52<LI>Call Chain = btm_servo_control &rArr; __aeabi_fsub &rArr; __aeabi_fadd &rArr; _float_epilogue
+<P><STRONG><a name="[9c]"></a>btm_servo_control</STRONG> (Thumb, 156 bytes, Stack size 24 bytes, elegun_handle.o(i.btm_servo_control))
+<BR><BR>[Stack]<UL><LI>Max Depth = 44<LI>Call Chain = btm_servo_control &rArr; __aeabi_fsub &rArr; __aeabi_fadd &rArr; _float_epilogue
 </UL>
 <BR>[Calls]<UL><LI><a href="#[f4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_f2iz
-<LI><a href="#[a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cfrcmple
-<LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cfcmple
+<LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cfcmple
 <LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fsub
 <LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fadd
 <LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fmul
+<LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cfrcmple
 </UL>
 <BR>[Called By]<UL><LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Elegun_autofire_thread_entry
 </UL>
@@ -1755,8 +1781,8 @@ Global Symbols
 <LI><a href="#[d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Steer_move_fire_init
 <LI><a href="#[ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Pos_input_init
 <LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Fire_ok_display
-<LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Elegun_shakefire_set_init
-<LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Elegun_shakefire_init
+<LI><a href="#[a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Elegun_shakefire_set_init
+<LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Elegun_shakefire_init
 <LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Elegun_autofire_set_init
 <LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Elegun_autofire_init
 <LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Banqiu_set_pid_Display_init
@@ -1777,7 +1803,7 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OLED_Init
 </UL>
 
-<P><STRONG><a name="[4f]"></a>display_thread_entry</STRONG> (Thumb, 1480 bytes, Stack size 16 bytes, display.o(i.display_thread_entry))
+<P><STRONG><a name="[4f]"></a>display_thread_entry</STRONG> (Thumb, 1582 bytes, Stack size 16 bytes, display.o(i.display_thread_entry))
 <BR><BR>[Stack]<UL><LI>Max Depth = 196<LI>Call Chain = display_thread_entry &rArr; rt_kprintf &rArr; rt_vsnprintf &rArr; print_number
 </UL>
 <BR>[Calls]<UL><LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;updatepage
@@ -1787,6 +1813,7 @@ Global Symbols
 <LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fmul
 <LI><a href="#[91]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_f2uiz
 <LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_d2uiz
+<LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cfrcmple
 <LI><a href="#[f8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;task1_xxx_Display_init
 <LI><a href="#[f9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;steer_test_init
 <LI><a href="#[fa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main_Display_init
@@ -1794,8 +1821,8 @@ Global Symbols
 <LI><a href="#[d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Steer_move_fire_init
 <LI><a href="#[ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Pos_input_init
 <LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Fire_ok_display
-<LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Elegun_shakefire_set_init
-<LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Elegun_shakefire_init
+<LI><a href="#[a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Elegun_shakefire_set_init
+<LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Elegun_shakefire_init
 <LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Elegun_autofire_set_init
 <LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Elegun_autofire_init
 <LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Banqiu_set_pid_Display_init
@@ -1826,7 +1853,7 @@ Global Symbols
 <P><STRONG><a name="[53]"></a>keyscan_callback</STRONG> (Thumb, 52 bytes, Stack size 16 bytes, bsp_key.o(i.keyscan_callback))
 <BR><BR>[Stack]<UL><LI>Max Depth = 196<LI>Call Chain = keyscan_callback &rArr; rt_kprintf &rArr; rt_vsnprintf &rArr; print_number
 </UL>
-<BR>[Calls]<UL><LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_mb_send
+<BR>[Calls]<UL><LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_mb_send
 <LI><a href="#[f6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_kprintf
 <LI><a href="#[b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;KEY_Scan
 </UL>
@@ -1844,7 +1871,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[57]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main_thread_entry
 </UL>
 
-<P><STRONG><a name="[fa]"></a>main_Display_init</STRONG> (Thumb, 154 bytes, Stack size 8 bytes, display.o(i.main_Display_init))
+<P><STRONG><a name="[fa]"></a>main_Display_init</STRONG> (Thumb, 156 bytes, Stack size 8 bytes, display.o(i.main_Display_init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 152<LI>Call Chain = main_Display_init &rArr; showpage &rArr; OLED_ShowNum &rArr; OLED_ShowChar &rArr; OLED_Set_Pos &rArr; OLED_WR_Byte
 </UL>
 <BR>[Calls]<UL><LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;updatepage
@@ -1913,7 +1940,7 @@ Global Symbols
 <P><STRONG><a name="[10c]"></a>my_uart_Config</STRONG> (Thumb, 180 bytes, Stack size 80 bytes, bsp_usart.o(i.my_uart_Config))
 <BR><BR>[Stack]<UL><LI>Max Depth = 148<LI>Call Chain = my_uart_Config &rArr; USART_Init &rArr; RCC_GetClocksFreq
 </UL>
-<BR>[Calls]<UL><LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_Cmd
+<BR>[Calls]<UL><LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_Cmd
 <LI><a href="#[e0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_Init
 <LI><a href="#[10e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_ITConfig
 <LI><a href="#[10f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_DMACmd
@@ -1958,9 +1985,9 @@ Global Symbols
 <P><STRONG><a name="[f5]"></a>openmv_receive</STRONG> (Thumb, 116 bytes, Stack size 8 bytes, uart_handle.o(i.openmv_receive))
 <BR><BR>[Stack]<UL><LI>Max Depth = 136<LI>Call Chain = openmv_receive &rArr; rt_mb_send &rArr; rt_mb_send_wait &rArr; rt_timer_start &rArr; rt_thread_resume &rArr; rt_timer_stop &rArr; _rt_timer_remove
 </UL>
-<BR>[Calls]<UL><LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_mb_send
+<BR>[Calls]<UL><LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_mb_send
 <LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_thread_mdelay
-<LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_Cmd
+<LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_Cmd
 </UL>
 <BR>[Called By]<UL><LI><a href="#[4c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;camera_uarthandle_thread_entry
 </UL>
@@ -1973,22 +2000,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[102]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;my_other_create
 </UL>
 
-<P><STRONG><a name="[167]"></a>pos_pid_control_set_kd</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, pos_pid_control.o(i.pos_pid_control_set_kd))
-<BR><BR>[Called By]<UL><LI><a href="#[fd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;state_transfer
-<LI><a href="#[4e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;taskreadAT24_thread_entry
-</UL>
-
-<P><STRONG><a name="[166]"></a>pos_pid_control_set_ki</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, pos_pid_control.o(i.pos_pid_control_set_ki))
-<BR><BR>[Called By]<UL><LI><a href="#[fd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;state_transfer
-<LI><a href="#[4e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;taskreadAT24_thread_entry
-</UL>
-
-<P><STRONG><a name="[165]"></a>pos_pid_control_set_kp</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, pos_pid_control.o(i.pos_pid_control_set_kp))
-<BR><BR>[Called By]<UL><LI><a href="#[fd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;state_transfer
-<LI><a href="#[4e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;taskreadAT24_thread_entry
-</UL>
-
-<P><STRONG><a name="[9d]"></a>pwm_set_Duty</STRONG> (Thumb, 142 bytes, Stack size 48 bytes, bsp_pwm.o(i.pwm_set_Duty))
+<P><STRONG><a name="[9e]"></a>pwm_set_Duty</STRONG> (Thumb, 142 bytes, Stack size 48 bytes, bsp_pwm.o(i.pwm_set_Duty))
 <BR><BR>[Stack]<UL><LI>Max Depth = 136<LI>Call Chain = pwm_set_Duty &rArr; __aeabi_dmul &rArr; _double_epilogue &rArr; _double_round
 </UL>
 <BR>[Calls]<UL><LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ui2d
@@ -2083,9 +2095,9 @@ Global Symbols
 <LI><a href="#[127]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;standing_point_init
 <LI><a href="#[12b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_system_heap_init
 <LI><a href="#[128]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_components_board_init
-<LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pwm_set_Duty
+<LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pwm_set_Duty
 <LI><a href="#[f2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bsp_steer_init
-<LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_Cmd
+<LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_Cmd
 <LI><a href="#[d5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SysTick_Init
 <LI><a href="#[c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OLED_ShowString
 <LI><a href="#[bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OLED_Init
@@ -2126,7 +2138,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[ab]"></a>rt_hw_us_delay</STRONG> (Thumb, 38 bytes, Stack size 0 bytes, board.o(i.rt_hw_us_delay))
-<BR><BR>[Called By]<UL><LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Hcsr04GetLength
+<BR><BR>[Called By]<UL><LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Hcsr04GetLength
 <LI><a href="#[b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IIC_NAck
 <LI><a href="#[b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IIC_Ack
 <LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IIC_Wait_Ack
@@ -2224,7 +2236,7 @@ Global Symbols
 <LI><a href="#[4f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;display_thread_entry
 </UL>
 
-<P><STRONG><a name="[a1]"></a>rt_mb_send</STRONG> (Thumb, 18 bytes, Stack size 16 bytes, ipc.o(i.rt_mb_send))
+<P><STRONG><a name="[a2]"></a>rt_mb_send</STRONG> (Thumb, 18 bytes, Stack size 16 bytes, ipc.o(i.rt_mb_send))
 <BR><BR>[Stack]<UL><LI>Max Depth = 128<LI>Call Chain = rt_mb_send &rArr; rt_mb_send_wait &rArr; rt_timer_start &rArr; rt_thread_resume &rArr; rt_timer_stop &rArr; _rt_timer_remove
 </UL>
 <BR>[Calls]<UL><LI><a href="#[13c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_mb_send_wait
@@ -2250,7 +2262,7 @@ Global Symbols
 <LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_hw_interrupt_disable
 <LI><a href="#[118]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_tick_get
 </UL>
-<BR>[Called By]<UL><LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_mb_send
+<BR>[Called By]<UL><LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_mb_send
 </UL>
 
 <P><STRONG><a name="[e8]"></a>rt_memset</STRONG> (Thumb, 72 bytes, Stack size 20 bytes, kservice.o(i.rt_memset))
@@ -2413,8 +2425,7 @@ Global Symbols
 <LI><a href="#[120]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_hw_interrupt_enable
 <LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_hw_interrupt_disable
 </UL>
-<BR>[Called By]<UL><LI><a href="#[fd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;state_transfer
-<LI><a href="#[4b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;debug_uarthandle_thread_entry
+<BR>[Called By]<UL><LI><a href="#[4b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;debug_uarthandle_thread_entry
 <LI><a href="#[4c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;camera_uarthandle_thread_entry
 <LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Elegun_shakefire_thread_entry
 <LI><a href="#[50]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Elegun_fire_thread_entry
@@ -2811,8 +2822,8 @@ Global Symbols
 <LI><a href="#[d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Steer_move_fire_init
 <LI><a href="#[ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Pos_input_init
 <LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Fire_ok_display
-<LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Elegun_shakefire_set_init
-<LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Elegun_shakefire_init
+<LI><a href="#[a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Elegun_shakefire_set_init
+<LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Elegun_shakefire_init
 <LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Elegun_autofire_set_init
 <LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Elegun_autofire_init
 <LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Banqiu_set_pid_Display_init
@@ -2828,20 +2839,17 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[ed]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__set_errno
 <LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_dsqrt
 </UL>
-<BR>[Called By]<UL><LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;asin
+<BR>[Called By]<UL><LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;asin
 </UL>
 
 <P><STRONG><a name="[127]"></a>standing_point_init</STRONG> (Thumb, 158 bytes, Stack size 0 bytes, banqiu_handle.o(i.standing_point_init))
 <BR><BR>[Called By]<UL><LI><a href="#[124]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_hw_board_init
 </UL>
 
-<P><STRONG><a name="[fd]"></a>state_transfer</STRONG> (Thumb, 2588 bytes, Stack size 32 bytes, key_handle.o(i.state_transfer))
+<P><STRONG><a name="[fd]"></a>state_transfer</STRONG> (Thumb, 1602 bytes, Stack size 32 bytes, key_handle.o(i.state_transfer))
 <BR><BR>[Stack]<UL><LI>Max Depth = 212<LI>Call Chain = state_transfer &rArr; rt_kprintf &rArr; rt_vsnprintf &rArr; print_number
 </UL>
 <BR>[Calls]<UL><LI><a href="#[116]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_sem_release
-<LI><a href="#[165]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pos_pid_control_set_kp
-<LI><a href="#[166]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pos_pid_control_set_ki
-<LI><a href="#[167]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pos_pid_control_set_kd
 <LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fsub
 <LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fadd
 <LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_f2d
@@ -2849,15 +2857,14 @@ Global Symbols
 <LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dadd
 <LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_d2f
 <LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;AT24CXX_WriteOneByte
-<LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_sem_take
-<LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_mb_send
+<LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_mb_send
 <LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fmul
 <LI><a href="#[91]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_f2uiz
 <LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_d2uiz
 <LI><a href="#[121]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_exit_critical
 <LI><a href="#[11f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_enter_critical
-<LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pwm_set_Duty
-<LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_Cmd
+<LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pwm_set_Duty
+<LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_Cmd
 <LI><a href="#[f6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_kprintf
 </UL>
 <BR>[Called By]<UL><LI><a href="#[4d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;keyhandle_thread_entry
@@ -2897,20 +2904,14 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[4f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;display_thread_entry
 </UL>
 
-<P><STRONG><a name="[4e]"></a>taskreadAT24_thread_entry</STRONG> (Thumb, 838 bytes, Stack size 16 bytes, task_readat24c02.o(i.taskreadAT24_thread_entry))
-<BR><BR>[Stack]<UL><LI>Max Depth = 200<LI>Call Chain = taskreadAT24_thread_entry &rArr; AT24CXX_Check &rArr; AT24CXX_ReadOneByte &rArr; IIC_Read_Byte &rArr; IIC_NAck &rArr; SDA_OUT_init &rArr; GPIO_Init
+<P><STRONG><a name="[4e]"></a>taskreadAT24_thread_entry</STRONG> (Thumb, 664 bytes, Stack size 8 bytes, task_readat24c02.o(i.taskreadAT24_thread_entry))
+<BR><BR>[Stack]<UL><LI>Max Depth = 192<LI>Call Chain = taskreadAT24_thread_entry &rArr; AT24CXX_Check &rArr; AT24CXX_ReadOneByte &rArr; IIC_Read_Byte &rArr; IIC_NAck &rArr; SDA_OUT_init &rArr; GPIO_Init
 </UL>
 <BR>[Calls]<UL><LI><a href="#[74]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ui2f
-<LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ui2d
 <LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_i2d
 <LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fdiv
-<LI><a href="#[71]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dmul
 <LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;AT24CXX_ReadOneByte
 <LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;AT24CXX_Check
-<LI><a href="#[165]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pos_pid_control_set_kp
-<LI><a href="#[166]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pos_pid_control_set_ki
-<LI><a href="#[167]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pos_pid_control_set_kd
-<LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_d2f
 <LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;AT24CXX_WriteOneByte
 <LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_thread_mdelay
 <LI><a href="#[f7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_mb_recv
@@ -2934,7 +2935,7 @@ Global Symbols
 <P><STRONG><a name="[8c]"></a>updatepage</STRONG> (Thumb, 52 bytes, Stack size 24 bytes, bsp_oled.o(i.updatepage))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = updatepage
 </UL>
-<BR>[Calls]<UL><LI><a href="#[168]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;strcpy
+<BR>[Calls]<UL><LI><a href="#[165]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;strcpy
 </UL>
 <BR>[Called By]<UL><LI><a href="#[f8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;task1_xxx_Display_init
 <LI><a href="#[f9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;steer_test_init
@@ -2943,8 +2944,8 @@ Global Symbols
 <LI><a href="#[d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Steer_move_fire_init
 <LI><a href="#[ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Pos_input_init
 <LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Fire_ok_display
-<LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Elegun_shakefire_set_init
-<LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Elegun_shakefire_init
+<LI><a href="#[a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Elegun_shakefire_set_init
+<LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Elegun_shakefire_init
 <LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Elegun_autofire_set_init
 <LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Elegun_autofire_init
 <LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Banqiu_set_pid_Display_init
@@ -3145,7 +3146,7 @@ Local Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Cmd
 </UL>
-<BR>[Called By]<UL><LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Hcsr04GetLength
+<BR>[Called By]<UL><LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Hcsr04GetLength
 </UL>
 
 <P><STRONG><a name="[ac]"></a>OpenTimerForHc</STRONG> (Thumb, 26 bytes, Stack size 8 bytes, bsp_sr04.o(i.OpenTimerForHc))
@@ -3154,7 +3155,7 @@ Local Symbols
 <BR>[Calls]<UL><LI><a href="#[c3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_SetCounter
 <LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Cmd
 </UL>
-<BR>[Called By]<UL><LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Hcsr04GetLength
+<BR>[Called By]<UL><LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Hcsr04GetLength
 </UL>
 
 <P><STRONG><a name="[55]"></a>pos_pid_control_destroy</STRONG> (Thumb, 14 bytes, Stack size 8 bytes, pos_pid_control.o(i.pos_pid_control_destroy))
@@ -3174,11 +3175,11 @@ Local Symbols
 <P><STRONG><a name="[56]"></a>pos_pid_control_update</STRONG> (Thumb, 200 bytes, Stack size 24 bytes, pos_pid_control.o(i.pos_pid_control_update))
 <BR><BR>[Stack]<UL><LI>Max Depth = 44<LI>Call Chain = pos_pid_control_update &rArr; __aeabi_fsub &rArr; __aeabi_fadd &rArr; _float_epilogue
 </UL>
-<BR>[Calls]<UL><LI><a href="#[a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cfrcmple
-<LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cfcmple
+<BR>[Calls]<UL><LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cfcmple
 <LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fsub
 <LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fadd
 <LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fmul
+<LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cfrcmple
 <LI><a href="#[118]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_tick_get
 <LI><a href="#[119]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_tick_from_millisecond
 </UL>
