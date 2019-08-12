@@ -14,3 +14,4 @@
 * 这次比赛比较好的是：在单片机上加入了RT-Thread操作系统的内核，向系统中加入功能变得简单多了，写程序更快了，运行的也稳定，调试也方便（第二天软件就基本 写完了）
 
 ![俯视图](https://raw.githubusercontent.com/adeansHFUT/electronics_design_competition/master/今年题/照片和视频/俯视图.jpg)
+
