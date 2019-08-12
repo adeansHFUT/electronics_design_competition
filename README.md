@@ -13,5 +13,9 @@
 * 机械结构：1、我们炮管没找到合适内径的硬管子，最后用的纸管。。。发射炮弹时比较抖 2、云台被队友踩了一脚，纠正过来后还有一点歪。。。 3、炮管的根部和云台左右转动的轴心相差了1cm，发现时距离封箱还有4、5小时，这是最大的错误，所以咋可能射的准嘛（之前一直调，重复性都很低）
 * 这次比赛比较好的是：在单片机上加入了RT-Thread操作系统的内核，向系统中加入功能变得简单多了，写程序更快了，运行的也稳定，调试也方便（第二天软件就基本 写完了）
 
+- [x] 俯视图：
 ![俯视图](https://raw.githubusercontent.com/adeansHFUT/electronics_design_competition/master/今年题/照片和视频/俯视图.jpg)
-
+- [x] 正视图：
+![俯视图](https://raw.githubusercontent.com/adeansHFUT/electronics_design_competition/master/今年题/照片和视频/正视图.jpg)
+- [x] 视频：
+[慢动作视频下载](https://github.com/adeansHFUT/electronics_design_competition/blob/master/%E4%BB%8A%E5%B9%B4%E9%A2%98/%E7%85%A7%E7%89%87%E5%92%8C%E8%A7%86%E9%A2%91/%E8%AF%95%E9%AA%8C-%E6%85%A2%E5%8A%A8%E4%BD%9C.mp4?raw=true)
