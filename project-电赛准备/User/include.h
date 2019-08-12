@@ -8,4 +8,6 @@
 #include "time.h"
 #include "pwm.h"
 #include "key.h"
+#include "usart.h"
 #include "display.h"
+#include "24cxx.h"

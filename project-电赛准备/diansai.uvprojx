@@ -338,7 +338,7 @@
               <MiscControls></MiscControls>
               <Define>USE_STDPERIPH_DRIVER,STM32F10X_HD</Define>
               <Undefine></Undefine>
-              <IncludePath>.\Libraries\STM32F10x_StdPeriph_Driver\inc;.\User;.\Libraries\CMSIS;.\Public;.\Peripheral\led;.\Peripheral\OLED;.\Peripheral\pwm;.\Peripheral\time;.\Peripheral\key;.\App\Display</IncludePath>
+              <IncludePath>.\Libraries\STM32F10x_StdPeriph_Driver\inc;.\User;.\Libraries\CMSIS;.\Public;.\Peripheral\led;.\Peripheral\OLED;.\Peripheral\pwm;.\Peripheral\time;.\Peripheral\key;.\App\Display;.\Peripheral\Uart;.\Peripheral\iic;.\Peripheral\24Cxx</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -435,7 +435,7 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>Peripherasl</GroupName>
+          <GroupName>Board_Peripherasl</GroupName>
           <Files>
             <File>
               <FileName>led.c</FileName>
@@ -462,10 +462,25 @@
               <FileType>1</FileType>
               <FilePath>.\Peripheral\key\key.c</FilePath>
             </File>
+            <File>
+              <FileName>usart.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Peripheral\Uart\usart.c</FilePath>
+            </File>
+            <File>
+              <FileName>iic.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Peripheral\iic\iic.c</FilePath>
+            </File>
+            <File>
+              <FileName>24cxx.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Peripheral\24Cxx\24cxx.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
-          <GroupName>Peripherasl_h</GroupName>
+          <GroupName>Board_Peripherasl_h</GroupName>
           <Files>
             <File>
               <FileName>led.h</FileName>
@@ -501,6 +516,21 @@
               <FileName>key.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Peripheral\key\key.h</FilePath>
+            </File>
+            <File>
+              <FileName>usart.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Peripheral\Uart\usart.h</FilePath>
+            </File>
+            <File>
+              <FileName>iic.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Peripheral\iic\iic.h</FilePath>
+            </File>
+            <File>
+              <FileName>24cxx.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Peripheral\24Cxx\24cxx.h</FilePath>
             </File>
           </Files>
         </Group>

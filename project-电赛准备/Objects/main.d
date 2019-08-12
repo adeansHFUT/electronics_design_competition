@@ -39,4 +39,7 @@
 .\objects\main.o: .\Peripheral\time\time.h
 .\objects\main.o: .\Peripheral\pwm\pwm.h
 .\objects\main.o: .\Peripheral\key\key.h
+.\objects\main.o: .\Peripheral\Uart\usart.h
 .\objects\main.o: .\App\Display\display.h
+.\objects\main.o: .\Peripheral\24Cxx\24cxx.h
+.\objects\main.o: .\Peripheral\iic\iic.h
