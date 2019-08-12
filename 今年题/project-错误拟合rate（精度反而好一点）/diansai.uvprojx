@@ -338,7 +338,7 @@
               <MiscControls></MiscControls>
               <Define>USE_STDPERIPH_DRIVER,STM32F10X_HD</Define>
               <Undefine></Undefine>
-              <IncludePath>.\Libraries\STM32F10x_StdPeriph_Driver\inc;.\User;.\Libraries\CMSIS;.\Public;.\Peripheral\led;.\Peripheral\OLED;.\Peripheral\time;.\Peripheral\key;.\App\Display;.\RT-Thread\bsp;.\RT-Thread\libcpu\arm\cortex-m3;.\RT-Thread\components\finsh;.\RT-Thread\include;.\RT-Thread\include\libc;.\Peripheral\uart;.\App\Uart_handle;.\App\Key_handle;.\Peripheral\24Cxx;.\App\Task_tesk;.\Public\iic;.\Public\pwm;.\Public\pid;.\Peripheral\steer</IncludePath>
+              <IncludePath>.\Libraries\STM32F10x_StdPeriph_Driver\inc;.\User;.\Libraries\CMSIS;.\Public;.\Peripheral\led;.\Peripheral\OLED;.\Peripheral\time;.\Peripheral\key;.\App\Display;.\RT-Thread\bsp;.\RT-Thread\libcpu\arm\cortex-m3;.\RT-Thread\components\finsh;.\RT-Thread\include;.\RT-Thread\include\libc;.\Peripheral\uart;.\App\Uart_handle;.\App\Key_handle;.\Peripheral\24Cxx;.\App\Task_tesk;.\Public\iic;.\Public\pwm;.\Public\pid;.\Peripheral\steer;.\App\banqiu_handle;.\App\Ele_gun;.\Peripheral\sr04</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -447,6 +447,16 @@
               <FileType>1</FileType>
               <FilePath>.\App\Task_tesk\task_readAt24c02.c</FilePath>
             </File>
+            <File>
+              <FileName>banqiu_handle.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\App\banqiu_handle\banqiu_handle.c</FilePath>
+            </File>
+            <File>
+              <FileName>Elegun_handle.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\App\Ele_gun\Elegun_handle.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -471,6 +481,16 @@
               <FileName>task_readAT24c02.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\App\Task_tesk\task_readAT24c02.h</FilePath>
+            </File>
+            <File>
+              <FileName>banqiu_handle.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\App\banqiu_handle\banqiu_handle.h</FilePath>
+            </File>
+            <File>
+              <FileName>Elegun_handle.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\App\Ele_gun\Elegun_handle.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -607,6 +627,11 @@
               <FileType>1</FileType>
               <FilePath>.\Peripheral\steer\bsp_steer.c</FilePath>
             </File>
+            <File>
+              <FileName>bsp_sr04.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Peripheral\sr04\bsp_sr04.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -656,6 +681,11 @@
               <FileName>bsp_steer.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Peripheral\steer\bsp_steer.h</FilePath>
+            </File>
+            <File>
+              <FileName>bsp_sr04.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Peripheral\sr04\bsp_sr04.h</FilePath>
             </File>
           </Files>
         </Group>
